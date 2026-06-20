@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>APEX &mdash; Simuladores F1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700;1,900&family=Barlow:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo"><img src="images/logo.png" alt="APEX"></div>
+  <button class="nav-menu-btn" onclick="toggleMenu()">MEN&Uacute;</button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="menu-close" onclick="toggleMenu()">&#x2715;</button>
+  <a href="#about"   onclick="toggleMenu()">Nosotros</a>
+  <a href="#what"    onclick="toggleMenu()">El Curso</a>
+  <a href="#levels"  onclick="toggleMenu()">Niveles</a>
+  <a href="#faq"     onclick="toggleMenu()">FAQ</a>
+  <a href="#contact" onclick="toggleMenu()">Contacto</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-slide active" id="slide-0" style="background-image:url('images/carrusel-1.jpg')"></div>
+  <div class="hero-slide"        id="slide-1" style="background-image:url('images/carrusel-2.jpg')"></div>
+  <div class="hero-slide"        id="slide-2" style="background-image:url('images/carrusel-3.png')"></div>
+  <div class="hero-slide"        id="slide-3" style="background-image:url('images/carrusel-4.jpg')"></div>
+  <div class="hero-slide"        id="slide-4" style="background-image:url('images/carrusel-5.jpg')"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">// APEX RACING ACADEMY &mdash; ARG</div>
+    <h1 class="hero-title">
+      DOMIN&Aacute;<br>
+      <span class="accent">LA PISTA.</span>
+    </h1>
+    <p class="hero-sub">Entrenamiento de &eacute;lite en simuladores<br>de F&oacute;rmula 1 &mdash; solo para los que van en serio</p>
+    <div class="hero-cta">
+      <a href="#levels" class="btn-primary">VER CURSOS</a>
+    </div>
+  </div>
+  <div class="hero-data">
+    <div class="data-chip">SIM: FULL MOTION</div>
+    <div class="data-chip">G-FORCE: ACTIVO</div>
+    <div class="data-chip">TELEMETR&Iacute;A EN VIVO</div>
+  </div>
+  <div class="hero-indicators">
+    <button class="hero-dot active" onclick="goToSlide(0)"></button>
+    <button class="hero-dot" onclick="goToSlide(1)"></button>
+    <button class="hero-dot" onclick="goToSlide(2)"></button>
+    <button class="hero-dot" onclick="goToSlide(3)"></button>
+    <button class="hero-dot" onclick="goToSlide(4)"></button>
+  </div>
+</section>
+
+<!-- QUIÉNES SOMOS -->
+<section class="about" id="about">
+  <div class="section-label reveal">// 001 &mdash; EQUIPO</div>
+  <h2 class="section-title reveal">
+    <span class="light">&iquest;Qui&eacute;nes</span>
+    <span class="bold">somos?</span>
+  </h2>
+  <div class="divider reveal"></div>
+  <p class="about-text reveal">Somos la primera academia de simulaci&oacute;n de F&oacute;rmula 1 de Argentina. Formamos pilotos que quieren ir m&aacute;s all&aacute; del juego &mdash; ingenieros de rendimiento que entienden cada d&eacute;cima de segundo. Nuestros instructores vienen del mundo real del motorsport y llevan esa mentalidad al simulador.</p>
+  <img src="images/about.jpg" alt="Piloto APEX" class="about-img reveal">
+  <div class="about-stats reveal">
+    <div class="stat-box"><div class="stat-num">+500</div><div class="stat-label">pilotos formados</div></div>
+    <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">niveles de dominio</div></div>
+    <div class="stat-box"><div class="stat-num">100%</div><div class="stat-label">telemetr&iacute;a real</div></div>
+    <div class="stat-box"><div class="stat-num">#1</div><div class="stat-label">academia ARG</div></div>
+  </div>
+</section>
+
+<!-- SPONSORS -->
+<div class="sponsors">
+  <div class="sponsors-label">// SPONSORS OFICIALES</div>
+  <div class="sponsors-track">
+    <span class="sponsor-name">LOGITECH G</span><span class="sponsor-name">FANATEC</span>
+    <span class="sponsor-name">SIMUCUBE</span><span class="sponsor-name">MOZA RACING</span>
+    <span class="sponsor-name">ASETEK</span><span class="sponsor-name">HEUSINKVELD</span>
+    <span class="sponsor-name">LOGITECH G</span><span class="sponsor-name">FANATEC</span>
+    <span class="sponsor-name">SIMUCUBE</span><span class="sponsor-name">MOZA RACING</span>
+    <span class="sponsor-name">ASETEK</span><span class="sponsor-name">HEUSINKVELD</span>
+  </div>
+</div>
+
+<!-- QUÉ SE TRATA -->
+<section class="what" id="what">
+  <div class="section-label reveal">// 002 &mdash; METODOLOG&Iacute;A</div>
+  <h2 class="section-title reveal">
+    <span class="light">&iquest;De qu&eacute;</span>
+    <span class="bold">se trata?</span>
+  </h2>
+  <div class="divider reveal"></div>
+  <p class="what-body reveal">No es un videojuego. Es ingenier&iacute;a aplicada. Nuestro programa combina simuladores de movimiento real con an&aacute;lisis de telemetr&iacute;a id&eacute;ntico al de los equipos de F1. Cada sesi&oacute;n es un laboratorio de velocidad donde vos sos el experimento.</p>
+  <div class="video-frame reveal" onclick="window.open('https://youtu.be/bd_BLE2anhc?si=KLe9a-XMWa19ZAbH','_blank')">
+    <img src="images/video-thumb.png" alt="Vista desde el cockpit">
+    <div class="video-play"></div>
+    <div class="video-label">&#9654; REPRODUCIR &mdash; APEX INTRO</div>
+  </div>
+  <div class="btn-wrap reveal"><a href="#levels" class="btn-primary">EMPEZAR AHORA</a></div>
+</section>
+
+<!-- TESTIMONIOS -->
+<div class="testimonials" id="testimonials">
+  <div class="section-label reveal">// 003 &mdash; PILOTOS</div>
+  <h2 class="section-title reveal">
+    <span class="light">Lo que dicen</span>
+    <span class="bold">nuestros pilotos</span>
+  </h2>
+  <div class="divider reveal"></div>
+  <div class="testi-slider" id="testiSlider" onscroll="updateDots()">
+    <div class="testi-card">
+      <div class="testi-quote">Despu&eacute;s de tres meses con APEX mejor&eacute; mi tiempo de vuelta en Spa en 4 segundos. Lo que aprend&iacute; ac&aacute; no existe en ning&uacute;n tutorial de YouTube.</div>
+      <div class="testi-author">MART&Iacute;N R.</div>
+      <div class="testi-role">// NIVEL 3 &mdash; iRacing PRO SERIES</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">La diferencia entre simracing amateur y profesional es entender los datos. APEX me ense&ntilde;&oacute; a leer la telemetr&iacute;a como un ingeniero de pista.</div>
+      <div class="testi-author">LUCAS T.</div>
+      <div class="testi-role">// NIVEL 2 &mdash; ACC GT3</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">El simulador de movimiento te pone en el l&iacute;mite del grip antes de que lo sientas en la pantalla. Es adrenalina real. No hay otra academia as&iacute; en Argentina.</div>
+      <div class="testi-author">SOF&Iacute;A M.</div>
+      <div class="testi-role">// NIVEL 1 &mdash; BEGINNER FAST TRACK</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">Entr&eacute; sin saber nada de setups y sal&iacute; entendiendo cada par&aacute;metro del coche. Ahora compito en ligas donde antes ni me animaba a inscribirme.</div>
+      <div class="testi-author">FEDERICO A.</div>
+      <div class="testi-role">// NIVEL 2 &mdash; F1 24 RANKED SERIES</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-quote">APEX no es para los que quieren pasarla bien. Es para los que quieren ganar. Si est&aacute;s dispuesto a trabajar, ac&aacute; te van a sacar todo el potencial que ten&eacute;s.</div>
+      <div class="testi-author">VALENTINA C.</div>
+      <div class="testi-role">// NIVEL 3 &mdash; SIMRACING WORLD CHAMPIONSHIP</div>
+    </div>
+  </div>
+  <div class="testi-dots" id="testiDots">
+    <button class="testi-dot active"></button><button class="testi-dot"></button>
+    <button class="testi-dot"></button><button class="testi-dot"></button>
+    <button class="testi-dot"></button>
+  </div>
+</div>
+
+<!-- EL PROGRAMA -->
+<section class="course" id="course">
+  <div class="course-bg" style="background-image:url('images/carrusel-1.jpg')"></div>
+  <div class="course-content">
+    <div class="section-label reveal">// 004 &mdash; PROGRAMA</div>
+    <h2 class="section-title reveal">
+      <span class="light">El programa</span>
+      <span class="bold">APEX</span>
+    </h2>
+    <div class="divider reveal"></div>
+    <p class="course-desc reveal">Tres niveles de dominio progresivo. Empez&aacute;s aprendiendo el fundamento f&iacute;sico de la velocidad y termin&aacute;s analizando datos como un ingeniero de pista de F1. No hay atajos. Hay m&eacute;todo.</p>
+    <div class="btn-wrap reveal"><a href="#levels" class="btn-primary">VER NIVELES</a></div>
+  </div>
+</section>
+
+<!-- NIVELES -->
+<section class="levels" id="levels">
+  <div class="section-label reveal">// 005 &mdash; NIVELES DE ENTRENAMIENTO</div>
+  <h2 class="section-title reveal">
+    <span class="light">Eleg&iacute; tu</span>
+    <span class="bold">nivel</span>
+  </h2>
+  <div class="divider reveal"></div>
+  <div class="level-accordion">
+    <div class="accordion-item reveal">
+      <button class="accordion-header active" onclick="toggleLevel(this,0)">
+        <div class="accordion-title-group">
+          <span class="accordion-level-tag">// NIVEL 01</span>
+          <span class="accordion-title">CONTROL TOTAL</span>
+        </div>
+        <span class="accordion-arrow open" id="lvl-arrow-0">&#9660;</span>
+      </button>
+      <div class="accordion-body open" id="lvl-body-0">
+        <div class="accordion-inner">
+          <img src="images/nivel-1.png" alt="Nivel 1" class="level-img">
+          <p>Domin&aacute; los l&iacute;mites del grip, la frenada en el punto exacto y la trayectoria de apex. Empez&aacute;s desde cero y termin&aacute;s conociendo el coche mejor que la mayor&iacute;a de pilotos que llevan a&ntilde;os en el sim.</p>
+          <div class="btn-wrap"><a href="#contact" class="btn-primary">INSCRIBIRSE</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item reveal">
+      <button class="accordion-header" onclick="toggleLevel(this,1)">
+        <div class="accordion-title-group">
+          <span class="accordion-level-tag">// NIVEL 02</span>
+          <span class="accordion-title">SETUP &amp; DATOS</span>
+        </div>
+        <span class="accordion-arrow" id="lvl-arrow-1">&#9660;</span>
+      </button>
+      <div class="accordion-body" id="lvl-body-1">
+        <div class="accordion-inner">
+          <img src="images/nivel-2.png" alt="Nivel 2" class="level-img">
+          <p>Telemetr&iacute;a avanzada, an&aacute;lisis de sectores y ajuste de setup del monoplaza. Vas a entender por qu&eacute; tu coche subvira en la frenada y c&oacute;mo corregirlo con datos reales. Trabajo con ingenieros de pista certificados.</p>
+          <div class="btn-wrap"><a href="#contact" class="btn-primary">INSCRIBIRSE</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item reveal">
+      <button class="accordion-header" onclick="toggleLevel(this,2)">
+        <div class="accordion-title-group">
+          <span class="accordion-level-tag">// NIVEL 03</span>
+          <span class="accordion-title">&Eacute;LITE RACE CRAFT</span>
+        </div>
+        <span class="accordion-arrow" id="lvl-arrow-2">&#9660;</span>
+      </button>
+      <div class="accordion-body" id="lvl-body-2">
+        <div class="accordion-inner">
+          <img src="images/nivel-3.jpg" alt="Nivel 3" class="level-img">
+          <p>Estrategia de carrera, gesti&oacute;n de neum&aacute;ticos, batallas en pista y mentalidad de piloto profesional. Este nivel es solo para quienes terminaron el Nivel 2. No es para todos &mdash; es para los que quieren ganar.</p>
+          <div class="btn-wrap"><a href="#contact" class="btn-primary">INSCRIBIRSE</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICADO -->
+<section class="cert" id="cert">
+  <div class="section-label reveal">// 006 &mdash; ACREDITACI&Oacute;N</div>
+  <h2 class="section-title reveal">
+    <span class="light">Certificado</span>
+    <span class="bold">APEX</span>
+  </h2>
+  <div class="divider reveal"></div>
+  <div class="cert-badge reveal">
+    <div class="cert-icon">&#127937;</div>
+    <div class="cert-badge-text">
+      <h4>Certificaci&oacute;n Oficial</h4>
+      <p>Acreditado por APEX Racing Academy Argentina</p>
+    </div>
+  </div>
+  <p class="cert-body reveal">Al completar cada nivel recib&iacute;s un certificado digital verificable con tu historial de telemetr&iacute;a y tiempos de vuelta. No es un diploma decorativo &mdash; es evidencia de rendimiento real que pod&eacute;s usar para ingresar a competencias amateur certificadas y ligas profesionales de simracing.</p>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-label reveal">// 007 &mdash; PREGUNTAS</div>
+  <h2 class="section-title reveal">
+    <span class="light">Preguntas</span>
+    <span class="bold">frecuentes</span>
+  </h2>
+  <div class="divider reveal"></div>
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">&iquest;Necesito experiencia previa en simracing?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">No. El Nivel 1 est&aacute; dise&ntilde;ado para que alguien que nunca toc&oacute; un simulador pueda arrancar con una base s&oacute;lida. Lo que s&iacute; vas a necesitar es compromiso y ganas de mejorar.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">&iquest;Cu&aacute;nto duran los cursos?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">Cada nivel tiene una duraci&oacute;n de 6 semanas con sesiones de 2 horas. Pod&eacute;s combinar niveles con descuento o avanzar a tu ritmo.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">&iquest;El simulador es full motion?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">S&iacute;. Trabajamos con plataformas de movimiento de 3 ejes que replican las fuerzas G del monoplaza. Tambi&eacute;n ten&eacute;s feedback de fuerza en el volante y frenos de carga.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        <span class="faq-q-text">&iquest;Puedo certificarme para competencias reales?</span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a"><div class="faq-a-inner">El certificado APEX es reconocido por varias organizaciones de simracing competitivo de Latinoam&eacute;rica. Al completar el Nivel 3 ten&eacute;s acceso directo a nuestras ligas privadas.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contact">
+  <div class="section-label reveal">// 008 &mdash; CONTACTO</div>
+  <h2 class="section-title reveal">
+    <span class="light">Contact&aacute;nos</span>
+    <span class="bold">ahora</span>
+  </h2>
+  <div class="divider reveal"></div>
+  <p class="contact-intro reveal">&iquest;Est&aacute;s listo para el siguiente nivel? Escrib&iacute;nos y te armamos un plan de entrenamiento a medida.</p>
+  <div class="contact-links reveal">
+    <a href="https://wa.me/5491100000000" class="contact-link">
+      <div class="contact-link-icon">&#128241;</div>
+      <div class="contact-link-info">
+        <div class="contact-link-label">// WHATSAPP</div>
+        <div class="contact-link-val">+54 9 11 0000-0000</div>
+      </div>
+      <div class="contact-arrow">&#8594;</div>
+    </a>
+    <a href="https://instagram.com/apexracingarg" class="contact-link">
+      <div class="contact-link-icon">&#128247;</div>
+      <div class="contact-link-info">
+        <div class="contact-link-label">// INSTAGRAM</div>
+        <div class="contact-link-val">@apexracingarg</div>
+      </div>
+      <div class="contact-arrow">&#8594;</div>
+    </a>
+    <a href="mailto:hola@apexracing.com.ar" class="contact-link">
+      <div class="contact-link-icon">&#9993;</div>
+      <div class="contact-link-info">
+        <div class="contact-link-label">// EMAIL</div>
+        <div class="contact-link-val">hola@apexracing.com.ar</div>
+      </div>
+      <div class="contact-arrow">&#8594;</div>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><img src="images/logo.png" alt="APEX"></div>
+  <div class="footer-copy">&#169; 2026 APEX RACING ACADEMY &mdash; ARGENTINA<br>TODOS LOS DERECHOS RESERVADOS.</div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
