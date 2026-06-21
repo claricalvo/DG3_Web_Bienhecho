@@ -67,3 +67,40 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll('.reveal').forEach(r => r.classList.add('visible'));
   clearInterval(timer);
 }
+
+// ===== ABOUT SCROLL CAROUSEL =====
+
+const aboutImages = document.querySelectorAll(".about-carousel .about-img");
+
+if (aboutImages.length) {
+
+    function updateAboutCarousel(){
+
+        const section = document.querySelector(".about");
+        const rect = section.getBoundingClientRect();
+
+        // progreso del scroll dentro de la sección
+        const progress = Math.min(
+            Math.max(
+                (-rect.top) / (rect.height - window.innerHeight),
+                0
+            ),
+            1
+        );
+
+        const index = Math.min(
+            Math.floor(progress * aboutImages.length),
+            aboutImages.length - 1
+        );
+
+        aboutImages.forEach((img,i)=>{
+            img.classList.toggle("active", i===index);
+        });
+
+    }
+
+    window.addEventListener("scroll", updateAboutCarousel);
+    window.addEventListener("resize", updateAboutCarousel);
+
+    updateAboutCarousel();
+}
