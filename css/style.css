@@ -418,3 +418,57 @@ box-shadow:
 
 }
 
+
+
+/* ===== Visual FX upgrade ===== */
+body{
+ background:
+ radial-gradient(circle at 20% 10%, rgba(237,109,34,.08), transparent 35%),
+ radial-gradient(circle at 80% 30%, rgba(237,109,34,.06), transparent 30%),
+ #080808;
+}
+body::after{
+ content:"";
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ background:
+ radial-gradient(500px 500px at 15% 20%, rgba(237,109,34,.08), transparent 70%),
+ radial-gradient(600px 600px at 85% 80%, rgba(237,109,34,.05), transparent 70%);
+ animation:ambientGlow 10s ease-in-out infinite alternate;
+ z-index:-1;
+}
+@keyframes ambientGlow{
+ from{transform:translateY(-20px) scale(1);}
+ to{transform:translateY(20px) scale(1.08);}
+}
+#contact{position:relative;overflow:visible;isolation:isolate;}
+#contact::before{
+ content:"";
+ position:absolute;
+ width:700px;height:700px;
+ left:50%;top:50%;
+ transform:translate(-50%,-50%);
+ background:radial-gradient(circle,
+ rgba(237,109,34,.35) 0%,
+ rgba(237,109,34,.20) 25%,
+ rgba(237,109,34,.08) 45%,
+ transparent 72%);
+ filter:blur(80px);
+ z-index:-1;
+ animation:pulseGlow 5s ease-in-out infinite;
+}
+@keyframes pulseGlow{
+ 50%{transform:translate(-50%,-50%) scale(1.15);opacity:.9;}
+}
+button,.btn,.cta,.card,.project,.service{
+ transition:.35s ease;
+}
+button:hover,.btn:hover,.cta:hover{
+ box-shadow:0 0 20px rgba(237,109,34,.6),0 0 60px rgba(237,109,34,.25);
+ transform:translateY(-3px);
+}
+.card:hover,.project:hover,.service:hover{
+ border-color:var(--orange);
+ box-shadow:0 0 25px rgba(237,109,34,.25);
+}
