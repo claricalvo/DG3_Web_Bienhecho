@@ -9,8 +9,17 @@
 </head>
 <body>
 
+<!-- Luces ambientales (parallax con JS) -->
+<div class="ambient-light light-left"></div>
+<div class="ambient-light light-right"></div>
+<div class="ambient-light light-center"></div>
+<div class="light-beam"></div>
+
+<!-- Canvas de partículas de fondo -->
+<canvas id="particleCanvas"></canvas>
+
 <!-- NAV -->
-<nav>
+<nav id="mainNav">
   <div class="nav-logo"><img src="images/logo.png" alt="APEX"></div>
   <button class="nav-menu-btn" onclick="toggleMenu()">MEN&Uacute;</button>
 </nav>
@@ -59,20 +68,20 @@
 
 <!-- QUIÉNES SOMOS -->
 <section class="about" id="about">
-  <div class="section-label reveal">// 001 &mdash; EQUIPO</div>
-  <h2 class="section-title reveal">
-    <span class="light">&iquest;Qui&eacute;nes</span>
-    <span class="bold">somos?</span>
+  <div class="section-label reveal-slide">// 001 &mdash; EQUIPO</div>
+  <h2 class="section-title">
+    <span class="light title-sweep">&iquest;Qui&eacute;nes</span>
+    <span class="bold title-sweep delay-1">somos?</span>
   </h2>
-  <div class="divider reveal"></div>
-  <p class="about-text reveal">Somos la primera academia de simulaci&oacute;n de F&oacute;rmula 1 de Argentina. Formamos pilotos que quieren ir m&aacute;s all&aacute; del juego &mdash; ingenieros de rendimiento que entienden cada d&eacute;cima de segundo. Nuestros instructores vienen del mundo real del motorsport y llevan esa mentalidad al simulador.</p>
-<div class="about-carousel reveal">
-    <img src="images/about.jpg" class="about-img active" alt="APEX 1">
+  <div class="divider reveal-slide delay-2"></div>
+  <p class="about-text reveal-slide delay-2">Somos la primera academia de simulaci&oacute;n de F&oacute;rmula 1 de Argentina. Formamos pilotos que quieren ir m&aacute;s all&aacute; del juego &mdash; ingenieros de rendimiento que entienden cada d&eacute;cima de segundo. Nuestros instructores vienen del mundo real del motorsport y llevan esa mentalidad al simulador.</p>
+  <div class="about-carousel reveal-slide delay-2">
+    <img src="images/about.jpg"  class="about-img active" alt="APEX 1">
     <img src="images/about2.jpg" class="about-img" alt="APEX 2">
     <img src="images/about3.jpg" class="about-img" alt="APEX 3">
     <img src="images/about4.jpg" class="about-img" alt="APEX 4">
-</div>
-  <div class="about-stats reveal">
+  </div>
+  <div class="about-stats reveal-slide delay-3">
     <div class="stat-box"><div class="stat-num">+500</div><div class="stat-label">pilotos formados</div></div>
     <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">niveles de dominio</div></div>
     <div class="stat-box"><div class="stat-num">100%</div><div class="stat-label">telemetr&iacute;a real</div></div>
@@ -95,29 +104,29 @@
 
 <!-- QUÉ SE TRATA -->
 <section class="what" id="what">
-  <div class="section-label reveal">// 002 &mdash; METODOLOG&Iacute;A</div>
-  <h2 class="section-title reveal">
-    <span class="light">&iquest;De qu&eacute;</span>
-    <span class="bold">se trata?</span>
+  <div class="section-label reveal-slide">// 002 &mdash; METODOLOG&Iacute;A</div>
+  <h2 class="section-title">
+    <span class="light title-sweep">&iquest;De qu&eacute;</span>
+    <span class="bold title-sweep delay-1">se trata?</span>
   </h2>
-  <div class="divider reveal"></div>
-  <p class="what-body reveal">No es un videojuego. Es ingenier&iacute;a aplicada. Nuestro programa combina simuladores de movimiento real con an&aacute;lisis de telemetr&iacute;a id&eacute;ntico al de los equipos de F1. Cada sesi&oacute;n es un laboratorio de velocidad donde vos sos el experimento.</p>
-  <div class="video-frame reveal" onclick="window.open('https://youtu.be/bd_BLE2anhc?si=KLe9a-XMWa19ZAbH','_blank')">
+  <div class="divider reveal-slide delay-2"></div>
+  <p class="what-body reveal-slide delay-2">No es un videojuego. Es ingenier&iacute;a aplicada. Nuestro programa combina simuladores de movimiento real con an&aacute;lisis de telemetr&iacute;a id&eacute;ntico al de los equipos de F1. Cada sesi&oacute;n es un laboratorio de velocidad donde vos sos el experimento.</p>
+  <div class="video-frame reveal-slide delay-2" onclick="window.open('https://youtu.be/bd_BLE2anhc?si=KLe9a-XMWa19ZAbH','_blank')">
     <img src="images/video-thumb.png" alt="Vista desde el cockpit">
     <div class="video-play"></div>
     <div class="video-label">&#9654; REPRODUCIR &mdash; APEX INTRO</div>
   </div>
-  <div class="btn-wrap reveal"><a href="#levels" class="btn-primary">EMPEZAR AHORA</a></div>
+  <div class="btn-wrap reveal-slide delay-3"><a href="#levels" class="btn-primary">EMPEZAR AHORA</a></div>
 </section>
 
 <!-- TESTIMONIOS -->
 <div class="testimonials" id="testimonials">
-  <div class="section-label reveal">// 003 &mdash; PILOTOS</div>
-  <h2 class="section-title reveal">
-    <span class="light">Lo que dicen</span>
-    <span class="bold">nuestros pilotos</span>
+  <div class="section-label reveal-slide">// 003 &mdash; PILOTOS</div>
+  <h2 class="section-title" style="padding:0 24px">
+    <span class="light title-sweep">Lo que dicen</span>
+    <span class="bold title-sweep delay-1">nuestros pilotos</span>
   </h2>
-  <div class="divider reveal"></div>
+  <div class="divider reveal-slide delay-2" style="margin-left:24px"></div>
   <div class="testi-slider" id="testiSlider" onscroll="updateDots()">
     <div class="testi-card">
       <div class="testi-quote">Despu&eacute;s de tres meses con APEX mejor&eacute; mi tiempo de vuelta en Spa en 4 segundos. Lo que aprend&iacute; ac&aacute; no existe en ning&uacute;n tutorial de YouTube.</div>
@@ -156,27 +165,27 @@
 <section class="course" id="course">
   <div class="course-bg" style="background-image:url('images/programa.jpeg')"></div>
   <div class="course-content">
-    <div class="section-label reveal">// 004 &mdash; PROGRAMA</div>
-    <h2 class="section-title reveal">
-      <span class="light">El programa</span>
-      <span class="bold">APEX</span>
+    <div class="section-label reveal-slide">// 004 &mdash; PROGRAMA</div>
+    <h2 class="section-title">
+      <span class="light title-sweep">El programa</span>
+      <span class="bold title-sweep delay-1">APEX</span>
     </h2>
-    <div class="divider reveal"></div>
-    <p class="course-desc reveal">Tres niveles de dominio progresivo. Empez&aacute;s aprendiendo el fundamento f&iacute;sico de la velocidad y termin&aacute;s analizando datos como un ingeniero de pista de F1. No hay atajos. Hay m&eacute;todo.</p>
-    <div class="btn-wrap reveal"><a href="#levels" class="btn-primary">VER NIVELES</a></div>
+    <div class="divider reveal-slide delay-2"></div>
+    <p class="course-desc reveal-slide delay-2">Tres niveles de dominio progresivo. Empez&aacute;s aprendiendo el fundamento f&iacute;sico de la velocidad y termin&aacute;s analizando datos como un ingeniero de pista de F1. No hay atajos. Hay m&eacute;todo.</p>
+    <div class="btn-wrap reveal-slide delay-3"><a href="#levels" class="btn-primary">VER NIVELES</a></div>
   </div>
 </section>
 
 <!-- NIVELES -->
 <section class="levels" id="levels">
-  <div class="section-label reveal">// 005 &mdash; NIVELES DE ENTRENAMIENTO</div>
-  <h2 class="section-title reveal">
-    <span class="light">Eleg&iacute; tu</span>
-    <span class="bold">nivel</span>
+  <div class="section-label reveal-slide">// 005 &mdash; NIVELES DE ENTRENAMIENTO</div>
+  <h2 class="section-title" style="padding:0 24px">
+    <span class="light title-sweep">Eleg&iacute; tu</span>
+    <span class="bold title-sweep delay-1">nivel</span>
   </h2>
-  <div class="divider reveal"></div>
+  <div class="divider reveal-slide delay-2" style="margin:20px 24px 32px"></div>
   <div class="level-accordion">
-    <div class="accordion-item reveal">
+    <div class="accordion-item reveal-slide">
       <button class="accordion-header active" onclick="toggleLevel(this,0)">
         <div class="accordion-title-group">
           <span class="accordion-level-tag">// NIVEL 01</span>
@@ -192,7 +201,7 @@
         </div>
       </div>
     </div>
-    <div class="accordion-item reveal">
+    <div class="accordion-item reveal-slide">
       <button class="accordion-header" onclick="toggleLevel(this,1)">
         <div class="accordion-title-group">
           <span class="accordion-level-tag">// NIVEL 02</span>
@@ -208,7 +217,7 @@
         </div>
       </div>
     </div>
-    <div class="accordion-item reveal">
+    <div class="accordion-item reveal-slide">
       <button class="accordion-header" onclick="toggleLevel(this,2)">
         <div class="accordion-title-group">
           <span class="accordion-level-tag">// NIVEL 03</span>
@@ -229,53 +238,53 @@
 
 <!-- CERTIFICADO -->
 <section class="cert" id="cert">
-  <div class="section-label reveal">// 006 &mdash; ACREDITACI&Oacute;N</div>
-  <h2 class="section-title reveal">
-    <span class="light">Certificado</span>
-    <span class="bold">APEX</span>
+  <div class="section-label reveal-slide">// 006 &mdash; ACREDITACI&Oacute;N</div>
+  <h2 class="section-title">
+    <span class="light title-sweep">Certificado</span>
+    <span class="bold title-sweep delay-1">APEX</span>
   </h2>
-  <div class="divider reveal"></div>
-  <div class="cert-badge reveal">
+  <div class="divider reveal-slide delay-2"></div>
+  <div class="cert-badge reveal-slide delay-2">
     <div class="cert-icon">&#127937;</div>
     <div class="cert-badge-text">
       <h4>Certificaci&oacute;n Oficial</h4>
       <p>Acreditado por APEX Racing Academy Argentina</p>
     </div>
   </div>
-  <p class="cert-body reveal">Al completar cada nivel recib&iacute;s un certificado digital verificable con tu historial de telemetr&iacute;a y tiempos de vuelta. No es un diploma decorativo &mdash; es evidencia de rendimiento real que pod&eacute;s usar para ingresar a competencias amateur certificadas y ligas profesionales de simracing.</p>
+  <p class="cert-body reveal-slide delay-3">Al completar cada nivel recib&iacute;s un certificado digital verificable con tu historial de telemetr&iacute;a y tiempos de vuelta. No es un diploma decorativo &mdash; es evidencia de rendimiento real que pod&eacute;s usar para ingresar a competencias amateur certificadas y ligas profesionales de simracing.</p>
 </section>
 
 <!-- FAQ -->
 <section class="faq" id="faq">
-  <div class="section-label reveal">// 007 &mdash; PREGUNTAS</div>
-  <h2 class="section-title reveal">
-    <span class="light">Preguntas</span>
-    <span class="bold">frecuentes</span>
+  <div class="section-label reveal-slide">// 007 &mdash; PREGUNTAS</div>
+  <h2 class="section-title">
+    <span class="light title-sweep">Preguntas</span>
+    <span class="bold title-sweep delay-1">frecuentes</span>
   </h2>
-  <div class="divider reveal"></div>
+  <div class="divider reveal-slide delay-2"></div>
   <div class="faq-list">
-    <div class="faq-item reveal">
+    <div class="faq-item reveal-slide">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-text">&iquest;Necesito experiencia previa en simracing?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">No. El Nivel 1 est&aacute; dise&ntilde;ado para que alguien que nunca toc&oacute; un simulador pueda arrancar con una base s&oacute;lida. Lo que s&iacute; vas a necesitar es compromiso y ganas de mejorar.</div></div>
     </div>
-    <div class="faq-item reveal">
+    <div class="faq-item reveal-slide">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-text">&iquest;Cu&aacute;nto duran los cursos?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">Cada nivel tiene una duraci&oacute;n de 6 semanas con sesiones de 2 horas. Pod&eacute;s combinar niveles con descuento o avanzar a tu ritmo.</div></div>
     </div>
-    <div class="faq-item reveal">
+    <div class="faq-item reveal-slide">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-text">&iquest;El simulador es full motion?</span>
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-a"><div class="faq-a-inner">S&iacute;. Trabajamos con plataformas de movimiento de 3 ejes que replican las fuerzas G del monoplaza. Tambi&eacute;n ten&eacute;s feedback de fuerza en el volante y frenos de carga.</div></div>
     </div>
-    <div class="faq-item reveal">
+    <div class="faq-item reveal-slide">
       <button class="faq-q" onclick="toggleFaq(this)">
         <span class="faq-q-text">&iquest;Puedo certificarme para competencias reales?</span>
         <span class="faq-icon">+</span>
@@ -287,15 +296,16 @@
 
 <!-- CONTACTO -->
 <section class="contact" id="contact">
-  <div class="section-label reveal">// 008 &mdash; CONTACTO</div>
-  <h2 class="section-title reveal">
-    <span class="light">Contact&aacute;nos</span>
-    <span class="bold">ahora</span>
+  <div class="section-label reveal-slide">// 008 &mdash; CONTACTO</div>
+  <h2 class="section-title">
+    <span class="light title-sweep">Contact&aacute;nos</span>
+    <span class="bold title-sweep delay-1">ahora</span>
   </h2>
-  <div class="divider reveal"></div>
-  <p class="contact-intro reveal">&iquest;Est&aacute;s listo para el siguiente nivel? Escrib&iacute;nos y te armamos un plan de entrenamiento a medida.</p>
-  <div class="contact-links reveal">
+  <div class="divider reveal-slide delay-2"></div>
+  <p class="contact-intro reveal-slide delay-2">&iquest;Est&aacute;s listo para el siguiente nivel? Escrib&iacute;nos y te armamos un plan de entrenamiento a medida.</p>
+  <div class="contact-links reveal-slide delay-3">
     <a href="https://wa.me/5491100000000" class="contact-link">
+      <div class="contact-link-icon">&#128241;</div>
       <div class="contact-link-info">
         <div class="contact-link-label">// WHATSAPP</div>
         <div class="contact-link-val">+54 9 11 0000-0000</div>
@@ -303,6 +313,7 @@
       <div class="contact-arrow">&#8594;</div>
     </a>
     <a href="https://instagram.com/apexracingarg" class="contact-link">
+      <div class="contact-link-icon">&#128247;</div>
       <div class="contact-link-info">
         <div class="contact-link-label">// INSTAGRAM</div>
         <div class="contact-link-val">@apexracingarg</div>
@@ -310,6 +321,7 @@
       <div class="contact-arrow">&#8594;</div>
     </a>
     <a href="mailto:hola@apexracing.com.ar" class="contact-link">
+      <div class="contact-link-icon">&#9993;</div>
       <div class="contact-link-info">
         <div class="contact-link-label">// EMAIL</div>
         <div class="contact-link-val">hola@apexracing.com.ar</div>
@@ -325,16 +337,6 @@
   <div class="footer-copy">&#169; 2026 APEX RACING ACADEMY &mdash; ARGENTINA<br>TODOS LOS DERECHOS RESERVADOS.</div>
 </footer>
 
-  <!-- Luces ambientales -->
-<div class="ambient-light light-left"></div>
-<div class="ambient-light light-right"></div>
-<div class="ambient-light light-center"></div>
-
-<!-- Haz de luz -->
-<div class="light-beam"></div>
-
-
-  
 <script src="js/main.js"></script>
 </body>
 </html>
