@@ -14,7 +14,7 @@ function nextSlide() { goToSlide((cur + 1) % total); }
 function startCarousel() { timer = setInterval(nextSlide, 3000); }
 startCarousel();
 document.getElementById('hero').addEventListener('touchstart', () => clearInterval(timer), {passive:true});
-document.getElementById('hero').addEventListener('touchend',   startCarousel, {passive:true});
+document.getElementById('hero').addEventListener('touchend', startCarousel, {passive:true});
 
 // ── MENU ──
 function toggleMenu() {
@@ -68,88 +68,66 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   clearInterval(timer);
 }
 
-// ===== ABOUT SCROLL CAROUSEL =====
-
-const aboutImages = document.querySelectorAll(".about-carousel .about-img");
-
+// ── ABOUT CAROUSEL (scroll-driven) ──
+const aboutImages = document.querySelectorAll('.about-carousel .about-img');
 if (aboutImages.length) {
+  function updateAboutCarousel() {
+    const section = document.querySelector('.about');
+    if (!section) return;
+    const rect = section.getBoundingClientRect();
+    const progress = Math.min(Math.max((-rect.top) / (rect.height - window.innerHeight), 0), 1);
+    const index = Math.min(Math.floor(progress * aboutImages.length), aboutImages.length - 1);
+    aboutImages.forEach((img, i) => img.classList.toggle('active', i === index));
+  }
+  window.addEventListener('scroll', updateAboutCarousel, {passive:true});
+  window.addEventListener('resize', updateAboutCarousel);
+  updateAboutCarousel();
+}
 
-    function updateAboutCarousel(){
+// ── LUCES AMBIENTALES con scroll ──
+// Mueve las luces con parallax al hacer scroll — creando la sensación
+// de que el resplandor naranja "atraviesa" la página mientras bajás.
+(function() {
+  const lights = document.querySelectorAll('.ambient-light');
+  const beam   = document.querySelector('.light-beam');
+  if (!lights.length) return;
 
-        const section = document.querySelector(".about");
-        const rect = section.getBoundingClientRect();
+  let lastY = 0;
+  let ticking = false;
 
-        // progreso del scroll dentro de la sección
-        const progress = Math.min(
-            Math.max(
-                (-rect.top) / (rect.height - window.innerHeight),
-                0
-            ),
-            1
-        );
+  function moveLights() {
+    const y = window.scrollY;
 
-        const index = Math.min(
-            Math.floor(progress * aboutImages.length),
-            aboutImages.length - 1
-        );
+    // Cada luz se mueve a velocidad distinta (parallax multi-capa)
+    if (lights[0]) lights[0].style.transform = `translate(${y * 0.06}px, ${y * 0.28}px)`;
+    if (lights[1]) lights[1].style.transform = `translate(${-y * 0.07}px, ${-y * 0.18}px)`;
+    if (lights[2]) lights[2].style.transform = `translate(${Math.sin(y * 0.0018) * 100}px, ${-y * 0.07}px)`;
 
-        aboutImages.forEach((img,i)=>{
-            img.classList.toggle("active", i===index);
-        });
+    // El haz diagonal baja más lento — da sensación de profundidad
+    if (beam) beam.style.transform = `translateY(${y * 0.32}px) rotate(-18deg)`;
 
+    // Pulsado de opacidad suave según qué sección es visible
+    const viewMid = y + window.innerHeight * 0.5;
+    const sections = document.querySelectorAll('section');
+    sections.forEach(sec => {
+      const top = sec.offsetTop;
+      const bot = top + sec.offsetHeight;
+      if (viewMid >= top && viewMid <= bot) {
+        const p = (viewMid - top) / sec.offsetHeight;
+        const glow = 0.10 + Math.sin(p * Math.PI) * 0.14;
+        lights.forEach(l => { l.style.opacity = glow; });
+      }
+    });
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(moveLights);
+      ticking = true;
     }
+  }, {passive: true});
 
-    window.addEventListener("scroll", updateAboutCarousel);
-    window.addEventListener("resize", updateAboutCarousel);
-
-    updateAboutCarousel();
-}
-const lights=document.querySelectorAll(".ambient-light");
-
-window.addEventListener("scroll",()=>{
-
-const y=window.scrollY;
-
-lights[0].style.transform=
-`translate(${y*.08}px,${y*.30}px)`;
-
-lights[1].style.transform=
-`translate(${-y*.08}px,${-y*.20}px)`;
-
-lights[2].style.transform=
-`translate(${Math.sin(y*.002)*120}px,${-y*.08}px)`;
-
-});
-const beam=document.querySelector(".light-beam");
-
-window.addEventListener("scroll",()=>{
-
-beam.style.transform=
-
-`translateY(${window.scrollY*.35}px)
-rotate(-18deg)`;
-
-});
-const sections=document.querySelectorAll("section");
-
-window.addEventListener("scroll",()=>{
-
-sections.forEach(section=>{
-
-const r=section.getBoundingClientRect();
-
-if(r.top<250 && r.bottom>250){
-
-const p=(250-r.top)/250;
-
-lights.forEach(light=>{
-
-light.style.opacity=.08+p*.18;
-
-});
-
-}
-
-});
-
-});
+  moveLights(); // estado inicial
+})();
