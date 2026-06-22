@@ -104,3 +104,52 @@ if (aboutImages.length) {
 
     updateAboutCarousel();
 }
+const lights=document.querySelectorAll(".ambient-light");
+
+window.addEventListener("scroll",()=>{
+
+const y=window.scrollY;
+
+lights[0].style.transform=
+`translate(${y*.08}px,${y*.30}px)`;
+
+lights[1].style.transform=
+`translate(${-y*.08}px,${-y*.20}px)`;
+
+lights[2].style.transform=
+`translate(${Math.sin(y*.002)*120}px,${-y*.08}px)`;
+
+});
+const beam=document.querySelector(".light-beam");
+
+window.addEventListener("scroll",()=>{
+
+beam.style.transform=
+
+`translateY(${window.scrollY*.35}px)
+rotate(-18deg)`;
+
+});
+const sections=document.querySelectorAll("section");
+
+window.addEventListener("scroll",()=>{
+
+sections.forEach(section=>{
+
+const r=section.getBoundingClientRect();
+
+if(r.top<250 && r.bottom>250){
+
+const p=(250-r.top)/250;
+
+lights.forEach(light=>{
+
+light.style.opacity=.08+p*.18;
+
+});
+
+}
+
+});
+
+});
