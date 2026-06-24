@@ -534,3 +534,41 @@ footer {
 }
 .footer-logo img { height: 30px; display: block; }
 .footer-copy { font-family: var(--mono); font-size: 9px; color: var(--grey); letter-spacing: .1em; line-height: 1.7; }
+
+/* ==========================
+   SCROLL CAR SECTION
+========================== */
+
+#car-scroll-section{
+    height:300vh;
+    position:relative;
+    background:#000;
+}
+
+.car-sticky-container{
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+}
+
+#scroll-car{
+    position:absolute;
+
+    width:min(1200px,80vw);
+
+    left:-80vw;
+
+    top:50%;
+    transform:translateY(-50%);
+
+    will-change:transform,left;
+    pointer-events:none;
+    user-select:none;
+
+    filter:
+        drop-shadow(0 0 15px rgba(237,109,34,.35))
+        drop-shadow(0 0 40px rgba(237,109,34,.2));
+}
