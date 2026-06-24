@@ -213,38 +213,34 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll('.title-sweep, .reveal-slide').forEach(r => r.classList.add('visible'));
   clearInterval(timer);
 }
-/* ==========================
+
+/* ==========================================
    SCROLLING F1 CAR
-========================== */
+========================================== */
 
-const carSection = document.querySelector("#car-scroll-section");
-const scrollCar = document.querySelector("#scroll-car");
+const carSection = document.getElementById('car-scroll-section');
+const carStickyContainer = document.querySelector('.car-sticky-container');
+const scrollCar = document.getElementById('scroll-car');
 
-function animateCar() {
+function moveCar() {
+  if (!carSection || !carStickyContainer || !scrollCar) return;
 
-    if (!carSection || !scrollCar) return;
+  const sectionTop = carSection.offsetTop;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  
+  if (scrollTop >= sectionTop && scrollTop <= (sectionTop + carSection.offsetHeight - carStickyContainer.offsetHeight)) {
+    const relativeScroll = scrollTop - sectionTop;
+    const scrollableHeight = carSection.offsetHeight - carStickyContainer.offsetHeight;
+    const scrollPercent = relativeScroll / scrollableHeight;
 
-    const rect = carSection.getBoundingClientRect();
+    const startLeft = -100;
+    const endLeft = 100;
+    const currentLeft = startLeft + ((endLeft - startLeft) * scrollPercent);
 
-    const totalScrollable =
-        carSection.offsetHeight - window.innerHeight;
-
-    const progress =
-        Math.min(
-            Math.max(-rect.top / totalScrollable, 0),
-            1
-        );
-
-    const startX = -90;
-    const endX = 110;
-
-    const x =
-        startX + ((endX - startX) * progress);
-
-    scrollCar.style.left = `${x}vw`;
+    scrollCar.style.transform = `translate(${currentLeft}%, -50%)`;
+  }
 }
 
-window.addEventListener("scroll", animateCar);
-window.addEventListener("resize", animateCar);
-
-animateCar();
+window.addEventListener('scroll', moveCar);
+window.addEventListener('resize', moveCar); // Añadido para que se recalcule bien si cambia el tamaño de pantalla
+moveCar();

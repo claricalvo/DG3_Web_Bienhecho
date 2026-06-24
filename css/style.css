@@ -535,40 +535,43 @@ footer {
 .footer-logo img { height: 30px; display: block; }
 .footer-copy { font-family: var(--mono); font-size: 9px; color: var(--grey); letter-spacing: .1em; line-height: 1.7; }
 
-/* ==========================
-   SCROLL CAR SECTION
-========================== */
+/* ==========================================
+   SCROLL CAR SECTION 
+========================================== */
 
-#car-scroll-section{
-    height:auto;
-    position:relative;
-    background:#000;
+#car-scroll-section {
+    height: 300vh; 
+    position: relative;
+    background: #000;
+    overflow: hidden; 
 }
 
-.car-sticky-container{
-    position:sticky;
-    top:0;
-    height:100vh;
-    overflow:hidden;
-    display:flex;
-    align-items:center;
+.car-sticky-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra el punto de partida */
 }
 
-#scroll-car{
-    position:absolute;
+#scroll-car {
+    position: absolute;
+    
+    width: 250vw; 
+    max-width: none; 
 
-    width:550px;
-
-    left:-80vw;
-
-    top:50%;
-    transform:translateY(-50%);
-
-    will-change:transform,left;
-    pointer-events:none;
-    user-select:none;
-
-    filter:
+    left: -100%; 
+    
+    top: 50%;
+    transform: translateY(-50%); 
+    
+    will-change: transform, left;
+    pointer-events: none;
+    user-select: none;
+    
+    filter: 
         drop-shadow(0 0 15px rgba(237,109,34,.35))
         drop-shadow(0 0 40px rgba(237,109,34,.2));
 }
