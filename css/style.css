@@ -515,17 +515,23 @@ section { padding: 72px 24px; position: relative; }
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-  padding: 18px 20px; background: var(--dark); border: 1px solid var(--line);
-  text-decoration: none; transition: border-color .25s, background .25s, box-shadow .25s;
-}
-.contact-link:active { border-color: var(--orange); background: rgba(237,109,34,.04); box-shadow: 0 0 20px rgba(237,109,34,.12); }
 
+    padding: 18px 20px;
+    background: var(--dark);
+    border: 1px solid var(--line);
+
+    text-decoration: none;
+    transition: border-color .25s, background .25s, box-shadow .25s;
+
+    color: inherit;
 }
-.contact-link-info { flex: 1; }
-.contact-link-label { font-family: var(--mono); font-size: 9px; color: var(--grey); letter-spacing: .2em; text-transform: uppercase; }
-.contact-link-val { font-family: var(--display); font-weight: 600; font-size: 18px; color: var(--white); letter-spacing: .03em; }
-.contact-arrow { color: var(--orange); font-size: 18px; }
+
+.contact-link:visited,
+.contact-link:hover,
+.contact-link:active {
+    color: inherit;
+    text-decoration: none;
+}
 
 /* ── FOOTER ── */
 footer {
