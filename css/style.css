@@ -512,15 +512,15 @@ section { padding: 72px 24px; position: relative; }
 .contact-intro { font-size: 15px; font-weight: 300; line-height: 1.8; color: rgba(245,245,245,.65); margin-bottom: 32px; position: relative; z-index: 1; }
 .contact-links { display: flex; flex-direction: column; gap: 2px; position: relative; z-index: 1; }
 .contact-link {
-  display: flex; align-items: center; gap: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
   padding: 18px 20px; background: var(--dark); border: 1px solid var(--line);
   text-decoration: none; transition: border-color .25s, background .25s, box-shadow .25s;
 }
 .contact-link:active { border-color: var(--orange); background: rgba(237,109,34,.04); box-shadow: 0 0 20px rgba(237,109,34,.12); }
-.contact-link-icon {
-  width: 40px; height: 40px; background: var(--orange);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0; font-size: 18px;
+
 }
 .contact-link-info { flex: 1; }
 .contact-link-label { font-family: var(--mono); font-size: 9px; color: var(--grey); letter-spacing: .2em; text-transform: uppercase; }
