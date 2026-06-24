@@ -540,7 +540,7 @@ footer {
 ========================== */
 
 #car-scroll-section{
-    height:300vh;
+    height:auto;
     position:relative;
     background:#000;
 }
