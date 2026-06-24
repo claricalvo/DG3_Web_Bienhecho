@@ -213,3 +213,38 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   document.querySelectorAll('.title-sweep, .reveal-slide').forEach(r => r.classList.add('visible'));
   clearInterval(timer);
 }
+/* ==========================
+   SCROLLING F1 CAR
+========================== */
+
+const carSection = document.querySelector("#car-scroll-section");
+const scrollCar = document.querySelector("#scroll-car");
+
+function animateCar() {
+
+    if (!carSection || !scrollCar) return;
+
+    const rect = carSection.getBoundingClientRect();
+
+    const totalScrollable =
+        carSection.offsetHeight - window.innerHeight;
+
+    const progress =
+        Math.min(
+            Math.max(-rect.top / totalScrollable, 0),
+            1
+        );
+
+    const startX = -90;
+    const endX = 110;
+
+    const x =
+        startX + ((endX - startX) * progress);
+
+    scrollCar.style.left = `${x}vw`;
+}
+
+window.addEventListener("scroll", animateCar);
+window.addEventListener("resize", animateCar);
+
+animateCar();
