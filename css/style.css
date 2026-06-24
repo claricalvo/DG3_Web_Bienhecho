@@ -512,16 +512,14 @@ section { padding: 72px 24px; position: relative; }
 .contact-intro { font-size: 15px; font-weight: 300; line-height: 1.8; color: rgba(245,245,245,.65); margin-bottom: 32px; position: relative; z-index: 1; }
 .contact-links { display: flex; flex-direction: column; gap: 2px; position: relative; z-index: 1; }
 .contact-link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 18px 20px; background: var(--dark); border: 1px solid var(--line);
   text-decoration: none; transition: border-color .25s, background .25s, box-shadow .25s;
 }
 .contact-link:active { border-color: var(--orange); background: rgba(237,109,34,.04); box-shadow: 0 0 20px rgba(237,109,34,.12); }
 
-}
 .contact-link-info { flex: 1; }
 .contact-link-label { font-family: var(--mono); font-size: 9px; color: var(--grey); letter-spacing: .2em; text-transform: uppercase; }
 .contact-link-val { font-family: var(--display); font-weight: 600; font-size: 18px; color: var(--white); letter-spacing: .03em; }
@@ -540,7 +538,7 @@ footer {
 ========================================== */
 
 #car-scroll-section {
-    height: 600vh; 
+    height: 1000vh; /* Aumentado a 1000vh para que el scroll dure mucho más y el auto se mueva lento */
     position: relative;
     background: #000;
     overflow: hidden; 
@@ -559,10 +557,10 @@ footer {
 #scroll-car {
     position: absolute;
     
-    width: 300vw; 
+    width: 380vw; /* El auto ahora ocupa casi toda la pantalla en proporción vertical y es masivo */
     max-width: none; 
 
-    left: -100%; 
+    left: -100%; /* Totalmente oculto al inicio para que no se vea estático */
     
     top: 50%;
     transform: translateY(-50%); 
