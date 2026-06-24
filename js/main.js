@@ -215,7 +215,7 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 }
 
 /* ==========================================
-   SCROLLING F1 CAR
+   SCROLLING F1 CAR 
 ========================================== */
 
 const carSection = document.getElementById('car-scroll-section');
@@ -225,22 +225,25 @@ const scrollCar = document.getElementById('scroll-car');
 function moveCar() {
   if (!carSection || !carStickyContainer || !scrollCar) return;
 
-  const sectionTop = carSection.offsetTop;
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const rect = carSection.getBoundingClientRect();
   
-  if (scrollTop >= sectionTop && scrollTop <= (sectionTop + carSection.offsetHeight - carStickyContainer.offsetHeight)) {
-    const relativeScroll = scrollTop - sectionTop;
-    const scrollableHeight = carSection.offsetHeight - carStickyContainer.offsetHeight;
-    const scrollPercent = relativeScroll / scrollableHeight;
+  const totalScrollable = carSection.offsetHeight - window.innerHeight;
 
-    const startLeft = -100;
-    const endLeft = 100;
-    const currentLeft = startLeft + ((endLeft - startLeft) * scrollPercent);
+  let progress = -rect.top / totalScrollable;
+  
+  if (progress < 0) progress = 0;
+  if (progress > 1) progress = 1;
 
-    scrollCar.style.transform = `translate(${currentLeft}%, -50%)`;
-  }
+
+  const startX = -100;
+  const endX = 120;
+  
+  const currentX = startX + ((endX - startX) * progress);
+
+  scrollCar.style.transform = `translate(${currentX}%, -50%)`;
 }
 
 window.addEventListener('scroll', moveCar);
-window.addEventListener('resize', moveCar); // Añadido para que se recalcule bien si cambia el tamaño de pantalla
+window.addEventListener('resize', moveCar);
+
 moveCar();
