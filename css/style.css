@@ -557,9 +557,9 @@ footer {
 #scroll-car{
     position:absolute;
 
-    width:min(2400px,150vw);
+    width:250px;
 
-    left:-100vw;
+    left:-150vw;
 
     top:50%;
     transform:translateY(-50%);
