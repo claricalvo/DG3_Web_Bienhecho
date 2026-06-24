@@ -540,7 +540,7 @@ footer {
 ========================================== */
 
 #car-scroll-section {
-    height: 300vh; 
+    height: 400vh; 
     position: relative;
     background: #000;
     overflow: hidden; 
@@ -559,7 +559,7 @@ footer {
 #scroll-car {
     position: absolute;
     
-    width: 250vw; 
+    width: min(1400px,90vw); 
     max-width: none; 
 
     left: -100%; 
