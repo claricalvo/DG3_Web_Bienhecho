@@ -555,7 +555,7 @@ footer {
    SCROLL CAR SECTION
 ========================================== */
 #car-scroll-section {
-  height: 150vh;
+  height: 110vh;
   position: relative;
   background: var(--black);
   border-top: 1px solid var(--line);
