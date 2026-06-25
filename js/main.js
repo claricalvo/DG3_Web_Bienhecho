@@ -222,87 +222,27 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const speedVal = document.getElementById('carSpeedVal');
   if (!section || !car) return;
 
-  const startVw = -110;  // empieza fuera por la izquierda
-  const endVw   =  110;  // termina fuera por la derecha
+  const startVw = -110;
+  const endVw   =  110;
 
-  let carProgress = 0;   // 0 = izquierda, 1 = derecha
-  let locked = false;    // true = scroll bloqueado, auto moviéndose
-  let touchStartY = 0;
+  function updateCar() {
+    const rect       = section.getBoundingClientRect();
+    const scrollable = section.offsetHeight - window.innerHeight;
+    const progress   = Math.min(Math.max(-rect.top / scrollable, 0), 1);
 
-  // Sensibilidad: cuánto avanza el auto por pixel de scroll
-  // Más alto = más lento (necesita más scroll para cruzar)
-  const SENSITIVITY = 0.0025;
-
-  function updateCar(p) {
-    carProgress = Math.min(Math.max(p, 0), 1);
-    const vw = startVw + (endVw - startVw) * carProgress;
+    const vw = startVw + (endVw - startVw) * progress;
     car.style.transform = `translateX(${vw}vw) translateY(-50%)`;
-    const speed = Math.round(Math.sin(carProgress * Math.PI) * 320);
+
+    const speed = Math.round(Math.sin(progress * Math.PI) * 320);
     if (speedVal) speedVal.textContent = speed + ' km/h';
-    if (speedLbl) speedLbl.classList.toggle('visible', carProgress > 0.05 && carProgress < 0.95);
-    car.classList.toggle('moving', carProgress > 0.05 && carProgress < 0.95);
+    if (speedLbl) speedLbl.classList.toggle('visible', progress > 0.05 && progress < 0.95);
+    car.classList.toggle('moving', progress > 0.05 && progress < 0.95);
   }
 
-  // Chequea si la sección está "activa" en pantalla
-  // (el tope de la sección llegó al tope del viewport)
-  function sectionIsActive() {
-    const rect = section.getBoundingClientRect();
-    // La sección está pegada al top del viewport
-    return rect.top <= 1 && rect.top >= -section.offsetHeight + window.innerHeight;
-  }
-
-  // ── WHEEL (desktop) ──
-  window.addEventListener('wheel', function(e) {
-    if (!sectionIsActive()) return;
-
-    const goingDown = e.deltaY > 0;
-    const goingUp   = e.deltaY < 0;
-
-    // Si el auto terminó y van para abajo → dejar pasar el scroll
-    if (carProgress >= 1 && goingDown) return;
-    // Si el auto no empezó y van para arriba → dejar pasar el scroll
-    if (carProgress <= 0 && goingUp) return;
-
-    // En cualquier otro caso → bloquear scroll y mover el auto
-    e.preventDefault();
-    updateCar(carProgress + e.deltaY * SENSITIVITY);
-
-  }, { passive: false });
-
-  // ── TOUCH (mobile) ──
-  window.addEventListener('touchstart', function(e) {
-    touchStartY = e.touches[0].clientY;
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(() => { updateCar(); ticking = false; }); ticking = true; }
   }, { passive: true });
-
-  window.addEventListener('touchmove', function(e) {
-    if (!sectionIsActive()) return;
-
-    const dy = touchStartY - e.touches[0].clientY;
-    touchStartY = e.touches[0].clientY;
-
-    const goingDown = dy > 0;
-    const goingUp   = dy < 0;
-
-    if (carProgress >= 1 && goingDown) return;
-    if (carProgress <= 0 && goingUp)   return;
-
-    e.preventDefault();
-    updateCar(carProgress + dy * SENSITIVITY * 1.5);
-
-  }, { passive: false });
-
-  // Inicializar — auto fuera por la izquierda
-  updateCar(0);
-
-  // Cuando la sección entra en viewport por primera vez,
-  // asegurarse que el auto esté en posición inicial
-  const initObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting && carProgress === 0) {
-        updateCar(0);
-      }
-    });
-  }, { threshold: 0.5 });
-  initObs.observe(section);
-
+  window.addEventListener('resize', updateCar);
+  updateCar();
 })();
