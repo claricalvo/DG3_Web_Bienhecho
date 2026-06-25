@@ -214,36 +214,57 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   clearInterval(timer);
 }
 
-/* ==========================================
-   SCROLLING F1 CAR 
-========================================== */
+// ── SCROLLING F1 CAR ──
+// El auto entra por la izquierda y sale por la derecha
+// completamente controlado por el scroll del usuario.
+(function() {
+  const section   = document.getElementById('car-scroll-section');
+  const car       = document.getElementById('scroll-car');
+  const speedLbl  = document.getElementById('carSpeedLabel');
+  const speedVal  = document.getElementById('carSpeedVal');
+  if (!section || !car) return;
 
-const carSection = document.getElementById('car-scroll-section');
-const carStickyContainer = document.querySelector('.car-sticky-container');
-const scrollCar = document.getElementById('scroll-car');
+  // startX: posición inicial (fuera por la izquierda, en vw)
+  // endX:   posición final   (fuera por la derecha, en vw)
+  // El auto mide 85vw, así que:
+  //   -110vw = completamente oculto a la izquierda
+  //   +110vw = completamente oculto a la derecha
+  const startVw = -110;
+  const endVw   =  110;
 
-function moveCar() {
-  if (!carSection || !carStickyContainer || !scrollCar) return;
+  let ticking = false;
 
-  const rect = carSection.getBoundingClientRect();
-  
-  const totalScrollable = carSection.offsetHeight - window.innerHeight;
+  function updateCar() {
+    const rect     = section.getBoundingClientRect();
+    const scrollable = section.offsetHeight - window.innerHeight;
+    // progress: 0 cuando el tope de la sección toca el tope de la pantalla,
+    //           1 cuando llega al fondo del scroll de la sección
+    let progress = -rect.top / scrollable;
+    progress = Math.min(Math.max(progress, 0), 1);
 
-  let progress = -rect.top / totalScrollable;
-  
-  if (progress < 0) progress = 0;
-  if (progress > 1) progress = 1;
+    // Posición horizontal en vw
+    const currentVw = startVw + (endVw - startVw) * progress;
+    car.style.transform = `translateX(${currentVw}vw) translateY(-50%)`;
 
+    // Velocidad simulada: 0 en los extremos, 320 en el centro
+    const speed = Math.round(Math.sin(progress * Math.PI) * 320);
+    if (speedVal) speedVal.textContent = speed + ' km/h';
 
-  const startX = -100;
-  const endX = 120;
-  
-  const currentX = startX + ((endX - startX) * progress);
+    // Mostrar label solo cuando el auto está pasando por el centro
+    if (speedLbl) {
+      speedLbl.classList.toggle('visible', progress > 0.1 && progress < 0.9);
+    }
 
-  scrollCar.style.transform = `translate(${currentX}%, -50%)`;
-}
+    // Clase moving para efecto blur sutil
+    car.classList.toggle('moving', progress > 0.05 && progress < 0.95);
 
-window.addEventListener('scroll', moveCar);
-window.addEventListener('resize', moveCar);
+    ticking = false;
+  }
 
-moveCar();
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(updateCar); ticking = true; }
+  }, {passive: true});
+
+  window.addEventListener('resize', updateCar);
+  updateCar();
+})();

@@ -542,44 +542,97 @@ footer {
 .footer-copy { font-family: var(--mono); font-size: 9px; color: var(--grey); letter-spacing: .1em; line-height: 1.7; }
 
 /* ==========================================
-   SCROLL CAR SECTION 
+   SCROLL CAR SECTION
 ========================================== */
-
 #car-scroll-section {
-    height: 600vh; 
-    position: relative;
-    background: #000;
-    overflow: hidden; 
+  /* 200vh de scroll = la sección sticky dura el doble de la pantalla.
+     El auto recorre la pantalla de izquierda a derecha en ese tramo. */
+  height: 200vh;
+  position: relative;
+  background: var(--black);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .car-sticky-container {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Centra el punto de partida */
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
-#scroll-car {
-    position: absolute;
-    
-    width: 300vw; 
-    max-width: none; 
+/* Línea de pista horizontal */
+.car-track-line {
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent, rgba(237,109,34,.25) 20%,
+    rgba(237,109,34,.25) 80%, transparent);
+  pointer-events: none;
+}
+.car-track-line::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 6px;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent, rgba(255,255,255,.04) 30%,
+    rgba(255,255,255,.04) 70%, transparent);
+}
 
-    left: -100%; 
-    
-    top: 50%;
-    transform: translateY(-50%); 
-    
-    will-change: transform, left;
-    pointer-events: none;
-    user-select: none;
-    
-    filter: 
-        drop-shadow(0 0 15px rgba(237,109,34,.35))
-        drop-shadow(0 0 40px rgba(237,109,34,.2));
+/* El auto: empieza fuera por la izquierda, termina fuera por la derecha.
+   Usamos translateX exclusivamente — sin left/right — para evitar conflictos. */
+#scroll-car {
+  position: absolute;
+  /* Ancho: que sea grande en pantalla pero no gigante */
+  width: 85vw;
+  max-width: none;
+  top: 50%;
+  /* Posición inicial: completamente fuera por la izquierda */
+  transform: translateX(-110vw) translateY(-50%);
+  will-change: transform;
+  pointer-events: none;
+  user-select: none;
+  filter:
+    drop-shadow(0 0 20px rgba(237,109,34,.5))
+    drop-shadow(0 0 60px rgba(237,109,34,.25));
+}
+
+/* Estela de velocidad: blur dinámico via JS class */
+#scroll-car.moving {
+  filter:
+    drop-shadow(0 0 20px rgba(237,109,34,.5))
+    drop-shadow(0 0 60px rgba(237,109,34,.25))
+    blur(0.5px);
+}
+
+/* Label de velocidad que aparece mientras el auto pasa */
+.car-speed-label {
+  position: absolute;
+  bottom: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity .4s;
+  pointer-events: none;
+  z-index: 2;
+}
+.car-speed-label.visible { opacity: 1; }
+.car-label-tag {
+  font-family: var(--mono); font-size: 9px;
+  color: var(--orange); letter-spacing: .2em; text-transform: uppercase;
+}
+.car-label-val {
+  font-family: var(--display); font-style: italic; font-weight: 900;
+  font-size: 36px; color: var(--white); line-height: 1;
 }
 
 
