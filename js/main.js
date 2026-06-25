@@ -225,32 +225,65 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const startVw = -110;
   const endVw   =  110;
 
-  let isLocked   = false;
-  let lockStartY = 0;
-  let ticking    = false;
-
-  function getProgress() {
-    const rect       = section.getBoundingClientRect();
-    const scrollable = section.offsetHeight - window.innerHeight;
-    return Math.min(Math.max(-rect.top / scrollable, 0), 1);
-  }
+  // Progreso interno del auto (0 a 1), independiente del scroll real
+  let carProgress = 0;
+  let isAnimating = false;
+  let lastWheelTime = 0;
 
   function updateCar(progress) {
     const currentVw = startVw + (endVw - startVw) * progress;
     car.style.transform = `translateX(${currentVw}vw) translateY(-50%)`;
-
     const speed = Math.round(Math.sin(progress * Math.PI) * 320);
     if (speedVal) speedVal.textContent = speed + ' km/h';
-    if (speedLbl) speedLbl.classList.toggle('visible', progress > 0.08 && progress < 0.92);
+    if (speedLbl) speedLbl.classList.toggle('visible', progress > 0.05 && progress < 0.95);
     car.classList.toggle('moving', progress > 0.05 && progress < 0.95);
   }
 
-  // Inicializar posición
-  updateCar(getProgress());
+  function isCarSectionVisible() {
+    const rect = section.getBoundingClientRect();
+    return rect.top <= 10 && rect.bottom >= window.innerHeight - 10;
+  }
 
-  window.addEventListener('scroll', () => {
-    if (!ticking) { requestAnimationFrame(() => { updateCar(getProgress()); ticking = false; }); ticking = true; }
-  }, {passive: true});
+  function handleWheel(e) {
+    if (!isCarSectionVisible()) return;
 
-  window.addEventListener('resize', () => updateCar(getProgress()));
+    // Si el auto ya terminó (progress = 1) dejá que el scroll siga normal
+    if (carProgress >= 1 && e.deltaY > 0) return;
+    // Si el auto aún no empezó (progress = 0) y scrollean hacia arriba, dejá que siga
+    if (carProgress <= 0 && e.deltaY < 0) return;
+
+    // Frenar el scroll de la página
+    e.preventDefault();
+
+    // Avanzar el auto según la velocidad del scroll
+    const delta = e.deltaY * 0.0015;
+    carProgress = Math.min(Math.max(carProgress + delta, 0), 1);
+    updateCar(carProgress);
+  }
+
+  // Touch support para mobile
+  let touchStartY = 0;
+  function handleTouchStart(e) {
+    touchStartY = e.touches[0].clientY;
+  }
+
+  function handleTouchMove(e) {
+    if (!isCarSectionVisible()) return;
+    if (carProgress >= 1) return;
+    if (carProgress <= 0) return;
+
+    e.preventDefault();
+    const delta = (touchStartY - e.touches[0].clientY) * 0.003;
+    touchStartY = e.touches[0].clientY;
+    carProgress = Math.min(Math.max(carProgress + delta, 0), 1);
+    updateCar(carProgress);
+  }
+
+  // Inicializar
+  updateCar(0);
+
+  // Wheel con passive: false para poder hacer preventDefault
+  window.addEventListener('wheel', handleWheel, { passive: false });
+  window.addEventListener('touchstart', handleTouchStart, { passive: true });
+  window.addEventListener('touchmove', handleTouchMove, { passive: false });
 })();
