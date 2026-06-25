@@ -555,9 +555,7 @@ footer {
    SCROLL CAR SECTION
 ========================================== */
 #car-scroll-section {
-  /* 200vh de scroll = la sección sticky dura el doble de la pantalla.
-     El auto recorre la pantalla de izquierda a derecha en ese tramo. */
-  height: 200vh;
+  height: 150vh;
   position: relative;
   background: var(--black);
   border-top: 1px solid var(--line);

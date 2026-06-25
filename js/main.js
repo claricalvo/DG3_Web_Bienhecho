@@ -215,56 +215,42 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 }
 
 // ── SCROLLING F1 CAR ──
-// El auto entra por la izquierda y sale por la derecha
-// completamente controlado por el scroll del usuario.
 (function() {
-  const section   = document.getElementById('car-scroll-section');
-  const car       = document.getElementById('scroll-car');
-  const speedLbl  = document.getElementById('carSpeedLabel');
-  const speedVal  = document.getElementById('carSpeedVal');
+  const section  = document.getElementById('car-scroll-section');
+  const car      = document.getElementById('scroll-car');
+  const speedLbl = document.getElementById('carSpeedLabel');
+  const speedVal = document.getElementById('carSpeedVal');
   if (!section || !car) return;
 
-  // startX: posición inicial (fuera por la izquierda, en vw)
-  // endX:   posición final   (fuera por la derecha, en vw)
-  // El auto mide 85vw, así que:
-  //   -110vw = completamente oculto a la izquierda
-  //   +110vw = completamente oculto a la derecha
   const startVw = -110;
   const endVw   =  110;
 
-  let ticking = false;
+  let isLocked   = false;
+  let lockStartY = 0;
+  let ticking    = false;
 
-  function updateCar() {
-    const rect     = section.getBoundingClientRect();
+  function getProgress() {
+    const rect       = section.getBoundingClientRect();
     const scrollable = section.offsetHeight - window.innerHeight;
-    // progress: 0 cuando el tope de la sección toca el tope de la pantalla,
-    //           1 cuando llega al fondo del scroll de la sección
-    let progress = -rect.top / scrollable;
-    progress = Math.min(Math.max(progress, 0), 1);
+    return Math.min(Math.max(-rect.top / scrollable, 0), 1);
+  }
 
-    // Posición horizontal en vw
+  function updateCar(progress) {
     const currentVw = startVw + (endVw - startVw) * progress;
     car.style.transform = `translateX(${currentVw}vw) translateY(-50%)`;
 
-    // Velocidad simulada: 0 en los extremos, 320 en el centro
     const speed = Math.round(Math.sin(progress * Math.PI) * 320);
     if (speedVal) speedVal.textContent = speed + ' km/h';
-
-    // Mostrar label solo cuando el auto está pasando por el centro
-    if (speedLbl) {
-      speedLbl.classList.toggle('visible', progress > 0.1 && progress < 0.9);
-    }
-
-    // Clase moving para efecto blur sutil
+    if (speedLbl) speedLbl.classList.toggle('visible', progress > 0.08 && progress < 0.92);
     car.classList.toggle('moving', progress > 0.05 && progress < 0.95);
-
-    ticking = false;
   }
 
+  // Inicializar posición
+  updateCar(getProgress());
+
   window.addEventListener('scroll', () => {
-    if (!ticking) { requestAnimationFrame(updateCar); ticking = true; }
+    if (!ticking) { requestAnimationFrame(() => { updateCar(getProgress()); ticking = false; }); ticking = true; }
   }, {passive: true});
 
-  window.addEventListener('resize', updateCar);
-  updateCar();
+  window.addEventListener('resize', () => updateCar(getProgress()));
 })();
