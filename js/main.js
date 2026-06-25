@@ -246,3 +246,42 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   window.addEventListener('resize', updateCar);
   updateCar();
 })();
+
+
+// ── DESKTOP: split FAQ into 2 columns ──
+(function() {
+  function splitFaq() {
+    if (window.innerWidth < 1024) return;
+    const items = document.querySelectorAll('.faq-list:first-child .faq-item');
+    const right  = document.querySelector('.faq-list--right');
+    if (!right || !items.length) return;
+    // Move items 3 and 4 to right column
+    const toMove = Array.from(items).slice(2);
+    toMove.forEach(item => {
+      if (!right.contains(item)) right.appendChild(item);
+    });
+  }
+  splitFaq();
+  window.addEventListener('resize', splitFaq);
+})();
+
+// ── DESKTOP: nav active link highlight on scroll ──
+(function() {
+  const links = document.querySelectorAll('.nav-links a[href^="#"]');
+  const sections = Array.from(links)
+    .map(l => document.querySelector(l.getAttribute('href')))
+    .filter(Boolean);
+
+  function updateActiveNav() {
+    const scrollY = window.scrollY + 100;
+    let active = sections[0];
+    sections.forEach(sec => { if (sec.offsetTop <= scrollY) active = sec; });
+    links.forEach(l => {
+      l.style.color = l.getAttribute('href') === '#' + active.id
+        ? 'var(--orange)'
+        : '';
+    });
+  }
+  window.addEventListener('scroll', updateActiveNav, {passive:true});
+  updateActiveNav();
+})();

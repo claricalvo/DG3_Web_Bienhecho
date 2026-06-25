@@ -643,3 +643,276 @@ a:focus {
   text-decoration: none !important;
   color: inherit !important;
 }
+
+
+/* ================================================================
+   DESKTOP BREAKPOINT — >= 1024px
+   Filosofía: mobile es la base, desktop extiende con @media.
+   Se mantiene toda la estética oscura/naranja,
+   se añade layout de columnas, tipografías más grandes
+   y elementos visuales exclusivos de pantalla ancha.
+================================================================ */
+
+@media (min-width: 1024px) {
+
+  /* ── NAV DESKTOP ── */
+  nav {
+    padding: 16px 60px;
+  }
+  .nav-logo img { height: 44px; }
+
+  /* Nav links inline en desktop — reemplaza el menú hamburguesa */
+  .nav-menu-btn { display: none; }
+
+  .nav-links {
+    display: flex !important;
+    gap: 36px;
+    align-items: center;
+  }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(245,245,245,.55);
+    text-decoration: none;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    transition: color .2s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute; left: 0; bottom: -4px;
+    width: 0; height: 1px; background: var(--orange);
+    transition: width .25s;
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    display: inline-block !important;
+    background: none;
+    border: 1px solid var(--orange);
+    color: var(--orange) !important;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .15em;
+    padding: 8px 16px;
+    text-transform: uppercase;
+    transition: background .2s, color .2s;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .nav-cta:hover {
+    background: var(--orange);
+    color: var(--black) !important;
+  }
+
+  /* ── SECTIONS BASE ── */
+  section { padding: 96px 60px; }
+
+  .section-title .light { font-size: clamp(44px,4vw,64px); }
+  .section-title .bold  { font-size: clamp(56px,5.5vw,80px); }
+
+  /* Títulos en una línea en desktop */
+  .section-title {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: nowrap;
+  }
+  .section-title .light,
+  .section-title .bold { display: inline; }
+
+  /* Texto limitado a columna legible */
+  .about-text,
+  .what-body,
+  .course-desc,
+  .cert-body,
+  .contact-intro,
+  .gallery-intro {
+    max-width: 640px;
+    font-size: 16px;
+  }
+
+  /* ── HERO DESKTOP ── */
+  .hero {
+    padding: 0 60px 80px;
+    justify-content: center;
+  }
+  .hero-content { max-width: 680px; }
+  .hero-title { font-size: clamp(80px,8vw,120px); }
+  .hero-sub { font-size: 14px; max-width: 420px; }
+  .hero-cta { text-align: left; margin-top: 40px; }
+  .hero-data {
+    right: 60px;
+    gap: 16px;
+  }
+  .data-chip { font-size: 10px; }
+
+  /* ── ABOUT DESKTOP — 2 columnas ── */
+  .about { padding: 96px 60px; }
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  /* Carrusel reemplazado por fila de 3 imágenes en desktop */
+  .about-carousel {
+    display: none;
+  }
+  .about-imgs-row {
+    display: grid !important;
+    grid-template-columns: repeat(3,1fr);
+    gap: 3px;
+    grid-column: 1 / -1;
+    margin-top: 40px;
+  }
+  .about-imgs-row img {
+    width: 100%; aspect-ratio: 4/5;
+    object-fit: cover; filter: saturate(.65);
+    transition: filter .4s, transform .4s;
+  }
+  .about-imgs-row img:hover { filter: saturate(1); transform: scale(1.02); }
+
+  .about-stats {
+    grid-template-columns: repeat(4,1fr);
+    margin-top: 0;
+  }
+
+  /* ── WHAT DESKTOP — 2 columnas ── */
+  .what { padding: 96px 60px; }
+  .what-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .video-frame { margin: 0; }
+
+  /* ── TESTIMONIALS DESKTOP — grid 3 columnas ── */
+  .testimonials { padding: 96px 60px; }
+  .testimonials .section-label,
+  .testimonials .section-title { padding: 0; }
+  .testimonials .divider { margin-left: 0; }
+  .testi-slider {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+    overflow: visible;
+    padding: 40px 0 0;
+  }
+  .testi-card {
+    flex: none;
+    scroll-snap-align: none;
+  }
+  .testi-dots { display: none; }
+
+  /* 5 testimonios: primera fila 3, segunda fila 2 centrados */
+  .testi-card:nth-child(4) { grid-column: 1; }
+  .testi-card:nth-child(5) { grid-column: 2; }
+
+  /* ── COURSE DESKTOP ── */
+  .course { padding: 96px 60px; }
+  .course-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  /* ── LEVELS DESKTOP — acordeón con imagen al lado ── */
+  .levels { padding: 96px 0; }
+  .levels .section-label,
+  .levels .section-title { padding: 0 60px; }
+  .levels .divider { margin: 20px 60px 40px; }
+  .accordion-header { padding: 20px 60px; }
+  .accordion-inner { padding: 0 60px 40px; }
+  .accordion-inner-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .level-img { aspect-ratio: 16/9; }
+
+  /* ── CERT DESKTOP ── */
+  .cert { padding: 96px 60px; }
+  .cert-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  /* ── FAQ DESKTOP — 2 columnas ── */
+  .faq { padding: 96px 60px; }
+  .faq-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 60px;
+    align-items: start;
+    margin-top: 32px;
+  }
+  .faq-list { margin-top: 0; }
+
+  /* ── CONTACT DESKTOP ── */
+  .contact { padding: 96px 60px; }
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .contact-links { gap: 4px; }
+  .contact-link { padding: 20px 24px; }
+  .contact-link:hover {
+    border-color: var(--orange);
+    background: rgba(237,109,34,.04);
+    box-shadow: 0 0 20px rgba(237,109,34,.12);
+  }
+
+  /* ── FOOTER DESKTOP ── */
+  footer {
+    padding: 48px 60px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* ── CAR SCROLL — más pequeño en desktop ── */
+  #scroll-car { width: 55vw; }
+
+  /* ── BUTTONS DESKTOP ── */
+  .btn-primary { font-size: 18px; padding: 16px 40px; }
+  .btn-wrap { text-align: left; }
+
+  /* ── DIVIDER DESKTOP ── */
+  .divider { margin: 24px 0 36px; }
+}
+
+/* ── TABLET — 768px a 1023px ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  section { padding: 80px 40px; }
+  .hero { padding: 0 40px 80px; }
+  .hero-title { font-size: clamp(72px,10vw,96px); }
+
+  .about-stats { grid-template-columns: repeat(4,1fr); }
+
+  .testi-slider {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    overflow: visible;
+    padding: 28px 0 0;
+  }
+  .testi-card { flex: none; }
+  .testi-dots { display: none; }
+
+  footer {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 40px;
+  }
+}
