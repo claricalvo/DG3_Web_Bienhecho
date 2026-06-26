@@ -911,3 +911,7 @@ a:focus {
   background-color: #ff5500; /* Naranja fuego para el fondo */
   color: #000000; /* Texto en negro para que contraste con fuerza y se lea bien */
 }
+.contenedor-boton {
+    display: flex;            /* Activamos el sistema de imanes */
+    justify-content: center;   /* Centra el botón horizontalmente de izquierda a derecha */
+}
