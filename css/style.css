@@ -759,6 +759,10 @@ a:focus {
   position: relative;
   overflow: hidden;
   transition: border-color .3s, transform .3s;
+  display: flex;
+  flex-direction: column;   /* Hace que las cosas sigan una abajo de la otra */
+  align-items: center;       /* ¡Esta es la regla mágica que centra el botón! */
+}
 }
 .course-card:hover {
   border-color: rgba(237,109,34,.4);
