@@ -895,3 +895,19 @@ a:focus {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+/* Este selector maneja el aspecto general del botón */
+.course-cta {
+  display: inline-block;
+  padding: 12px 24px;
+  text-decoration: none; /* Esto le saca el subrayado feo que viene por defecto en los enlaces */
+  font-weight: 700; /* Hace que la tipografía sea más gruesa y tenga más jerarquía */
+  text-transform: uppercase; /* Pone el texto en mayúsculas para que sea más agresivo */
+  border-radius: 4px;
+  transition: all 0.3s ease; /* Hace que los cambios de color no sean bruscos, sino suavizados */
+}
+
+/* Este selector específico aplica los colores de Apex */
+.course-cta--featured {
+  background-color: #ff5500; /* Naranja fuego para el fondo */
+  color: #000000; /* Texto en negro para que contraste con fuerza y se lea bien */
+}
