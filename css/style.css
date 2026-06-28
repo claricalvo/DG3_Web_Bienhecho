@@ -433,7 +433,7 @@ to{transform:translateX(-50%)} }
 .testi-dot.active { background: var(--orange); }
 
 /* ── COURSE ── */
-.course { position: relative; overflow: hidden; background: var(--black); border-top: 1px solid var(--line); }
+.course { position: relative; overflow: hidden; background: transparent; border-top: 1px solid var(--line); }
 .course-bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: .12; }
 .course-content { position: relative; z-index: 2; }
 .course-desc { font-size: 15px; font-weight: 300; line-height: 1.8; color: rgba(245,245,245,.65); margin-bottom: 32px; }
@@ -631,15 +631,7 @@ footer {
 }
 
 
-/* FIX LINKS */
-a,
-a:visited,
-a:hover,
-a:active,
-a:focus {
-  text-decoration: none !important;
-  color: inherit !important;
-}
+/* Links: only remove underline globally */
 
 /* ── NAV DESKTOP LINKS ── */
 .nav-links-desktop {
@@ -738,8 +730,26 @@ a:focus {
 
 /* ── COURSES SECTION ── */
 .courses {
-  background: var(--dark);
-  border-top: 1px solid var(--line);
+  position: relative;
+  border-top: none;
+  background-image: url('../images/video-thumb.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.courses::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg,
+    rgba(8,8,8,.60) 0%,
+    rgba(8,8,8,.80) 50%,
+    rgba(8,8,8,.95) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+.courses > * {
+  position: relative;
+  z-index: 1;
 }
 .courses-intro {
   font-size: 15px; font-weight: 300; line-height: 1.8;
@@ -760,9 +770,7 @@ a:focus {
   overflow: hidden;
   transition: border-color .3s, transform .3s;
   display: flex;
-  flex-direction: column;   /* Hace que las cosas sigan una abajo de la otra */
-  align-items: center;       /* ¡Esta es la regla mágica que centra el botón! */
-}
+  flex-direction: column;
 }
 .course-card:hover {
   border-color: rgba(237,109,34,.4);
@@ -850,6 +858,7 @@ a:focus {
 
 .course-cta {
   display: block;
+  color: var(--orange) !important;
   margin: 0 24px 28px;
   background: var(--dark);
   border: 1px solid var(--orange);
@@ -867,7 +876,7 @@ a:focus {
   box-shadow: 0 0 24px rgba(237,109,34,.4);
 }
 .course-cta--featured {
-  background: var(--orange); color: var(--black);
+  background: var(--orange) !important; color: var(--black) !important;
 }
 .course-cta--featured:hover {
   background: #ff8c3a; color: var(--black);
@@ -899,23 +908,190 @@ a:focus {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-/* Este selector maneja el aspecto general del botón */
-.course-cta {
-  display: inline-block;
-  padding: 12px 24px;
-  text-decoration: none; /* Esto le saca el subrayado feo que viene por defecto en los enlaces */
-  font-weight: 700; /* Hace que la tipografía sea más gruesa y tenga más jerarquía */
-  text-transform: uppercase; /* Pone el texto en mayúsculas para que sea más agresivo */
-  border-radius: 4px;
-  transition: all 0.3s ease; /* Hace que los cambios de color no sean bruscos, sino suavizados */
+
+/* ================================================================
+   DESKTOP — >= 1024px
+================================================================ */
+@media (min-width: 1024px) {
+
+  /* ── HERO ── */
+  .hero {
+    justify-content: flex-end;
+    padding: 0 60px 90px;
+    align-items: flex-start;
+  }
+  .hero-content { max-width: 680px; }
+  .hero-title { font-size: clamp(72px,6.5vw,108px); }
+  .hero-cta {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 28px;
+  }
+  .hero-sub { max-width: 400px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 60px; }
+
+  /* Titles in one line */
+  .section-title {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: nowrap;
+  }
+  .section-title .light,
+  .section-title .bold { display: inline !important; }
+  .section-title .light { font-size: clamp(38px,3.2vw,52px); }
+  .section-title .bold  { font-size: clamp(46px,4vw,64px); }
+
+  /* Testimonials title fix */
+  .testimonials .section-title { padding: 0 60px; }
+  .testimonials .section-label { padding: 0 60px; }
+  .testimonials .divider { margin-left: 60px; }
+  .testimonials { padding: 80px 0; }
+
+  /* Text readability */
+  .about-text, .what-body, .cert-body,
+  .contact-intro, .courses-intro {
+    max-width: 580px;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* ── ABOUT desktop ── */
+  .about { padding: 80px 60px; }
+  .about-text-mobile { display: none; }
+  .about-layout-desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 40px;
+  }
+  .about-layout-desktop .about-text { max-width: none; }
+  .about-carousel { display: none; }
+  .about-imgs-row {
+    display: grid !important;
+    grid-template-columns: repeat(3,1fr);
+    gap: 4px;
+    margin-bottom: 32px;
+  }
+  .about-imgs-row img {
+    width: 100%; aspect-ratio: 3/4;
+    object-fit: cover; filter: saturate(.65);
+    transition: filter .4s, transform .4s;
+  }
+  .about-imgs-row img:hover { filter: saturate(1); transform: scale(1.02); }
+  .about-stats { grid-template-columns: repeat(4,1fr); }
+
+  /* ── WHAT desktop ── */
+  .what { padding: 80px 60px; }
+  .what-layout-desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 32px;
+  }
+  .what-col-left { display: flex; flex-direction: column; gap: 0; }
+  .desktop-cta { text-align: right; margin-top: 28px !important; }
+  .what-layout-desktop .video-frame { margin: 0; }
+  /* Hide mobile-only btn */
+  .what > .btn-wrap { display: none; }
+
+  /* ── CERT desktop ── */
+  .cert { padding: 80px 60px; }
+  .cert-layout-desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 32px;
+  }
+  .cert-img-col { overflow: hidden; }
+  .cert-img-col img {
+    width: 100%; aspect-ratio: 4/3;
+    object-fit: cover; filter: saturate(.65);
+  }
+
+  /* ── FAQ desktop ── */
+  .faq { padding: 80px 60px; }
+  .faq-layout-desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 60px;
+    margin-top: 32px;
+  }
+  .faq-list { margin-top: 0; }
+
+  /* ── CONTACT desktop ── */
+  .contact { padding: 80px 60px; }
+  .contact-layout-desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 32px;
+  }
+  .contact-img-col { overflow: hidden; }
+  .contact-img-col img {
+    width: 100%; aspect-ratio: 3/4;
+    object-fit: cover; filter: saturate(.6);
+  }
+  .contact-links { gap: 4px; }
+
+  /* ── COURSES desktop ── */
+  .courses { padding: 80px 60px; }
+  .courses-grid {
+    flex-direction: row !important;
+    align-items: stretch;
+    gap: 20px;
+  }
+  .course-card { flex: 1; }
+  .course-card--featured { transform: translateY(-12px); }
+  .course-card--featured:hover { transform: translateY(-16px); }
+  .course-name { font-size: clamp(28px,2.5vw,40px); }
+  .course-cta { width: calc(100% - 48px); }
+
+  /* ── CAR desktop ── */
+  #scroll-car { width: 55vw; }
+
+  /* ── FOOTER desktop ── */
+  footer {
+    padding: 40px 60px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
-/* Este selector específico aplica los colores de Apex */
-.course-cta--featured {
-  background-color: #ff5500; /* Naranja fuego para el fondo */
-  color: #000000; /* Texto en negro para que contraste con fuerza y se lea bien */
+/* ── TABLET 768-1023px ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  section { padding: 72px 40px; }
+  .about-stats { grid-template-columns: repeat(4,1fr); }
+  .about-imgs-row { display: none !important; }
+  .about-text-mobile { display: block; }
+  .courses-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .course-card--featured { grid-column: span 2; }
+  footer { flex-direction: row; justify-content: space-between; padding: 36px 40px; }
 }
-.contenedor-boton {
-    display: flex;            /* Activamos el sistema de imanes */
-    justify-content: center;   /* Centra el botón horizontalmente de izquierda a derecha */
+
+/* Mobile: hide desktop elements */
+@media (max-width: 1023px) {
+  .about-layout-desktop { display: none; }
+  .about-imgs-row { display: none !important; }
+  .about-text-mobile { display: block; }
+  .what-layout-desktop { display: block; }
+  .what-layout-desktop .what-col-left { display: block; }
+  .desktop-cta { display: none; }
+  .cert-layout-desktop { display: block; }
+  .cert-img-col { display: none; }
+  .faq-layout-desktop { display: block; }
+  .faq-col2-desktop { display: none; }
+  .contact-layout-desktop { display: block; }
+  .contact-img-col { display: none; }
 }

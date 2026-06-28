@@ -272,3 +272,67 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
 // ── SPONSORS: pause on hover already via CSS ──
 // ── TESTI MARQUEE: pause on hover already via CSS ──
+
+// ── DESKTOP: show/hide about images vs carousel ──
+(function() {
+  function toggleAboutLayout() {
+    const row      = document.querySelector('.about-imgs-row');
+    const carousel = document.querySelector('.about-carousel');
+    const mobileP  = document.querySelector('.about-text-mobile');
+    const desktopG = document.querySelector('.about-layout-desktop');
+    const isDesktop = window.innerWidth >= 1024;
+    if (row)      row.style.display      = isDesktop ? 'grid' : 'none';
+    if (carousel) carousel.style.display = isDesktop ? 'none' : '';
+    if (mobileP)  mobileP.style.display  = isDesktop ? 'none' : '';
+    if (desktopG) desktopG.style.display = isDesktop ? 'grid' : 'none';
+  }
+  toggleAboutLayout();
+  window.addEventListener('resize', toggleAboutLayout);
+})();
+
+// ── DESKTOP: FAQ split into 2 columns ──
+(function() {
+  function splitFaq() {
+    const col2  = document.querySelector('.faq-col2-desktop');
+    const items = document.querySelectorAll('.faq-list:first-of-type .faq-item');
+    if (!col2 || !items.length) return;
+    if (window.innerWidth >= 1024) {
+      col2.style.display = 'block';
+      Array.from(items).slice(2).forEach(item => {
+        if (!col2.contains(item)) col2.appendChild(item);
+      });
+    } else {
+      col2.style.display = 'none';
+      // Move items back to first list
+      const firstList = document.querySelector('.faq-list');
+      Array.from(col2.querySelectorAll('.faq-item')).forEach(item => {
+        firstList.appendChild(item);
+      });
+    }
+  }
+  splitFaq();
+  window.addEventListener('resize', splitFaq);
+})();
+
+// ── DESKTOP: nav active link highlight ──
+(function() {
+  const links = document.querySelectorAll('.nav-links-desktop a[href^="#"]');
+  if (!links.length) return;
+  const sectionEls = Array.from(links)
+    .map(l => document.getElementById(l.getAttribute('href').slice(1)))
+    .filter(Boolean);
+
+  function updateNav() {
+    if (window.innerWidth < 1024) return;
+    const y = window.scrollY + 120;
+    let active = sectionEls[0];
+    sectionEls.forEach(s => { if (s.offsetTop <= y) active = s; });
+    links.forEach(l => {
+      const on = l.getAttribute('href') === '#' + active.id;
+      l.style.color = on ? 'var(--orange)' : '';
+      if (l.classList.contains('nav-cta-btn')) l.style.color = '';
+    });
+  }
+  window.addEventListener('scroll', updateNav, {passive:true});
+  updateNav();
+})();
