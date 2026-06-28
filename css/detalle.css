@@ -1,0 +1,164 @@
+/* =========================================================
+   APEX RACING ACADEMY — detalle.css
+   Estilos exclusivos de la página de detalle de curso.
+   Reutiliza las variables (--orange, --black, --dark, --mid,
+   --line, --white, --grey, --mono, --display, --body) y las
+   clases ya definidas en css/style.css (.course-card,
+   .course-cta, .section-label, .section-title, .testi-marquee,
+   .contact, footer, etc.) — esto NO redefine esas clases,
+   solo agrega lo que es exclusivo de esta página.
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   Breadcrumb + tarjeta principal del curso
+   --------------------------------------------------------- */
+
+.detalle-curso {
+  background: var(--black);
+  border-top: 1px solid var(--line);
+  padding: 88px 24px 72px; /* top generoso por el nav fijo */
+}
+
+.detalle-curso__breadcrumb {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .15em;
+  color: var(--grey);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.detalle-curso__breadcrumb a {
+  color: var(--grey);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.detalle-curso__breadcrumb a:hover {
+  color: var(--orange);
+  border-bottom-color: var(--orange);
+}
+
+/* La tarjeta de detalle usa .course-card tal cual, pero la
+   queremos más ancha y centrada (no en una grilla de 3) */
+.detalle-curso__card {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.detalle-curso__media-placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--dark);
+  border: 1px dashed var(--line);
+}
+
+/* ---------------------------------------------------------
+   Métodos de pago
+   --------------------------------------------------------- */
+
+.metodos-pago {
+  background: var(--black);
+  border-top: 1px solid var(--line);
+}
+
+.metodos-pago__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.metodo-pago {
+  background: var(--dark);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--orange);
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.metodo-pago__icono {
+  width: 32px;
+  height: 32px;
+  color: var(--orange);
+}
+
+.metodo-pago__icono svg {
+  width: 100%;
+  height: 100%;
+}
+
+.metodo-pago__nombre {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: .02em;
+  margin: 0;
+}
+
+.metodo-pago__detalle {
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 300;
+  color: rgba(245, 245, 245, .65);
+  margin: 0;
+}
+
+/* ---------------------------------------------------------
+   Otros niveles — reusa .course-card en grilla de 2
+   --------------------------------------------------------- */
+
+.otros-niveles {
+  background: var(--black);
+  border-top: 1px solid var(--line);
+}
+
+.otros-niveles__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 8px;
+}
+
+/* Versión compacta de la tarjeta para esta sección:
+   sin lista de características, solo lo esencial. */
+.otro-nivel-card .course-card-header {
+  padding-bottom: 24px;
+}
+
+.otro-nivel-card .course-cta {
+  margin-top: 0;
+}
+
+/* ---------------------------------------------------------
+   Desktop (>=1024px), mismo breakpoint que el resto del sitio
+   --------------------------------------------------------- */
+
+@media (min-width: 1024px) {
+  .detalle-curso { padding: 120px 60px 96px; }
+  .metodos-pago,
+  .otros-niveles { padding: 80px 60px; }
+
+  .metodos-pago__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .otros-niveles__grid {
+    flex-direction: row;
+  }
+  .otros-niveles__grid .otro-nivel-card {
+    flex: 1;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .metodos-pago__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

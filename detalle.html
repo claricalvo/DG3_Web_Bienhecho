@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Detalle del curso &mdash; APEX Racing Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700;1,900&family=Barlow:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- CSS exclusivo de esta página -->
+  <link rel="stylesheet" href="css/detalle.css">
+</head>
+<body>
+
+<!-- Luces ambientales (parallax con JS), igual que el home -->
+<div class="ambient-light light-left"></div>
+<div class="ambient-light light-right"></div>
+<div class="ambient-light light-center"></div>
+<div class="light-beam"></div>
+
+<!-- Canvas de partículas de fondo -->
+<canvas id="particleCanvas"></canvas>
+
+<!-- NAV (idéntico al home) -->
+<nav id="mainNav">
+  <div class="nav-logo"><img src="images/logo.png" alt="APEX"></div>
+  <div class="nav-links-desktop">
+    <a href="index.html#about">Nosotros</a>
+    <a href="index.html#what">Metodolog&iacute;a</a>
+    <a href="index.html#courses">Cursos</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="#contact" class="nav-cta-btn">INSCRIBIRSE</a>
+  </div>
+  <button class="nav-menu-btn" onclick="toggleMenu()">MEN&Uacute;</button>
+</nav>
+
+<!-- MOBILE MENU (idéntico al home) -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="menu-close" onclick="toggleMenu()">&#x2715;</button>
+  <a href="index.html#about"   onclick="toggleMenu()">Nosotros</a>
+  <a href="index.html#what"    onclick="toggleMenu()">El Curso</a>
+  <a href="index.html#courses" onclick="toggleMenu()">Cursos</a>
+  <a href="index.html#faq"     onclick="toggleMenu()">FAQ</a>
+  <a href="#contact" onclick="toggleMenu()">Contacto</a>
+</div>
+
+  <!-- =====================================================
+       BREADCRUMB + TARJETA PRINCIPAL DEL CURSO
+       Reutiliza las clases reales de .course-card / .course-cta
+       del home para que el estilo sea idéntico. El contenido
+       de adentro se completa por JS (ver js/detalle.js) según
+       el ?curso= de la URL.
+       ===================================================== -->
+  <section class="detalle-curso" id="detalle-curso">
+
+    <nav class="detalle-curso__breadcrumb">
+      <a href="index.html">Inicio</a> // <span id="curso-titulo-breadcrumb">Detalle del curso</span>
+    </nav>
+
+    <article class="course-card detalle-curso__card" id="curso-card">
+
+      <span class="course-popular-tag" id="curso-badge" hidden>Más elegido</span>
+
+      <div class="course-card-header">
+        <div class="course-badge" id="curso-nivel">NIVEL</div>
+        <div class="course-name" id="curso-titulo">CARGANDO...</div>
+        <div class="course-img-wrap" id="curso-media">
+          <span class="detalle-curso__media-placeholder"></span>
+        </div>
+        <div class="course-price">
+          <span class="course-price-label">desde</span>
+          <span class="course-price-val" id="curso-precio-monto">$0</span>
+          <span class="course-price-period" id="curso-duracion">/ 0 semanas</span>
+        </div>
+      </div>
+
+      <ul class="course-features" id="curso-caracteristicas">
+        <!-- Se completa por JS -->
+      </ul>
+
+      <a href="#contact" class="course-cta course-cta--featured">INSCRIBIRSE</a>
+
+    </article>
+
+  </section>
+
+  <!-- =====================================================
+       MÉTODOS DE PAGO
+       ===================================================== -->
+  <section class="metodos-pago" id="metodos-pago">
+    <div class="section-label">// 004 — PAGOS</div>
+    <h2 class="section-title">
+      <span class="light">Métodos de</span>
+      <span class="bold">pago</span>
+    </h2>
+    <div class="divider"></div>
+
+    <div class="metodos-pago__grid" id="metodos-pago-grid">
+      <!-- Se completa por JS -->
+    </div>
+  </section>
+
+  <!-- =====================================================
+       LO QUE DICEN NUESTROS PILOTOS
+       Mismo marquee infinito que usa el home (.testi-marquee).
+       ===================================================== -->
+  <section class="testimonials" id="pilotos">
+    <div class="section-label">// 003 — PILOTOS</div>
+    <h2 class="section-title">
+      <span class="light">Lo que dicen</span>
+      <span class="bold">nuestros pilotos</span>
+    </h2>
+    <div class="divider"></div>
+
+    <div class="testi-marquee-wrap">
+      <div class="testi-marquee" id="pilotos-track">
+        <!-- Se completa por JS (incluye un set duplicado para el loop) -->
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       OTROS NIVELES (los 2 cursos restantes)
+       Reusa .course-card en una grilla de 2.
+       ===================================================== -->
+  <section class="otros-niveles" id="otros-niveles">
+    <div class="section-label">// 005 — MÁS CURSOS</div>
+    <h2 class="section-title">
+      <span class="light">Conocé los</span>
+      <span class="bold">otros niveles</span>
+    </h2>
+    <div class="divider"></div>
+
+    <div class="otros-niveles__grid" id="otros-niveles-grid">
+      <!-- Se completa por JS -->
+    </div>
+  </section>
+
+  <!-- =====================================================
+       CONTACTO (idéntico al home)
+       ===================================================== -->
+  <section class="contact" id="contact">
+    <div class="section-label reveal-slide">// 008 &mdash; CONTACTO</div>
+    <h2 class="section-title">
+      <span class="light title-sweep">Contact&aacute;nos</span>
+      <span class="bold title-sweep delay-1">ahora</span>
+    </h2>
+    <div class="divider reveal-slide delay-2"></div>
+    <div class="contact-layout-desktop">
+      <div>
+        <p class="contact-intro reveal-slide delay-2">&iquest;Est&aacute;s listo para el siguiente nivel? Escrib&iacute;nos y te armamos un plan de entrenamiento a medida.</p>
+        <div class="contact-links reveal-slide delay-3">
+          <a href="https://wa.me/5491100000000" class="contact-link">
+            <div class="contact-link-info">
+              <div class="contact-link-label">// WHATSAPP</div>
+              <div class="contact-link-val">+54 9 11 0000-0000</div>
+            </div>
+            <div class="contact-arrow">&#8594;</div>
+          </a>
+          <a href="https://instagram.com/apexracingarg" class="contact-link">
+            <div class="contact-link-info">
+              <div class="contact-link-label">// INSTAGRAM</div>
+              <div class="contact-link-val">@apexracingarg</div>
+            </div>
+            <div class="contact-arrow">&#8594;</div>
+          </a>
+          <a href="mailto:hola@apexracing.com.ar" class="contact-link">
+            <div class="contact-link-info">
+              <div class="contact-link-label">// EMAIL</div>
+              <div class="contact-link-val">hola@apexracing.com.ar</div>
+            </div>
+            <div class="contact-arrow">&#8594;</div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-img-col">
+        <img src="images/nivel-1.png" alt="APEX Simulator">
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       FOOTER (idéntico al home)
+       ===================================================== -->
+  <footer>
+    <div class="footer-logo"><img src="images/logo.png" alt="APEX"></div>
+    <div class="footer-copy">&#169; 2026 APEX RACING ACADEMY &mdash; ARGENTINA<br>TODOS LOS DERECHOS RESERVADOS.</div>
+  </footer>
+
+  <!-- =====================================================
+       SCRIPTS
+       main.js trae el menú mobile, parallax y demás
+       comportamientos del home; cursos-data.js y detalle.js
+       son los nuevos, exclusivos de esta página.
+       ===================================================== -->
+  <script src="js/main.js"></script>
+  <script src="js/cursos-data.js"></script>
+  <script src="js/detalle.js"></script>
+
+</body>
+</html>

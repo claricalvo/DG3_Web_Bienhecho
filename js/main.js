@@ -11,9 +11,12 @@ function goToSlide(n) {
 }
 function nextSlide() { goToSlide((cur + 1) % total); }
 function startCarousel() { timer = setInterval(nextSlide, 3000); }
-startCarousel();
-document.getElementById('hero').addEventListener('touchstart', () => clearInterval(timer), {passive:true});
-document.getElementById('hero').addEventListener('touchend', startCarousel, {passive:true});
+const heroSection = document.getElementById('hero');
+if (heroSection) {
+  startCarousel();
+  heroSection.addEventListener('touchstart', () => clearInterval(timer), {passive:true});
+  heroSection.addEventListener('touchend', startCarousel, {passive:true});
+}
 
 // ── MENU ──
 function toggleMenu() {
