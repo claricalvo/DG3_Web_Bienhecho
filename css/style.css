@@ -969,35 +969,35 @@ footer {
   .section-title .light { font-size: clamp(38px,3.2vw,52px); }
   .section-title .bold  { font-size: clamp(46px,4vw,64px); }
 
-  /* Nav desktop */
-  .nav-menu-btn { display: none; }
-  .nav-links-desktop { display: flex; }
-.nav-links-desktop a {
-  color: var(--white);
-  text-decoration: none;
-  font-family: var(--display); /* Usa la tipografía compacta de Apex */
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;   /* Todo en mayúsculas como los botones */
-  transition: color 0.25s ease;
-}
-  #mainNav {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    padding: 20px 60px;
+  /* ── Nav desktop ── */
+  .nav-menu-btn { 
+    display: none; 
   }
-
-  .nav-links-desktop {
-    display: flex;
+  
+  .nav-links-desktop { 
+    display: flex; 
     flex-direction: row;
     align-items: center;
-    gap: 32px; 
+    gap: 32px;
+  }
+  
+  .nav-links-desktop a {
+    color: var(--white);
+    text-decoration: none;
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+  }
+  
+  .nav-links-desktop a:hover {
+    color: var(--orange);
   }
 
   .nav-cta-btn {
     background: var(--orange);
-    color: var(--black) !important; 
+    color: var(--black) !important;
     padding: 10px 24px;
     border-radius: 4px;
     font-weight: 900;
@@ -1006,9 +1006,10 @@ footer {
   }
 
   .nav-cta-btn:hover {
-    background: var(--white); 
-    transform: translateY(-2px); 
+    background: var(--white);
+    transform: translateY(-2px);
   }
+} 
 
   /* Testimonials desktop */
   .testimonials { padding: 80px 0; }
