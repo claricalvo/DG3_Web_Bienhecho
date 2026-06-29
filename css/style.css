@@ -107,6 +107,7 @@ nav {
 }
 nav.scrolled { background: rgba(8,8,8,0.98); }
 .nav-logo img { height: 38px; display: block; }
+.nav-links-desktop { display: none; }
 
 /* Botón menú — visible y con tamaño de toque correcto en mobile */
 .nav-menu-btn {
