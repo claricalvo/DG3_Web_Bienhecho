@@ -509,12 +509,12 @@ section { padding: 72px 24px; position: relative; }
   gap: 12px; cursor: pointer; text-align: left;
   -webkit-tap-highlight-color: transparent;
 }
-.faq-q-text { font-family: var(--display); font-weight: 600; font-size: 17px; color: var(--white); line-height: 1.3; }
+.faq-q-text { font-family: var(--display); font-weight: 600; font-size: 20px; color: var(--white); line-height: 1.3; }
 .faq-icon { color: var(--orange); font-size: 20px; flex-shrink: 0; transition: transform .3s; margin-top: 2px; }
 .faq-icon.open { transform: rotate(45deg); }
 .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
 .faq-a.open { max-height: 300px; }
-.faq-a-inner { padding: 0 0 20px; font-size: 14px; font-weight: 300; line-height: 1.8; color: rgba(245,245,245,.6); }
+.faq-a-inner { padding: 0 0 20px; font-size: 20px; font-weight: 300; line-height: 1.8; color: rgba(245,245,245,.6); }
 
 /* ── CONTACT ── */
 .contact { background: var(--black); border-top: 1px solid var(--line); }
