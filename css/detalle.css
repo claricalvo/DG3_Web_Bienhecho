@@ -145,6 +145,56 @@
   .metodos-pago,
   .otros-niveles { padding: 80px 60px; }
 
+  /* Sección 1 — layout propio, distinto al de las tarjetas
+     del home: imagen a la izquierda, info (nivel, nombre,
+     precio, features, botón) a la derecha. */
+  .detalle-curso__card {
+    max-width: 1100px;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    grid-template-rows: auto auto auto 1fr auto;
+    column-gap: 0;
+  }
+  /* .course-card-header pasa a ser un contenedor invisible:
+     sus hijos (badge, name, img, price) se acomodan como
+     si fueran hijos directos del grid de .detalle-curso__card */
+  .detalle-curso__card .course-card-header {
+    display: contents;
+  }
+  .detalle-curso__card .course-img-wrap {
+    grid-column: 1;
+    grid-row: 1 / 6;
+    height: 100%;
+    aspect-ratio: auto;
+    margin-bottom: 0;
+  }
+  .detalle-curso__card .course-badge {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 32px 32px 0;
+  }
+  .detalle-curso__card .course-name {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 0 32px;
+    margin-bottom: 20px;
+  }
+  .detalle-curso__card .course-price {
+    grid-column: 2;
+    grid-row: 3;
+    padding: 0 32px 20px;
+  }
+  .detalle-curso__card .course-features {
+    grid-column: 2;
+    grid-row: 4;
+    padding: 20px 32px;
+  }
+  .detalle-curso__card .course-cta {
+    grid-column: 2;
+    grid-row: 5;
+    margin: 0 32px 32px;
+  }
+
   .metodos-pago__grid {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -154,6 +204,13 @@
   }
   .otros-niveles__grid .otro-nivel-card {
     flex: 1;
+  }
+
+  /* Sección final (contacto) — achicar la imagen */
+  .contact-img-col img {
+    max-width: 420px;
+    aspect-ratio: 4 / 3;
+    margin-left: auto;
   }
 }
 
