@@ -981,10 +981,34 @@ footer {
   text-transform: uppercase;   /* Todo en mayúsculas como los botones */
   transition: color 0.25s ease;
 }
+  #mainNav {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 20px 60px;
+  }
 
-.nav-links-desktop a:hover {
-  color: var(--orange); /* Cambia a naranja al pasar el mouse 🎯 */
-}
+  .nav-links-desktop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 32px; 
+  }
+
+  .nav-cta-btn {
+    background: var(--orange);
+    color: var(--black) !important; 
+    padding: 10px 24px;
+    border-radius: 4px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  .nav-cta-btn:hover {
+    background: var(--white); 
+    transform: translateY(-2px); 
+  }
 
   /* Testimonials desktop */
   .testimonials { padding: 80px 0; }
