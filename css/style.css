@@ -972,6 +972,19 @@ footer {
   /* Nav desktop */
   .nav-menu-btn { display: none; }
   .nav-links-desktop { display: flex; }
+.nav-links-desktop a {
+  color: var(--white);
+  text-decoration: none;
+  font-family: var(--display); /* Usa la tipografía compacta de Apex */
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;   /* Todo en mayúsculas como los botones */
+  transition: color 0.25s ease;
+}
+
+.nav-links-desktop a:hover {
+  color: var(--orange); /* Cambia a naranja al pasar el mouse 🎯 */
+}
 
   /* Testimonials desktop */
   .testimonials { padding: 80px 0; }
