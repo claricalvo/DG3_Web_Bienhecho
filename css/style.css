@@ -94,15 +94,10 @@ body::after {
 }
 
 /* ── NAV ── */
-#mainNav {
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-  right: 0;
-  z-index: 99999;
-  display: flex; 
-  align-items: center; 
-  justify-content: space-between;
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 99999;                /* siempre encima de todo */
+  display: flex; align-items: center; justify-content: space-between;
   padding: 12px 20px;
   background: rgba(8,8,8,0.92);
   backdrop-filter: blur(18px);
@@ -110,7 +105,6 @@ body::after {
   border-bottom: 1px solid var(--line);
   transition: background .3s;
 }
-
 nav.scrolled { background: rgba(8,8,8,0.98); }
 .nav-logo img { height: 38px; display: block; }
 
@@ -156,7 +150,6 @@ nav.scrolled { background: rgba(8,8,8,0.98); }
   width: 0; height: 3px;
   background: var(--orange);
   transition: width .25s;
-
 }
 .mobile-menu a:active { color: var(--orange); }
 .mobile-menu a:active::after { width: 100%; }
@@ -434,6 +427,30 @@ section { padding: 72px 24px; position: relative; }
 }
 .testi-author { font-family: var(--display); font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: .05em; }
 .testi-role { font-family: var(--mono); font-size: 9px; color: var(--orange); letter-spacing: .15em; margin-top: 4px; }
+
+/* Marquee auto-scroll infinito */
+.testi-marquee-wrap {
+  overflow: hidden;
+  width: 100%;
+  margin-top: 28px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.testi-marquee {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: testiScroll 38s linear infinite;
+  will-change: transform;
+}
+.testi-marquee:hover { animation-play-state: paused; }
+.testi-marquee .testi-card {
+  flex: 0 0 320px;
+}
+@keyframes testiScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 .testi-dots { display: flex; justify-content: center; gap: 8px; padding-bottom: 4px; }
 .testi-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--line); border: none; cursor: pointer; transition: background .2s; }
 .testi-dot.active { background: var(--orange); }
@@ -979,43 +996,6 @@ footer {
   /* Nav desktop */
   .nav-menu-btn { display: none; }
   .nav-links-desktop { display: flex; }
-.nav-links-desktop a {
-  color: var(--white);
-  text-decoration: none;
-  font-family: var(--display); /* Usa la tipografía compacta de Apex */
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;   /* Todo en mayúsculas como los botones */
-  transition: color 0.25s ease;
-}
-  #mainNav {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    padding: 20px 60px;
-  }
-
-  .nav-links-desktop {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 32px; 
-  }
-
-  .nav-cta-btn {
-    background: var(--orange);
-    color: var(--black) !important; 
-    padding: 10px 24px;
-    border-radius: 4px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-  }
-
-  .nav-cta-btn:hover {
-    background: var(--white); 
-    transform: translateY(-2px); 
-  }
 
   /* Testimonials desktop */
   .testimonials { padding: 80px 0; }
