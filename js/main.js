@@ -1,6 +1,6 @@
 // ── HERO CAROUSEL ──
 let cur = 0;
-const total = 5;
+const total = 3;
 let timer;
 function goToSlide(n) {
   document.getElementById('slide-' + cur).classList.remove('active');
@@ -59,6 +59,13 @@ function toggleFaq(btn) {
   document.querySelectorAll('.faq-a').forEach(b => b.classList.remove('open'));
   document.querySelectorAll('.faq-icon').forEach(i => i.classList.remove('open'));
   if (!isOpen) { body.classList.add('open'); icon.classList.add('open'); }
+}
+
+
+// ── ABOUT CAROUSEL: click para traer al frente ──
+function bringToFront(idx) {
+  const cards = document.querySelectorAll('.about-card');
+  cards.forEach((c, i) => c.classList.toggle('active', i === idx));
 }
 
 // ── SCROLL REVEAL (títulos con sweep + elementos genéricos) ──
