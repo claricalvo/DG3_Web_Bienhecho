@@ -1014,14 +1014,20 @@ footer {
   .faq-list { margin-top: 0; }
 
   /* Contact desktop */
-  .contact { padding: 80px 60px; }
-  .contact-layout-desktop {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: start;
-    margin-top: 32px;
-  }
+.contact { 
+  padding: 80px 60px; 
+}
+
+.contact-layout-desktop {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center; /* Alinea los elementos al centro verticalmente */
+  margin: 32px auto 0 auto; /* El "auto" a los costados centra todo el bloque */
+  
+  max-width: 1200px; /* 🛑 ¡El freno mágico! Evita que el contenido crezca infinitamente */
+  width: 100%;
+}
   .contact-img-col { overflow: hidden; }
   .contact-img-col img {
     width: 100%; aspect-ratio: 3/4;
