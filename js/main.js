@@ -61,13 +61,6 @@ function toggleFaq(btn) {
   if (!isOpen) { body.classList.add('open'); icon.classList.add('open'); }
 }
 
-
-// ── ABOUT CAROUSEL: click para traer al frente ──
-function bringToFront(idx) {
-  const cards = document.querySelectorAll('.about-card');
-  cards.forEach((c, i) => c.classList.toggle('active', i === idx));
-}
-
 // ── SCROLL REVEAL (títulos con sweep + elementos genéricos) ──
 const sweepObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -86,22 +79,6 @@ function updateDots() {
   const dots   = document.querySelectorAll('.testi-dot');
   const idx = Math.min(Math.round(slider.scrollLeft / (slider.scrollWidth / 5)), 4);
   dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-}
-
-// ── ABOUT CAROUSEL (scroll-driven) ──
-const aboutImages = document.querySelectorAll('.about-carousel .about-img');
-if (aboutImages.length) {
-  function updateAboutCarousel() {
-    const section = document.querySelector('.about');
-    if (!section) return;
-    const rect     = section.getBoundingClientRect();
-    const progress = Math.min(Math.max((-rect.top) / (rect.height - window.innerHeight), 0), 1);
-    const index    = Math.min(Math.floor(progress * aboutImages.length), aboutImages.length - 1);
-    aboutImages.forEach((img, i) => img.classList.toggle('active', i === index));
-  }
-  window.addEventListener('scroll', updateAboutCarousel, {passive:true});
-  window.addEventListener('resize', updateAboutCarousel);
-  updateAboutCarousel();
 }
 
 // ── LUCES AMBIENTALES CON PARALLAX ──
@@ -282,23 +259,6 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
 
 // ── SPONSORS: pause on hover already via CSS ──
 // ── TESTI MARQUEE: pause on hover already via CSS ──
-
-// ── DESKTOP: show/hide about images vs carousel ──
-(function() {
-  function toggleAboutLayout() {
-    const row      = document.querySelector('.about-imgs-row');
-    const carousel = document.querySelector('.about-carousel');
-    const mobileP  = document.querySelector('.about-text-mobile');
-    const desktopG = document.querySelector('.about-layout-desktop');
-    const isDesktop = window.innerWidth >= 1024;
-    if (row)      row.style.display      = isDesktop ? 'grid' : 'none';
-    if (carousel) carousel.style.display = isDesktop ? 'none' : '';
-    if (mobileP)  mobileP.style.display  = isDesktop ? 'none' : '';
-    if (desktopG) desktopG.style.display = isDesktop ? 'grid' : 'none';
-  }
-  toggleAboutLayout();
-  window.addEventListener('resize', toggleAboutLayout);
-})();
 
 // ── DESKTOP: FAQ split into 2 columns ──
 (function() {

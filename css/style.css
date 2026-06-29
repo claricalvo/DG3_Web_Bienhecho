@@ -332,18 +332,6 @@ section { padding: 72px 24px; position: relative; }
   font-size: 15px; font-weight: 300; line-height: 1.8;
   color: rgba(245,245,245,.7); margin-bottom: 28px;
 }
-.about-carousel {
-  position: relative; width: 100%; aspect-ratio: 4/5; overflow: hidden;
-}
-.about-carousel .about-img {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; object-position: center top;
-  opacity: 0; transform: scale(1.06);
-  transition: opacity .8s ease, transform 1.2s ease;
-}
-.about-carousel .about-img.active {
-  opacity: 1; transform: scale(1); filter: saturate(.65);
-}
 .about-stats {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 1px; background: var(--line); margin-top: 28px;
@@ -662,51 +650,37 @@ footer {
    CAMBIOS PEDIDOS — JUNIO 2026
 ================================================================ */
 
-/* ── 1. ABOUT CAROUSEL: click para traer al frente ── */
-.about-carousel {
-  position: relative;
-  height: 320px;
+/* ── 1. ABOUT: slider infinito de 4 imágenes (mobile y desktop) ── */
+.about-marquee-wrap {
+  overflow: hidden;
+  width: 100%;
   margin: 28px 0 0;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
-.about-card {
-  position: absolute;
-  width: 72%;
+.about-marquee {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  animation: aboutScroll 26s linear infinite;
+  will-change: transform;
+}
+.about-marquee:hover { animation-play-state: paused; }
+.about-slide {
+  flex: 0 0 240px;
   aspect-ratio: 4/3;
   overflow: hidden;
-  cursor: pointer;
-  transition: transform .4s ease, filter .4s ease, box-shadow .3s ease;
   border: 1px solid var(--line);
 }
-.about-card img {
+.about-slide img {
   width: 100%; height: 100%;
   object-fit: cover;
+  filter: saturate(.65);
   display: block;
 }
-/* posición de las 3 tarjetas por defecto (abanico) */
-.about-card:nth-child(1) {
-  top: 10px; left: 0;
-  transform: rotate(-4deg);
-  z-index: 1;
-  filter: brightness(.55) saturate(.4);
-}
-.about-card:nth-child(2) {
-  top: 18px; left: 12%;
-  transform: rotate(2deg);
-  z-index: 2;
-  filter: brightness(.55) saturate(.4);
-}
-.about-card:nth-child(3) {
-  top: 4px; left: 22%;
-  transform: rotate(-1deg);
-  z-index: 3;
-  filter: brightness(.55) saturate(.4);
-}
-/* La activa va al frente, sin rotación, a color completo */
-.about-card.active {
-  z-index: 10 !important;
-  transform: rotate(0deg) translateY(-8px) !important;
-  filter: brightness(1) saturate(1) !important;
-  box-shadow: 0 12px 40px rgba(237,109,34,.25);
+@keyframes aboutScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* ── 2. SPONSORS: asegurar loop sin espacio ── */
@@ -967,21 +941,9 @@ footer {
   .hero-cta { margin-top: 28px; }
 }
 
-/* ── DESKTOP: about imgs row ── */
+/* ── DESKTOP: about marquee más grande ── */
 @media (min-width: 1024px) {
-  .about-carousel { display: none !important; }
-  .about-imgs-row {
-    display: grid !important;
-    grid-template-columns: repeat(3,1fr);
-    gap: 4px;
-    margin: 32px 0;
-  }
-  .about-imgs-row img {
-    width: 100%; aspect-ratio: 3/4;
-    object-fit: cover; filter: saturate(.65);
-    transition: filter .4s, transform .4s;
-  }
-  .about-imgs-row img:hover { filter: saturate(1); transform: scale(1.02); }
+  .about-slide { flex: 0 0 320px; }
 
   /* Secciones base desktop */
   section { padding: 80px 60px; }
@@ -1032,12 +994,12 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
-    align-items: center;
+    align-items: stretch;
     margin-top: 32px;
   }
-  .cert-img-col { overflow: hidden; }
+  .cert-img-col { overflow: hidden; height: 100%; }
   .cert-img-col img {
-    width: 100%; aspect-ratio: 4/3;
+    width: 100%; height: 100%;
     object-fit: cover; filter: saturate(.65);
   }
 
@@ -1057,12 +1019,12 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 60px;
-    align-items: start;
+    align-items: stretch;
     margin-top: 32px;
   }
-  .contact-img-col { overflow: hidden; }
+  .contact-img-col { overflow: hidden; height: 100%; }
   .contact-img-col img {
-    width: 100%; aspect-ratio: 3/4;
+    width: 100%; height: 100%;
     object-fit: cover; filter: saturate(.6);
   }
 
@@ -1080,9 +1042,7 @@ footer {
   /* About desktop */
   .about { padding: 80px 60px; }
   .about-layout-desktop {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    max-width: 720px;
     margin-bottom: 32px;
   }
   .about-text-mobile { display: none; }
@@ -1102,7 +1062,6 @@ footer {
 
 /* Mobile: ocultar cols desktop */
 @media (max-width: 1023px) {
-  .about-imgs-row { display: none !important; }
   .about-layout-desktop { display: none !important; }
   .about-text-mobile { display: block; }
   .cert-img-col { display: none; }

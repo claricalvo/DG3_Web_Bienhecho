@@ -79,26 +79,22 @@
   </h2>
   <div class="divider reveal-slide delay-2"></div>
   <div class="about-layout-desktop">
-    <p class="about-text reveal-slide delay-2">Somos la primera academia de simulaci&oacute;n de F&oacute;rmula 1 de Argentina. Formamos pilotos que quieren ir m&aacute;s all&aacute; del juego.</p>
-    <p class="about-text reveal-slide delay-2">Nuestros instructores vienen del mundo real del motorsport y llevan esa mentalidad al simulador. Cada sesi&oacute;n es un laboratorio de velocidad donde las d&eacute;cimas importan.</p>
+    <p class="about-text reveal-slide delay-2">Somos la primera academia de simulaci&oacute;n de F&oacute;rmula 1 de Argentina. Formamos pilotos que quieren ir m&aacute;s all&aacute; del juego. Nuestros instructores vienen del mundo real del motorsport y llevan esa mentalidad al simulador. Cada sesi&oacute;n es un laboratorio de velocidad donde las d&eacute;cimas importan.</p>
   </div>
   <!-- hidden mobile para no duplicar el texto -->
   <p class="about-text-mobile reveal-slide delay-2">Somos la primera academia de simulaci&oacute;n de F&oacute;rmula 1 de Argentina. Formamos pilotos que quieren ir m&aacute;s all&aacute; del juego. Nuestros instructores vienen del mundo real del motorsport y llevan esa mentalidad al simulador.</p>
-  <!-- Desktop 3-col image row -->
-  <div class="about-imgs-row reveal-slide delay-3">
-    <div class="about-img-col"><img src="images/instructor-1.jpeg" alt="Instructor APEX 1"></div>
-    <div class="about-img-col"><img src="images/about2.jpg" alt="Instructor APEX 2"></div>
-    <div class="about-img-col"><img src="images/about3.jpg" alt="Instructor APEX 3"></div>
-  </div>
-  <div class="about-carousel reveal-slide delay-2" id="aboutCarousel">
-    <div class="about-card active" onclick="bringToFront(0)">
-      <img src="images/instructor-1.jpeg" alt="APEX 1">
-    </div>
-    <div class="about-card" onclick="bringToFront(1)">
-      <img src="images/about2.jpg" alt="APEX 2">
-    </div>
-    <div class="about-card" onclick="bringToFront(2)">
-      <img src="images/about3.jpg" alt="APEX 3">
+  <!-- Slider infinito de 4 imágenes (mobile y desktop) -->
+  <div class="about-marquee-wrap reveal-slide delay-3">
+    <div class="about-marquee" id="aboutMarquee">
+      <div class="about-slide"><img src="images/instructor-1.jpeg" alt="Instructor APEX 1"></div>
+      <div class="about-slide"><img src="images/about2.jpg" alt="Instructor APEX 2"></div>
+      <div class="about-slide"><img src="images/about3.jpg" alt="Instructor APEX 3"></div>
+      <div class="about-slide"><img src="images/about4.jpg" alt="Instructor APEX 4"></div>
+      <!-- Duplicado para loop infinito -->
+      <div class="about-slide"><img src="images/instructor-1.jpeg" alt="Instructor APEX 1"></div>
+      <div class="about-slide"><img src="images/about2.jpg" alt="Instructor APEX 2"></div>
+      <div class="about-slide"><img src="images/about3.jpg" alt="Instructor APEX 3"></div>
+      <div class="about-slide"><img src="images/about4.jpg" alt="Instructor APEX 4"></div>
     </div>
   </div>
   <div class="about-stats reveal-slide delay-3">
