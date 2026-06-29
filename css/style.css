@@ -368,7 +368,6 @@ section { padding: 72px 24px; position: relative; }
   letter-spacing: .25em; text-transform: uppercase; text-align: center; margin-bottom: 24px;
 }
 
-to{transform:translateX(-50%)} }
 .sponsor-name {
   font-family: var(--display); font-weight: 700; font-size: 20px;
   letter-spacing: .12em; text-transform: uppercase;
@@ -763,6 +762,136 @@ footer {
   pointer-events: none;
 }
 .courses.shared-bg > * { position: relative; z-index: 1; }
+
+.courses-intro {
+  font-size: 15px; font-weight: 300; line-height: 1.7;
+  color: rgba(245,245,245,.7); max-width: 520px; margin-bottom: 36px;
+}
+
+.courses-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.course-card {
+  background: var(--mid);
+  border: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  transition: border-color .3s, transform .3s;
+  display: flex;
+  flex-direction: column;
+}
+.course-card:hover {
+  border-color: rgba(237,109,34,.4);
+  transform: translateY(-2px);
+}
+.course-card--featured {
+  border-color: var(--orange);
+  background: rgba(237,109,34,.04);
+}
+.course-card--featured:hover {
+  border-color: var(--orange);
+  box-shadow: 0 0 40px rgba(237,109,34,.18);
+}
+
+.course-popular-tag {
+  position: absolute; top: 0; right: 0;
+  background: var(--orange);
+  color: var(--black);
+  font-family: var(--mono);
+  font-size: 9px; letter-spacing: .18em;
+  padding: 6px 14px;
+  text-transform: uppercase;
+}
+
+.course-card-header {
+  padding: 28px 24px 0;
+}
+.course-badge {
+  font-family: var(--mono); font-size: 9px; color: var(--grey);
+  letter-spacing: .22em; text-transform: uppercase; margin-bottom: 10px;
+}
+.course-badge--featured { color: var(--orange); }
+
+.course-name {
+  font-family: var(--display); font-style: italic; font-weight: 900;
+  font-size: clamp(36px,10vw,52px); text-transform: uppercase;
+  line-height: .92; color: var(--white); margin-bottom: 16px;
+}
+
+.course-img-wrap {
+  width: 100%; aspect-ratio: 16/9; overflow: hidden; margin-bottom: 20px;
+}
+.course-img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(.6);
+  transition: filter .4s, transform .5s;
+}
+.course-card:hover .course-img { filter: saturate(.9); transform: scale(1.03); }
+
+.course-price {
+  display: flex; align-items: baseline; gap: 6px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.course-price-label {
+  font-family: var(--mono); font-size: 9px; color: var(--grey); letter-spacing: .15em;
+}
+.course-price-val {
+  font-family: var(--display); font-style: italic; font-weight: 900;
+  font-size: clamp(28px,8vw,40px); color: var(--orange);
+}
+.course-card--featured .course-price-val { color: var(--white); }
+.course-price-period {
+  font-family: var(--mono); font-size: 9px; color: var(--grey); letter-spacing: .12em;
+}
+
+.course-features {
+  list-style: none;
+  padding: 20px 24px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.course-features li {
+  font-size: 14px; font-weight: 300;
+  color: rgba(245,245,245,.75);
+  display: flex; align-items: flex-start; gap: 10px;
+  line-height: 1.4;
+}
+.feat-check {
+  color: var(--orange); font-size: 13px; flex-shrink: 0; margin-top: 1px;
+}
+.feat-cross {
+  color: var(--grey); font-size: 13px; flex-shrink: 0; margin-top: 1px;
+}
+.feat-disabled { color: rgba(245,245,245,.3) !important; }
+
+.course-cta {
+  display: block;
+  margin: 0 24px 28px;
+  background: var(--dark);
+  border: 1px solid var(--orange);
+  color: var(--orange);
+  font-family: var(--display); font-style: italic; font-weight: 900;
+  font-size: 16px; letter-spacing: .08em; text-transform: uppercase;
+  padding: 14px;
+  text-align: center;
+  text-decoration: none;
+  transition: background .2s, color .2s, box-shadow .2s;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 8px 100%);
+}
+.course-cta:hover {
+  background: var(--orange); color: var(--black);
+  box-shadow: 0 0 24px rgba(237,109,34,.4);
+}
+.course-cta--featured {
+  background: var(--orange) !important; color: var(--black) !important;
+}
+.course-cta--featured:hover {
+  background: #ff8c3a; color: var(--black);
+  box-shadow: 0 0 32px rgba(237,109,34,.5);
+}
 
 /* ── 5. VOLANTE SECTION ── */
 .volante-section {
