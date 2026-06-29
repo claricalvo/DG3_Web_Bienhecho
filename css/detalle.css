@@ -14,7 +14,7 @@
    --------------------------------------------------------- */
 
 .detalle-curso {
-  background: var(--orange);
+  background: var(--black);
   border-top: 1px solid var(--line);
   padding: 88px 24px 72px; /* top generoso por el nav fijo */
 }
@@ -35,8 +35,8 @@
 }
 
 .detalle-curso__breadcrumb a:hover {
-  color: var(--black);
-  border-bottom-color: var(--black);
+  color: var(--orange);
+  border-bottom-color: var(--orange);
 }
 
 /* La tarjeta de detalle usa .course-card tal cual, pero la
@@ -59,7 +59,7 @@
    --------------------------------------------------------- */
 
 .metodos-pago {
-  background: var(--orange);
+  background: var(--black);
   border-top: 1px solid var(--line);
 }
 
@@ -73,7 +73,7 @@
 .metodo-pago {
   background: var(--dark);
   border: 1px solid var(--line);
-  border-top: 3px solid var(--black);
+  border-top: 3px solid var(--orange);
   padding: 22px 20px;
   display: flex;
   flex-direction: column;
@@ -83,7 +83,7 @@
 .metodo-pago__icono {
   width: 32px;
   height: 32px;
-  color: var(--black);
+  color: var(--orange);
 }
 
 .metodo-pago__icono svg {
@@ -115,7 +115,7 @@
    --------------------------------------------------------- */
 
 .otros-niveles {
-  background: var(--orange);
+  background: var(--black);
   border-top: 1px solid var(--line);
 }
 
