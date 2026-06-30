@@ -83,18 +83,14 @@
   </div>
   <!-- hidden mobile para no duplicar el texto -->
   <p class="about-text-mobile reveal-slide delay-2">Somos la primera academia de simulaci&oacute;n de F&oacute;rmula 1 de Argentina. Formamos pilotos que quieren ir m&aacute;s all&aacute; del juego. Nuestros instructores vienen del mundo real del motorsport y llevan esa mentalidad al simulador.</p>
-  <!-- Slider infinito de 4 imágenes (mobile y desktop) -->
-  <div class="about-marquee-wrap reveal-slide delay-3">
-    <div class="about-marquee" id="aboutMarquee">
-      <div class="about-slide"><img src="images/instructor-1.jpeg" alt="Instructor APEX 1"></div>
-      <div class="about-slide"><img src="images/about2.jpg" alt="Instructor APEX 2"></div>
-      <div class="about-slide"><img src="images/about3.jpg" alt="Instructor APEX 3"></div>
-      <div class="about-slide"><img src="images/about4.jpg" alt="Instructor APEX 4"></div>
-      <!-- Duplicado para loop infinito -->
-      <div class="about-slide"><img src="images/instructor-1.jpeg" alt="Instructor APEX 1"></div>
-      <div class="about-slide"><img src="images/about2.jpg" alt="Instructor APEX 2"></div>
-      <div class="about-slide"><img src="images/about3.jpg" alt="Instructor APEX 3"></div>
-      <div class="about-slide"><img src="images/about4.jpg" alt="Instructor APEX 4"></div>
+  <!-- Carrusel 3D tipo cinta de contactos -->
+  <div class="about-scene reveal-slide delay-3" id="aboutScene">
+    <div class="about-a3d" style="--n:5" id="aboutA3d">
+      <img class="about-card" src="images/about1.jpg" style="--i:0" alt="APEX 1">
+      <img class="about-card" src="images/about2.jpg" style="--i:1" alt="APEX 2">
+      <img class="about-card" src="images/about3.jpg" style="--i:2" alt="APEX 3">
+      <img class="about-card" src="images/about4.jpg" style="--i:3" alt="APEX 4">
+      <img class="about-card" src="images/about5.jpg" style="--i:4" alt="APEX 5">
     </div>
   </div>
   <div class="about-stats reveal-slide delay-3">
@@ -346,9 +342,17 @@
 </section>
 
 <!-- VOLANTE SECTION -->
-<section class="volante-section" id="volante">
-  <div class="volante-placeholder">
-    <img src="images/volante.png" alt="Volante APEX" id="volante-img">
+<!-- SECCIÓN TIPOGRÁFICA SCROLL -->
+<section class="words-section" id="words">
+  <div class="words-sticky">
+    <div class="words-display">
+      <span class="word-item" data-index="0">VELOCIDAD</span>
+      <span class="word-item" data-index="1">ADRENALINA</span>
+      <span class="word-item" data-index="2">COMPETENCIA</span>
+      <span class="word-item" data-index="3">DISCIPLINA</span>
+      <span class="word-item" data-index="4">PRECISIÓN</span>
+      <span class="word-item" data-index="5">VICTORIA</span>
+    </div>
   </div>
 </section>
 

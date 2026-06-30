@@ -307,54 +307,42 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   updateNav();
 })();
 
-// ── ABOUT SLIDER INFINITO ──
-(function() {
-  const track = document.getElementById('aboutTrack');
-  if (!track) return;
-  const total = track.querySelectorAll('.about-slide:not(.about-clone)').length;
-  let idx = 0;
-  let autoTimer;
 
-  function goTo(n, animate) {
-    if (animate !== false) track.style.transition = 'transform .45s cubic-bezier(.4,0,.2,1)';
-    idx = n;
-    track.style.transform = `translateX(-${idx * 100}%)`;
+// ── SECCIÓN TIPOGRÁFICA — palabras con scroll ──
+(function() {
+  const section = document.getElementById('words');
+  if (!section) return;
+  const words   = section.querySelectorAll('.word-item');
+  if (!words.length) return;
+  const N = words.length;
+  let currentIdx = -1;
+
+  function updateWords() {
+    const rect       = section.getBoundingClientRect();
+    const scrollable = section.offsetHeight - window.innerHeight;
+    const progress   = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+
+    // Distribuir las palabras a lo largo del scroll
+    const rawIdx = Math.floor(progress * N);
+    const idx    = Math.min(rawIdx, N - 1);
+
+    if (idx === currentIdx) return;
+    currentIdx = idx;
+
+    words.forEach((w, i) => {
+      w.classList.remove('active', 'prev');
+      if (i === idx)     w.classList.add('active');
+      if (i === idx - 1) w.classList.add('prev');
+    });
   }
-  track.addEventListener('transitionend', () => {
-    if (idx >= total) { track.style.transition = 'none'; idx = 0; track.style.transform = 'translateX(0%)'; }
-  });
-  function next() { goTo(idx + 1); }
-  function prev() { idx <= 0 ? goTo(total - 1) : goTo(idx - 1); }
-  window.aboutSliderNext = next;
-  window.aboutSliderPrev = prev;
-  function startAuto() { autoTimer = setInterval(next, 3000); }
-  function stopAuto()  { clearInterval(autoTimer); }
-  startAuto();
-  const slider = document.getElementById('aboutSlider');
-  if (slider) {
-    let startX = 0;
-    slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; stopAuto(); }, {passive:true});
-    slider.addEventListener('touchend',   e => { const dx = e.changedTouches[0].clientX - startX; if (Math.abs(dx) > 40) dx < 0 ? next() : prev(); startAuto(); }, {passive:true});
-  }
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => { updateWords(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive: true });
+  updateWords();
 })();
 
-// ── ABOUT desktop grid: wrap text + slider ──
-(function() {
-  function buildGrid() {
-    if (window.innerWidth < 1024) return;
-    const about = document.querySelector('.about');
-    if (!about || about.querySelector('.about-desktop-grid')) return;
-    const text   = about.querySelector('.about-text');
-    const slider = about.querySelector('.about-slider, #aboutSlider');
-    if (!text || !slider) return;
-    const grid = document.createElement('div');
-    grid.className = 'about-desktop-grid';
-    text.parentNode.insertBefore(grid, text);
-    const left = document.createElement('div');
-    left.appendChild(text);
-    grid.appendChild(left);
-    grid.appendChild(slider);
-  }
-  buildGrid();
-  window.addEventListener('resize', buildGrid);
-})();
