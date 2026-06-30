@@ -1206,86 +1206,89 @@ footer {
 }
 
 /* ================================================================
-   CARRUSEL 3D — ¿Quiénes somos?
-   N=5, tan(π/5)≈0.7265, translateZ calculado manualmente
+   CARRUSEL 3D — fullwidth, sin pausa en hover
 ================================================================ */
-.about-scene,
-.about-a3d { display: grid; }
+.about-scene, .about-a3d { display: grid; }
 
 .about-scene {
   overflow: hidden;
-  perspective: 900px;
-  -webkit-mask: linear-gradient(90deg, transparent, #000 20% 80%, transparent);
-  mask: linear-gradient(90deg, transparent, #000 20% 80%, transparent);
+  /* perspectiva grande = efecto más plano, más parecido a la referencia */
+  perspective: 1800px;
+  -webkit-mask: linear-gradient(90deg, transparent 0%, #000 18% 82%, transparent 100%);
+  mask:         linear-gradient(90deg, transparent 0%, #000 18% 82%, transparent 100%);
   width: 100%;
-  height: 340px;
-  margin: 36px 0 0;
+  /* altura que ocupa toda la sección visible */
+  height: 70vh;
+  min-height: 320px;
+  max-height: 600px;
+  margin: 40px 0 0;
 }
+
 .about-a3d {
   place-self: center;
   transform-style: preserve-3d;
-  animation: aboutRY 22s linear infinite;
+  animation: aboutRY 24s linear infinite;
+  /* sin pausa en hover — eliminado */
 }
-.about-scene:hover .about-a3d {
-  animation-play-state: paused;
-}
+
 @keyframes aboutRY { to { transform: rotateY(360deg); } }
 
+/* Tarjetas: ancho generoso para que se vean en toda la pantalla */
 .about-card {
   grid-area: 1 / 1;
-  width: 200px;
+  width: 260px;
   aspect-ratio: 7 / 10;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 14px;
   backface-visibility: hidden;
-  filter: saturate(.7);
-  transition: filter .3s;
+  filter: saturate(.75);
 }
-/* N=5: translateZ = -(100px + 8px) / tan(36°) ≈ -149px */
-.about-card:nth-child(1) { transform: rotateY(  0deg) translateZ(-149px); }
-.about-card:nth-child(2) { transform: rotateY( 72deg) translateZ(-149px); }
-.about-card:nth-child(3) { transform: rotateY(144deg) translateZ(-149px); }
-.about-card:nth-child(4) { transform: rotateY(216deg) translateZ(-149px); }
-.about-card:nth-child(5) { transform: rotateY(288deg) translateZ(-149px); }
 
-.about-scene:hover .about-card { filter: saturate(1); }
+/* N=5, translateZ = -(130+8)/tan(36°) = -192px */
+.about-card:nth-child(1) { transform: rotateY(  0deg) translateZ(-192px); }
+.about-card:nth-child(2) { transform: rotateY( 72deg) translateZ(-192px); }
+.about-card:nth-child(3) { transform: rotateY(144deg) translateZ(-192px); }
+.about-card:nth-child(4) { transform: rotateY(216deg) translateZ(-192px); }
+.about-card:nth-child(5) { transform: rotateY(288deg) translateZ(-192px); }
 
 @media (min-width: 1024px) {
   .about-scene {
-    height: 500px;
-    perspective: 1200px;
+    height: 75vh;
+    perspective: 2400px;
   }
-  .about-card { width: 280px; }
-  /* N=5: -(140px+8px)/tan(36°) ≈ -204px */
-  .about-card:nth-child(1) { transform: rotateY(  0deg) translateZ(-204px); }
-  .about-card:nth-child(2) { transform: rotateY( 72deg) translateZ(-204px); }
-  .about-card:nth-child(3) { transform: rotateY(144deg) translateZ(-204px); }
-  .about-card:nth-child(4) { transform: rotateY(216deg) translateZ(-204px); }
-  .about-card:nth-child(5) { transform: rotateY(288deg) translateZ(-204px); }
+  .about-card { width: 340px; }
+  /* -(170+8)/tan(36°) = -245px */
+  .about-card:nth-child(1) { transform: rotateY(  0deg) translateZ(-245px); }
+  .about-card:nth-child(2) { transform: rotateY( 72deg) translateZ(-245px); }
+  .about-card:nth-child(3) { transform: rotateY(144deg) translateZ(-245px); }
+  .about-card:nth-child(4) { transform: rotateY(216deg) translateZ(-245px); }
+  .about-card:nth-child(5) { transform: rotateY(288deg) translateZ(-245px); }
 }
 
 @media (max-width: 1023px) {
-  .about-scene { height: 260px; perspective: 700px; }
-  .about-card { width: 150px; }
-  /* -(75px+8px)/tan(36°) ≈ -114px */
-  .about-card:nth-child(1) { transform: rotateY(  0deg) translateZ(-114px); }
-  .about-card:nth-child(2) { transform: rotateY( 72deg) translateZ(-114px); }
-  .about-card:nth-child(3) { transform: rotateY(144deg) translateZ(-114px); }
-  .about-card:nth-child(4) { transform: rotateY(216deg) translateZ(-114px); }
-  .about-card:nth-child(5) { transform: rotateY(288deg) translateZ(-114px); }
+  .about-scene { height: 55vw; min-height: 220px; perspective: 900px; }
+  .about-card { width: 160px; }
+  /* -(80+8)/tan(36°) = -121px */
+  .about-card:nth-child(1) { transform: rotateY(  0deg) translateZ(-121px); }
+  .about-card:nth-child(2) { transform: rotateY( 72deg) translateZ(-121px); }
+  .about-card:nth-child(3) { transform: rotateY(144deg) translateZ(-121px); }
+  .about-card:nth-child(4) { transform: rotateY(216deg) translateZ(-121px); }
+  .about-card:nth-child(5) { transform: rotateY(288deg) translateZ(-121px); }
 }
 
+
 /* ================================================================
-   SECCIÓN TIPOGRÁFICA — palabras con scroll sticky
+   SECCIÓN TIPOGRÁFICA — 3 palabras visibles, scroll sticky
+   Igual que el auto: height grande, sticky container
 ================================================================ */
 .words-section {
   background: var(--black);
-  height: 350vh;
+  /* 3 palabras × espacio generoso por palabra */
+  height: 280vh;
   position: relative;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
 }
 .words-sticky {
   position: sticky;
@@ -1319,14 +1322,14 @@ footer {
   font-family: var(--display);
   font-style: italic;
   font-weight: 900;
-  font-size: clamp(48px, 9vw, 130px);
+  font-size: clamp(52px, 10vw, 140px);
   text-transform: uppercase;
   letter-spacing: -.02em;
   line-height: 1;
   white-space: nowrap;
   opacity: 0;
   transform: translateY(60px) scale(.94);
-  transition: opacity .5s ease, transform .5s ease, filter .5s ease;
+  transition: opacity .45s ease, transform .45s ease, filter .45s ease;
   pointer-events: none;
   background: linear-gradient(135deg, #fff 20%, var(--orange) 100%);
   -webkit-background-clip: text;

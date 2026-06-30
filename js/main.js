@@ -358,27 +358,28 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   buildGrid();
   window.addEventListener('resize', buildGrid);
 })();
-
-// ── SECCIÓN TIPOGRÁFICA — palabras con scroll sticky ──
+// ── SECCIÓN TIPOGRÁFICA — 3 palabras con scroll sticky ──
 (function() {
   const section = document.getElementById('words');
   if (!section) return;
-  const words = Array.from(section.querySelectorAll('.word-item'));
-  if (!words.length) return;
-  const N = words.length;
-  let currentIdx = -1;
 
-  function updateWords() {
-    const rect       = section.getBoundingClientRect();
+  // Solo mostrar 3 palabras de las 6 disponibles
+  const allWords = Array.from(section.querySelectorAll('.word-item'));
+  // Usar solo las primeras 3
+  const words = allWords.slice(0, 3);
+  // Ocultar las demás permanentemente
+  allWords.slice(3).forEach(w => w.style.display = 'none');
+
+  const N = words.length; // 3
+  let curIdx = -1;
+
+  function update() {
+    const rect = section.getBoundingClientRect();
     const scrollable = section.offsetHeight - window.innerHeight;
-    const raw        = -rect.top / scrollable;
-    const progress   = Math.min(Math.max(raw, 0), 1);
-    // cada palabra ocupa 1/N del recorrido
-    const idx = Math.min(Math.floor(progress * N), N - 1);
-
-    if (idx === currentIdx) return;
-    currentIdx = idx;
-
+    const p = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+    const idx = Math.min(Math.floor(p * N), N - 1);
+    if (idx === curIdx) return;
+    curIdx = idx;
     words.forEach((w, i) => {
       w.classList.remove('active', 'prev');
       if (i === idx)     w.classList.add('active');
@@ -386,12 +387,9 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     });
   }
 
-  let ticking = false;
+  let tick = false;
   window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(() => { updateWords(); ticking = false; });
-      ticking = true;
-    }
+    if (!tick) { requestAnimationFrame(() => { update(); tick = false; }); tick = true; }
   }, { passive: true });
-  updateWords();
+  update();
 })();
