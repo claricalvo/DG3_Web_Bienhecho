@@ -923,112 +923,255 @@ footer {
 }
 
 /* ── 6. BOTONES DESKTOP: siempre a la derecha ── */
-@media (min-width: 1024px) {
-  .btn-wrap,
-  .hero-cta,
-  .desktop-cta {
-    display: flex !important;
-    justify-content: flex-end !important;
-  }
-  /* Hero: texto más abajo */
-  .hero {
-    justify-content: flex-end;
-    padding: 0 60px 90px;
-    align-items: flex-start;
-  }
-  .hero-content { max-width: 700px; }
-  .hero-title { font-size: clamp(72px, 6.5vw, 108px); }
-  .hero-cta { margin-top: 28px; }
+
+/* ================================================================
+   SISTEMA DE CONTENEDOR — todas las secciones usan .section-inner
+   max-width 1280px, centrado, padding lateral 60px
+================================================================ */
+.section-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-/* ── DESKTOP: about marquee más grande ── */
+/* ================================================================
+   DESKTOP >= 1024px
+================================================================ */
 @media (min-width: 1024px) {
-  .about-slide { flex: 0 0 320px; }
 
-  /* Secciones base desktop */
-  section { padding: 80px 60px; }
+  /* ── CONTENEDOR BASE ── */
+  section {
+    padding: 96px 60px;
+  }
+
+  /* ── TIPOGRAFÍA DESKTOP — tamaños reales para pantalla grande ── */
+  body { font-size: 17px; }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: .22em;
+    margin-bottom: 16px;
+  }
+
   .section-title {
     display: flex !important;
     flex-direction: row !important;
     align-items: baseline;
-    gap: 14px;
+    gap: 16px;
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
   }
-  .section-title .light { font-size: clamp(38px,3.2vw,52px); }
-  .section-title .bold  { font-size: clamp(46px,4vw,64px); }
+  .section-title .light {
+    font-size: clamp(44px, 4vw, 60px);
+  }
+  .section-title .bold {
+    font-size: clamp(52px, 5vw, 74px);
+  }
 
-  /* Nav desktop */
+  /* Párrafos de cuerpo en desktop */
+  .about-text,
+  .what-body,
+  .cert-body,
+  .contact-intro,
+  .courses-intro {
+    font-size: 17px;
+    line-height: 1.75;
+    max-width: 600px;
+  }
+
+  /* ── NAV DESKTOP ── */
+  nav { padding: 16px 60px; }
   .nav-menu-btn { display: none; }
-  .nav-links-desktop { display: flex; align-items: center; gap: 36px; }
+  .nav-links-desktop {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
   .nav-links-desktop a {
-    font-family: var(--mono); font-size: 12px; letter-spacing: .1em;
-    text-transform: uppercase; color: var(--white); text-decoration: none;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: rgba(245,245,245,.65);
+    text-decoration: none;
     transition: color .2s;
   }
-  .nav-links-desktop a:hover { color: var(--orange); }
+  .nav-links-desktop a:hover { color: var(--white); }
   .nav-cta-btn {
-    background: var(--orange); color: var(--black) !important;
-    padding: 10px 22px; font-weight: 700;
+    background: var(--orange);
+    color: var(--black) !important;
+    padding: 10px 24px;
+    font-weight: 700;
+    font-size: 11px;
     clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 8px 100%);
     transition: background .2s;
   }
   .nav-cta-btn:hover { background: #ff8c3a; }
 
-  /* Testimonials desktop */
-  .testimonials { padding: 80px 0; }
+  /* ── HERO ── */
+  .hero {
+    justify-content: flex-end;
+    padding: 0 60px 100px;
+    align-items: flex-start;
+  }
+  .hero-content { max-width: 720px; }
+  .hero-title { font-size: clamp(80px, 7.5vw, 120px); }
+  .hero-sub { font-size: 15px; max-width: 440px; }
+  .hero-cta {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 32px;
+  }
+  .btn-primary { font-size: 15px; padding: 16px 40px; }
+
+  /* Botones siempre a la derecha */
+  .btn-wrap,
+  .desktop-cta {
+    display: flex !important;
+    justify-content: flex-end !important;
+  }
+
+  /* ── ABOUT ── */
+  .about { padding: 96px 60px; }
+  .about-desktop-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin: 40px 0 48px;
+  }
+  .about-text { max-width: none; font-size: 17px; }
+  .about-slider { aspect-ratio: 4/5; margin: 0; }
+  .about-carousel { display: none !important; }
+  .about-imgs-row { display: none !important; }
+  .about-stats {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 0;
+  }
+  .stat-num { font-size: clamp(36px, 3.5vw, 52px); }
+  .stat-label { font-size: 12px; }
+
+  /* ── WHAT ── */
+  .what { padding: 96px 60px; }
+  .what-layout-desktop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    margin-top: 40px;
+  }
+  .what-body { font-size: 17px; max-width: none; }
+  .video-frame { margin: 0; }
+
+  /* ── SPONSORS ── */
+  .sponsors { padding: 32px 0; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { padding: 96px 0; }
   .testimonials .section-label,
   .testimonials .section-title { padding: 0 60px; }
   .testimonials .divider { margin-left: 60px; }
 
-  /* Cursos desktop: 3 columnas */
-  .courses { padding: 80px 60px; }
+  /* ── COURSES ── */
+  .courses { padding: 96px 60px; }
+  .courses-intro { font-size: 17px; }
   .courses-grid {
     flex-direction: row !important;
-    gap: 20px;
+    gap: 24px;
   }
   .course-card { flex: 1; }
-  .course-card--featured { transform: translateY(-12px); }
+  .course-card--featured { transform: translateY(-14px); }
+  .course-name { font-size: clamp(30px, 2.5vw, 42px); }
+  .course-price-val { font-size: clamp(28px, 2.5vw, 38px); }
 
-  /* Cert desktop */
-  .cert { padding: 80px 60px; }
+  /* ── CERT: 2 col, imagen llena la derecha ── */
+  .cert {
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
   .cert-layout-desktop {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: stretch;
-    margin-top: 32px;
+    min-height: 560px;
   }
-  .cert-img-col { overflow: hidden; height: 100%; }
+  .cert-text-col {
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+  }
+  .cert-text-col .section-label { margin-bottom: 0; }
+  .cert-text-col .divider { margin: 8px 0 16px; }
+  .cert-body { font-size: 17px; max-width: 520px; }
+  .cert-img-col {
+    overflow: hidden;
+    position: relative;
+  }
   .cert-img-col img {
-    width: 100%; height: 100%;
-    object-fit: cover; filter: saturate(.65);
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(.7);
+    display: block;
   }
 
-  /* FAQ desktop */
-  .faq { padding: 80px 60px; }
+  /* ── FAQ ── */
+  .faq { padding: 96px 60px; }
   .faq-layout-desktop {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0 60px;
-    margin-top: 32px;
+    margin-top: 40px;
   }
   .faq-list { margin-top: 0; }
+  .faq-q-text { font-size: 16px; }
+  .faq-a-inner { font-size: 15px; line-height: 1.75; }
 
-  /* Contact desktop */
-  .contact { padding: 80px 60px; }
+  /* ── CONTACT: 2 col, imagen llena la derecha ── */
+  .contact {
+    padding: 0;
+    border-top: 1px solid var(--line);
+  }
   .contact-layout-desktop {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: stretch;
-    margin-top: 32px;
+    min-height: 580px;
   }
-  .contact-img-col { overflow: hidden; height: 100%; }
+  .contact-text-col {
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+  }
+  .contact-text-col .divider { margin: 8px 0 24px; }
+  .contact-intro { font-size: 17px; max-width: 480px; margin-bottom: 32px; }
+  .contact-img-col {
+    overflow: hidden;
+    position: relative;
+  }
   .contact-img-col img {
-    width: 100%; height: 100%;
-    object-fit: cover; filter: saturate(.6);
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: saturate(.75);
+    display: block;
   }
+  .contact-link {
+    padding: 18px 20px;
+    font-size: 14px;
+  }
+  .contact-link-val { font-size: 15px; }
 
-  /* Footer desktop */
+  /* ── FOOTER ── */
   footer {
     padding: 40px 60px;
     flex-direction: row;
@@ -1036,35 +1179,28 @@ footer {
     align-items: center;
   }
 
-  /* Car desktop */
+  /* ── CAR ── */
   #scroll-car { width: 55vw; }
 
-  /* About desktop */
-  .about { padding: 80px 60px; }
-  .about-layout-desktop {
-    max-width: 720px;
-    margin-bottom: 32px;
-  }
-  .about-text-mobile { display: none; }
-  .about-stats { grid-template-columns: repeat(4,1fr); }
-
-  /* What desktop */
-  .what { padding: 80px 60px; }
-  .what-layout-desktop {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    margin-top: 32px;
-  }
-  .what-layout-desktop .video-frame { margin: 0; }
+  /* About slider desktop */
+  .about-slide { flex: 0 0 100%; }
 }
 
-/* Mobile: ocultar cols desktop */
+/* ── TABLET 768-1023px ── */
+@media (min-width: 768px) and (max-width: 1023px) {
+  section { padding: 72px 40px; }
+  .about-stats { grid-template-columns: repeat(4,1fr); }
+  footer { flex-direction: row; justify-content: space-between; padding: 32px 40px; }
+}
+
+/* ── MOBILE: ocultar elementos desktop ── */
 @media (max-width: 1023px) {
-  .about-layout-desktop { display: none !important; }
-  .about-text-mobile { display: block; }
   .cert-img-col { display: none; }
   .faq-col2-desktop { display: none; }
   .contact-img-col { display: none; }
+  .cert-layout-desktop,
+  .contact-layout-desktop {
+    display: block;
+    padding: 48px 24px;
+  }
 }
