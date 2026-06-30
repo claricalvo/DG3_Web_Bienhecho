@@ -1,22 +1,15 @@
 /* =========================================================
    APEX RACING ACADEMY — detalle.css
-   Estilos exclusivos de la página de detalle de curso.
-   Reutiliza las variables (--orange, --black, --dark, --mid,
-   --line, --white, --grey, --mono, --display, --body) y las
-   clases ya definidas en css/style.css (.course-card,
-   .course-cta, .section-label, .section-title, .testi-marquee,
-   .contact, footer, etc.) — esto NO redefine esas clases,
-   solo agrega lo que es exclusivo de esta página.
    ========================================================= */
 
-/* ---------------------------------------------------------
-   Breadcrumb + tarjeta principal del curso
-   --------------------------------------------------------- */
+/* ----- Reset base para la página ----- */
+*, *::before, *::after { box-sizing: border-box; }
 
+/* ----- Breadcrumb ----- */
 .detalle-curso {
   background: var(--black);
   border-top: 1px solid var(--line);
-  padding: 88px 24px 72px; /* top generoso por el nav fijo */
+  padding: 100px 20px 60px;
 }
 
 .detalle-curso__breadcrumb {
@@ -25,24 +18,18 @@
   letter-spacing: .15em;
   color: var(--grey);
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
-
 .detalle-curso__breadcrumb a {
   color: var(--grey);
   text-decoration: none;
-  border-bottom: 1px solid transparent;
 }
+.detalle-curso__breadcrumb a:hover { color: var(--orange); }
 
-.detalle-curso__breadcrumb a:hover {
-  color: var(--orange);
-  border-bottom-color: var(--orange);
-}
-
-/* La tarjeta de detalle usa .course-card tal cual, pero la
-   queremos más ancha y centrada (no en una grilla de 3) */
+/* ----- Tarjeta principal: mobile (apilado) ----- */
 .detalle-curso__card {
-  max-width: 640px;
+  width: 100%;
+  max-width: 600px;
   margin: 0 auto;
 }
 
@@ -54,168 +41,243 @@
   border: 1px dashed var(--line);
 }
 
-/* ---------------------------------------------------------
-   Métodos de pago
-   --------------------------------------------------------- */
-
+/* ----- Métodos de pago ----- */
 .metodos-pago {
   background: var(--black);
   border-top: 1px solid var(--line);
+  padding: 60px 20px;
 }
 
 .metodos-pago__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
-  margin-top: 8px;
+  gap: 12px;
+  margin-top: 24px;
 }
 
 .metodo-pago {
   background: var(--dark);
   border: 1px solid var(--line);
   border-top: 3px solid var(--orange);
-  padding: 22px 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
-.metodo-pago__icono {
-  width: 32px;
-  height: 32px;
-  color: var(--orange);
-}
-
-.metodo-pago__icono svg {
-  width: 100%;
-  height: 100%;
-}
+.metodo-pago__icono { width: 28px; height: 28px; color: var(--orange); }
+.metodo-pago__icono svg { width: 100%; height: 100%; }
 
 .metodo-pago__nombre {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--white);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.metodo-pago__detalle {
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 300;
+  color: rgba(245,245,245,.6);
+  margin: 0;
+}
+
+/* ----- Línea de tiempo ----- */
+.timeline-section {
+  background: var(--dark);
+  border-top: 1px solid var(--line);
+  padding: 60px 20px;
+}
+
+.timeline {
+  position: relative;
+  margin-top: 32px;
+  padding-left: 32px;
+}
+
+/* Línea vertical */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--orange), transparent);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 36px;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+
+/* Punto naranja */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -26px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--orange);
+  box-shadow: 0 0 8px rgba(237,109,34,.6);
+}
+
+.timeline-week {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  color: var(--orange);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.timeline-title {
   font-family: var(--display);
   font-style: italic;
   font-weight: 700;
   font-size: 20px;
   color: var(--white);
   text-transform: uppercase;
-  letter-spacing: .02em;
-  margin: 0;
+  margin: 0 0 6px;
 }
 
-.metodo-pago__detalle {
-  font-size: 16px;
-  line-height: 1.6;
+.timeline-desc {
+  font-size: 13px;
   font-weight: 300;
-  color: rgba(245, 245, 245, .65);
+  color: rgba(245,245,245,.65);
+  line-height: 1.6;
   margin: 0;
 }
 
-/* ---------------------------------------------------------
-   Otros niveles — reusa .course-card en grilla de 2
-   --------------------------------------------------------- */
-
+/* ----- Otros niveles ----- */
 .otros-niveles {
   background: var(--black);
   border-top: 1px solid var(--line);
+  padding: 60px 20px;
 }
 
 .otros-niveles__grid {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  margin-top: 8px;
+  margin-top: 24px;
 }
 
-/* Versión compacta de la tarjeta para esta sección:
-   sin lista de características, solo lo esencial. */
-.otro-nivel-card .course-card-header {
-  padding-bottom: 24px;
-}
+.otro-nivel-card .course-card-header { padding-bottom: 24px; }
+.otro-nivel-card .course-cta { margin-top: 0; }
 
-.otro-nivel-card .course-cta {
-  margin-top: 0;
-}
-
-/* ---------------------------------------------------------
-   Desktop (>=1024px), mismo breakpoint que el resto del sitio
-   --------------------------------------------------------- */
-
+/* =========================================================
+   DESKTOP ≥ 1024px
+   ========================================================= */
 @media (min-width: 1024px) {
-  .detalle-curso { padding: 120px 60px 96px; }
-  .metodos-pago,
-  .otros-niveles { padding: 80px 60px; }
 
-  /* Sección 1 — layout propio, distinto al de las tarjetas
-     del home: imagen a la izquierda, info (nivel, nombre,
-     precio, features, botón) a la derecha. */
-  .detalle-curso__card {
-    max-width: 1100px;
-    display: grid;
-    grid-template-columns: 1.05fr 1fr;
-    grid-template-rows: auto auto auto 1fr auto;
-    column-gap: 0;
+  /* Hero del curso: 2 columnas */
+  .detalle-curso {
+    padding: 120px 60px 80px;
   }
-  /* .course-card-header pasa a ser un contenedor invisible:
-     sus hijos (badge, name, img, price) se acomodan como
-     si fueran hijos directos del grid de .detalle-curso__card */
+
+  .detalle-curso__breadcrumb { margin-bottom: 28px; }
+
+  .detalle-curso__card {
+    max-width: 1160px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    grid-template-rows: auto auto auto 1fr auto;
+  }
+
   .detalle-curso__card .course-card-header {
     display: contents;
   }
+
   .detalle-curso__card .course-img-wrap {
     grid-column: 1;
     grid-row: 1 / 6;
-    height: 100%;
     aspect-ratio: auto;
+    height: 100%;
     margin-bottom: 0;
+    min-height: 480px;
   }
+
   .detalle-curso__card .course-badge {
     grid-column: 2;
     grid-row: 1;
-    padding: 32px 32px 0;
+    padding: 36px 36px 0;
+    margin-bottom: 0;
   }
+
   .detalle-curso__card .course-name {
     grid-column: 2;
     grid-row: 2;
-    padding: 0 32px;
-    margin-bottom: 20px;
+    padding: 8px 36px 0;
+    margin-bottom: 0;
   }
+
   .detalle-curso__card .course-price {
     grid-column: 2;
     grid-row: 3;
-    padding: 0 32px 20px;
+    padding: 16px 36px 16px;
+    border-bottom: 1px solid var(--line);
   }
+
   .detalle-curso__card .course-features {
     grid-column: 2;
     grid-row: 4;
-    padding: 20px 32px;
+    padding: 20px 36px;
   }
+
   .detalle-curso__card .course-cta {
     grid-column: 2;
     grid-row: 5;
-    margin: 0 32px 32px;
+    margin: 0 36px 36px;
   }
 
-  .metodos-pago__grid {
-    grid-template-columns: repeat(4, 1fr);
+  /* Métodos de pago */
+  .metodos-pago { padding: 80px 60px; }
+  .metodos-pago__grid { grid-template-columns: repeat(4, 1fr); }
+
+  /* Línea de tiempo desktop: grilla de 2 cols */
+  .timeline-section { padding: 80px 60px; }
+
+  .timeline {
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 60px;
   }
 
-  .otros-niveles__grid {
-    flex-direction: row;
+  .timeline::before { display: none; }
+
+  .timeline-item {
+    padding-left: 24px;
+    border-left: 2px solid var(--line);
+    margin-bottom: 40px;
   }
-  .otros-niveles__grid .otro-nivel-card {
-    flex: 1;
+  .timeline-item::before {
+    left: -6px;
+    top: 8px;
   }
 
-  /* Sección final (contacto) — achicar la imagen */
+  /* Otros niveles */
+  .otros-niveles { padding: 80px 60px; }
+  .otros-niveles__grid { flex-direction: row; }
+  .otros-niveles__grid .otro-nivel-card { flex: 1; }
+
+  /* Contacto: achicar imagen */
   .contact-img-col img {
-    max-width: 420px;
-    aspect-ratio: 4 / 3;
+    max-width: 440px;
+    aspect-ratio: 3 / 4;
     margin-left: auto;
+    display: block;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-  .metodos-pago__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .metodos-pago__grid { grid-template-columns: repeat(2, 1fr); }
 }

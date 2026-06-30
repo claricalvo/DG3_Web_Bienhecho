@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const cursoFinalId = curso ? cursoId : Object.keys(CURSOS_APEX)[0];
 
   pintarCurso(cursoFinal);
+  pintarTimeline(cursoFinal);
   pintarOtrosNiveles(cursoFinalId);
   pintarMetodosPago();
   pintarTestimonios();
@@ -144,6 +145,24 @@ document.addEventListener("DOMContentLoaded", function () {
         '<div class="testi-author">' + t.nombre + '</div>' +
         '<div class="testi-role">// ' + t.detalle + '</div>';
       track.appendChild(card);
+    });
+  }
+
+  /* -----------------------------------------------------
+     Timeline — semana a semana
+     ----------------------------------------------------- */
+  function pintarTimeline(c) {
+    const contenedor = document.getElementById("timeline-contenido");
+    if (!contenedor || !c.timeline) return;
+    contenedor.innerHTML = "";
+    c.timeline.forEach(function (item) {
+      const div = document.createElement("div");
+      div.className = "timeline-item";
+      div.innerHTML =
+        '<div class="timeline-week">' + item.semana + '</div>' +
+        '<div class="timeline-title">' + item.titulo + '</div>' +
+        '<p class="timeline-desc">' + item.desc + '</p>';
+      contenedor.appendChild(div);
     });
   }
 

@@ -11,7 +11,7 @@ const CURSOS_APEX = {
 
   "luz-verde": {
     nivel: "PRINCIPIANTE",
-    destacado: false, // true = muestra el badge "MÁS ELEGIDO"
+    destacado: false,
     titulo: "LUZ VERDE",
     imagenHero: "images/curso-luz-verde-hero.jpg",
     imagenHeroAlt: "Piloto entrenando en simulador de Fórmula 1 con triple pantalla",
@@ -26,7 +26,15 @@ const CURSOS_APEX = {
       { texto: "Grabación de carreras", incluido: false },
       { texto: "Acceso a ligas privadas", incluido: false }
     ],
-    imagenCard: "images/card-luz-verde-thumb.jpg"
+    imagenCard: "images/card-luz-verde-thumb.jpg",
+    timeline: [
+      { semana: "SEMANA 1", titulo: "Primer contacto", desc: "Familiarización con el simulador, posición de manejo y configuración de periféricos. Primeras vueltas libres para perder el miedo al límite." },
+      { semana: "SEMANA 2", titulo: "Frenada y punto de frenada", desc: "Técnica de trail braking, distancias de frenada por curva y lectura de la pista. Ejercicios de consistencia de vueltas." },
+      { semana: "SEMANA 3", titulo: "Dinámica de grip", desc: "Introducción a la transferencia de peso, subviraje y sobreviraje. Cómo el auto responde a cada input del volante." },
+      { semana: "SEMANA 4", titulo: "Línea de carrera", desc: "Apexes, punto de giro y salida de curva. Cómo elegir la línea óptima en cada tipo de curva." },
+      { semana: "SEMANA 5", titulo: "Ritmo de carrera", desc: "Simulación de stint completo, manejo del neumático y administración del auto. Primera carrera contra IA." },
+      { semana: "SEMANA 6", titulo: "Evaluación y certificación", desc: "Carrera de evaluación cronometrada. Análisis final con el instructor y entrega del Certificado Nivel 1 APEX." }
+    ]
   },
 
   "puesta-a-punto": {
@@ -47,7 +55,17 @@ const CURSOS_APEX = {
       { texto: "Certificado Nivel 2 APEX", incluido: true },
       { texto: "Acceso a ligas privadas", incluido: false }
     ],
-    imagenCard: "images/card-puesta-a-punto-thumb.jpg"
+    imagenCard: "images/card-puesta-a-punto-thumb.jpg",
+    timeline: [
+      { semana: "SEMANA 1", titulo: "Diagnóstico de nivel", desc: "Sesión de evaluación: análisis de telemetría base, identificación de áreas de mejora y planteo del plan de trabajo." },
+      { semana: "SEMANA 2", titulo: "Lectura de telemetría", desc: "Interpretación de trazados de velocidad, frenada y aceleración. Comparativa contra referencia del instructor." },
+      { semana: "SEMANA 3", titulo: "Setup del auto", desc: "Ajuste de suspensión, alerón y diferencial. Cómo cada parámetro afecta el comportamiento en pista." },
+      { semana: "SEMANA 4", titulo: "Optimización por sector", desc: "Trabajo específico en los sectores donde se pierden más décimas. Ejercicios de repetición dirigida." },
+      { semana: "SEMANA 5", titulo: "Gestión de neumáticos", desc: "Degradación de compuestos, ventana de temperatura óptima y cómo alargar un stint sin perder ritmo." },
+      { semana: "SEMANA 6", titulo: "Clasificación y salida", desc: "Técnica de vuelta rápida en clasificación. Salidas de parrilla, primera curva y defensa de posición." },
+      { semana: "SEMANA 7", titulo: "Carrera completa", desc: "Simulación de carrera de 30 minutos con estrategia de pits, comunicación y decisiones en tiempo real." },
+      { semana: "SEMANA 8", titulo: "Evaluación y certificación", desc: "Carrera de evaluación con telemetría completa. Entrega del Certificado Nivel 2 APEX y acceso al programa avanzado." }
+    ]
   },
 
   "bandera-a-cuadros": {
@@ -67,7 +85,19 @@ const CURSOS_APEX = {
       { texto: "Certificado Nivel 3 APEX", incluido: true },
       { texto: "Acceso a ligas privadas APEX", incluido: true }
     ],
-    imagenCard: "images/card-bandera-a-cuadros-thumb.jpg"
+    imagenCard: "images/card-bandera-a-cuadros-thumb.jpg",
+    timeline: [
+      { semana: "SEMANA 1", titulo: "Evaluación avanzada", desc: "Sesión de diagnóstico con ingenieros. Definición de objetivos, circuitos de trabajo y métricas de progreso." },
+      { semana: "SEMANA 2", titulo: "Racecraft y defensa", desc: "Posicionamiento en pista, defensa de posición, maniobras permitidas y lectura del rival." },
+      { semana: "SEMANA 3", titulo: "Ataques y adelantamientos", desc: "Técnica de slipstream, frenada tardía y cómo ejecutar un adelantamiento sin exponer el auto." },
+      { semana: "SEMANA 4", titulo: "Estrategia de carrera", desc: "Lectura de condiciones, undercut y overcut. Comunicación con el muro de boxes en tiempo real." },
+      { semana: "SEMANA 5", titulo: "Gestión de combustible", desc: "Conducción en modo de ahorro sin perder posición. Cómo administrar el ritmo en función de la carga de combustible." },
+      { semana: "SEMANA 6", titulo: "Condiciones variables", desc: "Pista mojada, safety car y banderas. Decisiones de estrategia en escenarios de carrera extremos." },
+      { semana: "SEMANA 7", titulo: "Análisis de rivales", desc: "Uso de replays y telemetría comparativa para entender fortalezas y debilidades del campo de pilotos." },
+      { semana: "SEMANA 8", titulo: "Simulacro de campeonato", desc: "Primera fecha de campeonato interno APEX. Clasificación + carrera de 45 minutos con puntos reales." },
+      { semana: "SEMANA 9", titulo: "Refinamiento final", desc: "Sesiones de corrección dirigida sobre errores identificados en la fecha. Preparación para la evaluación final." },
+      { semana: "SEMANA 10", titulo: "Gran Final y certificación", desc: "Carrera de campeonato evaluada por ingenieros. Entrega del Certificado Nivel 3 APEX y acceso a ligas privadas." }
+    ]
   }
 
 };
