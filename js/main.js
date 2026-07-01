@@ -376,3 +376,10 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   }, { passive: true });
   update();
 })();
+
+// ── PERFORMANCE: Service Worker para cache ──
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}

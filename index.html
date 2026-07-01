@@ -4,8 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>APEX &mdash; Simuladores F1</title>
+
+  <!-- Performance: preconnect a orígenes externos -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <!-- Fonts con display=swap para no bloquear render -->
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700;1,900&family=Barlow:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <!-- Flickity CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.min.css">
+
+  <!-- CSS propio -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -83,7 +94,6 @@
     <p class="about-text reveal-slide delay-2">Somos la primera academia de simulaci&oacute;n de F&oacute;rmula 1 de Argentina. Formamos pilotos que quieren ir m&aacute;s all&aacute; del juego. Nuestros instructores vienen del mundo real del motorsport y llevan esa mentalidad al simulador. Cada sesi&oacute;n es un laboratorio de velocidad donde las d&eacute;cimas importan.</p>
   </div>
   <!-- hidden mobile para no duplicar el texto -->
-  <p class="about-text-mobile reveal-slide delay-2">Somos la primera academia de simulaci&oacute;n de F&oacute;rmula 1 de Argentina. Formamos pilotos que quieren ir m&aacute;s all&aacute; del juego. Nuestros instructores vienen del mundo real del motorsport y llevan esa mentalidad al simulador.</p>
   <!-- Carrusel Flickity -->
   <div class="about-flickity" id="aboutFlickity">
     <div class="about-flk-cell" style="background-image:url('images/about1.jpg')"></div>
@@ -138,7 +148,7 @@
     <div class="what-col-left">
       <p class="what-body reveal-slide delay-2">No es un videojuego. Es ingenier&iacute;a aplicada. Nuestro programa combina simuladores de movimiento real con an&aacute;lisis de telemetr&iacute;a id&eacute;ntico al de los equipos de F1.</p>
   <div class="video-frame reveal-slide delay-2" onclick="window.open('https://youtu.be/bd_BLE2anhc?si=KLe9a-XMWa19ZAbH','_blank')">
-    <img src="images/video-thumb.png" alt="Vista desde el cockpit">
+    <img loading="lazy" src="images/video-thumb.png" alt="Vista desde el cockpit">
     <div class="video-play"></div>
     <div class="video-label">&#9654; REPRODUCIR &mdash; APEX INTRO</div>
   </div>
@@ -150,7 +160,7 @@
 <section id="car-scroll-section">
   <div class="car-sticky-container">
     <div class="car-track-line"></div>
-    <img src="images/Autoscroll.png" alt="Formula 1 Car" id="scroll-car">
+    <img loading="lazy" src="images/Autoscroll.png" alt="Formula 1 Car" id="scroll-car">
     <div class="car-speed-label" id="carSpeedLabel">
       <span class="car-label-tag">// VELOCIDAD</span>
       <span class="car-label-val" id="carSpeedVal">0 km/h</span>
@@ -263,7 +273,7 @@
         <div class="course-badge">PRINCIPIANTE</div>
         <div class="course-name">LUZ VERDE</div>
         <div class="course-img-wrap">
-          <img src="images/nivel-1.png" alt="Starter Pack" class="course-img">
+          <img loading="lazy" src="images/nivel-1.png" alt="Starter Pack" class="course-img">
         </div>
         <div class="course-price">
           <span class="course-price-label">desde</span>
@@ -290,7 +300,7 @@
         <div class="course-badge course-badge--featured">INTERMEDIO</div>
         <div class="course-name">PUESTA A PUNTO</div>
         <div class="course-img-wrap">
-          <img src="images/nivel-2.png" alt="Pro Series" class="course-img">
+          <img loading="lazy" src="images/nivel-2.png" alt="Pro Series" class="course-img">
         </div>
         <div class="course-price">
           <span class="course-price-label">desde</span>
@@ -317,7 +327,7 @@
         <div class="course-badge">AVANZADO</div>
         <div class="course-name">BANDERA A CUADROS</div>
         <div class="course-img-wrap">
-          <img src="images/nivel-3.jpg" alt="Elite Race Craft" class="course-img">
+          <img loading="lazy" src="images/nivel-3.jpg" alt="Elite Race Craft" class="course-img">
         </div>
         <div class="course-price">
           <span class="course-price-label">desde</span>
@@ -375,7 +385,7 @@
       <p class="cert-body reveal-slide delay-3">Al completar cada nivel recib&iacute;s un certificado digital verificable con tu historial de telemetr&iacute;a y tiempos de vuelta. Es evidencia de rendimiento real para competencias y ligas profesionales de simracing.</p>
     </div>
     <div class="cert-img-col">
-      <img src="images/Certificado.jpg" alt="Certificado APEX">
+      <img loading="lazy" src="images/Certificado.jpg" alt="Certificado APEX">
     </div>
   </div>
 </section>
@@ -459,18 +469,18 @@
       </div>
     </div>
     <div class="contact-img-col">
-      <img src="images/Contacto.jpeg" alt="APEX Simulator">
+      <img loading="lazy" src="images/Contacto.jpeg" alt="APEX Simulator">
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo"><img src="images/logo.png" alt="APEX"></div>
+  <div class="footer-logo"><img loading="lazy" src="images/logo.png" alt="APEX"></div>
   <div class="footer-copy">&#169; 2026 APEX RACING ACADEMY &mdash; ARGENTINA<br>TODOS LOS DERECHOS RESERVADOS.</div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.pkgd.min.js"></script>
-  <script src="js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.pkgd.min.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

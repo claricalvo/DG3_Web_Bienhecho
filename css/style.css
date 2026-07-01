@@ -267,6 +267,27 @@ nav.scrolled { background: rgba(8,8,8,0.98); }
 }
 .btn-wrap { text-align: right; }
 
+/* Mobile: botones full-width */
+@media (max-width: 1023px) {
+  .btn-primary {
+    width: 100%;
+    font-size: 17px;
+    padding: 17px 24px;
+    justify-content: center;
+  }
+  .btn-wrap {
+    text-align: center;
+  }
+  .hero-cta {
+    justify-content: center;
+  }
+  .course-cta {
+    margin: 0 0 28px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
 /* ── SECTION BASE ── */
 section { padding: 72px 24px; position: relative; }
 .section-label {
@@ -351,7 +372,7 @@ section { padding: 72px 24px; position: relative; }
 }
 
 /* ── ABOUT ── */
-.about { background: var(--dark); border-top: 1px solid var(--line); }
+.about { background: var(--dark); border-top: 1px solid var(--line); padding: 72px 24px; }
 .about-text {
   font-size: 15px; font-weight: 300; line-height: 1.8;
   color: rgba(245,245,245,.7); margin-bottom: 28px;
@@ -388,7 +409,7 @@ section { padding: 72px 24px; position: relative; }
 }
 
 /* ── WHAT ── */
-.what { background: var(--mid); }
+.what { background: var(--mid); padding: 72px 24px; }
 .what-body {
   font-size: 15px; font-weight: 300; line-height: 1.8;
   color: rgba(245,245,245,.7); margin-bottom: 28px;
@@ -500,7 +521,7 @@ section { padding: 72px 24px; position: relative; }
 .accordion-inner p { font-size: 15px; line-height: 1.8; color: rgba(245,245,245,.65); margin: 16px 0 24px; }
 
 /* ── CERT ── */
-.cert { background: var(--black); border-top: 1px solid var(--line); }
+.cert { background: var(--black); border-top: 1px solid var(--line); padding: 72px 24px; }
 .cert-body { font-size: 15px; font-weight: 300; line-height: 1.8; color: rgba(245,245,245,.65); }
 .cert-badge {
   display: flex; align-items: center; gap: 16px;
@@ -512,7 +533,7 @@ section { padding: 72px 24px; position: relative; }
 .cert-badge-text p { font-size: 12px; color: var(--grey); margin-top: 4px; }
 
 /* ── FAQ ── */
-.faq { background: var(--dark); border-top: 1px solid var(--line); }
+.faq { background: var(--dark); border-top: 1px solid var(--line); padding: 72px 24px; }
 .faq-list { margin-top: 32px; }
 .faq-item { border-bottom: 1px solid var(--line); }
 .faq-q {
@@ -529,7 +550,7 @@ section { padding: 72px 24px; position: relative; }
 .faq-a-inner { padding: 0 0 20px; font-size: 20px; font-weight: 300; line-height: 1.8; color: rgba(245,245,245,.6); }
 
 /* ── CONTACT ── */
-.contact { background: var(--black); border-top: 1px solid var(--line); }
+.contact { background: var(--black); border-top: 1px solid var(--line); padding: 72px 24px; }
 /* Glow de fondo del contacto */
 .contact::before {
   content: ""; position: absolute; width: 500px; height: 500px;
@@ -1360,4 +1381,28 @@ footer {
   justify-content: flex-end;
   opacity: 0;
   animation: fadeUp .8s 1s ease-out forwards;
+}
+
+/* ================================================================
+   PERFORMANCE OPTIMIZATIONS
+================================================================ */
+/* GPU acceleration para elementos animados */
+.hero-slide,
+.sponsors-track,
+.testi-marquee,
+.about-flickity,
+#scroll-car,
+.ambient-light,
+.light-beam,
+.word-item,
+.about-flk-cell {
+  will-change: transform;
+}
+/* Evitar repaints en elementos fixed */
+canvas#particleCanvas {
+  will-change: contents;
+}
+/* Lazy loading hint para imágenes de fondo */
+.hero-slide {
+  content-visibility: auto;
 }
