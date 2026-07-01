@@ -306,80 +306,51 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   window.addEventListener('scroll', updateNav, {passive:true});
   updateNav();
 })();
-
-// ── ABOUT SLIDER INFINITO ──
+// ── ABOUT FLICKITY CAROUSEL ──
 (function() {
-  const track = document.getElementById('aboutTrack');
-  if (!track) return;
-  const total = track.querySelectorAll('.about-slide:not(.about-clone)').length;
-  let idx = 0;
-  let autoTimer;
-
-  function goTo(n, animate) {
-    if (animate !== false) track.style.transition = 'transform .45s cubic-bezier(.4,0,.2,1)';
-    idx = n;
-    track.style.transform = `translateX(-${idx * 100}%)`;
-  }
-  track.addEventListener('transitionend', () => {
-    if (idx >= total) { track.style.transition = 'none'; idx = 0; track.style.transform = 'translateX(0%)'; }
+  const el = document.getElementById('aboutFlickity');
+  if (!el || typeof Flickity === 'undefined') return;
+  new Flickity(el, {
+    wrapAround:    true,
+    autoPlay:      3000,
+    pauseAutoPlayOnHover: false,
+    cellAlign:     'center',
+    contain:       false,
+    prevNextButtons: false,
+    pageDots:      false,
+    freeScroll:    false,
+    friction:      0.28,
+    selectedAttraction: 0.025
   });
-  function next() { goTo(idx + 1); }
-  function prev() { idx <= 0 ? goTo(total - 1) : goTo(idx - 1); }
-  window.aboutSliderNext = next;
-  window.aboutSliderPrev = prev;
-  function startAuto() { autoTimer = setInterval(next, 3000); }
-  function stopAuto()  { clearInterval(autoTimer); }
-  startAuto();
-  const slider = document.getElementById('aboutSlider');
-  if (slider) {
-    let startX = 0;
-    slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; stopAuto(); }, {passive:true});
-    slider.addEventListener('touchend',   e => { const dx = e.changedTouches[0].clientX - startX; if (Math.abs(dx) > 40) dx < 0 ? next() : prev(); startAuto(); }, {passive:true});
-  }
 })();
 
-// ── ABOUT desktop grid: wrap text + slider ──
-(function() {
-  function buildGrid() {
-    if (window.innerWidth < 1024) return;
-    const about = document.querySelector('.about');
-    if (!about || about.querySelector('.about-desktop-grid')) return;
-    const text   = about.querySelector('.about-text');
-    const slider = about.querySelector('.about-slider, #aboutSlider');
-    if (!text || !slider) return;
-    const grid = document.createElement('div');
-    grid.className = 'about-desktop-grid';
-    text.parentNode.insertBefore(grid, text);
-    const left = document.createElement('div');
-    left.appendChild(text);
-    grid.appendChild(left);
-    grid.appendChild(slider);
-  }
-  buildGrid();
-  window.addEventListener('resize', buildGrid);
-})();
-// ── SECCIÓN TIPOGRÁFICA — 3 palabras con scroll sticky ──
+// ── SECCIÓN TIPOGRÁFICA — 3 palabras, sticky scroll (mobile + desktop) ──
 (function() {
   const section = document.getElementById('words');
   if (!section) return;
 
-  // Solo mostrar 3 palabras de las 6 disponibles
   const allWords = Array.from(section.querySelectorAll('.word-item'));
-  // Usar solo las primeras 3
   const words = allWords.slice(0, 3);
-  // Ocultar las demás permanentemente
-  allWords.slice(3).forEach(w => w.style.display = 'none');
+  allWords.slice(3).forEach(w => { w.style.display = 'none'; });
 
-  const N = words.length; // 3
+  const N = words.length;
   let curIdx = -1;
 
+  // Mostrar primera palabra apenas entra la sección
   function update() {
     const rect = section.getBoundingClientRect();
     const scrollable = section.offsetHeight - window.innerHeight;
-    const p = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+
+    // Si la sección ni siquiera entró, no hacer nada
+    if (rect.top > window.innerHeight) return;
+
+    const raw = -rect.top / scrollable;
+    const p   = Math.min(Math.max(raw, 0), 1);
     const idx = Math.min(Math.floor(p * N), N - 1);
+
     if (idx === curIdx) return;
     curIdx = idx;
+
     words.forEach((w, i) => {
       w.classList.remove('active', 'prev');
       if (i === idx)     w.classList.add('active');
@@ -387,9 +358,21 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     });
   }
 
+  // Init: mostrar primera palabra cuando la sección es visible
+  const obs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && curIdx === -1) {
+      words[0].classList.add('active');
+      curIdx = 0;
+    }
+  }, { threshold: 0.1 });
+  obs.observe(section);
+
   let tick = false;
   window.addEventListener('scroll', () => {
-    if (!tick) { requestAnimationFrame(() => { update(); tick = false; }); tick = true; }
+    if (!tick) {
+      requestAnimationFrame(() => { update(); tick = false; });
+      tick = true;
+    }
   }, { passive: true });
   update();
 })();

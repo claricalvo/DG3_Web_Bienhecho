@@ -1206,89 +1206,55 @@ footer {
 }
 
 /* ================================================================
-   CARRUSEL 3D — fullwidth, sin pausa en hover
+   CARRUSEL FLICKITY — ¿Quiénes somos?
 ================================================================ */
-.about-scene, .about-a3d { display: grid; }
-
-.about-scene {
-  overflow: hidden;
-  /* perspectiva grande = efecto más plano, más parecido a la referencia */
-  perspective: 1800px;
-  -webkit-mask: linear-gradient(90deg, transparent 0%, #000 18% 82%, transparent 100%);
-  mask:         linear-gradient(90deg, transparent 0%, #000 18% 82%, transparent 100%);
-  width: 100%;
-  /* altura que ocupa toda la sección visible */
-  height: 70vh;
-  min-height: 320px;
-  max-height: 600px;
-  margin: 40px 0 0;
+.about-flickity {
+  margin: 36px -24px 0;   /* sangra laterales en mobile */
+}
+.about-flk-cell {
+  width: 72vw;
+  height: 60vw;
+  max-height: 420px;
+  margin-right: 12px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  filter: saturate(.65);
+  transition: filter .4s;
+}
+.about-flk-cell.is-selected {
+  filter: saturate(1);
 }
 
-.about-a3d {
-  place-self: center;
-  transform-style: preserve-3d;
-  animation: aboutRY 24s linear infinite;
-  /* sin pausa en hover — eliminado */
-}
-
-@keyframes aboutRY { to { transform: rotateY(360deg); } }
-
-/* Tarjetas: ancho generoso para que se vean en toda la pantalla */
-.about-card {
-  grid-area: 1 / 1;
-  width: 260px;
-  aspect-ratio: 7 / 10;
-  object-fit: cover;
-  border-radius: 14px;
-  backface-visibility: hidden;
-  filter: saturate(.75);
-}
-
-/* N=5, translateZ = -(130+8)/tan(36°) = -192px */
-.about-card:nth-child(1) { transform: rotateY(  0deg) translateZ(-192px); }
-.about-card:nth-child(2) { transform: rotateY( 72deg) translateZ(-192px); }
-.about-card:nth-child(3) { transform: rotateY(144deg) translateZ(-192px); }
-.about-card:nth-child(4) { transform: rotateY(216deg) translateZ(-192px); }
-.about-card:nth-child(5) { transform: rotateY(288deg) translateZ(-192px); }
+/* Ocultar botones prev/next de Flickity y puntos */
+.about-flickity .flickity-button { display: none; }
+.about-flickity .flickity-page-dots { display: none; }
 
 @media (min-width: 1024px) {
-  .about-scene {
-    height: 75vh;
-    perspective: 2400px;
+  .about-flickity {
+    margin: 40px -60px 0;  /* sangra hasta el borde de la sección */
   }
-  .about-card { width: 340px; }
-  /* -(170+8)/tan(36°) = -245px */
-  .about-card:nth-child(1) { transform: rotateY(  0deg) translateZ(-245px); }
-  .about-card:nth-child(2) { transform: rotateY( 72deg) translateZ(-245px); }
-  .about-card:nth-child(3) { transform: rotateY(144deg) translateZ(-245px); }
-  .about-card:nth-child(4) { transform: rotateY(216deg) translateZ(-245px); }
-  .about-card:nth-child(5) { transform: rotateY(288deg) translateZ(-245px); }
-}
-
-@media (max-width: 1023px) {
-  .about-scene { height: 55vw; min-height: 220px; perspective: 900px; }
-  .about-card { width: 160px; }
-  /* -(80+8)/tan(36°) = -121px */
-  .about-card:nth-child(1) { transform: rotateY(  0deg) translateZ(-121px); }
-  .about-card:nth-child(2) { transform: rotateY( 72deg) translateZ(-121px); }
-  .about-card:nth-child(3) { transform: rotateY(144deg) translateZ(-121px); }
-  .about-card:nth-child(4) { transform: rotateY(216deg) translateZ(-121px); }
-  .about-card:nth-child(5) { transform: rotateY(288deg) translateZ(-121px); }
+  .about-flk-cell {
+    width: 30%;
+    height: 420px;
+    max-height: none;
+    margin-right: 16px;
+  }
 }
 
 
 /* ================================================================
-   SECCIÓN TIPOGRÁFICA — 3 palabras visibles, scroll sticky
-   Igual que el auto: height grande, sticky container
+   SECCIÓN TIPOGRÁFICA — 3 palabras, sticky scroll
+   Funciona en mobile y desktop: pantalla se frena al entrar
 ================================================================ */
 .words-section {
   background: var(--black);
-  /* 3 palabras × espacio generoso por palabra */
   height: 280vh;
   position: relative;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  margin: 0; padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .words-sticky {
   position: sticky;
@@ -1322,7 +1288,7 @@ footer {
   font-family: var(--display);
   font-style: italic;
   font-weight: 900;
-  font-size: clamp(52px, 10vw, 140px);
+  font-size: clamp(48px, 9vw, 130px);
   text-transform: uppercase;
   letter-spacing: -.02em;
   line-height: 1;

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>APEX &mdash; Simuladores F1</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700;1,900&family=Barlow:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.min.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -83,15 +84,13 @@
   </div>
   <!-- hidden mobile para no duplicar el texto -->
   <p class="about-text-mobile reveal-slide delay-2">Somos la primera academia de simulaci&oacute;n de F&oacute;rmula 1 de Argentina. Formamos pilotos que quieren ir m&aacute;s all&aacute; del juego. Nuestros instructores vienen del mundo real del motorsport y llevan esa mentalidad al simulador.</p>
-  <!-- Carrusel 3D tipo cinta de contactos -->
-  <div class="about-scene" id="aboutScene">
-    <div class="about-a3d" style="--n:5">
-      <img class="about-card" src="images/about1.jpg"       style="--i:0" alt="APEX 1">
-      <img class="about-card" src="images/about2.jpg"       style="--i:1" alt="APEX 2">
-      <img class="about-card" src="images/about3.jpg"       style="--i:2" alt="APEX 3">
-      <img class="about-card" src="images/about4.jpg"       style="--i:3" alt="APEX 4">
-      <img class="about-card" src="images/instructor-1.jpeg" style="--i:4" alt="APEX 5">
-    </div>
+  <!-- Carrusel Flickity -->
+  <div class="about-flickity" id="aboutFlickity">
+    <div class="about-flk-cell" style="background-image:url('images/about1.jpg')"></div>
+    <div class="about-flk-cell" style="background-image:url('images/about2.jpg')"></div>
+    <div class="about-flk-cell" style="background-image:url('images/about3.jpg')"></div>
+    <div class="about-flk-cell" style="background-image:url('images/about4.jpg')"></div>
+    <div class="about-flk-cell" style="background-image:url('images/instructor-1.jpeg')"></div>
   </div>
   <div class="about-stats reveal-slide delay-3">
     <div class="stat-box"><div class="stat-num">+500</div><div class="stat-label">pilotos formados</div></div>
@@ -471,6 +470,7 @@
   <div class="footer-copy">&#169; 2026 APEX RACING ACADEMY &mdash; ARGENTINA<br>TODOS LOS DERECHOS RESERVADOS.</div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.pkgd.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
