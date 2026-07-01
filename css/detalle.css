@@ -45,7 +45,7 @@
 .metodos-pago {
   background: var(--black);
   border-top: 1px solid var(--line);
-  padding: 60px 20px;
+  padding: 72px 24px !important;
 }
 
 .metodos-pago__grid {
@@ -90,7 +90,7 @@
 .timeline-section {
   background: var(--dark);
   border-top: 1px solid var(--line);
-  padding: 60px 20px;
+  padding: 72px 24px !important;
 }
 
 .timeline {
@@ -157,13 +157,13 @@
 }
 
 /* ----- Contacto (override para consistencia de padding en detalle) ----- */
-.contact { padding: 60px 20px; }
+.contact { padding: 72px 24px !important; }
 
 /* ----- Otros niveles ----- */
 .otros-niveles {
   background: var(--black);
   border-top: 1px solid var(--line);
-  padding: 60px 20px;
+  padding: 72px 24px !important;
 }
 
 .otros-niveles__grid {
@@ -245,11 +245,11 @@
   }
 
   /* Métodos de pago */
-  .metodos-pago { padding: 80px 60px; }
+  .metodos-pago { padding: 80px 60px !important; }
   .metodos-pago__grid { grid-template-columns: repeat(4, 1fr); }
 
   /* Línea de tiempo desktop: grilla de 2 cols */
-  .timeline-section { padding: 80px 60px; }
+  .timeline-section { padding: 80px 60px !important; }
 
   .timeline {
     padding-left: 0;
@@ -270,8 +270,10 @@
     top: 8px;
   }
 
+    .contact { padding: 80px 60px !important; }
+
   /* Otros niveles */
-  .otros-niveles { padding: 80px 60px; }
+  .otros-niveles { padding: 80px 60px !important; }
   .otros-niveles__grid { flex-direction: row; }
   .otros-niveles__grid .otro-nivel-card { flex: 1; }
 

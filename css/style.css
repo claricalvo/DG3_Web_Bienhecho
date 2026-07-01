@@ -855,7 +855,7 @@ footer {
 }
 .course-badge {
   font-family: var(--mono); font-size: 9px; color: var(--grey);
-  letter-spacing: .22em; text-transform: uppercase; margin-bottom: 10px;
+  letter-spacing: .22em; text-transform: uppercase; margin-bottom: 13px;
 }
 .course-badge--featured { color: var(--orange); }
 
@@ -881,7 +881,7 @@ footer {
   border-bottom: 1px solid var(--line);
 }
 .course-price-label {
-  font-family: var(--mono); font-size: 9px; color: var(--grey); letter-spacing: .15em;
+  font-family: var(--mono); font-size: 13px; color: var(--grey); letter-spacing: .15em;
 }
 .course-price-val {
   font-family: var(--display); font-style: italic; font-weight: 900;
@@ -889,7 +889,7 @@ footer {
 }
 .course-card--featured .course-price-val { color: var(--white); }
 .course-price-period {
-  font-family: var(--mono); font-size: 9px; color: var(--grey); letter-spacing: .12em;
+  font-family: var(--mono); font-size: 13px; color: var(--grey); letter-spacing: .12em;
 }
 
 .course-features {
@@ -898,7 +898,7 @@ footer {
   display: flex; flex-direction: column; gap: 10px;
 }
 .course-features li {
-  font-size: 14px; font-weight: 300;
+  font-size: 15px; font-weight: 300;
   color: rgba(245,245,245,.75);
   display: flex; align-items: flex-start; gap: 10px;
   line-height: 1.4;
