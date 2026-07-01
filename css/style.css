@@ -1122,6 +1122,9 @@ footer {
 
   /* ── WHAT ── */
   .what { padding: 96px 0; }
+  .what .section-label,
+  .what .section-title,
+  .what .divider { padding-left: 60px; padding-right: 60px; }
   .what-layout-desktop {
     display: flex;
     flex-direction: column;
