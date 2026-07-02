@@ -251,15 +251,13 @@
   /* Métodos de pago */
   .metodos-pago { padding: 80px 60px !important; }
   .metodos-pago__grid { grid-template-columns: repeat(4, 1fr); }
-
-  /* Línea de tiempo desktop: grilla de 2 cols */
   .timeline-section { padding: 80px 60px !important; }
 
   .timeline {
     padding-left: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 60px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0 40px;
   }
 
   .timeline::before { display: none; }
@@ -274,12 +272,22 @@
     top: 8px;
   }
 
-    .contact { padding: 80px 60px !important; }
+  .contact { padding: 80px 60px !important; }
 
-  /* Otros niveles */
-  .otros-niveles { padding: 80px 60px !important; }
+  /* Otros niveles — fondo naranja */
+  .otros-niveles { padding: 80px 60px !important; background: var(--orange) !important; }
+  .otros-niveles .section-label { color: rgba(8,8,8,.6); }
+  .otros-niveles .section-title .light,
+  .otros-niveles .section-title .bold { color: var(--black); -webkit-text-fill-color: var(--black); }
+  .otros-niveles .divider { background: rgba(8,8,8,.3); }
   .otros-niveles__grid { flex-direction: row; }
   .otros-niveles__grid .otro-nivel-card { flex: 1; }
+
+  /* Testimonials: alinear al margen izquierdo igual que otras secciones */
+  .testimonials { padding-left: 60px !important; padding-right: 60px !important; }
+  .testimonials .section-label,
+  .testimonials .section-title,
+  .testimonials .divider { padding-left: 0 !important; margin-left: 0 !important; }
 .contact { padding: 0 !important; }
 .contact > div:first-child,
 .contact-layout-desktop > div:first-child {
