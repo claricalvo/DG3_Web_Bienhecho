@@ -182,7 +182,7 @@ nav.scrolled { background: rgba(8,8,8,0.98); }
 }
 .hero-content { position: relative; z-index: 4; }
 .hero-eyebrow {
-  font-family: var(--mono); font-size: 10px; color: var(--orange);
+  font-family: var(--mono); font-size: 10px; color: var(--white);
   letter-spacing: .2em; text-transform: uppercase; margin-bottom: 14px;
   opacity: 0; animation: fadeUp .8s .4s ease-out forwards;
 }
@@ -212,8 +212,8 @@ nav.scrolled { background: rgba(8,8,8,0.98); }
   opacity: 0; animation: fadeIn 1s 1.4s ease-out forwards;
 }
 .data-chip {
-  font-family: var(--mono); font-size: 9px; color: var(--orange);
-  letter-spacing: .12em; border-left: 2px solid var(--orange); padding-left: 8px;
+  font-family: var(--mono); font-size: 9px; color: var(--white);
+  letter-spacing: .12em; border-left: 2px solid var(--white); padding-left: 8px;
 }
 .hero-indicators {
   position: absolute; bottom: 28px; left: 0; right: 0;
@@ -1077,19 +1077,19 @@ footer {
 
   /* ── HERO ── */
   .hero {
-    justify-content: flex-end;
-    padding: 0 60px 100px;
-    align-items: flex-start;
-  }
-  .hero-content { max-width: 720px; }
-  .hero-title { font-size: clamp(80px, 7.5vw, 120px); }
-  .hero-sub { font-size: 15px; max-width: 440px; }
-  .hero-cta {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 32px;
-    width: 100%;
-  }
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 60px 100px;
+}
+.hero-content { max-width: 720px; }
+.hero-cta {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0;
+  align-self: flex-end;
+  width: auto;
+}
   .btn-primary { font-size: 17px; padding: 16px 44px; }
 
   /* Botones siempre a la derecha */
