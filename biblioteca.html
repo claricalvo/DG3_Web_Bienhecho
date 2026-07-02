@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APEX — Guía de Estilo / UI Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700;1,900&family=Barlow:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --orange:#ED6D22;
+    --orange-dim:#b85218;
+    --black:#080808;
+    --dark:#111111;
+    --mid:#181818;
+    --line:#252525;
+    --white:#f5f5f5;
+    --grey:#666;
+    --mono:'Share Tech Mono', monospace;
+    --display:'Barlow Condensed', sans-serif;
+    --body:'Barlow', sans-serif;
+  }
+  html{scroll-behavior:smooth;}
+  body{background:var(--black);color:var(--white);font-family:var(--body);line-height:1.5;}
+
+  /* ── GUIDE SHELL ── */
+  .guide-nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; gap:4px; overflow-x:auto;
+    background:rgba(8,8,8,.92); backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--line); padding:14px 24px;
+  }
+  .guide-nav a{
+    font-family:var(--mono); font-size:10px; color:var(--grey);
+    letter-spacing:.15em; text-transform:uppercase; text-decoration:none;
+    white-space:nowrap; padding:8px 12px; border:1px solid transparent; transition:.2s;
+  }
+  .guide-nav a:hover{color:var(--orange); border-color:var(--line);}
+
+  .guide-header{padding:64px 24px 40px; border-bottom:1px solid var(--line);}
+  .guide-eyebrow{font-family:var(--mono); font-size:11px; color:var(--orange); letter-spacing:.25em; text-transform:uppercase; margin-bottom:14px;}
+  .guide-title{font-family:var(--display); font-style:italic; font-weight:900; font-size:clamp(40px,8vw,72px); line-height:.95; text-transform:uppercase;}
+  .guide-title span{color:var(--orange);}
+  .guide-sub{font-family:var(--body); font-weight:300; color:rgba(245,245,245,.6); max-width:620px; margin-top:18px; font-size:15px; line-height:1.7;}
+
+  section.gs{padding:64px 24px; border-bottom:1px solid var(--line); max-width:1280px; margin:0 auto;}
+  .gs-label{font-family:var(--mono); font-size:10px; color:var(--orange); letter-spacing:.25em; text-transform:uppercase; margin-bottom:12px;}
+  .gs-title{font-family:var(--display); font-style:italic; font-weight:900; font-size:clamp(30px,5vw,44px); text-transform:uppercase; margin-bottom:8px;}
+  .gs-desc{font-size:14px; color:rgba(245,245,245,.55); font-weight:300; max-width:640px; margin-bottom:36px;}
+
+  .swatch-label{font-family:var(--mono); font-size:10px; letter-spacing:.08em; margin-top:10px;}
+  .swatch-hex{color:var(--grey); font-family:var(--mono); font-size:10px;}
+
+  /* ── COLOR GRID ── */
+  .color-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:20px;}
+  .swatch{border:1px solid var(--line);}
+  .swatch-fill{height:100px;}
+  .swatch-info{padding:12px 14px;}
+  .swatch-name{font-family:var(--display); font-weight:700; font-size:15px; text-transform:uppercase;}
+
+  /* ── TYPE SPECIMENS ── */
+  .type-row{border-bottom:1px solid var(--line); padding:28px 0; display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:16px;}
+  .type-meta{font-family:var(--mono); font-size:10px; color:var(--grey); letter-spacing:.1em; text-transform:uppercase;}
+  .specimen-display-black{font-family:var(--display); font-style:italic; font-weight:900; font-size:clamp(32px,6vw,58px); text-transform:uppercase; line-height:1;}
+  .specimen-display-light{font-family:var(--display); font-style:italic; font-weight:300; font-size:clamp(28px,5vw,46px); text-transform:uppercase; line-height:1;}
+  .specimen-body{font-family:var(--body); font-weight:300; font-size:16px; color:rgba(245,245,245,.75); max-width:520px;}
+  .specimen-mono{font-family:var(--mono); font-size:13px; letter-spacing:.15em; color:var(--white); text-transform:uppercase;}
+  .accent-word{color:var(--orange);}
+
+  /* ── BUTTON SAMPLES ── */
+  .btn-primary{
+    display:inline-flex; align-items:center; justify-content:center;
+    background:var(--orange); color:var(--black);
+    font-family:var(--display); font-style:italic; font-weight:900; font-size:17px;
+    letter-spacing:.06em; text-transform:uppercase; padding:16px 44px;
+    text-decoration:none; border-radius:100px; border:2px solid var(--orange);
+    box-shadow:0 2px 0 rgba(0,0,0,.35), 0 4px 16px rgba(237,109,34,.35), inset 0 1px 0 rgba(255,255,255,.22);
+    transition:background .18s,color .18s,box-shadow .18s,transform .12s; cursor:pointer;
+  }
+  .btn-primary:hover{background:#fff;color:var(--black);border-color:#fff;box-shadow:0 2px 0 rgba(0,0,0,.25),0 6px 24px rgba(255,255,255,.2),inset 0 1px 0 rgba(255,255,255,.4);}
+  .btn-primary:active{transform:scale(.97) translateY(1px);}
+  .btn-outline{
+    display:inline-flex; align-items:center; justify-content:center;
+    background:none; color:var(--orange); border:1px solid var(--orange);
+    font-family:var(--mono); font-size:11px; letter-spacing:.15em; text-transform:uppercase;
+    padding:10px 18px; cursor:pointer; transition:background .2s,color .2s;
+  }
+  .btn-outline:hover{background:var(--orange); color:var(--black);}
+  .btn-row{display:flex; flex-wrap:wrap; gap:18px; align-items:center;}
+
+  /* ── CHIPS / TAGS / LABELS ── */
+  .chip-row{display:flex; flex-wrap:wrap; gap:14px;}
+  .data-chip{font-family:var(--mono); font-size:9px; color:var(--white); letter-spacing:.12em; border-left:2px solid var(--white); padding-left:8px;}
+  .section-label-demo{font-family:var(--mono); font-size:10px; color:var(--orange); letter-spacing:.25em; text-transform:uppercase;}
+  .course-badge-demo{font-family:var(--mono); font-size:9px; color:var(--grey); letter-spacing:.22em; text-transform:uppercase;}
+  .course-popular-tag-demo{display:inline-block; background:var(--orange); color:var(--black); font-family:var(--mono); font-size:9px; letter-spacing:.18em; padding:6px 14px; text-transform:uppercase;}
+
+  /* ── DIVIDER ── */
+  .divider-demo{position:relative; width:220px; height:3px; margin:8px 0;}
+  .divider-demo::before{
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(90deg, rgba(237,109,34,.3) 0%, #ED6D22 40%, #ffb060 55%, #ED6D22 70%, rgba(237,109,34,.1) 100%);
+    box-shadow:0 0 8px rgba(237,109,34,.8), 0 0 20px rgba(237,109,34,.4); border-radius:2px;
+  }
+
+  /* ── STAT BOXES ── */
+  .stat-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1px; background:var(--line);}
+  .stat-box{background:var(--dark); padding:24px 16px; text-align:center;}
+  .stat-num{font-family:var(--display); font-weight:900; font-style:italic; font-size:42px; color:var(--orange); line-height:1;}
+  .stat-label{font-family:var(--mono); font-size:12px; letter-spacing:.2em; color:var(--grey); text-transform:uppercase; margin-top:6px;}
+
+  /* ── CARDS ── */
+  .card-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px;}
+  .demo-card{background:var(--mid); border:1px solid var(--line); padding:24px; transition:border-color .3s, transform .3s;}
+  .demo-card:hover{border-color:rgba(237,109,34,.4); transform:translateY(-2px);}
+  .demo-card--featured{border-color:var(--orange); background:rgba(237,109,34,.04);}
+  .demo-card--featured:hover{border-color:var(--orange); box-shadow:0 0 40px rgba(237,109,34,.18);}
+  .demo-card h3{font-family:var(--display); font-style:italic; font-weight:900; font-size:32px; text-transform:uppercase; margin:10px 0 14px;}
+  .demo-card p{font-size:14px; font-weight:300; color:rgba(245,245,245,.65); line-height:1.7; margin-bottom:16px;}
+  .feat-list{list-style:none; display:flex; flex-direction:column; gap:8px; margin-bottom:20px;}
+  .feat-list li{font-size:13px; font-weight:300; color:rgba(245,245,245,.75); display:flex; gap:8px; align-items:flex-start;}
+  .feat-check{color:var(--orange); font-size:12px;}
+  .feat-cross{color:var(--grey); font-size:12px;}
+
+  .testi-card-demo{background:var(--dark); border:1px solid var(--line); border-top:3px solid var(--orange); padding:24px 20px; max-width:340px;}
+  .testi-quote-demo{font-size:14px; line-height:1.75; color:rgba(245,245,245,.8); font-style:italic; margin-bottom:16px;}
+  .testi-quote-demo::before{content:'\201C'; font-family:var(--display); font-size:44px; color:var(--orange); line-height:.5; display:block; margin-bottom:8px;}
+  .testi-author-demo{font-family:var(--display); font-weight:700; font-size:15px; text-transform:uppercase; letter-spacing:.05em;}
+  .testi-role-demo{font-family:var(--mono); font-size:9px; color:var(--orange); letter-spacing:.15em; margin-top:4px;}
+
+  /* ── FAQ / ACCORDION DEMO ── */
+  .faq-item-demo{border-bottom:1px solid var(--line);}
+  .faq-item-demo:first-child{border-top:1px solid var(--line);}
+  .faq-q-demo{width:100%; background:none; border:none; padding:18px 0; display:flex; align-items:flex-start; justify-content:space-between; gap:12px; cursor:pointer; text-align:left; color:var(--white);}
+  .faq-q-text-demo{font-family:var(--display); font-weight:600; font-size:19px; line-height:1.3;}
+  .faq-icon-demo{color:var(--orange); font-size:18px; flex-shrink:0; transition:transform .3s;}
+  .faq-icon-demo.open{transform:rotate(45deg);}
+  .faq-a-demo{max-height:0; overflow:hidden; transition:max-height .35s ease;}
+  .faq-a-demo.open{max-height:200px;}
+  .faq-a-inner-demo{padding:0 0 18px; font-size:14px; font-weight:300; line-height:1.8; color:rgba(245,245,245,.6);}
+
+  /* ── CONTACT LINK DEMO ── */
+  .contact-link-demo{display:flex; align-items:center; justify-content:space-between; padding:18px 20px; background:var(--dark); border:1px solid var(--line); text-decoration:none; color:inherit; transition:.25s; max-width:420px;}
+  .contact-link-demo:hover{border-color:rgba(237,109,34,.4);}
+  .contact-link-label-demo{font-family:var(--mono); font-size:10px; color:var(--orange); letter-spacing:.15em;}
+  .contact-link-val-demo{font-family:var(--body); font-size:14px; margin-top:2px;}
+  .contact-arrow-demo{color:var(--orange); font-size:16px;}
+
+  /* ── EFFECTS SHOWCASE ── */
+  .effect-box{position:relative; height:180px; border:1px solid var(--line); overflow:hidden; display:flex; align-items:center; justify-content:center;}
+  .fx-glow{background:radial-gradient(circle at 50% 50%, rgba(237,109,34,.28) 0%, rgba(237,109,34,.08) 45%, transparent 75%);}
+  .fx-beam::before{content:''; position:absolute; width:220%; height:60px; left:-60%; top:40%; transform:rotate(-14deg);
+    background:linear-gradient(90deg, transparent 0%, rgba(237,109,34,.06) 20%, rgba(255,150,30,.35) 50%, rgba(237,109,34,.06) 80%, transparent 100%);
+    filter:blur(18px);}
+  .fx-scan{background:repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.05) 2px, rgba(255,255,255,.05) 4px);}
+  .fx-caption{position:absolute; bottom:10px; left:12px; font-family:var(--mono); font-size:9px; color:var(--white); letter-spacing:.1em; text-transform:uppercase;}
+
+  /* ── IMAGE TREATMENT DEMO ── */
+  .img-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:18px;}
+  .img-demo{aspect-ratio:4/3; position:relative; overflow:hidden; border:1px solid var(--line);}
+  .img-demo-fill{position:absolute; inset:0; background:linear-gradient(135deg,#3a2515,#ED6D22 40%,#111 100%);}
+  .img-demo.desat .img-demo-fill{filter:saturate(.6);}
+  .img-demo.grad::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(8,8,8,.08) 0%, rgba(8,8,8,.68) 65%, rgba(8,8,8,.97) 100%);}
+  .img-demo-label{position:absolute; bottom:10px; left:10px; font-family:var(--mono); font-size:9px; color:var(--white); letter-spacing:.1em; z-index:2; text-transform:uppercase;}
+
+  /* ── MARQUEE DEMO ── */
+  .marquee-wrap{overflow:hidden; width:100%; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
+  .marquee-track{display:flex; gap:52px; width:max-content; animation:mq 20s linear infinite;}
+  .marquee-wrap:hover .marquee-track{animation-play-state:paused;}
+  .marquee-track span{font-family:var(--display); font-weight:700; font-size:20px; letter-spacing:.12em; text-transform:uppercase; color:rgba(245,245,245,.15); white-space:nowrap;}
+  @keyframes mq{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+  footer.gs-footer{padding:40px 24px; text-align:center; font-family:var(--mono); font-size:9px; color:var(--grey); letter-spacing:.1em;}
+</style>
+</head>
+<body>
+
+<nav class="guide-nav">
+  <a href="#colors">Colores</a>
+  <a href="#type">Tipografía</a>
+  <a href="#buttons">Botones</a>
+  <a href="#chips">Chips &amp; Labels</a>
+  <a href="#dividers">Dividers</a>
+  <a href="#stats">Stats</a>
+  <a href="#cards">Cards</a>
+  <a href="#testi">Testimonios</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact">Contact Link</a>
+  <a href="#images">Imágenes</a>
+  <a href="#effects">Efectos</a>
+  <a href="#motion">Marquee / Motion</a>
+</nav>
+
+<header class="guide-header">
+  <div class="guide-eyebrow">// APEX RACING ACADEMY — UI KIT</div>
+  <h1 class="guide-title">GUÍA DE <span>ESTILO</span></h1>
+  <p class="guide-sub">Paleta, tipografía, componentes y efectos extraídos directamente de tu <code>style.css</code>. Usá esta página como referencia para mantener consistencia en nuevas secciones o piezas de marketing.</p>
+</header>
+
+<!-- COLORS -->
+<section class="gs" id="colors">
+  <div class="gs-label">// 01 — PALETA</div>
+  <h2 class="gs-title">Colores</h2>
+  <p class="gs-desc">Paleta reducida y de alto contraste: negro casi puro con un único acento naranja racing. Los grises intermedios estructuran las secciones sin competir con el acento.</p>
+  <div class="color-grid">
+    <div class="swatch">
+      <div class="swatch-fill" style="background:#ED6D22"></div>
+      <div class="swatch-info"><div class="swatch-name">Orange</div><div class="swatch-label">--orange</div><div class="swatch-hex">#ED6D22</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-fill" style="background:#b85218"></div>
+      <div class="swatch-info"><div class="swatch-name">Orange Dim</div><div class="swatch-label">--orange-dim</div><div class="swatch-hex">#b85218</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-fill" style="background:#080808; border-bottom:1px solid var(--line)"></div>
+      <div class="swatch-info"><div class="swatch-name">Black</div><div class="swatch-label">--black</div><div class="swatch-hex">#080808</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-fill" style="background:#111111"></div>
+      <div class="swatch-info"><div class="swatch-name">Dark</div><div class="swatch-label">--dark</div><div class="swatch-hex">#111111</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-fill" style="background:#181818"></div>
+      <div class="swatch-info"><div class="swatch-name">Mid</div><div class="swatch-label">--mid</div><div class="swatch-hex">#181818</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-fill" style="background:#252525"></div>
+      <div class="swatch-info"><div class="swatch-name">Line</div><div class="swatch-label">--line</div><div class="swatch-hex">#252525</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-fill" style="background:#f5f5f5"></div>
+      <div class="swatch-info"><div class="swatch-name">White</div><div class="swatch-label">--white</div><div class="swatch-hex">#f5f5f5</div></div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-fill" style="background:#666"></div>
+      <div class="swatch-info"><div class="swatch-name">Grey</div><div class="swatch-label">--grey</div><div class="swatch-hex">#666666</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TYPE -->
+<section class="gs" id="type">
+  <div class="gs-label">// 02 — TIPOGRAFÍA</div>
+  <h2 class="gs-title">Familias &amp; Escala</h2>
+  <p class="gs-desc">Tres familias, cada una con un rol fijo: Barlow Condensed itálica/bold para títulos de impacto, Barlow regular para texto de lectura, y Share Tech Mono para todo lo "técnico" (labels, chips, datos).</p>
+
+  <div class="type-row">
+    <div>
+      <div class="specimen-display-black">Dominá la <span class="accent-word">pista</span></div>
+      <div class="type-meta" style="margin-top:10px;">Barlow Condensed · italic 900 · clamp(62px,18vw,86px) — hero-title</div>
+    </div>
+  </div>
+  <div class="type-row">
+    <div>
+      <div><span class="specimen-display-light">¿Quiénes&nbsp;</span><span class="specimen-display-black">somos?</span></div>
+      <div class="type-meta" style="margin-top:10px;">Barlow Condensed · italic 300 (light) + italic 900 (bold) — section-title</div>
+    </div>
+  </div>
+  <div class="type-row">
+    <div>
+      <div class="specimen-body">No es un videojuego. Es ingeniería aplicada. Nuestro programa combina simuladores de movimiento real con análisis de telemetría idéntico al de los equipos de F1.</div>
+      <div class="type-meta" style="margin-top:10px;">Barlow · weight 300 · 15px / line-height 1.8 — body copy</div>
+    </div>
+  </div>
+  <div class="type-row">
+    <div>
+      <div class="specimen-mono">// 001 — Equipo &nbsp;&nbsp;·&nbsp;&nbsp; Telemetría en vivo</div>
+      <div class="type-meta" style="margin-top:10px;">Share Tech Mono · uppercase · letter-spacing .2–.25em — labels / eyebrows / data</div>
+    </div>
+  </div>
+</section>
+
+<!-- BUTTONS -->
+<section class="gs" id="buttons">
+  <div class="gs-label">// 03 — ACCIONES</div>
+  <h2 class="gs-title">Botones</h2>
+  <p class="gs-desc">Pill-shaped, itálica bold, con sombra de "elevación" naranja. En hover invierte a blanco. El outline mono se usa para acciones secundarias (menú, toggles).</p>
+  <div class="btn-row">
+    <a href="#" class="btn-primary">VER CURSOS</a>
+    <a href="#" class="btn-primary">INSCRIBIRSE</a>
+    <button class="btn-outline">MENÚ</button>
+  </div>
+</section>
+
+<!-- CHIPS -->
+<section class="gs" id="chips">
+  <div class="gs-label">// 04 — CHIPS &amp; LABELS</div>
+  <h2 class="gs-title">Etiquetas</h2>
+  <p class="gs-desc">Micro-tipografía mono para reforzar el tono "instrumento de carrera": chips de datos, labels de sección y badges de curso.</p>
+  <div class="chip-row">
+    <div class="data-chip">SIM: FULL MOTION</div>
+    <div class="data-chip">G-FORCE: ACTIVO</div>
+    <div class="section-label-demo">// 002 — METODOLOGÍA</div>
+    <div class="course-badge-demo">INTERMEDIO</div>
+    <div class="course-popular-tag-demo">MÁS ELEGIDO</div>
+  </div>
+</section>
+
+<!-- DIVIDERS -->
+<section class="gs" id="dividers">
+  <div class="gs-label">// 05 — DIVISORES</div>
+  <h2 class="gs-title">Light Trail Divider</h2>
+  <p class="gs-desc">Barra de 3px con gradiente y glow naranja — separa el eyebrow del título en casi todas las secciones.</p>
+  <div class="divider-demo"></div>
+</section>
+
+<!-- STATS -->
+<section class="gs" id="stats">
+  <div class="gs-label">// 06 — DATOS DESTACADOS</div>
+  <h2 class="gs-title">Stat Boxes</h2>
+  <p class="gs-desc">Grilla con separadores de 1px (el "gap" es en realidad el color de línea del fondo). Número grande itálico + label mono.</p>
+  <div class="stat-grid">
+    <div class="stat-box"><div class="stat-num">+500</div><div class="stat-label">pilotos formados</div></div>
+    <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">niveles</div></div>
+    <div class="stat-box"><div class="stat-num">100%</div><div class="stat-label">telemetría real</div></div>
+    <div class="stat-box"><div class="stat-num">#1</div><div class="stat-label">academia ARG</div></div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="gs" id="cards">
+  <div class="gs-label">// 07 — COURSE CARDS</div>
+  <h2 class="gs-title">Tarjetas de curso</h2>
+  <p class="gs-desc">Fondo <code>--mid</code> con borde sutil; la variante "featured" sube el borde a naranja y agrega un tinte de fondo. El hover levanta la card 2px.</p>
+  <div class="card-grid">
+    <div class="demo-card">
+      <div class="course-badge-demo">BÁSICO</div>
+      <h3>PRIMERA VUELTA</h3>
+      <ul class="feat-list">
+        <li><span class="feat-check">✓</span>8 sesiones de 2 hs</li>
+        <li><span class="feat-check">✓</span>Fundamentos de trazada</li>
+        <li><span class="feat-cross">✕</span>Acceso a ligas privadas</li>
+      </ul>
+      <a href="#" class="btn-primary" style="font-size:15px; padding:10px 24px;">INSCRIBIRSE</a>
+    </div>
+    <div class="demo-card demo-card--featured">
+      <div class="course-badge-demo" style="color:var(--orange)">INTERMEDIO</div>
+      <h3>PUESTA A PUNTO</h3>
+      <ul class="feat-list">
+        <li><span class="feat-check">✓</span>12 sesiones de 2 hs</li>
+        <li><span class="feat-check">✓</span>Certificado Nivel 2 APEX</li>
+        <li><span class="feat-cross">✕</span>Acceso a ligas privadas</li>
+      </ul>
+      <a href="#" class="btn-primary" style="font-size:15px; padding:10px 24px;">INSCRIBIRSE</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="gs" id="testi">
+  <div class="gs-label">// 08 — TESTIMONIOS</div>
+  <h2 class="gs-title">Testimonial Card</h2>
+  <p class="gs-desc">Comillas display gigantes en naranja, cita en itálica, borde superior de 3px como acento.</p>
+  <div class="testi-card-demo">
+    <div class="testi-quote-demo">El nivel de detalle en la telemetría cambió por completo mi manera de entender la trazada.</div>
+    <div class="testi-author-demo">Lucas Ferreyra</div>
+    <div class="testi-role-demo">NIVEL 3 — GRADUADO 2025</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="gs" id="faq">
+  <div class="gs-label">// 09 — ACORDEÓN</div>
+  <h2 class="gs-title">FAQ Item</h2>
+  <p class="gs-desc">Botón full-width, ícono "+" que rota 45° a "×" al abrir, transición por <code>max-height</code>.</p>
+  <div class="faq-item-demo">
+    <button class="faq-q-demo" onclick="this.nextElementSibling.classList.toggle('open'); this.querySelector('.faq-icon-demo').classList.toggle('open')">
+      <span class="faq-q-text-demo">¿Necesito experiencia previa en simracing?</span>
+      <span class="faq-icon-demo">+</span>
+    </button>
+    <div class="faq-a-demo">
+      <div class="faq-a-inner-demo">No. El Nivel 1 está diseñado para que alguien que nunca tocó un simulador pueda arrancar con una base sólida.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT LINK -->
+<section class="gs" id="contact">
+  <div class="gs-label">// 10 — CONTACT LINK</div>
+  <h2 class="gs-title">Link de contacto</h2>
+  <p class="gs-desc">Fila con label mono naranja + valor en Barlow, flecha a la derecha. Se usa para WhatsApp, Instagram y email.</p>
+  <a href="#" class="contact-link-demo">
+    <div>
+      <div class="contact-link-label-demo">// WHATSAPP</div>
+      <div class="contact-link-val-demo">+54 9 11 0000-0000</div>
+    </div>
+    <div class="contact-arrow-demo">→</div>
+  </a>
+</section>
+
+<!-- IMAGES -->
+<section class="gs" id="images">
+  <div class="gs-label">// 11 — TRATAMIENTO DE IMAGEN</div>
+  <h2 class="gs-title">Imágenes</h2>
+  <p class="gs-desc">Placeholders de color que muestran el <em>tratamiento</em> que aplica tu CSS: desaturación base, gradiente de oscurecimiento hacia abajo, y overlay de saturación en hover para cards de curso.</p>
+  <div class="img-grid">
+    <div class="img-demo grad">
+      <img src="carrusel-1.jpg" alt="Hero carousel" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+      <div class="img-demo-label">hero / carousel slide — gradient overlay</div>
+    </div>
+    <div class="img-demo">
+      <img src="about4.jpg" alt="Quiénes somos" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+      <div class="img-demo-label">quiénes somos — about section</div>
+    </div>
+    <div class="img-demo">
+      <img src="nivel-1.png" alt="Nivel 1 curso" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;">
+      <div class="img-demo-label">course-img-wrap — nivel 1</div>
+    </div>
+  </div>
+</section>
+
+<!-- EFFECTS -->
+<section class="gs" id="effects">
+  <div class="gs-label">// 12 — EFECTOS AMBIENTALES</div>
+  <h2 class="gs-title">Glow, Beam &amp; Scanlines</h2>
+  <p class="gs-desc">La identidad "sim racing de noche" se construye con estos efectos superpuestos al fondo negro.</p>
+  <div class="img-grid">
+    <div class="effect-box fx-glow"><span class="fx-caption">ambient-light (radial glow)</span></div>
+    <div class="effect-box fx-beam"><span class="fx-caption">light-beam (haz diagonal)</span></div>
+    <div class="effect-box fx-scan"><span class="fx-caption">scanlines (body::before)</span></div>
+
+  </div>
+</section>
+
+<!-- MOTION -->
+<section class="gs" id="motion">
+  <div class="gs-label">// 13 — MARQUEE / MOTION</div>
+  <h2 class="gs-title">Scroll infinito</h2>
+  <p class="gs-desc">Usado en sponsors, testimonios y galería "quiénes somos". Máscara en los bordes + animación lineal infinita, pausa en hover.</p>
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span>LOGITECH G</span><span>FANATEC</span><span>SIMUCUBE</span><span>MOZA RACING</span><span>ASETEK</span>
+      <span>LOGITECH G</span><span>FANATEC</span><span>SIMUCUBE</span><span>MOZA RACING</span><span>ASETEK</span>
+    </div>
+  </div>
+</section>
+
+
+
+<footer class="gs-footer">© 2026 APEX RACING ACADEMY — GUÍA DE ESTILO GENERADA A PARTIR DE style.css</footer>
+
+</body>
+</html>

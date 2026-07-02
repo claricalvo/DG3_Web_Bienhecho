@@ -89,7 +89,6 @@ document.addEventListener("DOMContentLoaded", function () {
               'onerror="this.parentElement.innerHTML=\'<span class=&quot;detalle-curso__media-placeholder&quot;></span>\';">' +
             '</div>' +
             '<div class="course-price">' +
-              '<span class="course-price-label">desde</span>' +
               '<span class="course-price-val">$' + c.precio.toLocaleString("es-AR") + '</span>' +
               '<span class="course-price-period">/ ' + c.duracion + '</span>' +
             '</div>' +

@@ -173,16 +173,6 @@
   margin-top: 24px;
 }
 
-/* Bordes redondeados + sombra en todas las pantallas */
-.otro-nivel-card {
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 6px 24px rgba(0,0,0,.4);
-}
-
-/* Ocultar "desde" en todos los breakpoints */
-.otro-nivel-card .course-price-label { display: none; }
-
 .otro-nivel-card .course-card-header { padding-bottom: 24px; }
 .otro-nivel-card .course-cta { margin-top: 0; }
 
@@ -289,41 +279,38 @@
   .otros-niveles .section-label { color: rgba(8,8,8,.6); }
   .otros-niveles .section-title .light,
   .otros-niveles .section-title .bold { color: var(--black); -webkit-text-fill-color: var(--black); }
-  /* Divider blanco para que se lea sobre fondo naranja */
   .otros-niveles .divider::before { background: rgba(8,8,8,.6); box-shadow: none; }
   .otros-niveles .divider::after { background: rgba(255,255,255,.3); }
-  .otros-niveles__grid { flex-direction: row; gap: 16px; margin-top: 16px; }
+  .otros-niveles__grid { flex-direction: row; gap: 24px; margin-top: 20px; }
   .otros-niveles__grid .otro-nivel-card { flex: 1; }
 
-  /* Tarjetas: bordes redondeados + sombra para separar del fondo naranja */
-  .otro-nivel-card {
-    border-radius: 16px;
+  /* Tarjetas: borde redondeado + sombra */
+  .otro-nivel-card.course-card {
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow:
-      0 8px 32px rgba(0,0,0,.45),
-      0 2px 8px rgba(0,0,0,.3);
-    border: 1px solid rgba(0,0,0,.15);
+    box-shadow: 0 8px 32px rgba(0,0,0,.45);
+    border: none;
   }
 
-  /* Reducir tamaño de imagen */
-  .otro-nivel-card .course-img-wrap {
-    aspect-ratio: 16/6;
-    margin-bottom: 0;
-  }
-
-  /* Agrandar textos */
+  /* Imagen más chica */
   .otro-nivel-card .course-card-header { padding: 20px 20px 0; }
-  .otro-nivel-card .course-badge { font-size: 11px; margin-bottom: 6px; }
-  .otro-nivel-card .course-name { font-size: clamp(28px, 3.2vw, 46px); margin-bottom: 12px; }
-  .otro-nivel-card .course-price { padding: 14px 0 14px; }
-  .otro-nivel-card .course-price-val { font-size: clamp(28px, 3vw, 42px); }
-  .otro-nivel-card .course-price-period { font-size: 14px; }
+  .otro-nivel-card .course-img-wrap {
+    aspect-ratio: 16/8;
+    margin-bottom: 0;
+    border-radius: 6px;
+    overflow: hidden;
+  }
 
-  /* Ocultar "desde" */
-  .otro-nivel-card .course-price-label { display: none; }
-
-  /* Botón */
-  .otro-nivel-card .course-cta { margin: 0 20px 20px; padding: 13px 20px; font-size: 16px; }
+  /* Textos más grandes */
+  .otro-nivel-card .course-badge { font-size: 12px; padding-top: 16px; }
+  .otro-nivel-card .course-name { font-size: clamp(28px, 3vw, 42px); margin-bottom: 8px; }
+  .otro-nivel-card .course-price {
+    padding: 12px 20px 16px;
+    border-top: 1px solid var(--line);
+  }
+  .otro-nivel-card .course-price-val { font-size: clamp(28px, 3vw, 40px); }
+  .otro-nivel-card .course-price-period { font-size: 12px; }
+  .otro-nivel-card .course-cta { margin: 0 20px 20px; padding: 14px; font-size: 15px; }
 
   /* Testimonials: alinear al margen izquierdo igual que otras secciones */
   .testimonials { padding-left: 60px !important; padding-right: 60px !important; }
