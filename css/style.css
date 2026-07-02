@@ -1169,6 +1169,14 @@ footer {
   .course-name { font-size: clamp(30px, 2.5vw, 42px); }
   .course-price-val { font-size: clamp(28px, 2.5vw, 38px); }
 
+  /* Desktop: botón curso se ajusta al contenido, centrado */
+  .course-cta {
+    display: table;
+    width: auto;
+    margin: 0 auto 28px;
+    padding: 12px 36px;
+  }
+
   /* ── CERT: 2 col, imagen llena la derecha ── */
   .cert {
     padding: 0;
@@ -1287,6 +1295,24 @@ footer {
     display: block;
     padding: 0;
   }
+
+  /* Fix auto en mobile: tamaño adecuado y sticky funcional */
+  #car-scroll-section {
+    height: 220vh;
+    /* Nunca poner overflow:hidden aquí — rompe position:sticky en iOS */
+    overflow: visible;
+  }
+  .car-sticky-container {
+    /* En iOS, overflow:hidden en contenedor rompe sticky → usar clip */
+    overflow: clip;
+  }
+  #scroll-car {
+    width: 110vw;    /* más grande en mobile para que se vea bien */
+    max-width: none;
+  }
+  .car-label-val {
+    font-size: 28px;   /* reducir para que quepa en mobile */
+  }
 }
 
 /* ================================================================
@@ -1347,7 +1373,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow: clip;        /* clip no afecta el layout pero evita scroll bars */
   background: var(--black);
 }
 .words-display {
@@ -1358,7 +1384,7 @@ footer {
   align-items: center;
   justify-content: center;
   overflow: visible;
-  padding-right: 0.15em;
+  padding: 0 0.2em;
 }
 
 .words-sticky::before {
@@ -1375,11 +1401,15 @@ footer {
   font-family: var(--display);
   font-style: italic;
   font-weight: 900;
-  font-size: clamp(36px, 8vw, 130px);
+  /* Reduce el clamp para que "VELOCIDAD" nunca se corte:
+     9 letras × ~0.62em ≈ 5.6em. Con 100vw / 5.6 ≈ 17.8vw → usamos 15vw como límite seguro */
+  font-size: clamp(36px, 15vw, 120px);
   text-transform: uppercase;
   letter-spacing: -.02em;
   line-height: 1;
   white-space: nowrap;
+  max-width: 96vw;           /* garantía extra: nunca mayor al 96% del viewport */
+  text-align: center;
   opacity: 0;
   transform: translateY(60px) scale(.94);
   transition: opacity .45s ease, transform .45s ease, filter .45s ease;
@@ -1428,4 +1458,49 @@ canvas#particleCanvas {
 /* Lazy loading hint para imágenes de fondo */
 .hero-slide {
   content-visibility: auto;
+}
+
+/* ── MOBILE PERFORMANCE: reducir efectos pesados ── */
+@media (max-width: 1023px) {
+  /* Deshabilitar parallax de luces (muy costoso en mobile) */
+  .ambient-light {
+    display: none;
+  }
+  .light-beam {
+    display: none;
+  }
+  /* Simplificar scanlines */
+  body::before {
+    display: none;
+  }
+  /* Reducir blur costoso */
+  nav {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(8,8,8,0.97);
+  }
+  /* Canvas de partículas: ocultar en mobile para mejorar FPS */
+  #particleCanvas {
+    display: none;
+  }
+  /* Simplificar sombras del auto */
+  #scroll-car {
+    filter: drop-shadow(0 0 12px rgba(237,109,34,.4));
+  }
+  #scroll-car.moving {
+    filter: drop-shadow(0 0 12px rgba(237,109,34,.4));
+  }
+  /* Reducir animación de fondo */
+  body::after {
+    animation: none;
+    opacity: 0.6;
+  }
+  /* contact glow: más ligero */
+  .contact::before {
+    display: none;
+  }
+  /* course-card: sin hover transform en mobile */
+  .course-card:hover {
+    transform: none;
+  }
 }

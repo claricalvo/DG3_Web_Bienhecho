@@ -87,7 +87,8 @@ function updateDots() {
 (function() {
   const lights = document.querySelectorAll('.ambient-light');
   const beam   = document.querySelector('.light-beam');
-  if (!lights.length) return;
+  // Skip parallax on mobile — CSS already hides them, but skip JS too for performance
+  if (!lights.length || window.innerWidth < 1024) return;
 
   let ticking = false;
 
@@ -130,7 +131,8 @@ function updateDots() {
 // Puntos naranjas que flotan lentamente como chispas de un escape de F1
 (function() {
   const canvas = document.getElementById('particleCanvas');
-  if (!canvas) return;
+  // Skip particle animation on mobile for performance
+  if (!canvas || window.innerWidth < 1024) return;
   const ctx = canvas.getContext('2d');
 
   function resize() {
@@ -209,15 +211,28 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const speedVal = document.getElementById('carSpeedVal');
   if (!section || !car) return;
 
-  const startVw = -110;
-  const endVw   =  110;
+  const isMobile = () => window.innerWidth < 1024;
+
+  // Mobile: el auto es más ancho respecto al viewport → ajustar offsets
+  function getOffsets() {
+    return isMobile()
+      ? { start: -120, end: 120 }   // sale más afuera para que se vea el recorrido
+      : { start: -110, end:  110 };
+  }
 
   function updateCar() {
     const rect       = section.getBoundingClientRect();
     const scrollable = section.offsetHeight - window.innerHeight;
-    const progress   = Math.min(Math.max(-rect.top / scrollable, 0), 1);
 
-    const vw = startVw + (endVw - startVw) * progress;
+    // Protección contra división por cero (sección muy corta o viewport muy grande)
+    if (scrollable <= 0) {
+      car.style.transform = `translateX(0vw) translateY(-50%)`;
+      return;
+    }
+
+    const progress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+    const { start, end } = getOffsets();
+    const vw = start + (end - start) * progress;
     car.style.transform = `translateX(${vw}vw) translateY(-50%)`;
 
     const speed = Math.round(Math.sin(progress * Math.PI) * 320);
@@ -231,7 +246,13 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     if (!ticking) { requestAnimationFrame(() => { updateCar(); ticking = false; }); ticking = true; }
   }, { passive: true });
   window.addEventListener('resize', updateCar);
-  updateCar();
+
+  // En mobile: asegurar que el primer render ocurre después del layout
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateCar);
+  } else {
+    updateCar();
+  }
 })();
 
 
@@ -311,7 +332,7 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const el = document.getElementById('aboutFlickity');
   if (!el || typeof Flickity === 'undefined') return;
   new Flickity(el, {
-    wrapAround:    true,
+    wrapAround:    true,          // infinite loop
     autoPlay:      3000,
     pauseAutoPlayOnHover: false,
     cellAlign:     'center',
@@ -320,7 +341,9 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     pageDots:      false,
     freeScroll:    false,
     friction:      0.28,
-    selectedAttraction: 0.025
+    selectedAttraction: 0.025,
+    initialIndex:  0,
+    imagesLoaded:  true,
   });
 })();
 
