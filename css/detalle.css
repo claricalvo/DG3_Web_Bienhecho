@@ -280,15 +280,15 @@
   .otros-niveles .section-title .light,
   .otros-niveles .section-title .bold { color: var(--black); -webkit-text-fill-color: var(--black); }
   /* Divider blanco para que se lea sobre fondo naranja */
-  .otros-niveles .divider::before { background: rgba(255,255,255,.7); box-shadow: none; }
+  .otros-niveles .divider::before { background: rgba(8,8,8,.6); box-shadow: none; }
   .otros-niveles .divider::after { background: rgba(255,255,255,.3); }
   .otros-niveles__grid { flex-direction: row; gap: 16px; margin-top: 16px; }
   .otros-niveles__grid .otro-nivel-card { flex: 1; }
   /* Reducir padding interno de las tarjetas para que entren en pantalla */
-  .otro-nivel-card .course-card-header { padding: 16px 16px 12px; }
+  .otro-nivel-card .course-card-header { padding: 16px 16px 18px; }
   .otro-nivel-card .course-img-wrap { aspect-ratio: 16/7; margin-bottom: 12px; }
-  .otro-nivel-card .course-name { font-size: clamp(24px, 3vw, 36px); }
-  .otro-nivel-card .course-price { padding-bottom: 12px; }
+  .otro-nivel-card .course-name { font-size: clamp(24px, 3vw, 40px); }
+  .otro-nivel-card .course-price { padding-bottom: 16px; }
   .otro-nivel-card .course-cta { margin: 0 16px 16px; padding: 12px; }
 
   /* Testimonials: alinear al margen izquierdo igual que otras secciones */
