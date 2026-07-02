@@ -1354,7 +1354,10 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
+  padding-right: 0.1em;
 }
+
 .words-sticky::before {
   content: '';
   position: absolute;
