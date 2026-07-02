@@ -173,6 +173,16 @@
   margin-top: 24px;
 }
 
+/* Bordes redondeados + sombra en todas las pantallas */
+.otro-nivel-card {
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0,0,0,.4);
+}
+
+/* Ocultar "desde" en todos los breakpoints */
+.otro-nivel-card .course-price-label { display: none; }
+
 .otro-nivel-card .course-card-header { padding-bottom: 24px; }
 .otro-nivel-card .course-cta { margin-top: 0; }
 
@@ -284,12 +294,36 @@
   .otros-niveles .divider::after { background: rgba(255,255,255,.3); }
   .otros-niveles__grid { flex-direction: row; gap: 16px; margin-top: 16px; }
   .otros-niveles__grid .otro-nivel-card { flex: 1; }
-  /* Reducir padding interno de las tarjetas para que entren en pantalla */
-  .otro-nivel-card .course-card-header { padding: 16px 16px 18px; }
-  .otro-nivel-card .course-img-wrap { aspect-ratio: 16/7; margin-bottom: 12px; }
-  .otro-nivel-card .course-name { font-size: clamp(24px, 3vw, 40px); }
-  .otro-nivel-card .course-price { padding-bottom: 16px; }
-  .otro-nivel-card .course-cta { margin: 0 16px 16px; padding: 12px; }
+
+  /* Tarjetas: bordes redondeados + sombra para separar del fondo naranja */
+  .otro-nivel-card {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+      0 8px 32px rgba(0,0,0,.45),
+      0 2px 8px rgba(0,0,0,.3);
+    border: 1px solid rgba(0,0,0,.15);
+  }
+
+  /* Reducir tamaño de imagen */
+  .otro-nivel-card .course-img-wrap {
+    aspect-ratio: 16/6;
+    margin-bottom: 0;
+  }
+
+  /* Agrandar textos */
+  .otro-nivel-card .course-card-header { padding: 20px 20px 0; }
+  .otro-nivel-card .course-badge { font-size: 11px; margin-bottom: 6px; }
+  .otro-nivel-card .course-name { font-size: clamp(28px, 3.2vw, 46px); margin-bottom: 12px; }
+  .otro-nivel-card .course-price { padding: 14px 0 14px; }
+  .otro-nivel-card .course-price-val { font-size: clamp(28px, 3vw, 42px); }
+  .otro-nivel-card .course-price-period { font-size: 14px; }
+
+  /* Ocultar "desde" */
+  .otro-nivel-card .course-price-label { display: none; }
+
+  /* Botón */
+  .otro-nivel-card .course-cta { margin: 0 20px 20px; padding: 13px 20px; font-size: 16px; }
 
   /* Testimonials: alinear al margen izquierdo igual que otras secciones */
   .testimonials { padding-left: 60px !important; padding-right: 60px !important; }
