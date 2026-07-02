@@ -922,7 +922,7 @@ footer {
   color: var(--black);
   font-family: var(--display); font-style: italic; font-weight: 900;
   font-size: 18px; letter-spacing: .06em; text-transform: uppercase;
-  padding: 12px 22px;
+  padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   border-radius: 100px;
@@ -1083,6 +1083,9 @@ footer {
   padding: 0 60px 100px;
 }
 .hero-content { max-width: 720px; }
+.about-layout-desktop {
+  max-width: 50%;
+}
 .hero-cta {
   display: flex;
   justify-content: flex-end;
