@@ -296,7 +296,7 @@ section { padding: 72px 24px; position: relative; }
 }
 .section-title {
   font-family: var(--display); text-transform: uppercase;
-  letter-spacing: -.01em; line-height: 1; overflow: hidden;
+  letter-spacing: -.01em; line-height: 1.05;
   display: flex; flex-direction: row; align-items: baseline;
   flex-wrap: wrap; gap: 0 10px;
 }
@@ -1121,29 +1121,29 @@ footer {
   .stat-label { font-size: 12px; }
 
   /* ── WHAT ── */
-  .what { padding: 96px 0; }
-  .what .section-label,
-  .what .section-title,
-  .what .divider { padding-left: 60px; padding-right: 60px; }
+  .what { padding: 0; }
   .what-layout-desktop {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-    margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: stretch;
+    min-height: 480px;
   }
   .what-text-col {
-    padding: 0 60px;
+    padding: 80px 60px;
     display: flex;
-    align-items: flex-start;
-    gap: 60px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
   }
-  .what-text-col .what-body { font-size: 17px; max-width: 560px; }
-  .what-text-col .btn-wrap { margin-left: auto; }
-  /* Video: sangra hasta los bordes */
+  .what-text-col .what-body { font-size: 17px; max-width: 520px; }
+  .what-text-col .btn-wrap { margin-top: 8px; }
   .what-layout-desktop .video-frame {
     margin: 0;
     width: 100%;
-    aspect-ratio: 21/9;
+    height: 100%;
+    min-height: 400px;
+    aspect-ratio: auto;
     border-left: none;
     border-right: none;
   }
