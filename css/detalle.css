@@ -131,7 +131,7 @@
 
 .timeline-week {
   font-family: var(--mono);
-  font-size: 16px;
+  font-size: 12px;
   letter-spacing: .18em;
   color: var(--orange);
   text-transform: uppercase;
