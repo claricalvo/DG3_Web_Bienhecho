@@ -13,7 +13,7 @@ const CURSOS_APEX = {
     nivel: "PRINCIPIANTE",
     destacado: false,
     titulo: "LUZ VERDE",
-    imagenHero: "images/curso-luz-verde-hero.jpg",
+    imagenHero: "images/nivel-1.png",
     imagenHeroAlt: "Piloto entrenando en simulador de Fórmula 1 con triple pantalla",
     precio: 180000,
     duracion: "6 semanas",
@@ -26,7 +26,7 @@ const CURSOS_APEX = {
       { texto: "Grabación de carreras", incluido: false },
       { texto: "Acceso a ligas privadas", incluido: false }
     ],
-    imagenCard: "images/card-luz-verde-thumb.jpg",
+    imagenCard: "images/nivel-1.png",
     timeline: [
       { semana: "SEMANA 1", titulo: "Primer contacto", desc: "Familiarización con el simulador, posición de manejo y configuración de periféricos. Primeras vueltas libres para perder el miedo al límite." },
       { semana: "SEMANA 2", titulo: "Frenada y punto de frenada", desc: "Técnica de trail braking, distancias de frenada por curva y lectura de la pista. Ejercicios de consistencia de vueltas." },
@@ -41,7 +41,7 @@ const CURSOS_APEX = {
     nivel: "INTERMEDIO",
     destacado: true,
     titulo: "PUESTA A PUNTO",
-    imagenHero: "images/curso-puesta-a-punto-hero.jpg",
+    imagenHero: "images/nivel-2.png",
     imagenHeroAlt: "Detalle de casco de simracing profesional con sistema de comunicación",
     precio: 320000,
     duracion: "8 semanas",
@@ -55,7 +55,7 @@ const CURSOS_APEX = {
       { texto: "Certificado Nivel 2 APEX", incluido: true },
       { texto: "Acceso a ligas privadas", incluido: false }
     ],
-    imagenCard: "images/card-puesta-a-punto-thumb.jpg",
+    imagenCard: "images/nivel-2.png",
     timeline: [
       { semana: "SEMANA 1", titulo: "Diagnóstico de nivel", desc: "Sesión de evaluación: análisis de telemetría base, identificación de áreas de mejora y planteo del plan de trabajo." },
       { semana: "SEMANA 2", titulo: "Lectura de telemetría", desc: "Interpretación de trazados de velocidad, frenada y aceleración. Comparativa contra referencia del instructor." },
@@ -72,7 +72,7 @@ const CURSOS_APEX = {
     nivel: "AVANZADO",
     destacado: false,
     titulo: "BANDERA A CUADROS",
-    imagenHero: "images/curso-bandera-a-cuadros-hero.jpg",
+    imagenHero: "images/nivel-3.jpg",
     imagenHeroAlt: "Monoplaza de Fórmula 1 a alta velocidad con efecto de movimiento",
     precio: 520000,
     duracion: "10 semanas",
@@ -85,7 +85,7 @@ const CURSOS_APEX = {
       { texto: "Certificado Nivel 3 APEX", incluido: true },
       { texto: "Acceso a ligas privadas APEX", incluido: true }
     ],
-    imagenCard: "images/card-bandera-a-cuadros-thumb.jpg",
+    imagenCard: "images/nivel-3.jpg",
     timeline: [
       { semana: "SEMANA 1", titulo: "Evaluación avanzada", desc: "Sesión de diagnóstico con ingenieros. Definición de objetivos, circuitos de trabajo y métricas de progreso." },
       { semana: "SEMANA 2", titulo: "Racecraft y defensa", desc: "Posicionamiento en pista, defensa de posición, maniobras permitidas y lectura del rival." },
