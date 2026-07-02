@@ -278,14 +278,18 @@
   .otros-niveles__grid .otro-nivel-card { flex: 1; }
 
   /* Contacto: imagen ajustada */
-  .contact-img-col img {
-    width: 100%;
-    height: 100%;
-    max-width: 440px;
-    margin-left: auto;
-    display: block;
-    object-fit: cover;
-  }
+  .contact-img-col {
+  height: 100%;
+}
+.contact-img-col img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+}
+.contact-layout-desktop {
+  align-items: stretch;
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
