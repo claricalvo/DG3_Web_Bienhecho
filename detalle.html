@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>Detalle del curso &mdash; APEX Racing Academy</title>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700;1,900&family=Barlow:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/logo.png">
   <link rel="stylesheet" href="css/style.css">
   <!-- CSS exclusivo de esta página -->
   <link rel="stylesheet" href="css/detalle.css">
@@ -22,7 +23,7 @@
 
 <!-- NAV (idéntico al home) -->
 <nav id="mainNav">
-  <div class="nav-logo"><img src="images/logo.png" alt="APEX"></div>
+  <div class="nav-logo"><img src="images/logo.png" alt="APEX" fetchpriority="high"></div>
   <div class="nav-links-desktop">
     <a href="index.html" class="nav-cta-btn">HOME</a>
   </div>
@@ -199,9 +200,9 @@
        comportamientos del home; cursos-data.js y detalle.js
        son los nuevos, exclusivos de esta página.
        ===================================================== -->
-  <script src="js/main.js"></script>
-  <script src="js/cursos-data.js"></script>
-  <script src="js/detalle.js"></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/cursos-data.js" defer></script>
+  <script src="js/detalle.js" defer></script>
 
 </body>
 </html>

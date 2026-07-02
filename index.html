@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="theme-color" content="#080808">
   <title>APEX &mdash; Simuladores F1</title>
 
   <!-- Performance: preconnect a orígenes externos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <!-- Preload LCP crítico: imagen hero activa y logo -->
+  <link rel="preload" as="image" href="images/carrusel-1.jpg" fetchpriority="high">
+  <link rel="preload" as="image" href="images/logo.png">
 
   <!-- Fonts con display=swap para no bloquear render -->
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700;1,900&family=Barlow:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
@@ -32,7 +37,7 @@
 
 <!-- NAV -->
 <nav id="mainNav">
-  <div class="nav-logo"><img src="images/logo.png" alt="APEX"></div>
+  <div class="nav-logo"><img src="images/logo.png" alt="APEX" fetchpriority="high"></div>
   <!-- Desktop nav links -->
   <div class="nav-links-desktop">
     <a href="#about">Nosotros</a>

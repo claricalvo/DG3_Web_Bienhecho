@@ -1,14 +1,18 @@
 // APEX Racing Academy — Service Worker
-const CACHE = 'apex-v1';
+const CACHE = 'apex-v2';
 const ASSETS = [
   '/',
   '/index.html',
+  '/detalle.html',
   '/css/style.css',
+  '/css/detalle.css',
   '/js/main.js',
+  '/js/cursos-data.js',
+  '/js/detalle.js',
   '/images/logo.png',
   '/images/carrusel-1.jpg',
   '/images/carrusel-3.png',
-  '/images/carrusel-5.jpg',
+  '/images/pista.jpeg',
   '/images/about1.jpg',
   '/images/about2.jpg',
   '/images/about3.jpg',
@@ -43,7 +47,6 @@ self.addEventListener('activate', e => {
 // Fetch: cache-first para assets propios, network-first para externos
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
-  // Solo cachear requests GET
   if (e.request.method !== 'GET') return;
   // Network-first para fuentes y CDN externos
   if (url.hostname !== self.location.hostname) {
