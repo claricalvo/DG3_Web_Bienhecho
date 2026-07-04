@@ -374,16 +374,17 @@ section { padding: 72px 40px; position: relative; }
 }
 
 /* ── ABOUT ── */
-.about { background: var(--dark); border-top: 1px solid var(--line); padding: 48px 24px 36px; }
+.about { background: var(--dark); border-top: 1px solid var(--line); padding: 40px 40px 28px; text-align: center; }
 .about-text {
-  font-size: 15px; font-weight: 300; line-height: 1.7;
-  color: rgba(245,245,245,.7); margin-bottom: 16px;
+  font-size: 14px; font-weight: 300; line-height: 1.5;
+  color: rgba(245,245,245,.7); margin-bottom: 8px;
+  max-width: 640px; margin-left: auto; margin-right: auto;
 }
 .about-stats {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1px; background: var(--line); margin-top: 56px;
+  gap: 1px; background: var(--line); margin-top: 36px;
 }
-.stat-box { background: var(--dark); padding: 24px 16px; text-align: center; }
+.stat-box { background: var(--dark); padding: 14px 16px; text-align: center; }
 .stat-num {
   font-family: var(--display); font-weight: 900; font-style: italic;
   font-size: 42px; color: var(--orange); line-height: 1;
@@ -607,7 +608,7 @@ footer {
    SCROLL CAR SECTION
 ========================================== */
 #car-scroll-section {
-  height: 150vh;
+  height: 140vh;
   position: relative;
   background: var(--black);
   border-top: 1px solid var(--line);
@@ -756,7 +757,7 @@ footer {
 
 /* ── 3. CAR SECTION: sin espacio negro arriba y abajo ── */
 #car-scroll-section {
-  height: 220vh;
+  height: 140vh;
   position: relative;
   background: transparent;
   border: none;
@@ -814,6 +815,19 @@ footer {
   pointer-events: none;
 }
 .courses.shared-bg > * { position: relative; z-index: 1; }
+
+/* ── COURSES fondo imagen ── */
+.courses.shared-bg {
+  background-image: url('../images/FONDO2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: local;
+}
+.courses.shared-bg::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 0;
+  background: rgba(8,8,8,.72);
+}
 
 .courses-intro {
   font-size: 15px; font-weight: 300; line-height: 1.7;
@@ -1008,7 +1022,7 @@ footer {
 
   /* ── CONTENEDOR BASE ── */
   section {
-    padding: 96px 80px;
+    padding: 96px 120px;
   }
 
   /* ── TIPOGRAFÍA DESKTOP — tamaños reales para pantalla grande ── */
@@ -1047,7 +1061,7 @@ footer {
   }
 
   /* ── NAV DESKTOP ── */
-  nav { padding: 16px 60px; }
+  nav { padding: 16px 120px; }
   .nav-menu-btn { display: none; }
   .nav-links-desktop {
     display: flex;
@@ -1087,49 +1101,50 @@ footer {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-end;
-    padding: 0 80px 100px;
+    padding: 0 120px 100px;
   }
   .hero-content { max-width: 860px; }
   .hero-cta {
     display: flex;
     justify-content: flex-start;
-    margin-top: 36px;
+    margin-top: 28px;
     align-self: flex-start;
     width: auto;
   }
   .btn-primary { font-size: 17px; padding: 16px 44px; }
 
-  /* Botones siempre a la derecha */
-  .btn-wrap,
+  /* Botones — por defecto derecha, excepto en what y course que tienen su propio override */
   .desktop-cta {
     display: flex !important;
     justify-content: flex-end !important;
   }
 
   /* ── ABOUT ── */
-  .about { padding: 48px 80px 36px; }
-  .about-text { max-width: 700px; font-size: 16px; line-height: 1.55; margin: 0 auto; text-align: center; }
+  .about { padding: 40px 120px 28px; }
+  .about-text { max-width: 680px; font-size: 15px; line-height: 1.5; margin: 0 auto; text-align: center; }
   .about-layout-desktop { max-width: 100%; text-align: center; }
-  .about .section-label,
-  .about .section-title,
-  .about .divider { text-align: center; justify-content: center; }
+  .about .section-label { text-align: center; }
+  .about .section-title { justify-content: center !important; }
   .about-desktop-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 60px;
     align-items: start;
-    margin: 40px 0 48px;
+    margin: 16px 0 20px;
   }
   .about-text { max-width: 600px; font-size: 16px; line-height: 1.7; }
   .about .divider { display: none; }
-  .about .section-title { margin-bottom: 12px; }
+  .about .section-title { margin-bottom: 8px; }
   .about-slider { aspect-ratio: 4/5; margin: 0; }
   .about-carousel { display: none !important; }
   .about-imgs-row { display: none !important; }
   .about-stats {
     grid-template-columns: repeat(4, 1fr);
     gap: 0;
-    margin-top: 56px;
+    margin-top: 28px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .stat-num { font-size: clamp(36px, 3.5vw, 52px); }
   .stat-label { font-size: 12px; }
@@ -1144,14 +1159,14 @@ footer {
     min-height: 480px;
   }
   .what-text-col {
-    padding: 60px 60px;
+    padding: 48px 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
   }
   .what-text-col .what-body { font-size: 17px; max-width: 520px; }
-  .what-text-col .btn-wrap { margin-top: 12px; display: flex; justify-content: flex-start; }
+  .what-text-col .btn-wrap { margin-top: 16px; display: flex !important; justify-content: flex-start !important; }
   .what-text-col .section-title { margin-bottom: 0; }
   .what-layout-desktop .video-frame {
     margin: 0;
@@ -1167,10 +1182,10 @@ footer {
   .sponsors { padding: 32px 0; }
 
   /* ── TESTIMONIALS ── */
-  .testimonials { padding: 96px 60px; }
+  .testimonials { padding: 96px 120px; }
 
   /* ── COURSES ── */
-  .courses { padding: 48px 60px 60px; }
+  .courses { padding: 48px 120px 60px; }
   .courses-intro { font-size: 17px; }
   .courses-grid {
     flex-direction: row !important;
@@ -1189,6 +1204,9 @@ footer {
     padding: 12px 36px;
   }
 
+  /* ── COURSE 004 ── */
+  .course { padding: 96px 120px; }
+
   /* ── CERT: 2 col, imagen llena la derecha ── */
   .cert {
     padding: 0;
@@ -1200,7 +1218,7 @@ footer {
     min-height: 560px;
   }
   .cert-text-col {
-    padding: 80px 60px;
+    padding: 80px 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1225,7 +1243,7 @@ footer {
   }
 
   /* ── FAQ ── */
-  .faq { padding: 96px 60px; }
+  .faq { padding: 96px 120px; }
   .faq-layout-desktop {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1247,7 +1265,7 @@ footer {
     min-height: 580px;
   }
   .contact-text-col {
-    padding: 80px 60px;
+    padding: 80px 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1277,7 +1295,7 @@ footer {
 
   /* ── FOOTER ── */
   footer {
-    padding: 40px 60px;
+    padding: 40px 120px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -1335,12 +1353,12 @@ footer {
    CARRUSEL FLICKITY — ¿Quiénes somos?
 ================================================================ */
 .about-flickity {
-  margin: 20px -24px 0;
+  margin: 14px -24px 0;
 }
 .about-flk-cell {
   width: 72vw;
-  height: 48vw;
-  max-height: 300px;
+  height: 38vw;
+  max-height: 240px;
   margin-right: 12px;
   background-size: cover;
   background-position: center;
