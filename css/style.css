@@ -800,7 +800,7 @@ footer {
    SCROLL CAR SECTION
 ========================================== */
 #car-scroll-section {
-  height: 110vh;
+  height: 140vh;
   position: relative;
   background: var(--black);
   border-top: 1px solid var(--line);
@@ -949,7 +949,7 @@ footer {
 
 /* ── 3. CAR SECTION: sin espacio negro arriba y abajo ── */
 #car-scroll-section {
-  height: 110vh;
+  height: 140vh;
   position: relative;
   background: transparent;
   border: none;
