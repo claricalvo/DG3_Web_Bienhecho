@@ -666,36 +666,36 @@ section { padding: 72px 40px; position: relative; }
 }
 .newsletter-row {
   display: flex;
+  flex-direction: column;
   width: 100%;
-  max-width: 580px;
+  max-width: 420px;
+  gap: 0;
 }
 .newsletter-input {
   flex: 1;
-  background: rgba(245,245,245,.07);
+  width: 100%;
   border: 1px solid rgba(245,245,245,.2);
-  border-right: none;
-  color: var(--white);
-  font-family: var(--body);
-  font-size: 15px;
-  padding: 15px 20px;
-  outline: none;
-  transition: border-color .2s;
+  border-bottom: none;
+  padding: 18px 20px;
 }
 .newsletter-input::placeholder { color: rgba(245,245,245,.3); }
 .newsletter-input:focus { border-color: var(--orange); }
 .newsletter-submit {
+  width: 100%;
   background: var(--orange);
   color: var(--black);
   border: none;
+
   font-family: var(--display);
   font-style: italic;
   font-weight: 900;
   font-size: 15px;
   letter-spacing: .06em;
   text-transform: uppercase;
-  padding: 15px 28px;
+
+  padding: 18px 20px;
+
   cursor: pointer;
-  white-space: nowrap;
   transition: background .18s;
 }
 .newsletter-submit:hover { background: #fff; }
