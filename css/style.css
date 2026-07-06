@@ -616,7 +616,7 @@ section { padding: 72px 40px; position: relative; }
 }
 .newsletter-overlay {
   position: absolute; inset: 0;
-  background: rgba(8,8,8,.68);
+  background: rgba(8,8,8,.40);
 }
 .newsletter-content {
   position: relative; z-index: 2;
