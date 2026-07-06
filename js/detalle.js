@@ -58,6 +58,32 @@ document.addEventListener("DOMContentLoaded", function () {
         lista.appendChild(li);
       });
     }
+
+    // ── Poblar sidebar directamente (no depende de evento) ──
+    var sNivel    = document.getElementById("sidebar-nivel");
+    var sTitulo   = document.getElementById("sidebar-titulo");
+    var sPrecio   = document.getElementById("sidebar-precio");
+    var sDuracion = document.getElementById("sidebar-duracion");
+    var sFeatures = document.getElementById("sidebar-features");
+
+    if (sNivel)    sNivel.textContent    = c.nivel;
+    if (sTitulo)   sTitulo.textContent   = c.titulo;
+    if (sPrecio)   sPrecio.textContent   = "$" + c.precio.toLocaleString("es-AR");
+    if (sDuracion) sDuracion.textContent = "/ " + c.duracion;
+
+    if (sFeatures) {
+      sFeatures.innerHTML = "";
+      c.caracteristicas.forEach(function (item) {
+        var li = document.createElement("li");
+        if (!item.incluido) li.classList.add("feat-disabled");
+        var checkClass = item.incluido ? "feat-check" : "feat-cross";
+        var symbol = item.incluido ? "✓" : "✗";
+        li.innerHTML =
+          '<span class="' + checkClass + '">' + symbol + '</span>' +
+          '<span class="' + (item.incluido ? "" : "feat-disabled") + '">' + item.texto + '</span>';
+        sFeatures.appendChild(li);
+      });
+    }
   }
 
   /* -----------------------------------------------------

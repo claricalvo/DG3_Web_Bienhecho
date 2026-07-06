@@ -244,29 +244,39 @@ document.addEventListener('cursoLoaded', function(e) {
   }
 });
 
-// ── SIDEBAR: mostrar solo durante secciones programa y pagos ──
+// ── SIDEBAR: visible en todo momento en desktop ──
+// Se muestra siempre que el viewport sea desktop (≥1024px).
+// El sticky CSS se encarga de que acompañe el scroll.
+// Se oculta suavemente cuando se llega a las secciones después de pagos.
 (function() {
   const sidebar = document.getElementById('detalle-sidebar');
   if (!sidebar) return;
 
+  // Ocultar en mobile desde JS también (por si el CSS no alcanza)
   function updateSidebar() {
-    if (window.innerWidth < 1024) return; // solo desktop
-    const programa    = document.getElementById('programa');
+    if (window.innerWidth < 1024) {
+      sidebar.style.display = 'none';
+      return;
+    }
+    sidebar.style.display = '';
+
     const metodosPago = document.getElementById('metodos-pago');
-    if (!programa || !metodosPago) return;
+    const testimonials = document.getElementById('pilotos');
+    if (!metodosPago || !testimonials) { sidebar.style.opacity = '1'; return; }
 
     const scrollY = window.scrollY;
-    const start   = programa.offsetTop - 120;
-    const end     = metodosPago.offsetTop + metodosPago.offsetHeight + 60;
+    // Ocultar cuando el scroll supera el fin de métodos de pago
+    const hideFrom = metodosPago.offsetTop + metodosPago.offsetHeight - 100;
 
-    const inRange = scrollY >= start && scrollY <= end;
-    sidebar.style.opacity   = inRange ? '1' : '0';
-    sidebar.style.pointerEvents = inRange ? 'auto' : 'none';
+    const visible = scrollY < hideFrom;
+    sidebar.style.opacity      = visible ? '1' : '0';
+    sidebar.style.pointerEvents = visible ? 'auto' : 'none';
   }
 
   window.addEventListener('scroll', updateSidebar, { passive: true });
   window.addEventListener('resize', updateSidebar);
-  setTimeout(updateSidebar, 300); // esperar a que JS cargue el curso
+  // Correr después de que detalle.js pueble el contenido
+  setTimeout(updateSidebar, 100);
 })();
 </script>
 </body>
