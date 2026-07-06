@@ -1837,6 +1837,10 @@ canvas#particleCanvas {
 
 /* ── MOBILE PERFORMANCE: reducir efectos pesados ── */
 @media (max-width: 1023px) {
+  /* Reducir la velocidad del carrusel de testimonios en mobile */
+  .testi-marquee {
+    animation: testiScroll 65s linear infinite; /* Subió de 38s a 65s para ir más despacio */
+  }
   /* Deshabilitar parallax de luces (muy costoso en mobile) */
   .ambient-light {
     display: none;
