@@ -20,10 +20,14 @@ if (heroSection) {
 
 // ── MENU ──
 function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('open');
-  // Bloquear scroll cuando el menu está abierto
+  const menu = document.getElementById('mobileMenu');
+  const nav = document.getElementById('mainNav');
+
+  menu.classList.toggle('open');
+  nav.classList.toggle('menu-open');
+
   document.body.style.overflow =
-    document.getElementById('mobileMenu').classList.contains('open') ? 'hidden' : '';
+    menu.classList.contains('open') ? 'hidden' : '';
 }
 
 // Cerrar menú al tocar fuera
