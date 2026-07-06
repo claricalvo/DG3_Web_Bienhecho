@@ -590,15 +590,19 @@
   }
 
   /* Otros niveles: sin sidebar → márgenes completos */
-  .detalle-main .otros-niveles {
-    padding: 60px 120px !important;
+  /* Cambiás el selector para que apunte a la sección ahora que está afuera */
+  .otros-niveles {
+    padding: 72px 120px !important; 
+    width: 100%;
   }
+  
   .otros-niveles__grid {
     flex-direction: row;
     gap: 24px;
     padding: 0;
     margin-top: 24px;
   }
+  
   .otros-niveles__grid .otro-nivel-card { flex: 1; }
 }
 
