@@ -384,39 +384,76 @@
 
 @media (min-width: 1024px) {
 
-  /* Hero desktop: 2 columnas */
+  /* ════════════════════════════════════════
+     FIX 1: HERO — imagen full viewport,
+     tarjeta de info flotando a la derecha
+     sobre la imagen con overlay
+  ════════════════════════════════════════ */
   .detalle-hero {
+    position: relative;
     flex-direction: row;
     min-height: 100vh;
     padding-top: 0;
     align-items: stretch;
+    overflow: hidden;
   }
 
+  /* Imagen ocupa TODA la pantalla como fondo */
   .detalle-hero__img {
-    width: 55%;
-    min-height: 100vh;
-    flex-shrink: 0;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    min-height: 100%;
+    background-size: cover;
+    background-position: center;
+    /* Oscurecer imagen para que el texto sea legible */
+    filter: brightness(.45) saturate(.8);
+    z-index: 0;
   }
 
+  /* Gradiente extra sobre la imagen para separar la tarjeta */
+  .detalle-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      rgba(8,8,8,.3) 0%,
+      rgba(8,8,8,.55) 48%,
+      rgba(8,8,8,.92) 62%,
+      rgba(8,8,8,.97) 100%
+    );
+    z-index: 1;
+  }
+
+  /* Tarjeta: flota a la derecha sobre la imagen */
   .detalle-hero__card {
-    flex: 1;
-    padding: 120px 48px 60px;
-    border-top: none;
-    border-left: 1px solid var(--line);
+    position: relative;
+    z-index: 2;
+    margin-left: auto;
+    width: 42%;
+    min-width: 480px;
+    max-width: 600px;
+    padding: 120px 60px 60px 48px;
+    background: transparent;
+    border: none;
     justify-content: center;
     overflow-y: auto;
   }
 
   .detalle-hero__titulo {
-    font-size: clamp(48px, 5vw, 72px);
+    font-size: clamp(48px, 4.5vw, 68px);
   }
 
-  /* Body: 2 columnas */
+  /* ════════════════════════════════════════
+     FIX 2: BODY — fondos full width,
+     contenido dentro de márgenes
+  ════════════════════════════════════════ */
   .detalle-body {
     flex-direction: row;
     align-items: flex-start;
     padding: 0;
-    gap: 40px;
+    gap: 0;
   }
 
   .detalle-main {
@@ -424,28 +461,109 @@
     min-width: 0;
   }
 
-  /* Unificamos el margen de todas las secciones en desktop */
+  /* Secciones: fondo llega al borde,
+     contenido respeta márgenes de 120px */
   .detalle-main section {
-    /* Le damos 60px arriba/abajo y 120px a los costados (igual que otros niveles) */
-    padding: 60px 120px; 
+    padding: 72px 120px;
     box-sizing: border-box;
     width: 100%;
   }
 
-  /* Sidebar sticky */
+  /* ════════════════════════════════════════
+     FIX 3: SIDEBAR STICKY
+     Acompaña el scroll durante secciones 1-2.
+     Tarjeta con nivel, nombre, features,
+     precio y botón INSCRIBIRSE.
+  ════════════════════════════════════════ */
   .detalle-sidebar {
-    width: 360px;
+    width: 340px;
     flex-shrink: 0;
-    padding: 72px 0 72px;
+    padding: 72px 40px 72px 0;
     background: transparent;
     border: none;
+    /* Alinear con primera sección del main */
+    align-self: flex-start;
   }
 
   .sidebar-card {
     position: sticky;
-    top: 100px;
+    top: 88px;        /* justo debajo del nav fijo */
+    background: var(--dark);
     border: 1px solid var(--line);
-    border-radius: 4px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,.5);
+    /* Ocultar cuando no está en rango — JS maneja esto con clase */
+    transition: opacity .3s ease, transform .3s ease;
+  }
+
+  /* Borde naranja arriba de la tarjeta */
+  .sidebar-card::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: var(--orange);
+  }
+
+  .sidebar-badge {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .22em;
+    color: var(--orange);
+    text-transform: uppercase;
+    display: block;
+    padding: 16px 20px 0;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-titulo {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 900;
+    font-size: clamp(26px, 2.5vw, 36px);
+    text-transform: uppercase;
+    color: var(--white);
+    line-height: .92;
+    margin: 0 0 0;
+    padding: 0 20px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .sidebar-features {
+    padding: 14px 20px;
+    margin: 0;
+    gap: 8px;
+  }
+
+  .sidebar-features li {
+    font-size: 13px;
+    gap: 8px;
+    line-height: 1.3;
+  }
+
+  .sidebar-precio {
+    padding: 12px 20px;
+    margin: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: none;
+    gap: 6px;
+  }
+
+  .sidebar-monto {
+    font-size: clamp(26px, 2.5vw, 34px);
+  }
+
+  .sidebar-duracion {
+    font-size: 11px;
+  }
+
+  .sidebar-card .course-cta {
+    display: block;
+    margin: 0 20px 20px;
+    text-align: center;
+    border-radius: 100px;
+    padding: 12px 20px;
+    font-size: 16px;
   }
 
   /* Timeline: 2 columnas */
@@ -466,18 +584,14 @@
   /* Métodos de pago: 2 columnas */
   .metodos-pago__grid { grid-template-columns: repeat(2, 1fr); }
 
-  /* Ajustamos la sección con fondo naranja */
-  .otros-niveles { 
-    /* Le dejamos el mismo padding exacto que a las demás secciones */
-    padding: 60px 120px !important; 
+  /* Otros niveles: fondo naranja full width, contenido con márgenes */
+  .otros-niveles {
+    padding: 60px 120px !important;
   }
-  
-  .otros-niveles__grid { 
-    flex-direction: row; 
-    gap: 24px; 
-    /* Reseteamos el padding interno de la grilla para que se alinee 
-       perfectamente con los textos de las secciones de arriba */
-    padding: 0; 
+  .otros-niveles__grid {
+    flex-direction: row;
+    gap: 24px;
+    padding: 0;
     margin-top: 24px;
   }
   .otros-niveles__grid .otro-nivel-card { flex: 1; }

@@ -117,6 +117,29 @@
 
   </div><!-- /detalle-main -->
 
+  <!-- ═══════════════════════════════════════════
+       FIX 3: SIDEBAR STICKY
+       Visible durante secciones 1 (programa) y 2 (pagos).
+       Contiene: nivel, nombre, features, precio, CTA.
+       JS lo oculta cuando el scroll pasa de esas secciones.
+  ═══════════════════════════════════════════ -->
+  <aside class="detalle-sidebar" id="detalle-sidebar">
+    <div class="sidebar-card" id="sidebar-card">
+      <!-- Badge nivel — JS rellena el contenido -->
+      <span class="sidebar-badge" id="sidebar-nivel">NIVEL</span>
+      <h2 class="sidebar-titulo" id="sidebar-titulo">CARGANDO...</h2>
+      <!-- Features con ✓/✗ -->
+      <ul class="sidebar-features" id="sidebar-features"></ul>
+      <!-- Precio -->
+      <div class="sidebar-precio">
+        <span class="sidebar-monto" id="sidebar-precio">$0</span>
+        <span class="sidebar-duracion" id="sidebar-duracion">/ 0 semanas</span>
+      </div>
+      <!-- CTA -->
+      <a href="#contact" class="course-cta course-cta--featured">INSCRIBIRSE</a>
+    </div>
+  </aside>
+
 </div><!-- /detalle-body -->
 
 <!-- NEWSLETTER / CONTACTO -->
@@ -199,5 +222,52 @@
 <script src="js/cursos-data.js"></script>
 <script src="js/detalle.js"></script>
 
+
+<script>
+// ── SIDEBAR: poblar datos cuando detalle.js carga el curso ──
+document.addEventListener('cursoLoaded', function(e) {
+  const c = e.detail;
+  if (!c) return;
+  const el = (id) => document.getElementById(id);
+  if (el('sidebar-nivel'))   el('sidebar-nivel').textContent   = c.nivel   || '';
+  if (el('sidebar-titulo'))  el('sidebar-titulo').textContent  = c.nombre  || '';
+  if (el('sidebar-precio'))  el('sidebar-precio').textContent  = c.precio  || '';
+  if (el('sidebar-duracion'))el('sidebar-duracion').textContent= c.duracion || '';
+  const ul = el('sidebar-features');
+  if (ul && c.caracteristicas) {
+    ul.innerHTML = c.caracteristicas.map(f =>
+      `<li>
+        <span class="${f.incluido ? 'feat-check' : 'feat-cross'}">${f.incluido ? '✓' : '✗'}</span>
+        <span class="${f.incluido ? '' : 'feat-disabled'}">${f.texto}</span>
+      </li>`
+    ).join('');
+  }
+});
+
+// ── SIDEBAR: mostrar solo durante secciones programa y pagos ──
+(function() {
+  const sidebar = document.getElementById('detalle-sidebar');
+  if (!sidebar) return;
+
+  function updateSidebar() {
+    if (window.innerWidth < 1024) return; // solo desktop
+    const programa    = document.getElementById('programa');
+    const metodosPago = document.getElementById('metodos-pago');
+    if (!programa || !metodosPago) return;
+
+    const scrollY = window.scrollY;
+    const start   = programa.offsetTop - 120;
+    const end     = metodosPago.offsetTop + metodosPago.offsetHeight + 60;
+
+    const inRange = scrollY >= start && scrollY <= end;
+    sidebar.style.opacity   = inRange ? '1' : '0';
+    sidebar.style.pointerEvents = inRange ? 'auto' : 'none';
+  }
+
+  window.addEventListener('scroll', updateSidebar, { passive: true });
+  window.addEventListener('resize', updateSidebar);
+  setTimeout(updateSidebar, 300); // esperar a que JS cargue el curso
+})();
+</script>
 </body>
 </html>
