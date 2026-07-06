@@ -1656,16 +1656,18 @@ footer {
   filter: blur(4px);
 }
 
-/* ═══════════════════════════════════════
-   WORD PANELS — aparecen con cada palabra
-   Panel centrado debajo de la palabra.
-   Eyebrow en el tope del viewport.
-═══════════════════════════════════════ */
+/* ═══════════════════════════════════════════
+   WORD PANELS
+   .word-context  → eyebrow, tope del viewport
+   .word-data     → panel completo, PARTE BAJA
+                    arranca en bottom: 0
+                    nunca toca la palabra (que está en el centro)
+═══════════════════════════════════════════ */
 
-/* Eyebrow: tope viewport, naranja, estilo section-label */
+/* Eyebrow: esquina superior izquierda, estilo section-label */
 .word-context {
   position: absolute;
-  top: 32px;
+  top: 28px;
   left: 0; right: 0;
   text-align: center;
   font-family: var(--mono);
@@ -1673,109 +1675,121 @@ footer {
   letter-spacing: .28em;
   color: var(--orange);
   text-transform: uppercase;
+  white-space: nowrap;
   pointer-events: none;
   opacity: 0;
   transition: opacity .3s ease .1s;
-  z-index: 5;
+  z-index: 6;
 }
 .word-context.visible { opacity: 1; }
 
-/* Panel de datos: debajo de la palabra grande
-   Centrado, bien separado usando top del 62% */
+/* Panel: ocupa el TERCIO INFERIOR fijo del viewport sticky.
+   height: 30vh + bottom:0 → nunca supera el 30% inferior.
+   La palabra está en el 50% → hay siempre ~20vh de margen. */
 .word-data {
   position: absolute;
-  top: 62%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 88vw;
-  max-width: 960px;
+  bottom: 0;
+  left: 0; right: 0;
+  height: 28vh;
+  min-height: 180px;
+  max-height: 240px;
+  padding: 0 60px 28px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .35s ease .08s;
-  z-index: 5;
+  transition: opacity .3s ease .08s;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 12px;
 }
 .word-data.visible { opacity: 1; }
 
-/* Fila de stats: columnas separadas por borde */
+/* Fila de stats: horizontal, columnas separadas */
 .word-stats-row {
   display: flex;
   align-items: flex-start;
   gap: 0;
-  margin-bottom: 20px;
+  flex-shrink: 0;
 }
 .word-stat {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
   padding: 0 20px;
   border-left: 1px solid rgba(237,109,34,.2);
 }
 .word-stat:first-child { border-left: none; padding-left: 0; }
+
+/* Número: mono naranja compacto */
 .word-stat__num {
   font-family: var(--mono);
-  font-size: clamp(14px, 1.8vw, 22px);
+  font-size: clamp(13px, 1.4vw, 18px);
   font-weight: 400;
   color: var(--orange);
   line-height: 1;
   letter-spacing: .04em;
 }
+/* Label */
 .word-stat__label {
   font-family: var(--mono);
   font-size: 8px;
   letter-spacing: .2em;
-  color: rgba(245,245,245,.3);
+  color: rgba(245,245,245,.28);
   text-transform: uppercase;
+  white-space: nowrap;
 }
 /* Barra de progreso */
 .word-bar {
   height: 2px;
   background: rgba(237,109,34,.1);
   border-radius: 1px;
-  margin-top: 6px;
+  margin-top: 4px;
   overflow: hidden;
+  min-width: 40px;
 }
 .word-bar__fill {
   height: 100%;
-  background: linear-gradient(90deg, rgba(237,109,34,.6), var(--orange));
+  background: linear-gradient(90deg, rgba(237,109,34,.5), var(--orange));
   border-radius: 1px;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform .6s ease .3s;
+  transition: transform .7s cubic-bezier(.22,1,.36,1) .3s;
 }
 .word-data.visible .word-bar__fill { transform: scaleX(1); }
 
-/* SVG charts */
-.word-chart {
-  width: 100%;
-  height: 48px;
-  display: block;
-  overflow: visible;
-}
+/* Gráfico SVG */
 .word-chart-wrap {
-  margin-top: 8px;
+  flex-shrink: 0;
   border-top: 1px solid rgba(237,109,34,.1);
   padding-top: 8px;
 }
 .word-chart-label {
   font-family: var(--mono);
   font-size: 8px;
-  letter-spacing: .18em;
-  color: rgba(237,109,34,.5);
+  letter-spacing: .2em;
+  color: rgba(237,109,34,.45);
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: 5px;
+}
+.word-chart {
+  width: 100%;
+  height: 36px;
+  display: block;
+  overflow: visible;
 }
 
-/* Mobile */
+/* Mobile: 2 columnas, sin gráfico */
 @media (max-width: 768px) {
-  .word-context { top: 24px; font-size: 9px; letter-spacing: .18em; }
-  .word-data { top: 60%; width: 94vw; }
-  .word-stats-row { flex-wrap: wrap; gap: 12px 0; }
-  .word-stat { flex: 0 0 50%; padding: 0 12px; }
+  .word-data { padding: 0 20px 20px; height: 32vh; min-height: 200px; gap: 10px; }
+  .word-stats-row { flex-wrap: wrap; }
+  .word-stat { flex: 0 0 50%; padding: 0 12px; min-width: 0; }
   .word-stat:nth-child(1) { border-left: none; padding-left: 0; }
   .word-stat:nth-child(3) { border-left: none; padding-left: 0; }
-  .word-stat__num { font-size: 13px; }
+  .word-stat__num { font-size: 12px; }
   .word-chart-wrap { display: none; }
+  .word-context { font-size: 8px; letter-spacing: .16em; }
 }
 
 .hero-cta {

@@ -322,18 +322,19 @@
 <section class="words-section" id="words">
   <div class="words-sticky">
 
+    <!-- Palabras: centradas en el viewport -->
     <div class="words-display">
       <span class="word-item" data-index="0">VELOCIDAD</span>
       <span class="word-item" data-index="1">ADRENALINA</span>
       <span class="word-item" data-index="2">COMPETENCIA</span>
     </div>
 
-    <!-- EYEBROWS -->
+    <!-- EYEBROWS: tope del viewport -->
     <div class="word-context" data-for="0">// APEX NIVEL 2 &mdash; SESI&Oacute;N 6 &mdash; PILOTO: M. TORRES</div>
-    <div class="word-context" data-for="1">// APEX SIMULADOR 3 &mdash; SESI&Oacute;N EN VIVO &mdash; PISTA: INTERLAGOS</div>
+    <div class="word-context" data-for="1">// APEX SIMULADOR 3 &mdash; INTERLAGOS &mdash; SESI&Oacute;N EN VIVO</div>
     <div class="word-context" data-for="2">// APEX CHAMPIONSHIP 2024 &mdash; TEMPORADA 3 &mdash; 12 PILOTOS</div>
 
-    <!-- ═══════════ PANEL 0: VELOCIDAD ═══════════ -->
+    <!-- ═══ PANEL 0: VELOCIDAD ═══ -->
     <div class="word-data" data-for="0">
       <div class="word-stats-row">
         <div class="word-stat">
@@ -367,32 +368,40 @@
           <div class="word-bar"><div class="word-bar__fill" style="width:84%"></div></div>
         </div>
       </div>
-      <!-- Curva de velocidad por vuelta -->
       <div class="word-chart-wrap">
-        <div class="word-chart-label">// CURVA DE VELOCIDAD &mdash; VUELTA 6</div>
-        <svg class="word-chart" viewBox="0 0 900 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="word-chart-label">// CURVA DE VELOCIDAD &mdash; VUELTA 6 &mdash; 3 SECTORES</div>
+        <svg class="word-chart" viewBox="0 0 860 36" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="vg0" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#ED6D22" stop-opacity=".25"/>
+            <linearGradient id="spd-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ED6D22" stop-opacity=".3"/>
               <stop offset="100%" stop-color="#ED6D22" stop-opacity="0"/>
             </linearGradient>
           </defs>
-          <path d="M0,38 C20,36 35,20 55,12 C75,4 90,6 110,14 C130,22 145,36 165,38 C185,40 195,38 215,30 C235,22 250,8 270,5 C290,2 305,10 325,18 C345,26 360,36 380,38 C400,40 415,36 435,24 C455,12 470,4 490,3 C510,2 525,8 545,18 C565,28 580,38 600,40 C620,42 635,36 655,26 C675,16 690,6 710,4 C730,2 745,10 765,20 C785,30 800,38 820,40 C840,42 860,36 880,28 L900,24" fill="none" stroke="#ED6D22" stroke-width="1.5" stroke-linejoin="round"/>
-          <path d="M0,38 C20,36 35,20 55,12 C75,4 90,6 110,14 C130,22 145,36 165,38 C185,40 195,38 215,30 C235,22 250,8 270,5 C290,2 305,10 325,18 C345,26 360,36 380,38 C400,40 415,36 435,24 C455,12 470,4 490,3 C510,2 525,8 545,18 C565,28 580,38 600,40 C620,42 635,36 655,26 C675,16 690,6 710,4 C730,2 745,10 765,20 C785,30 800,38 820,40 C840,42 860,36 880,28 L900,24 L900,48 L0,48 Z" fill="url(#vg0)"/>
-          <!-- Sectores -->
-          <line x1="300" y1="0" x2="300" y2="48" stroke="rgba(237,109,34,.15)" stroke-width="1" stroke-dasharray="3,3"/>
-          <line x1="600" y1="0" x2="600" y2="48" stroke="rgba(237,109,34,.15)" stroke-width="1" stroke-dasharray="3,3"/>
-          <text x="10" y="46" font-family="monospace" font-size="7" fill="rgba(245,245,245,.25)" letter-spacing="1">S1</text>
-          <text x="310" y="46" font-family="monospace" font-size="7" fill="rgba(245,245,245,.25)" letter-spacing="1">S2</text>
-          <text x="610" y="46" font-family="monospace" font-size="7" fill="rgba(245,245,245,.25)" letter-spacing="1">S3</text>
-          <!-- Punto de vel. máx. -->
-          <circle cx="490" cy="3" r="3" fill="#ED6D22"/>
-          <text x="494" y="2" font-family="monospace" font-size="7" fill="rgba(237,109,34,.8)" letter-spacing="1">247</text>
+          <!-- Zona sombreada bajo la curva -->
+          <path d="M0,30 C30,28 55,18 80,10 C105,2 120,5 145,12 C170,19 185,28 210,30 C235,32 250,28 275,20 C300,12 318,4 345,2 C372,0 388,8 415,16 C442,24 458,30 485,30 C512,30 528,22 555,14 C582,6 598,2 625,2 C652,2 668,10 694,18 C720,26 736,30 762,30 C788,30 805,24 830,18 L860,14 L860,36 L0,36 Z"
+            fill="url(#spd-grad)"/>
+          <!-- Curva de velocidad -->
+          <path d="M0,30 C30,28 55,18 80,10 C105,2 120,5 145,12 C170,19 185,28 210,30 C235,32 250,28 275,20 C300,12 318,4 345,2 C372,0 388,8 415,16 C442,24 458,30 485,30 C512,30 528,22 555,14 C582,6 598,2 625,2 C652,2 668,10 694,18 C720,26 736,30 762,30 C788,30 805,24 830,18 L860,14"
+            fill="none" stroke="#ED6D22" stroke-width="1.5" stroke-linejoin="round"/>
+          <!-- Divisores de sector -->
+          <line x1="287" y1="0" x2="287" y2="36" stroke="rgba(237,109,34,.18)" stroke-width="1" stroke-dasharray="2,3"/>
+          <line x1="574" y1="0" x2="574" y2="36" stroke="rgba(237,109,34,.18)" stroke-width="1" stroke-dasharray="2,3"/>
+          <!-- Pico de velocidad máxima -->
+          <circle cx="345" cy="2" r="2.5" fill="#ED6D22"/>
+          <line  cx="345" cy="2" x1="345" y1="2" x2="345" y2="14" stroke="rgba(237,109,34,.4)" stroke-width="1"/>
+          <!-- Labels sector -->
+          <text x="4"   y="34" font-family="Share Tech Mono,monospace" font-size="6" fill="rgba(245,245,245,.22)" letter-spacing="1">S1</text>
+          <text x="291" y="34" font-family="Share Tech Mono,monospace" font-size="6" fill="rgba(245,245,245,.22)" letter-spacing="1">S2</text>
+          <text x="578" y="34" font-family="Share Tech Mono,monospace" font-size="6" fill="rgba(245,245,245,.22)" letter-spacing="1">S3</text>
+          <!-- Label pico -->
+          <text x="350" y="10" font-family="Share Tech Mono,monospace" font-size="7" fill="rgba(237,109,34,.85)" letter-spacing="1">247</text>
+          <!-- Línea de referencia (velocidad promedio) -->
+          <line x1="0" y1="20" x2="860" y2="20" stroke="rgba(245,245,245,.06)" stroke-width="1" stroke-dasharray="4,6"/>
         </svg>
       </div>
     </div>
 
-    <!-- ═══════════ PANEL 1: ADRENALINA ═══════════ -->
+    <!-- ═══ PANEL 1: ADRENALINA ═══ -->
     <div class="word-data" data-for="1">
       <div class="word-stats-row">
         <div class="word-stat">
@@ -422,46 +431,53 @@
         </div>
         <div class="word-stat">
           <div class="word-stat__num">9.4/10</div>
-          <div class="word-stat__label">nivel de inmersi&oacute;n</div>
+          <div class="word-stat__label">nivel inmersi&oacute;n</div>
           <div class="word-bar"><div class="word-bar__fill" style="width:94%"></div></div>
         </div>
       </div>
-      <!-- Radar de habilidades -->
       <div class="word-chart-wrap">
-        <div class="word-chart-label">// RADAR DE HABILIDADES &mdash; PILOTO vs. NIVEL APEX</div>
-        <svg class="word-chart" viewBox="0 0 900 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Timeline de una vuelta: zonas de frenada, aceleración, curva -->
-          <rect x="0"   y="16" width="900" height="16" rx="2" fill="rgba(245,245,245,.04)"/>
-          <!-- Zona frenada -->
-          <rect x="80"  y="16" width="60"  height="16" rx="0" fill="rgba(237,109,34,.35)"/>
-          <rect x="310" y="16" width="45"  height="16" rx="0" fill="rgba(237,109,34,.35)"/>
-          <rect x="520" y="16" width="55"  height="16" rx="0" fill="rgba(237,109,34,.35)"/>
-          <rect x="730" y="16" width="40"  height="16" rx="0" fill="rgba(237,109,34,.35)"/>
-          <!-- Zona aceleración -->
-          <rect x="140" y="20" width="170" height="8"  rx="0" fill="rgba(245,245,245,.12)"/>
-          <rect x="355" y="20" width="165" height="8"  rx="0" fill="rgba(245,245,245,.12)"/>
-          <rect x="575" y="20" width="155" height="8"  rx="0" fill="rgba(245,245,245,.12)"/>
-          <!-- Labels -->
-          <text x="82"  y="46" font-family="monospace" font-size="7" fill="rgba(237,109,34,.6)" letter-spacing="1">FRENO</text>
-          <text x="312" y="46" font-family="monospace" font-size="7" fill="rgba(237,109,34,.6)" letter-spacing="1">FRENO</text>
-          <text x="522" y="46" font-family="monospace" font-size="7" fill="rgba(237,109,34,.6)" letter-spacing="1">FRENO</text>
-          <text x="0"   y="13" font-family="monospace" font-size="7" fill="rgba(245,245,245,.25)" letter-spacing="1">0s</text>
-          <text x="435" y="13" font-family="monospace" font-size="7" fill="rgba(245,245,245,.25)" letter-spacing="1">46s</text>
-          <text x="870" y="13" font-family="monospace" font-size="7" fill="rgba(245,245,245,.25)" letter-spacing="1">92s</text>
-          <!-- Indicador posición actual -->
-          <line x1="490" y1="8" x2="490" y2="40" stroke="#ED6D22" stroke-width="1.5"/>
-          <circle cx="490" cy="24" r="4" fill="#ED6D22"/>
+        <div class="word-chart-label">// TIMELINE DE VUELTA &mdash; FRENADAS &amp; ACELERACIONES &mdash; 92s</div>
+        <svg class="word-chart" viewBox="0 0 860 36" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Timeline de vuelta: base -->
+          <rect x="0" y="12" width="860" height="12" rx="2" fill="rgba(245,245,245,.04)"/>
+          <!-- Zonas de frenada: naranja intenso -->
+          <rect x="72"  y="10" width="52"  height="16" rx="1" fill="rgba(237,109,34,.45)"/>
+          <rect x="295" y="10" width="42"  height="16" rx="1" fill="rgba(237,109,34,.45)"/>
+          <rect x="495" y="10" width="48"  height="16" rx="1" fill="rgba(237,109,34,.45)"/>
+          <rect x="710" y="10" width="38"  height="16" rx="1" fill="rgba(237,109,34,.45)"/>
+          <!-- Zonas de aceleración: blanco muy tenue -->
+          <rect x="124" y="14" width="171" height="8"  rx="1" fill="rgba(245,245,245,.09)"/>
+          <rect x="337" y="14" width="158" height="8"  rx="1" fill="rgba(245,245,245,.09)"/>
+          <rect x="543" y="14" width="167" height="8"  rx="1" fill="rgba(245,245,245,.09)"/>
+          <!-- Marcadores de fuerza G máxima -->
+          <line x1="98"  y1="6" x2="98"  y2="10" stroke="#ED6D22" stroke-width="1.5"/>
+          <line x1="316" y1="6" x2="316" y2="10" stroke="#ED6D22" stroke-width="1.5"/>
+          <line x1="519" y1="6" x2="519" y2="10" stroke="#ED6D22" stroke-width="1.5"/>
+          <text x="88"  y="5" font-family="Share Tech Mono,monospace" font-size="5.5" fill="rgba(237,109,34,.7)">2.8G</text>
+          <text x="306" y="5" font-family="Share Tech Mono,monospace" font-size="5.5" fill="rgba(237,109,34,.7)">2.4G</text>
+          <text x="509" y="5" font-family="Share Tech Mono,monospace" font-size="5.5" fill="rgba(237,109,34,.7)">2.6G</text>
+          <!-- Indicador posición actual (cursor) -->
+          <line x1="468" y1="4" x2="468" y2="32" stroke="rgba(245,245,245,.6)" stroke-width="1"/>
+          <circle cx="468" cy="18" r="3.5" fill="#ED6D22"/>
+          <text x="472" y="9" font-family="Share Tech Mono,monospace" font-size="6" fill="rgba(245,245,245,.55)" letter-spacing="1">46.3s</text>
+          <!-- Eje de tiempo -->
+          <text x="0"   y="34" font-family="Share Tech Mono,monospace" font-size="6" fill="rgba(245,245,245,.2)" letter-spacing="1">0s</text>
+          <text x="420" y="34" font-family="Share Tech Mono,monospace" font-size="6" fill="rgba(245,245,245,.2)" letter-spacing="1">48s</text>
+          <text x="836" y="34" font-family="Share Tech Mono,monospace" font-size="6" fill="rgba(245,245,245,.2)" letter-spacing="1">92s</text>
+          <!-- Labels zona -->
+          <text x="76"  y="32" font-family="Share Tech Mono,monospace" font-size="5" fill="rgba(237,109,34,.55)" letter-spacing="1">FR</text>
+          <text x="299" y="32" font-family="Share Tech Mono,monospace" font-size="5" fill="rgba(237,109,34,.55)" letter-spacing="1">FR</text>
+          <text x="499" y="32" font-family="Share Tech Mono,monospace" font-size="5" fill="rgba(237,109,34,.55)" letter-spacing="1">FR</text>
         </svg>
       </div>
     </div>
 
-    <!-- ═══════════ PANEL 2: COMPETENCIA ═══════════ -->
+    <!-- ═══ PANEL 2: COMPETENCIA ═══ -->
     <div class="word-data" data-for="2">
       <div class="word-stats-row">
-        <!-- Podio top 3 -->
         <div class="word-stat">
           <div class="word-stat__num">&#9312; TORRES</div>
-          <div class="word-stat__label">campeon t3 &mdash; 287 pts</div>
+          <div class="word-stat__label">campe&oacute;n &mdash; 287 pts</div>
           <div class="word-bar"><div class="word-bar__fill" style="width:100%"></div></div>
         </div>
         <div class="word-stat">
@@ -470,51 +486,67 @@
           <div class="word-bar"><div class="word-bar__fill" style="width:91%"></div></div>
         </div>
         <div class="word-stat">
-          <div class="word-stat__num">&#9314; MEND.</div>
+          <div class="word-stat__num">&#9314; MENDEZ</div>
           <div class="word-stat__label">3er puesto &mdash; 244 pts</div>
           <div class="word-bar"><div class="word-bar__fill" style="width:85%"></div></div>
         </div>
         <div class="word-stat">
-          <div class="word-stat__num">8</div>
-          <div class="word-stat__label">victorias Torres</div>
+          <div class="word-stat__num">8 victorias</div>
+          <div class="word-stat__label">Torres &mdash; 12 carreras</div>
           <div class="word-bar"><div class="word-bar__fill" style="width:67%"></div></div>
-        </div>
-        <div class="word-stat">
-          <div class="word-stat__num">12</div>
-          <div class="word-stat__label">fechas disputadas</div>
-          <div class="word-bar"><div class="word-bar__fill" style="width:100%"></div></div>
         </div>
         <div class="word-stat">
           <div class="word-stat__num">1:29.8</div>
           <div class="word-stat__label">vuelta r&aacute;pida campeonato</div>
           <div class="word-bar"><div class="word-bar__fill" style="width:100%"></div></div>
         </div>
+        <div class="word-stat">
+          <div class="word-stat__num">12 pilotos</div>
+          <div class="word-stat__label">en grilla &mdash; temporada 3</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:100%"></div></div>
+        </div>
       </div>
-      <!-- Evolución de puntos -->
       <div class="word-chart-wrap">
-        <div class="word-chart-label">// EVOLUCIÓN DE PUNTOS &mdash; TEMPORADA 3 &mdash; TOP 3</div>
-        <svg class="word-chart" viewBox="0 0 900 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="word-chart-label">// EVOLUCI&Oacute;N DE PUNTOS &mdash; TEMPORADA 3 &mdash; TOP 3 PILOTOS</div>
+        <svg class="word-chart" viewBox="0 0 860 36" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
           <defs>
-            <linearGradient id="cg0" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#ED6D22" stop-opacity=".2"/>
+            <linearGradient id="cmp-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ED6D22" stop-opacity=".15"/>
               <stop offset="100%" stop-color="#ED6D22" stop-opacity="0"/>
             </linearGradient>
           </defs>
-          <!-- Torres: línea naranja sólida -->
-          <polyline points="0,42 75,38 150,32 225,28 300,24 375,20 450,18 525,14 600,12 675,8 750,6 825,4 900,2" fill="none" stroke="#ED6D22" stroke-width="2" stroke-linejoin="round"/>
-          <!-- Rivas: línea blanca tenue -->
-          <polyline points="0,42 75,40 150,36 225,32 300,30 375,27 450,26 525,23 600,20 675,18 750,16 825,14 900,12" fill="none" stroke="rgba(245,245,245,.35)" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="6,3"/>
-          <!-- Mendez: línea aún más tenue -->
-          <polyline points="0,44 75,42 150,40 225,38 300,36 375,34 450,33 525,30 600,28 675,27 750,26 825,24 900,22" fill="none" stroke="rgba(245,245,245,.18)" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="4,4"/>
-          <!-- Fecha actual -->
-          <line x1="900" y1="0" x2="900" y2="48" stroke="rgba(237,109,34,.2)" stroke-width="1"/>
+          <!-- Zona bajo curva Torres -->
+          <path d="M0,32 C36,30 72,26 107,22 C143,18 179,16 215,13 C251,10 287,8 323,7 C359,6 395,5 430,4 C466,3 502,3 538,2 C574,1 610,1 645,1 C681,1 717,2 753,2 C789,2 825,2 860,2 L860,36 L0,36 Z"
+            fill="url(#cmp-grad)"/>
+          <!-- Torres: naranja, línea principal más gruesa -->
+          <polyline points="0,32 72,28 143,22 215,16 287,11 359,8 430,5 502,3 574,2 645,1 717,1 789,1 860,1"
+            fill="none" stroke="#ED6D22" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+          <!-- Rivas: blanco punteado -->
+          <polyline points="0,34 72,32 143,30 215,28 287,26 359,24 430,23 502,22 574,20 645,18 717,17 789,16 860,14"
+            fill="none" stroke="rgba(245,245,245,.4)" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="6,4"/>
+          <!-- Méndez: gris tenue -->
+          <polyline points="0,35 72,34 143,33 215,32 287,31 359,30 430,29 502,28 574,27 645,26 717,25 789,24 860,23"
+            fill="none" stroke="rgba(245,245,245,.2)" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="3,5"/>
+          <!-- Puntos de carrera (Torres) -->
+          <circle cx="143" cy="22" r="2" fill="#ED6D22"/>
+          <circle cx="287" cy="11" r="2" fill="#ED6D22"/>
+          <circle cx="430" cy="5"  r="2" fill="#ED6D22"/>
+          <circle cx="574" cy="2"  r="2" fill="#ED6D22"/>
+          <circle cx="717" cy="1"  r="2" fill="#ED6D22"/>
+          <!-- Etiquetas de fecha -->
+          <text x="0"   y="36" font-family="Share Tech Mono,monospace" font-size="5.5" fill="rgba(245,245,245,.18)" letter-spacing="1">F1</text>
+          <text x="135" y="36" font-family="Share Tech Mono,monospace" font-size="5.5" fill="rgba(245,245,245,.18)" letter-spacing="1">F3</text>
+          <text x="279" y="36" font-family="Share Tech Mono,monospace" font-size="5.5" fill="rgba(245,245,245,.18)" letter-spacing="1">F5</text>
+          <text x="423" y="36" font-family="Share Tech Mono,monospace" font-size="5.5" fill="rgba(245,245,245,.18)" letter-spacing="1">F7</text>
+          <text x="567" y="36" font-family="Share Tech Mono,monospace" font-size="5.5" fill="rgba(245,245,245,.18)" letter-spacing="1">F9</text>
+          <text x="709" y="36" font-family="Share Tech Mono,monospace" font-size="5.5" fill="rgba(245,245,245,.18)" letter-spacing="1">F11</text>
           <!-- Leyenda -->
-          <rect x="0" y="0" width="8" height="2" fill="#ED6D22" rx="1"/>
-          <text x="12" y="3" font-family="monospace" font-size="7" fill="rgba(237,109,34,.7)" letter-spacing="1">TORRES</text>
-          <rect x="80" y="0" width="8" height="2" fill="rgba(245,245,245,.35)" rx="1"/>
-          <text x="92" y="3" font-family="monospace" font-size="7" fill="rgba(245,245,245,.35)" letter-spacing="1">RIVAS</text>
-          <rect x="155" y="0" width="8" height="2" fill="rgba(245,245,245,.18)" rx="1"/>
-          <text x="167" y="3" font-family="monospace" font-size="7" fill="rgba(245,245,245,.2)" letter-spacing="1">MENDEZ</text>
+          <rect x="0"   y="0" width="10" height="2" rx="1" fill="#ED6D22"/>
+          <text x="13"  y="3" font-family="Share Tech Mono,monospace" font-size="6" fill="rgba(237,109,34,.8)"    letter-spacing="1">TORRES 287</text>
+          <rect x="95"  y="0" width="10" height="2" rx="1" fill="rgba(245,245,245,.4)"/>
+          <text x="108" y="3" font-family="Share Tech Mono,monospace" font-size="6" fill="rgba(245,245,245,.4)"   letter-spacing="1">RIVAS 261</text>
+          <rect x="183" y="0" width="10" height="2" rx="1" fill="rgba(245,245,245,.2)"/>
+          <text x="196" y="3" font-family="Share Tech Mono,monospace" font-size="6" fill="rgba(245,245,245,.22)"  letter-spacing="1">MENDEZ 244</text>
         </svg>
       </div>
     </div>
