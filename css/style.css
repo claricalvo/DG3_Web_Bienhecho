@@ -612,7 +612,7 @@ section { padding: 72px 40px; position: relative; }
   position: absolute; inset: 0;
   background-size: cover;
   background-position: center;
-  filter: saturate(.25) brightness(.45);
+  filter: brightness(.5);
 }
 .newsletter-overlay {
   position: absolute; inset: 0;
