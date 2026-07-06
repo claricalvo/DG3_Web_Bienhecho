@@ -224,25 +224,7 @@
 
 
 <script>
-// ── SIDEBAR: poblar datos cuando detalle.js carga el curso ──
-document.addEventListener('cursoLoaded', function(e) {
-  const c = e.detail;
-  if (!c) return;
-  const el = (id) => document.getElementById(id);
-  if (el('sidebar-nivel'))   el('sidebar-nivel').textContent   = c.nivel   || '';
-  if (el('sidebar-titulo'))  el('sidebar-titulo').textContent  = c.nombre  || '';
-  if (el('sidebar-precio'))  el('sidebar-precio').textContent  = c.precio  || '';
-  if (el('sidebar-duracion'))el('sidebar-duracion').textContent= c.duracion || '';
-  const ul = el('sidebar-features');
-  if (ul && c.caracteristicas) {
-    ul.innerHTML = c.caracteristicas.map(f =>
-      `<li>
-        <span class="${f.incluido ? 'feat-check' : 'feat-cross'}">${f.incluido ? '✓' : '✗'}</span>
-        <span class="${f.incluido ? '' : 'feat-disabled'}">${f.texto}</span>
-      </li>`
-    ).join('');
-  }
-});
+// El sidebar es poblado directamente por detalle.js → pintarCurso()
 
 // ── SIDEBAR: visible en todo momento en desktop ──
 // Se muestra siempre que el viewport sea desktop (≥1024px).
