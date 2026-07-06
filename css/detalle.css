@@ -424,8 +424,12 @@
     min-width: 0;
   }
 
+  /* Unificamos el margen de todas las secciones en desktop */
   .detalle-main section {
-    padding: 72px 0;
+    /* Le damos 60px arriba/abajo y 120px a los costados (igual que otros niveles) */
+    padding: 60px 120px; 
+    box-sizing: border-box;
+    width: 100%;
   }
 
   /* Sidebar sticky */
@@ -462,9 +466,20 @@
   /* Métodos de pago: 2 columnas */
   .metodos-pago__grid { grid-template-columns: repeat(2, 1fr); }
 
-  /* Otros niveles: 2 tarjetas en fila */
-  .otros-niveles { padding: 60px 120px !important; }
-  .otros-niveles__grid { flex-direction: row; gap: 24px; }
+  /* Ajustamos la sección con fondo naranja */
+  .otros-niveles { 
+    /* Le dejamos el mismo padding exacto que a las demás secciones */
+    padding: 60px 120px !important; 
+  }
+  
+  .otros-niveles__grid { 
+    flex-direction: row; 
+    gap: 24px; 
+    /* Reseteamos el padding interno de la grilla para que se alinee 
+       perfectamente con los textos de las secciones de arriba */
+    padding: 0; 
+    margin-top: 24px;
+  }
   .otros-niveles__grid .otro-nivel-card { flex: 1; }
 }
 
