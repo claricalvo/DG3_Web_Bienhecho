@@ -243,12 +243,13 @@
     sidebar.style.display = '';
 
     const metodosPago = document.getElementById('metodos-pago');
-    const testimonials = document.getElementById('pilotos');
+    const testimonials = document.getElementById('pilotos'); // Esta es la sección de testimonios
     if (!metodosPago || !testimonials) { sidebar.style.opacity = '1'; return; }
 
     const scrollY = window.scrollY;
-    // Ocultar cuando el scroll supera el fin de métodos de pago
-    const hideFrom = metodosPago.offsetTop + metodosPago.offsetHeight - 100;
+    
+    // CAMBIO ACÁ: Ahora calcula el final de la sección de testimonios (pilotos)
+    const hideFrom = testimonials.offsetTop + testimonials.offsetHeight - 100;
 
     const visible = scrollY < hideFrom;
     sidebar.style.opacity      = visible ? '1' : '0';
