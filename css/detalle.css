@@ -133,7 +133,7 @@
 
 .detalle-main section {
   border-top: 1px solid var(--line);
-  padding: 60px 24px;
+  padding: 60px 0px;
 }
 
 /* ── Sidebar ── */
@@ -415,7 +415,7 @@
   .detalle-body {
     flex-direction: row;
     align-items: flex-start;
-    padding: 0 120px;
+    padding: 0;
     gap: 40px;
   }
 
