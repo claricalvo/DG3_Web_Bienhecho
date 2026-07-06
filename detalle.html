@@ -7,21 +7,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700;1,900&family=Barlow:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="images/logo.png">
   <link rel="stylesheet" href="css/style.css">
-  <!-- CSS exclusivo de esta página -->
   <link rel="stylesheet" href="css/detalle.css">
 </head>
 <body>
 
-<!-- Luces ambientales (parallax con JS), igual que el home -->
 <div class="ambient-light light-left"></div>
 <div class="ambient-light light-right"></div>
 <div class="ambient-light light-center"></div>
 <div class="light-beam"></div>
-
-<!-- Canvas de partículas de fondo -->
 <canvas id="particleCanvas"></canvas>
 
-<!-- NAV (idéntico al home) -->
+<!-- NAV -->
 <nav id="mainNav">
   <div class="nav-logo"><img src="images/logo.png" alt="APEX" fetchpriority="high"></div>
   <div class="nav-links-desktop">
@@ -30,120 +26,116 @@
   <button class="nav-menu-btn" onclick="toggleMenu()">MEN&Uacute;</button>
 </nav>
 
-<!-- MOBILE MENU (idéntico al home) -->
+<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="menu-close" onclick="toggleMenu()">&#x2715;</button>
   <a href="index.html" onclick="toggleMenu()">Home</a>
   <a href="#contact" onclick="toggleMenu()">Contacto</a>
 </div>
 
-  <!-- =====================================================
-       BREADCRUMB + TARJETA PRINCIPAL DEL CURSO
-       Reutiliza las clases reales de .course-card / .course-cta
-       del home para que el estilo sea idéntico. El contenido
-       de adentro se completa por JS (ver js/detalle.js) según
-       el ?curso= de la URL.
-       ===================================================== -->
-  <section class="detalle-curso" id="detalle-curso">
-
-    <div class="detalle-curso__breadcrumb">
+<!-- =====================================================
+     HERO: imagen de fondo full-width
+     ===================================================== -->
+<section class="detalle-hero" id="detalle-hero">
+  <div class="detalle-hero__bg" id="hero-bg"></div>
+  <div class="detalle-hero__overlay"></div>
+  <div class="detalle-hero__content">
+    <div class="detalle-hero__breadcrumb">
       <a href="index.html">Inicio</a> // <span id="curso-titulo-breadcrumb">Detalle del curso</span>
     </div>
+    <p class="detalle-hero__nivel" id="hero-nivel">NIVEL</p>
+    <h1 class="detalle-hero__titulo" id="hero-titulo">CARGANDO...</h1>
+    <div class="detalle-hero__precio">
+      <span class="detalle-hero__monto" id="hero-precio">$0</span>
+      <span class="detalle-hero__duracion" id="hero-duracion">/ 0 semanas</span>
+    </div>
+    <a href="#inscribirse" class="btn-primary detalle-hero__cta">INSCRIBIRSE</a>
+  </div>
+</section>
 
-    <article class="course-card detalle-curso__card" id="curso-card">
+<!-- =====================================================
+     BODY: contenido principal + sidebar sticky
+     ===================================================== -->
+<div class="detalle-body">
 
-      <span class="course-popular-tag" id="curso-badge" hidden>Más elegido</span>
+  <!-- COLUMNA PRINCIPAL -->
+  <div class="detalle-main">
 
-      <div class="course-card-header">
-        <div class="course-badge" id="curso-nivel">NIVEL</div>
-        <div class="course-name" id="curso-titulo">CARGANDO...</div>
-        <div class="course-img-wrap" id="curso-media">
-          <span class="detalle-curso__media-placeholder"></span>
-        </div>
-        <div class="course-price">
-          <span class="course-price-val" id="curso-precio-monto">$0</span>
-          <span class="course-price-period" id="curso-duracion">/ 0 semanas</span>
+    <!-- PROGRAMA -->
+    <section class="timeline-section" id="programa">
+      <div class="section-label">// 001 &mdash; PROGRAMA</div>
+      <h2 class="section-title">
+        <span class="light">Semana a</span>
+        <span class="bold">semana</span>
+      </h2>
+      <div class="divider"></div>
+      <div class="timeline" id="timeline-contenido">
+        <!-- JS -->
+      </div>
+    </section>
+
+    <!-- M&Eacute;TODOS DE PAGO -->
+    <section class="metodos-pago" id="metodos-pago">
+      <div class="section-label">// 002 &mdash; PAGOS</div>
+      <h2 class="section-title">
+        <span class="light">M&eacute;todos de</span>
+        <span class="bold">pago</span>
+      </h2>
+      <div class="divider"></div>
+      <div class="metodos-pago__grid" id="metodos-pago-grid">
+        <!-- JS -->
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="testimonials" id="pilotos">
+      <div class="section-label">// 003 &mdash; PILOTOS</div>
+      <h2 class="section-title">
+        <span class="light">Lo que dicen</span>
+        <span class="bold">nuestros pilotos</span>
+      </h2>
+      <div class="divider"></div>
+      <div class="testi-marquee-wrap">
+        <div class="testi-marquee" id="pilotos-track">
+          <!-- JS -->
         </div>
       </div>
+    </section>
 
-      <ul class="course-features" id="curso-caracteristicas">
-        <!-- Se completa por JS -->
+    <!-- OTROS NIVELES -->
+    <section class="otros-niveles" id="otros-niveles">
+      <div class="section-label">// 004 &mdash; M&Aacute;S CURSOS</div>
+      <h2 class="section-title">
+        <span class="light">Conoc&eacute; los</span>
+        <span class="bold">otros niveles</span>
+      </h2>
+      <div class="divider"></div>
+      <div class="otros-niveles__grid" id="otros-niveles-grid">
+        <!-- JS -->
+      </div>
+    </section>
+
+  </div><!-- /detalle-main -->
+
+  <!-- SIDEBAR STICKY -->
+  <aside class="detalle-sidebar" id="inscribirse">
+    <div class="sidebar-card" id="sidebar-card">
+      <span class="sidebar-badge" id="sidebar-nivel">NIVEL</span>
+      <div class="sidebar-titulo" id="sidebar-titulo">CARGANDO...</div>
+      <div class="sidebar-precio">
+        <span class="sidebar-monto" id="sidebar-precio">$0</span>
+        <span class="sidebar-duracion" id="sidebar-duracion">/ 0 semanas</span>
+      </div>
+      <ul class="sidebar-features" id="sidebar-features">
+        <!-- JS -->
       </ul>
-
       <a href="#contact" class="course-cta course-cta--featured">INSCRIBIRSE</a>
-
-    </article>
-
-  </section>
-
-  <!-- =====================================================
-       LÍNEA DE TIEMPO — contenido semana a semana
-       ===================================================== -->
-  <section class="timeline-section" id="programa">
-    <div class="section-label">// 001 — PROGRAMA</div>
-    <h2 class="section-title">
-      <span class="light">Semana a</span>
-      <span class="bold">semana</span>
-    </h2>
-    <div class="divider"></div>
-    <div class="timeline" id="timeline-contenido">
-      <!-- Se completa por JS -->
     </div>
-  </section>
+  </aside>
 
-  <!-- =====================================================
-       MÉTODOS DE PAGO
-       ===================================================== -->
-  <section class="metodos-pago" id="metodos-pago">
-    <div class="section-label">// 002 — PAGOS</div>
-    <h2 class="section-title">
-      <span class="light">Métodos de</span>
-      <span class="bold">pago</span>
-    </h2>
-    <div class="divider"></div>
+</div><!-- /detalle-body -->
 
-    <div class="metodos-pago__grid" id="metodos-pago-grid">
-      <!-- Se completa por JS -->
-    </div>
-  </section>
-
-  <!-- =====================================================
-       LO QUE DICEN NUESTROS PILOTOS
-       Mismo marquee infinito que usa el home (.testi-marquee).
-       ===================================================== -->
-  <section class="testimonials" id="pilotos">
-    <div class="section-label">// 003 — PILOTOS</div>
-    <h2 class="section-title">
-      <span class="light">Lo que dicen</span>
-      <span class="bold">nuestros pilotos</span>
-    </h2>
-    <div class="divider"></div>
-
-    <div class="testi-marquee-wrap">
-      <div class="testi-marquee" id="pilotos-track">
-        <!-- Se completa por JS (incluye un set duplicado para el loop) -->
-      </div>
-    </div>
-  </section>
-
-  <!-- =====================================================
-       OTROS NIVELES (los 2 cursos restantes)
-       Reusa .course-card en una grilla de 2.
-       ===================================================== -->
-  <section class="otros-niveles" id="otros-niveles">
-    <div class="section-label">// 004 — MÁS CURSOS</div>
-    <h2 class="section-title">
-      <span class="light">Conocé los</span>
-      <span class="bold">otros niveles</span>
-    </h2>
-    <div class="divider"></div>
-
-    <div class="otros-niveles__grid" id="otros-niveles-grid">
-      <!-- Se completa por JS -->
-    </div>
-  </section>
-
-  <!-- CONTACTO — igual al home (newsletter) -->
+<!-- NEWSLETTER / CONTACTO -->
 <section class="newsletter" id="contact">
   <div class="newsletter-bg" style="background-image:url('images/Contacto.jpeg')"></div>
   <div class="newsletter-overlay"></div>
@@ -163,7 +155,7 @@
   </div>
 </section>
 
-  <!-- FOOTER — igual al home -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
@@ -171,13 +163,13 @@
       <p class="footer-tagline">La primera academia de simulaci&oacute;n F1 de Argentina. Formamos pilotos de &eacute;lite.</p>
       <div class="footer-socials">
         <a href="https://instagram.com/apexracingarg" class="footer-social-btn" target="_blank" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.333 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.333-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.333-2.633 1.308-3.608C4.516 2.567 5.783 2.296 7.15 2.234 8.416 2.175 8.796 2.163 12 2.163zm0 1.802c-3.15 0-3.503.011-4.755.069-1.08.049-1.67.228-2.063.378a3.44 3.44 0 0 0-1.276.83 3.44 3.44 0 0 0-.83 1.276c-.15.393-.329.983-.378 2.063C2.646 9.497 2.635 9.85 2.635 12s.011 2.503.069 3.755c.049 1.08.228 1.67.378 2.063.193.493.432.856.83 1.276.42.42.783.637 1.276.83.393.15.983.329 2.063.378C8.497 20.354 8.85 20.365 12 20.365s3.503-.011 4.755-.069c1.08-.049 1.67-.228 2.063-.378a3.44 3.44 0 0 0 1.276-.83 3.44 3.44 0 0 0 .83-1.276c.15-.393.329-.983.378-2.063.058-1.252.069-1.605.069-3.755s-.011-2.503-.069-3.755c-.049-1.08-.228-1.67-.378-2.063a3.44 3.44 0 0 0-.83-1.276 3.44 3.44 0 0 0-1.276-.83c-.393-.15-.983-.329-2.063-.378C15.503 3.977 15.15 3.965 12 3.965zm0 3.063a4.972 4.972 0 1 1 0 9.944 4.972 4.972 0 0 1 0-9.944zm0 1.802a3.17 3.17 0 1 0 0 6.34 3.17 3.17 0 0 0 0-6.34zm5.338-3.205a1.162 1.162 0 1 1 0 2.324 1.162 1.162 0 0 1 0-2.324z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.333 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.333-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.333-2.633 1.308-3.608C4.516 2.567 5.783 2.296 7.15 2.234 8.416 2.175 8.796 2.163 12 2.163zm0 1.802c-3.15 0-3.503.011-4.755.069-1.08.049-1.67.228-2.063.378a3.44 3.44 0 0 0-1.276.83 3.44 3.44 0 0 0-.83 1.276c-.15.393-.329.983-.378 2.063C2.646 9.497 2.635 9.85 2.635 12s.011 2.503.069 3.755c.049 1.08.228 1.67.378 2.063.193.493.432.856.83 1.276.42.42.783.637 1.276.83.393.15.983.329 2.063.378C8.497 20.354 8.85 20.365 12 20.365s3.503-.011 4.755-.069c1.08-.049 1.67-.228 2.063-.378a3.44 3.44 0 0 0 1.276-.83 3.44 3.44 0 0 0 .83-1.276c.15-.393.329-.983.378-2.063.058-1.252.069-1.605.069-3.755s-.011-2.503-.069-3.755c-.049-1.08-.228-1.67-.378-2.063a3.44 3.44 0 0 0-.83-1.276 3.44 3.44 0 0 0-1.276-.83c-.393-.15-.983-.329-2.063-.378C15.503 3.977 15.15 3.965 12 3.965zm0 3.063a4.972 4.972 0 1 1 0 9.944 4.972 4.972 0 0 1 0-9.944zm0 1.802a3.17 3.17 0 1 0 0 6.34 3.17 3.17 0 0 0 0-6.34zm5.338-3.205a1.162 1.162 0 1 1 0 2.324 1.162 1.162 0 0 1 0-2.324z"/></svg>
         </a>
         <a href="https://wa.me/5491100000000" class="footer-social-btn" target="_blank" aria-label="WhatsApp">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
         </a>
         <a href="mailto:hola@apexracing.com.ar" class="footer-social-btn" aria-label="Email">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
         </a>
       </div>
     </div>
@@ -215,20 +207,14 @@
   </div>
 </footer>
 
-<!-- Botón flotante WhatsApp -->
+<!-- Bot&oacute;n flotante WhatsApp -->
 <a href="https://wa.me/5491100000000" class="wa-float" target="_blank" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
 </a>
 
-  <!-- =====================================================
-       SCRIPTS
-       main.js trae el menú mobile, parallax y demás
-       comportamientos del home; cursos-data.js y detalle.js
-       son los nuevos, exclusivos de esta página.
-       ===================================================== -->
-  <script src="js/main.js" defer></script>
-  <script src="js/cursos-data.js" defer></script>
-  <script src="js/detalle.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/cursos-data.js" defer></script>
+<script src="js/detalle.js" defer></script>
 
 </body>
 </html>

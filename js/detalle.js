@@ -34,34 +34,34 @@ document.addEventListener("DOMContentLoaded", function () {
      1. Pintar el curso principal (reusa .course-card)
      ----------------------------------------------------- */
   function pintarCurso(c) {
-    document.getElementById("curso-nivel").textContent = c.nivel;
-    document.getElementById("curso-titulo").textContent = c.titulo;
+    // Hero
+    const heroBg = document.getElementById("hero-bg");
+    if (heroBg) heroBg.style.backgroundImage = "url('" + c.imagenHero + "')";
+    const setId = function(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; };
+    setId("hero-nivel", c.nivel);
+    setId("hero-titulo", c.titulo);
+    setId("hero-precio", "$" + c.precio.toLocaleString("es-AR"));
+    setId("hero-duracion", "/ " + c.duracion);
+    setId("curso-titulo-breadcrumb", c.titulo);
 
-    const cardEl = document.getElementById("curso-card");
-    if (c.destacado) {
-      cardEl.classList.add("course-card--featured");
-      document.getElementById("curso-badge").hidden = false;
+    // Sidebar
+    setId("sidebar-nivel", c.nivel);
+    setId("sidebar-titulo", c.titulo);
+    setId("sidebar-precio", "$" + c.precio.toLocaleString("es-AR"));
+    setId("sidebar-duracion", "/ " + c.duracion);
+
+    const lista = document.getElementById("sidebar-features");
+    if (lista) {
+      lista.innerHTML = "";
+      c.caracteristicas.forEach(function (item) {
+        const li = document.createElement("li");
+        if (!item.incluido) li.classList.add("feat-disabled");
+        const checkClass = item.incluido ? "feat-check" : "feat-cross";
+        const symbol = item.incluido ? "✓" : "✗";
+        li.innerHTML = '<span class="' + checkClass + '">' + symbol + '</span><span>' + item.texto + '</span>';
+        lista.appendChild(li);
+      });
     }
-
-    const mediaEl = document.getElementById("curso-media");
-    mediaEl.innerHTML =
-      '<img class="course-img" src="' + c.imagenHero + '" alt="' + c.imagenHeroAlt + '" ' +
-      'onerror="this.parentElement.innerHTML=\'<span class=&quot;detalle-curso__media-placeholder&quot;></span>\';">';
-
-    document.getElementById("curso-precio-monto").textContent =
-      "$" + c.precio.toLocaleString("es-AR");
-    document.getElementById("curso-duracion").textContent = "/ " + c.duracion;
-
-    const lista = document.getElementById("curso-caracteristicas");
-    lista.innerHTML = "";
-    c.caracteristicas.forEach(function (item) {
-      const li = document.createElement("li");
-      if (!item.incluido) li.classList.add("feat-disabled");
-      const checkClass = item.incluido ? "feat-check" : "feat-cross";
-      const symbol = item.incluido ? "✓" : "✗";
-      li.innerHTML = '<span class="' + checkClass + '">' + symbol + '</span><span>' + item.texto + '</span>';
-      lista.appendChild(li);
-    });
   }
 
   /* -----------------------------------------------------
