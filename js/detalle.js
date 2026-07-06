@@ -34,30 +34,26 @@ document.addEventListener("DOMContentLoaded", function () {
      1. Pintar el curso principal (reusa .course-card)
      ----------------------------------------------------- */
   function pintarCurso(c) {
-    // Hero
-    const heroBg = document.getElementById("hero-bg");
+    // Hero bg
+    var heroBg = document.getElementById("hero-bg");
     if (heroBg) heroBg.style.backgroundImage = "url('" + c.imagenHero + "')";
-    const setId = function(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; };
+
+    function setId(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
     setId("hero-nivel", c.nivel);
     setId("hero-titulo", c.titulo);
     setId("hero-precio", "$" + c.precio.toLocaleString("es-AR"));
     setId("hero-duracion", "/ " + c.duracion);
     setId("curso-titulo-breadcrumb", c.titulo);
 
-    // Sidebar
-    setId("sidebar-nivel", c.nivel);
-    setId("sidebar-titulo", c.titulo);
-    setId("sidebar-precio", "$" + c.precio.toLocaleString("es-AR"));
-    setId("sidebar-duracion", "/ " + c.duracion);
-
-    const lista = document.getElementById("sidebar-features");
+    // Características en el hero
+    var lista = document.getElementById("hero-features");
     if (lista) {
       lista.innerHTML = "";
       c.caracteristicas.forEach(function (item) {
-        const li = document.createElement("li");
+        var li = document.createElement("li");
         if (!item.incluido) li.classList.add("feat-disabled");
-        const checkClass = item.incluido ? "feat-check" : "feat-cross";
-        const symbol = item.incluido ? "✓" : "✗";
+        var checkClass = item.incluido ? "feat-check" : "feat-cross";
+        var symbol = item.incluido ? "✓" : "✗";
         li.innerHTML = '<span class="' + checkClass + '">' + symbol + '</span><span>' + item.texto + '</span>';
         lista.appendChild(li);
       });

@@ -6,58 +6,46 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 /* =========================================================
-   HERO
+   HERO: imagen izquierda, tarjeta derecha
    ========================================================= */
 
 .detalle-hero {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
   display: flex;
-  align-items: flex-end;
-  padding: 0 24px 60px;
-  overflow: hidden;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--black);
+  padding-top: 60px; /* espacio para el nav fijo */
 }
 
-.detalle-hero__bg {
-  position: absolute;
-  inset: 0;
+/* Imagen: ocupa toda la altura, mitad del ancho en desktop */
+.detalle-hero__img {
+  width: 100%;
+  min-height: 55vw;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: 0;
+  flex-shrink: 0;
 }
 
-.detalle-hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(8,8,8,.15) 0%,
-    rgba(8,8,8,.4)  40%,
-    rgba(8,8,8,.88) 100%
-  );
-  z-index: 1;
-}
-
-.detalle-hero__content {
-  position: relative;
-  z-index: 2;
-  max-width: 760px;
+/* Tarjeta info */
+.detalle-hero__card {
+  background: var(--dark);
+  border-top: 1px solid var(--line);
+  padding: 36px 24px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .detalle-hero__breadcrumb {
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: .15em;
-  color: rgba(245,245,245,.5);
+  color: var(--grey);
   text-transform: uppercase;
   margin-bottom: 20px;
 }
-.detalle-hero__breadcrumb a {
-  color: rgba(245,245,245,.5);
-  text-decoration: none;
-}
+.detalle-hero__breadcrumb a { color: var(--grey); text-decoration: none; }
 .detalle-hero__breadcrumb a:hover { color: var(--orange); }
 
 .detalle-hero__nivel {
@@ -66,32 +54,35 @@
   letter-spacing: .2em;
   color: var(--orange);
   text-transform: uppercase;
-  margin: 0 0 10px;
+  margin: 0 0 8px;
 }
 
 .detalle-hero__titulo {
   font-family: var(--display);
   font-style: italic;
   font-weight: 900;
-  font-size: clamp(52px, 10vw, 96px);
+  font-size: clamp(40px, 8vw, 72px);
   text-transform: uppercase;
   color: var(--white);
   line-height: .92;
-  margin: 0 0 24px;
+  margin: 0 0 20px;
 }
 
 .detalle-hero__precio {
   display: flex;
   align-items: baseline;
   gap: 10px;
-  margin-bottom: 32px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 20px;
 }
 
 .detalle-hero__monto {
   font-family: var(--display);
   font-style: italic;
   font-weight: 900;
-  font-size: clamp(36px, 6vw, 52px);
+  font-size: clamp(32px, 6vw, 48px);
   color: var(--orange);
   line-height: 1;
 }
@@ -99,14 +90,31 @@
 .detalle-hero__duracion {
   font-family: var(--mono);
   font-size: 12px;
-  color: rgba(245,245,245,.6);
+  color: var(--grey);
   letter-spacing: .1em;
 }
 
-.detalle-hero__cta {
-  display: inline-block;
-  text-decoration: none;
+/* Lista de características en el hero */
+.detalle-hero__features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
+.detalle-hero__features li {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(245,245,245,.75);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.4;
+}
+.detalle-hero__features .feat-check { color: var(--orange); font-size: 13px; flex-shrink: 0; }
+.detalle-hero__features .feat-cross  { color: var(--grey);   font-size: 13px; flex-shrink: 0; }
+.detalle-hero__features .feat-disabled { color: rgba(245,245,245,.3) !important; }
 
 /* =========================================================
    BODY: columna principal + sidebar
@@ -376,11 +384,31 @@
 
 @media (min-width: 1024px) {
 
-  /* Hero */
+  /* Hero desktop: 2 columnas */
   .detalle-hero {
-    min-height: 92vh;
-    padding: 0 120px 80px;
-    align-items: flex-end;
+    flex-direction: row;
+    min-height: 100vh;
+    padding-top: 0;
+    align-items: stretch;
+  }
+
+  .detalle-hero__img {
+    width: 55%;
+    min-height: 100vh;
+    flex-shrink: 0;
+  }
+
+  .detalle-hero__card {
+    flex: 1;
+    padding: 120px 48px 60px;
+    border-top: none;
+    border-left: 1px solid var(--line);
+    justify-content: center;
+    overflow-y: auto;
+  }
+
+  .detalle-hero__titulo {
+    font-size: clamp(48px, 5vw, 72px);
   }
 
   /* Body: 2 columnas */

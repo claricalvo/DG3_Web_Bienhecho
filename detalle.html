@@ -34,12 +34,11 @@
 </div>
 
 <!-- =====================================================
-     HERO: imagen de fondo full-width
+     HERO: imagen izquierda + tarjeta derecha
      ===================================================== -->
 <section class="detalle-hero" id="detalle-hero">
-  <div class="detalle-hero__bg" id="hero-bg"></div>
-  <div class="detalle-hero__overlay"></div>
-  <div class="detalle-hero__content">
+  <div class="detalle-hero__img" id="hero-bg"></div>
+  <div class="detalle-hero__card">
     <div class="detalle-hero__breadcrumb">
       <a href="index.html">Inicio</a> // <span id="curso-titulo-breadcrumb">Detalle del curso</span>
     </div>
@@ -49,7 +48,8 @@
       <span class="detalle-hero__monto" id="hero-precio">$0</span>
       <span class="detalle-hero__duracion" id="hero-duracion">/ 0 semanas</span>
     </div>
-    <a href="#inscribirse" class="btn-primary detalle-hero__cta">INSCRIBIRSE</a>
+    <ul class="detalle-hero__features" id="hero-features"></ul>
+    <a href="#contact" class="course-cta course-cta--featured">INSCRIBIRSE</a>
   </div>
 </section>
 
@@ -116,22 +116,6 @@
     </section>
 
   </div><!-- /detalle-main -->
-
-  <!-- SIDEBAR STICKY -->
-  <aside class="detalle-sidebar" id="inscribirse">
-    <div class="sidebar-card" id="sidebar-card">
-      <span class="sidebar-badge" id="sidebar-nivel">NIVEL</span>
-      <div class="sidebar-titulo" id="sidebar-titulo">CARGANDO...</div>
-      <div class="sidebar-precio">
-        <span class="sidebar-monto" id="sidebar-precio">$0</span>
-        <span class="sidebar-duracion" id="sidebar-duracion">/ 0 semanas</span>
-      </div>
-      <ul class="sidebar-features" id="sidebar-features">
-        <!-- JS -->
-      </ul>
-      <a href="#contact" class="course-cta course-cta--featured">INSCRIBIRSE</a>
-    </div>
-  </aside>
 
 </div><!-- /detalle-body -->
 
@@ -213,7 +197,7 @@
 </a>
 
 <script src="js/main.js" defer></script>
-<script src="js/cursos-data.js" ></script>
+<script src="js/cursos-data.js"></script>
 <script src="js/detalle.js"></script>
 
 </body>
