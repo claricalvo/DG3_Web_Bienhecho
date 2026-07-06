@@ -1656,64 +1656,86 @@ footer {
   filter: blur(4px);
 }
 /* ── WORD DATA — stats que aparecen con cada palabra activa ── */
+/* ── WORD DATA: stats bajo la palabra, estética mono/sección ── */
+
+/* Wrapper: se posiciona en la PARTE INFERIOR del viewport sticky,
+   bien separado de la palabra grande que ocupa el centro */
 .word-data {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: calc(50% - 110px);
+  bottom: 48px;
+  left: 0;
+  right: 0;
   display: flex;
-  gap: 52px;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .35s ease .1s;
-  white-space: nowrap;
+  transition: opacity .3s ease .08s;
+  z-index: 10;
 }
 .word-data.visible { opacity: 1; }
 
+/* Cada stat: número grande + label mono, separados por borde */
 .word-stat {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 5px;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 0 32px;
+  border-left: 1px solid rgba(237,109,34,.3);
 }
+.word-stat:first-child { padding-left: 0; border-left: none; }
+
+/* Número: mismo estilo que stat-num del about */
 .word-stat__num {
-  font-family: var(--display);
-  font-style: italic;
-  font-weight: 900;
-  font-size: clamp(20px, 2.8vw, 38px);
+  font-family: var(--mono);
+  font-size: clamp(22px, 2.6vw, 34px);
+  font-weight: 400;
   color: var(--orange);
   line-height: 1;
+  letter-spacing: -.01em;
 }
+/* Label: idéntico al section-label (// 001 — EQUIPO) */
 .word-stat__label {
   font-family: var(--mono);
   font-size: 9px;
-  letter-spacing: .2em;
-  color: rgba(245,245,245,.35);
+  letter-spacing: .22em;
+  color: rgba(245,245,245,.38);
   text-transform: uppercase;
 }
 
+/* Context: línea tipo section-label, en la parte SUPERIOR del viewport */
 .word-context {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: calc(50% + 80px);
+  top: 40px;
+  left: 0;
+  right: 0;
+  text-align: center;
   font-family: var(--mono);
   font-size: 10px;
-  letter-spacing: .2em;
-  color: rgba(245,245,245,.22);
+  letter-spacing: .25em;
+  color: var(--orange);
   text-transform: uppercase;
   white-space: nowrap;
   pointer-events: none;
   opacity: 0;
-  transition: opacity .35s ease .15s;
+  transition: opacity .3s ease .12s;
+  z-index: 10;
 }
 .word-context.visible { opacity: 1; }
 
-@media (max-width: 600px) {
-  .word-data { gap: 20px; bottom: calc(50% - 80px); }
+@media (max-width: 768px) {
+  .word-data {
+    bottom: 32px;
+    gap: 0;
+    flex-wrap: nowrap;
+    max-width: 95vw;
+  }
+  .word-stat { padding: 0 18px; }
   .word-stat__num { font-size: 18px; }
-  .word-stat__label { font-size: 8px; letter-spacing: .12em; }
-  .word-context { font-size: 8px; letter-spacing: .12em; top: calc(50% + 56px); }
+  .word-stat__label { font-size: 8px; letter-spacing: .14em; }
+  .word-context { top: 28px; font-size: 9px; letter-spacing: .18em; }
 }
 
 .hero-cta {
