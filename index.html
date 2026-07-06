@@ -322,12 +322,34 @@
 <section class="words-section" id="words">
   <div class="words-sticky">
     <div class="words-display">
+
+      <!-- 0: VELOCIDAD -->
       <span class="word-item" data-index="0">VELOCIDAD</span>
+      <div class="word-data" data-for="0">
+        <div class="word-stat"><div class="word-stat__num">287</div><div class="word-stat__label">km/h m&aacute;x. simulado</div></div>
+        <div class="word-stat"><div class="word-stat__num">3G</div><div class="word-stat__label">fuerza g lateral</div></div>
+        <div class="word-stat"><div class="word-stat__num">240Hz</div><div class="word-stat__label">refresh telemetr&iacute;a</div></div>
+      </div>
+      <div class="word-context" data-for="0">// PLATAFORMA FULL MOTION &mdash; ID&Eacute;NTICA A LA DE F1</div>
+
+      <!-- 1: ADRENALINA -->
       <span class="word-item" data-index="1">ADRENALINA</span>
+      <div class="word-data" data-for="1">
+        <div class="word-stat"><div class="word-stat__num">94%</div><div class="word-stat__label">vuelven a entrenar</div></div>
+        <div class="word-stat"><div class="word-stat__num">12ms</div><div class="word-stat__label">latencia de respuesta</div></div>
+        <div class="word-stat"><div class="word-stat__num">120&deg;</div><div class="word-stat__label">campo visual</div></div>
+      </div>
+      <div class="word-context" data-for="1">// LA EXPERIENCIA M&Aacute;S CERCANA AL MONOPLAZA REAL</div>
+
+      <!-- 2: COMPETENCIA -->
       <span class="word-item" data-index="2">COMPETENCIA</span>
-      <span class="word-item" data-index="3">DISCIPLINA</span>
-      <span class="word-item" data-index="4">PRECISI&Oacute;N</span>
-      <span class="word-item" data-index="5">VICTORIA</span>
+      <div class="word-data" data-for="2">
+        <div class="word-stat"><div class="word-stat__num">+500</div><div class="word-stat__label">pilotos formados</div></div>
+        <div class="word-stat"><div class="word-stat__num">&minus;4s</div><div class="word-stat__label">por vuelta en 3 meses</div></div>
+        <div class="word-stat"><div class="word-stat__num">3x</div><div class="word-stat__label">m&aacute;s r&aacute;pido que autodidacta</div></div>
+      </div>
+      <div class="word-context" data-for="2">// NUESTROS PILOTOS CORTAN SEGUNDOS REALES EN PISTA</div>
+
     </div>
   </div>
 </section>
@@ -514,5 +536,33 @@
 <a href="https://wa.me/5491100000000" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
 </a>
+
+<script>
+// ── WORD DATA SYNC ──
+(function() {
+  const section = document.getElementById('words');
+  if (!section) return;
+  const dataEls    = section.querySelectorAll('.word-data');
+  const contextEls = section.querySelectorAll('.word-context');
+
+  function sync() {
+    const active = section.querySelector('.word-item.active');
+    const idx    = active ? active.getAttribute('data-index') : null;
+    dataEls.forEach(el =>
+      el.classList.toggle('visible', el.getAttribute('data-for') === idx)
+    );
+    contextEls.forEach(el =>
+      el.classList.toggle('visible', el.getAttribute('data-for') === idx)
+    );
+  }
+
+  // Observer en cada word-item para detectar cuando cambia la clase
+  const mo = new MutationObserver(sync);
+  section.querySelectorAll('.word-item').forEach(w =>
+    mo.observe(w, { attributes: true, attributeFilter: ['class'] })
+  );
+  sync();
+})();
+</script>
 </body>
 </html>

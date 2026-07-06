@@ -800,7 +800,7 @@ footer {
    SCROLL CAR SECTION
 ========================================== */
 #car-scroll-section {
-  height: 140vh;
+  height: 220vh;
   position: relative;
   background: var(--black);
   border-top: 1px solid var(--line);
@@ -949,7 +949,7 @@ footer {
 
 /* ── 3. CAR SECTION: sin espacio negro arriba y abajo ── */
 #car-scroll-section {
-  height: 140vh;
+  height: 220vh;
   position: relative;
   background: transparent;
   border: none;
@@ -1655,6 +1655,67 @@ footer {
   transform: translateY(-80px) scale(1.07);
   filter: blur(4px);
 }
+/* ── WORD DATA — stats que aparecen con cada palabra activa ── */
+.word-data {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: calc(50% - 110px);
+  display: flex;
+  gap: 52px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease .1s;
+  white-space: nowrap;
+}
+.word-data.visible { opacity: 1; }
+
+.word-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.word-stat__num {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 900;
+  font-size: clamp(20px, 2.8vw, 38px);
+  color: var(--orange);
+  line-height: 1;
+}
+.word-stat__label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .2em;
+  color: rgba(245,245,245,.35);
+  text-transform: uppercase;
+}
+
+.word-context {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(50% + 80px);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .2em;
+  color: rgba(245,245,245,.22);
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .35s ease .15s;
+}
+.word-context.visible { opacity: 1; }
+
+@media (max-width: 600px) {
+  .word-data { gap: 20px; bottom: calc(50% - 80px); }
+  .word-stat__num { font-size: 18px; }
+  .word-stat__label { font-size: 8px; letter-spacing: .12em; }
+  .word-context { font-size: 8px; letter-spacing: .12em; top: calc(50% + 56px); }
+}
+
 .hero-cta {
   margin-top: 32px;
   display: flex;
