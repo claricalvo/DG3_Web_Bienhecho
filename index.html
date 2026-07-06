@@ -322,88 +322,200 @@
 <section class="words-section" id="words">
   <div class="words-sticky">
 
-    <!-- Palabras: centradas en el viewport -->
     <div class="words-display">
       <span class="word-item" data-index="0">VELOCIDAD</span>
       <span class="word-item" data-index="1">ADRENALINA</span>
       <span class="word-item" data-index="2">COMPETENCIA</span>
     </div>
 
-    <!-- Eyebrows: tope del viewport, estilo section-label naranja -->
-    <div class="word-context" data-for="0">// SIMULADOR FULL MOTION &mdash; 3 EJES &mdash; IDÉNTICO AL DE F1</div>
-    <div class="word-context" data-for="1">// LA EXPERIENCIA MÁS CERCANA AL MONOPLAZA REAL</div>
-    <div class="word-context" data-for="2">// NUESTROS PILOTOS CORTAN HASTA 4 SEG POR VUELTA</div>
+    <!-- EYEBROWS -->
+    <div class="word-context" data-for="0">// APEX NIVEL 2 &mdash; SESI&Oacute;N 6 &mdash; PILOTO: M. TORRES</div>
+    <div class="word-context" data-for="1">// APEX SIMULADOR 3 &mdash; SESI&Oacute;N EN VIVO &mdash; PISTA: INTERLAGOS</div>
+    <div class="word-context" data-for="2">// APEX CHAMPIONSHIP 2024 &mdash; TEMPORADA 3 &mdash; 12 PILOTOS</div>
 
-    <!-- Stats: base del viewport, bien separados de la palabra grande -->
+    <!-- ═══════════ PANEL 0: VELOCIDAD ═══════════ -->
     <div class="word-data" data-for="0">
-      <div class="word-stat">
-        <div class="word-stat__num">287 km/h</div>
-        <div class="word-stat__label">velocidad m&aacute;x. simulada</div>
-        <div class="word-stat__bar" style="--fill:89%"></div>
-        <svg class="word-tele" viewBox="0 0 200 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0,20 12,18 22,8 30,4 38,10 50,16 60,6 70,2 82,8 90,14 100,6 112,3 122,10 132,16 142,8 155,4 165,12 175,6 188,2 200,8" fill="none" stroke="#ED6D22" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <div class="word-stats-row">
+        <div class="word-stat">
+          <div class="word-stat__num">247 km/h</div>
+          <div class="word-stat__label">vel. m&aacute;x. sesi&oacute;n</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:91%"></div></div>
+        </div>
+        <div class="word-stat">
+          <div class="word-stat__num">1:32.481</div>
+          <div class="word-stat__label">mejor vuelta</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:88%"></div></div>
+        </div>
+        <div class="word-stat">
+          <div class="word-stat__num">96.4%</div>
+          <div class="word-stat__label">consistencia</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:96%"></div></div>
+        </div>
+        <div class="word-stat">
+          <div class="word-stat__num">91%</div>
+          <div class="word-stat__label">precisi&oacute;n frenado</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:91%"></div></div>
+        </div>
+        <div class="word-stat">
+          <div class="word-stat__num">+18%</div>
+          <div class="word-stat__label">mejora en el curso</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:72%"></div></div>
+        </div>
+        <div class="word-stat">
+          <div class="word-stat__num">214ms</div>
+          <div class="word-stat__label">t. de reacci&oacute;n</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:84%"></div></div>
+        </div>
       </div>
-      <div class="word-stat">
-        <div class="word-stat__num">3.2G</div>
-        <div class="word-stat__label">fuerza g lateral m&aacute;x.</div>
-        <div class="word-stat__bar" style="--fill:64%"></div>
-      </div>
-      <div class="word-stat">
-        <div class="word-stat__num">240Hz</div>
-        <div class="word-stat__label">refresh de telemetr&iacute;a</div>
-        <div class="word-stat__bar" style="--fill:100%"></div>
-      </div>
-      <div class="word-stat">
-        <div class="word-stat__num">0.001s</div>
-        <div class="word-stat__label">resoluci&oacute;n de datos</div>
-        <div class="word-stat__bar" style="--fill:100%"></div>
+      <!-- Curva de velocidad por vuelta -->
+      <div class="word-chart-wrap">
+        <div class="word-chart-label">// CURVA DE VELOCIDAD &mdash; VUELTA 6</div>
+        <svg class="word-chart" viewBox="0 0 900 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="vg0" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ED6D22" stop-opacity=".25"/>
+              <stop offset="100%" stop-color="#ED6D22" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,38 C20,36 35,20 55,12 C75,4 90,6 110,14 C130,22 145,36 165,38 C185,40 195,38 215,30 C235,22 250,8 270,5 C290,2 305,10 325,18 C345,26 360,36 380,38 C400,40 415,36 435,24 C455,12 470,4 490,3 C510,2 525,8 545,18 C565,28 580,38 600,40 C620,42 635,36 655,26 C675,16 690,6 710,4 C730,2 745,10 765,20 C785,30 800,38 820,40 C840,42 860,36 880,28 L900,24" fill="none" stroke="#ED6D22" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M0,38 C20,36 35,20 55,12 C75,4 90,6 110,14 C130,22 145,36 165,38 C185,40 195,38 215,30 C235,22 250,8 270,5 C290,2 305,10 325,18 C345,26 360,36 380,38 C400,40 415,36 435,24 C455,12 470,4 490,3 C510,2 525,8 545,18 C565,28 580,38 600,40 C620,42 635,36 655,26 C675,16 690,6 710,4 C730,2 745,10 765,20 C785,30 800,38 820,40 C840,42 860,36 880,28 L900,24 L900,48 L0,48 Z" fill="url(#vg0)"/>
+          <!-- Sectores -->
+          <line x1="300" y1="0" x2="300" y2="48" stroke="rgba(237,109,34,.15)" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="600" y1="0" x2="600" y2="48" stroke="rgba(237,109,34,.15)" stroke-width="1" stroke-dasharray="3,3"/>
+          <text x="10" y="46" font-family="monospace" font-size="7" fill="rgba(245,245,245,.25)" letter-spacing="1">S1</text>
+          <text x="310" y="46" font-family="monospace" font-size="7" fill="rgba(245,245,245,.25)" letter-spacing="1">S2</text>
+          <text x="610" y="46" font-family="monospace" font-size="7" fill="rgba(245,245,245,.25)" letter-spacing="1">S3</text>
+          <!-- Punto de vel. máx. -->
+          <circle cx="490" cy="3" r="3" fill="#ED6D22"/>
+          <text x="494" y="2" font-family="monospace" font-size="7" fill="rgba(237,109,34,.8)" letter-spacing="1">247</text>
+        </svg>
       </div>
     </div>
 
+    <!-- ═══════════ PANEL 1: ADRENALINA ═══════════ -->
     <div class="word-data" data-for="1">
-      <div class="word-stat">
-        <div class="word-stat__num">12ms</div>
-        <div class="word-stat__label">latencia de respuesta</div>
-        <div class="word-stat__bar" style="--fill:98%"></div>
-        <svg class="word-tele" viewBox="0 0 200 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0,12 15,10 28,4 40,8 52,14 62,6 74,2 85,8 95,16 108,10 118,4 130,8 140,14 152,6 162,10 175,4 185,8 200,12" fill="none" stroke="#ED6D22" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <div class="word-stats-row">
+        <div class="word-stat">
+          <div class="word-stat__num">94%</div>
+          <div class="word-stat__label">concentraci&oacute;n</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:94%"></div></div>
+        </div>
+        <div class="word-stat">
+          <div class="word-stat__num">ALTA</div>
+          <div class="word-stat__label">intensidad sesi&oacute;n</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:82%"></div></div>
+        </div>
+        <div class="word-stat">
+          <div class="word-stat__num">88%</div>
+          <div class="word-stat__label">control volante</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:88%"></div></div>
+        </div>
+        <div class="word-stat">
+          <div class="word-stat__num">91%</div>
+          <div class="word-stat__label">precisi&oacute;n curvas</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:91%"></div></div>
+        </div>
+        <div class="word-stat">
+          <div class="word-stat__num">2.8G</div>
+          <div class="word-stat__label">fuerza g m&aacute;x.</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:70%"></div></div>
+        </div>
+        <div class="word-stat">
+          <div class="word-stat__num">9.4/10</div>
+          <div class="word-stat__label">nivel de inmersi&oacute;n</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:94%"></div></div>
+        </div>
       </div>
-      <div class="word-stat">
-        <div class="word-stat__num">120°</div>
-        <div class="word-stat__label">campo visual activo</div>
-        <div class="word-stat__bar" style="--fill:75%"></div>
-      </div>
-      <div class="word-stat">
-        <div class="word-stat__num">94%</div>
-        <div class="word-stat__label">pilotos que repiten</div>
-        <div class="word-stat__bar" style="--fill:94%"></div>
-      </div>
-      <div class="word-stat">
-        <div class="word-stat__num">18</div>
-        <div class="word-stat__label">canales de telemetr&iacute;a</div>
-        <div class="word-stat__bar" style="--fill:72%"></div>
+      <!-- Radar de habilidades -->
+      <div class="word-chart-wrap">
+        <div class="word-chart-label">// RADAR DE HABILIDADES &mdash; PILOTO vs. NIVEL APEX</div>
+        <svg class="word-chart" viewBox="0 0 900 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Timeline de una vuelta: zonas de frenada, aceleración, curva -->
+          <rect x="0"   y="16" width="900" height="16" rx="2" fill="rgba(245,245,245,.04)"/>
+          <!-- Zona frenada -->
+          <rect x="80"  y="16" width="60"  height="16" rx="0" fill="rgba(237,109,34,.35)"/>
+          <rect x="310" y="16" width="45"  height="16" rx="0" fill="rgba(237,109,34,.35)"/>
+          <rect x="520" y="16" width="55"  height="16" rx="0" fill="rgba(237,109,34,.35)"/>
+          <rect x="730" y="16" width="40"  height="16" rx="0" fill="rgba(237,109,34,.35)"/>
+          <!-- Zona aceleración -->
+          <rect x="140" y="20" width="170" height="8"  rx="0" fill="rgba(245,245,245,.12)"/>
+          <rect x="355" y="20" width="165" height="8"  rx="0" fill="rgba(245,245,245,.12)"/>
+          <rect x="575" y="20" width="155" height="8"  rx="0" fill="rgba(245,245,245,.12)"/>
+          <!-- Labels -->
+          <text x="82"  y="46" font-family="monospace" font-size="7" fill="rgba(237,109,34,.6)" letter-spacing="1">FRENO</text>
+          <text x="312" y="46" font-family="monospace" font-size="7" fill="rgba(237,109,34,.6)" letter-spacing="1">FRENO</text>
+          <text x="522" y="46" font-family="monospace" font-size="7" fill="rgba(237,109,34,.6)" letter-spacing="1">FRENO</text>
+          <text x="0"   y="13" font-family="monospace" font-size="7" fill="rgba(245,245,245,.25)" letter-spacing="1">0s</text>
+          <text x="435" y="13" font-family="monospace" font-size="7" fill="rgba(245,245,245,.25)" letter-spacing="1">46s</text>
+          <text x="870" y="13" font-family="monospace" font-size="7" fill="rgba(245,245,245,.25)" letter-spacing="1">92s</text>
+          <!-- Indicador posición actual -->
+          <line x1="490" y1="8" x2="490" y2="40" stroke="#ED6D22" stroke-width="1.5"/>
+          <circle cx="490" cy="24" r="4" fill="#ED6D22"/>
+        </svg>
       </div>
     </div>
 
+    <!-- ═══════════ PANEL 2: COMPETENCIA ═══════════ -->
     <div class="word-data" data-for="2">
-      <div class="word-stat">
-        <div class="word-stat__num">+500</div>
-        <div class="word-stat__label">pilotos formados</div>
-        <div class="word-stat__bar" style="--fill:100%"></div>
-        <svg class="word-tele" viewBox="0 0 200 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0,16 10,12 20,8 32,10 44,6 55,4 66,8 78,12 88,6 100,4 112,8 122,14 132,8 144,4 155,6 165,10 175,6 185,4 200,8" fill="none" stroke="#ED6D22" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <div class="word-stats-row">
+        <!-- Podio top 3 -->
+        <div class="word-stat">
+          <div class="word-stat__num">&#9312; TORRES</div>
+          <div class="word-stat__label">campeon t3 &mdash; 287 pts</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:100%"></div></div>
+        </div>
+        <div class="word-stat">
+          <div class="word-stat__num">&#9313; RIVAS</div>
+          <div class="word-stat__label">subcampe&oacute;n &mdash; 261 pts</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:91%"></div></div>
+        </div>
+        <div class="word-stat">
+          <div class="word-stat__num">&#9314; MEND.</div>
+          <div class="word-stat__label">3er puesto &mdash; 244 pts</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:85%"></div></div>
+        </div>
+        <div class="word-stat">
+          <div class="word-stat__num">8</div>
+          <div class="word-stat__label">victorias Torres</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:67%"></div></div>
+        </div>
+        <div class="word-stat">
+          <div class="word-stat__num">12</div>
+          <div class="word-stat__label">fechas disputadas</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:100%"></div></div>
+        </div>
+        <div class="word-stat">
+          <div class="word-stat__num">1:29.8</div>
+          <div class="word-stat__label">vuelta r&aacute;pida campeonato</div>
+          <div class="word-bar"><div class="word-bar__fill" style="width:100%"></div></div>
+        </div>
       </div>
-      <div class="word-stat">
-        <div class="word-stat__num">&minus;4s</div>
-        <div class="word-stat__label">por vuelta en 3 meses</div>
-        <div class="word-stat__bar" style="--fill:80%"></div>
-      </div>
-      <div class="word-stat">
-        <div class="word-stat__num">3&times;</div>
-        <div class="word-stat__label">m&aacute;s r&aacute;pido que autodidacta</div>
-        <div class="word-stat__bar" style="--fill:66%"></div>
-      </div>
-      <div class="word-stat">
-        <div class="word-stat__num">#1</div>
-        <div class="word-stat__label">academia ARG</div>
-        <div class="word-stat__bar" style="--fill:100%"></div>
+      <!-- Evolución de puntos -->
+      <div class="word-chart-wrap">
+        <div class="word-chart-label">// EVOLUCIÓN DE PUNTOS &mdash; TEMPORADA 3 &mdash; TOP 3</div>
+        <svg class="word-chart" viewBox="0 0 900 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="cg0" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ED6D22" stop-opacity=".2"/>
+              <stop offset="100%" stop-color="#ED6D22" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- Torres: línea naranja sólida -->
+          <polyline points="0,42 75,38 150,32 225,28 300,24 375,20 450,18 525,14 600,12 675,8 750,6 825,4 900,2" fill="none" stroke="#ED6D22" stroke-width="2" stroke-linejoin="round"/>
+          <!-- Rivas: línea blanca tenue -->
+          <polyline points="0,42 75,40 150,36 225,32 300,30 375,27 450,26 525,23 600,20 675,18 750,16 825,14 900,12" fill="none" stroke="rgba(245,245,245,.35)" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="6,3"/>
+          <!-- Mendez: línea aún más tenue -->
+          <polyline points="0,44 75,42 150,40 225,38 300,36 375,34 450,33 525,30 600,28 675,27 750,26 825,24 900,22" fill="none" stroke="rgba(245,245,245,.18)" stroke-width="1.5" stroke-linejoin="round" stroke-dasharray="4,4"/>
+          <!-- Fecha actual -->
+          <line x1="900" y1="0" x2="900" y2="48" stroke="rgba(237,109,34,.2)" stroke-width="1"/>
+          <!-- Leyenda -->
+          <rect x="0" y="0" width="8" height="2" fill="#ED6D22" rx="1"/>
+          <text x="12" y="3" font-family="monospace" font-size="7" fill="rgba(237,109,34,.7)" letter-spacing="1">TORRES</text>
+          <rect x="80" y="0" width="8" height="2" fill="rgba(245,245,245,.35)" rx="1"/>
+          <text x="92" y="3" font-family="monospace" font-size="7" fill="rgba(245,245,245,.35)" letter-spacing="1">RIVAS</text>
+          <rect x="155" y="0" width="8" height="2" fill="rgba(245,245,245,.18)" rx="1"/>
+          <text x="167" y="3" font-family="monospace" font-size="7" fill="rgba(245,245,245,.2)" letter-spacing="1">MENDEZ</text>
+        </svg>
       </div>
     </div>
 

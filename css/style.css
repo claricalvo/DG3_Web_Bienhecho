@@ -1656,14 +1656,13 @@ footer {
   filter: blur(4px);
 }
 
-/* ══════════════════════════════════════════════
-   WORD DATA — info panel que acompaña cada palabra
-   Posicionado en el tercio inferior del viewport,
-   bien por debajo de la palabra grande centrada.
-   Usa la estética del sistema: mono, naranja, separadores.
-══════════════════════════════════════════════ */
+/* ═══════════════════════════════════════
+   WORD PANELS — aparecen con cada palabra
+   Panel centrado debajo de la palabra.
+   Eyebrow en el tope del viewport.
+═══════════════════════════════════════ */
 
-/* Eyebrow: arriba del todo, estilo section-label */
+/* Eyebrow: tope viewport, naranja, estilo section-label */
 .word-context {
   position: absolute;
   top: 32px;
@@ -1674,7 +1673,6 @@ footer {
   letter-spacing: .28em;
   color: var(--orange);
   text-transform: uppercase;
-  white-space: nowrap;
   pointer-events: none;
   opacity: 0;
   transition: opacity .3s ease .1s;
@@ -1682,95 +1680,102 @@ footer {
 }
 .word-context.visible { opacity: 1; }
 
-/* Panel de stats: posicionado en el cuarto inferior del viewport */
+/* Panel de datos: debajo de la palabra grande
+   Centrado, bien separado usando top del 62% */
 .word-data {
   position: absolute;
-  /* bottom fijo: ocupa el espacio entre 68vh y 88vh, bien lejos del centro */
-  bottom: 48px;
-  left: 0; right: 0;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0;
+  top: 62%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 88vw;
+  max-width: 960px;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .3s ease .08s;
+  transition: opacity .35s ease .08s;
   z-index: 5;
 }
 .word-data.visible { opacity: 1; }
 
-/* Cada stat: alineado a la izquierda dentro de su columna */
+/* Fila de stats: columnas separadas por borde */
+.word-stats-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 20px;
+}
 .word-stat {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  padding: 0 36px;
-  border-left: 1px solid rgba(237,109,34,.25);
+  gap: 4px;
+  padding: 0 20px;
+  border-left: 1px solid rgba(237,109,34,.2);
 }
-.word-stat:first-child {
-  border-left: none;
-  padding-left: 0;
-}
-
-/* Número: mono naranja — mismo look que los stat-num del about */
+.word-stat:first-child { border-left: none; padding-left: 0; }
 .word-stat__num {
   font-family: var(--mono);
-  font-size: clamp(18px, 2.2vw, 28px);
+  font-size: clamp(14px, 1.8vw, 22px);
   font-weight: 400;
   color: var(--orange);
   line-height: 1;
   letter-spacing: .04em;
 }
-
-/* Label: idéntico al section-label */
 .word-stat__label {
   font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: .22em;
-  color: rgba(245,245,245,.32);
+  font-size: 8px;
+  letter-spacing: .2em;
+  color: rgba(245,245,245,.3);
   text-transform: uppercase;
 }
-
-/* Mini barra de progreso decorativa debajo de cada stat */
-.word-stat__bar {
-  width: 100%;
+/* Barra de progreso */
+.word-bar {
   height: 2px;
-  background: rgba(237,109,34,.12);
+  background: rgba(237,109,34,.1);
   border-radius: 1px;
-  margin-top: 4px;
-  overflow: hidden;
-  position: relative;
-}
-.word-stat__bar::after {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  background: var(--orange);
-  border-radius: 1px;
-  width: var(--fill, 70%);
-  transition: width .6s ease .2s;
-}
-.word-data.visible .word-stat__bar::after {
-  width: var(--fill, 70%);
-}
-
-/* Gráfico de telemetría SVG inline */
-.word-tele {
-  width: 100%;
-  height: 24px;
   margin-top: 6px;
-  opacity: .45;
+  overflow: hidden;
+}
+.word-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, rgba(237,109,34,.6), var(--orange));
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .6s ease .3s;
+}
+.word-data.visible .word-bar__fill { transform: scaleX(1); }
+
+/* SVG charts */
+.word-chart {
+  width: 100%;
+  height: 48px;
+  display: block;
+  overflow: visible;
+}
+.word-chart-wrap {
+  margin-top: 8px;
+  border-top: 1px solid rgba(237,109,34,.1);
+  padding-top: 8px;
+}
+.word-chart-label {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: .18em;
+  color: rgba(237,109,34,.5);
+  text-transform: uppercase;
+  margin-bottom: 4px;
 }
 
+/* Mobile */
 @media (max-width: 768px) {
   .word-context { top: 24px; font-size: 9px; letter-spacing: .18em; }
-  .word-data { bottom: 28px; }
-  .word-stat { padding: 0 18px; }
-  .word-stat__num { font-size: 16px; }
-  .word-stat__label { font-size: 8px; letter-spacing: .14em; }
-  .word-stat__bar { display: none; }
-  .word-tele { display: none; }
+  .word-data { top: 60%; width: 94vw; }
+  .word-stats-row { flex-wrap: wrap; gap: 12px 0; }
+  .word-stat { flex: 0 0 50%; padding: 0 12px; }
+  .word-stat:nth-child(1) { border-left: none; padding-left: 0; }
+  .word-stat:nth-child(3) { border-left: none; padding-left: 0; }
+  .word-stat__num { font-size: 13px; }
+  .word-chart-wrap { display: none; }
 }
 
 .hero-cta {
