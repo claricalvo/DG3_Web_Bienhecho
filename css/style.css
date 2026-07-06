@@ -1655,16 +1655,39 @@ footer {
   transform: translateY(-80px) scale(1.07);
   filter: blur(4px);
 }
-/* ── WORD DATA — stats que aparecen con cada palabra activa ── */
-/* ── WORD DATA: stats bajo la palabra, estética mono/sección ── */
 
-/* Wrapper: se posiciona en la PARTE INFERIOR del viewport sticky,
-   bien separado de la palabra grande que ocupa el centro */
+/* ══════════════════════════════════════════════
+   WORD DATA — info panel que acompaña cada palabra
+   Posicionado en el tercio inferior del viewport,
+   bien por debajo de la palabra grande centrada.
+   Usa la estética del sistema: mono, naranja, separadores.
+══════════════════════════════════════════════ */
+
+/* Eyebrow: arriba del todo, estilo section-label */
+.word-context {
+  position: absolute;
+  top: 32px;
+  left: 0; right: 0;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .28em;
+  color: var(--orange);
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s ease .1s;
+  z-index: 5;
+}
+.word-context.visible { opacity: 1; }
+
+/* Panel de stats: posicionado en el cuarto inferior del viewport */
 .word-data {
   position: absolute;
+  /* bottom fijo: ocupa el espacio entre 68vh y 88vh, bien lejos del centro */
   bottom: 48px;
-  left: 0;
-  right: 0;
+  left: 0; right: 0;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -1672,70 +1695,82 @@ footer {
   opacity: 0;
   pointer-events: none;
   transition: opacity .3s ease .08s;
-  z-index: 10;
+  z-index: 5;
 }
 .word-data.visible { opacity: 1; }
 
-/* Cada stat: número grande + label mono, separados por borde */
+/* Cada stat: alineado a la izquierda dentro de su columna */
 .word-stat {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
-  padding: 0 32px;
-  border-left: 1px solid rgba(237,109,34,.3);
+  gap: 6px;
+  padding: 0 36px;
+  border-left: 1px solid rgba(237,109,34,.25);
 }
-.word-stat:first-child { padding-left: 0; border-left: none; }
+.word-stat:first-child {
+  border-left: none;
+  padding-left: 0;
+}
 
-/* Número: mismo estilo que stat-num del about */
+/* Número: mono naranja — mismo look que los stat-num del about */
 .word-stat__num {
   font-family: var(--mono);
-  font-size: clamp(22px, 2.6vw, 34px);
+  font-size: clamp(18px, 2.2vw, 28px);
   font-weight: 400;
   color: var(--orange);
   line-height: 1;
-  letter-spacing: -.01em;
+  letter-spacing: .04em;
 }
-/* Label: idéntico al section-label (// 001 — EQUIPO) */
+
+/* Label: idéntico al section-label */
 .word-stat__label {
   font-family: var(--mono);
   font-size: 9px;
   letter-spacing: .22em;
-  color: rgba(245,245,245,.38);
+  color: rgba(245,245,245,.32);
   text-transform: uppercase;
 }
 
-/* Context: línea tipo section-label, en la parte SUPERIOR del viewport */
-.word-context {
-  position: absolute;
-  top: 40px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: .25em;
-  color: var(--orange);
-  text-transform: uppercase;
-  white-space: nowrap;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity .3s ease .12s;
-  z-index: 10;
+/* Mini barra de progreso decorativa debajo de cada stat */
+.word-stat__bar {
+  width: 100%;
+  height: 2px;
+  background: rgba(237,109,34,.12);
+  border-radius: 1px;
+  margin-top: 4px;
+  overflow: hidden;
+  position: relative;
 }
-.word-context.visible { opacity: 1; }
+.word-stat__bar::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  background: var(--orange);
+  border-radius: 1px;
+  width: var(--fill, 70%);
+  transition: width .6s ease .2s;
+}
+.word-data.visible .word-stat__bar::after {
+  width: var(--fill, 70%);
+}
+
+/* Gráfico de telemetría SVG inline */
+.word-tele {
+  width: 100%;
+  height: 24px;
+  margin-top: 6px;
+  opacity: .45;
+}
 
 @media (max-width: 768px) {
-  .word-data {
-    bottom: 32px;
-    gap: 0;
-    flex-wrap: nowrap;
-    max-width: 95vw;
-  }
+  .word-context { top: 24px; font-size: 9px; letter-spacing: .18em; }
+  .word-data { bottom: 28px; }
   .word-stat { padding: 0 18px; }
-  .word-stat__num { font-size: 18px; }
+  .word-stat__num { font-size: 16px; }
   .word-stat__label { font-size: 8px; letter-spacing: .14em; }
-  .word-context { top: 28px; font-size: 9px; letter-spacing: .18em; }
+  .word-stat__bar { display: none; }
+  .word-tele { display: none; }
 }
 
 .hero-cta {

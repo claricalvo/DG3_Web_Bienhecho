@@ -322,31 +322,40 @@
 <section class="words-section" id="words">
   <div class="words-sticky">
 
-    <!-- Las 3 palabras, centradas -->
+    <!-- Palabras: centradas en el viewport -->
     <div class="words-display">
       <span class="word-item" data-index="0">VELOCIDAD</span>
       <span class="word-item" data-index="1">ADRENALINA</span>
       <span class="word-item" data-index="2">COMPETENCIA</span>
     </div>
 
-    <!-- Eyebrows: arriba, estilo section-label naranja -->
-    <div class="word-context" data-for="0">// SIMULADOR FULL MOTION &mdash; 3 EJES DE MOVIMIENTO</div>
-    <div class="word-context" data-for="1">// LA EXPERIENCIA M&Aacute;S CERCANA AL MONOPLAZA REAL</div>
+    <!-- Eyebrows: tope del viewport, estilo section-label naranja -->
+    <div class="word-context" data-for="0">// SIMULADOR FULL MOTION &mdash; 3 EJES &mdash; IDÉNTICO AL DE F1</div>
+    <div class="word-context" data-for="1">// LA EXPERIENCIA MÁS CERCANA AL MONOPLAZA REAL</div>
     <div class="word-context" data-for="2">// NUESTROS PILOTOS CORTAN HASTA 4 SEG POR VUELTA</div>
 
-    <!-- Stats: abajo, separados de la palabra, estilo mono -->
+    <!-- Stats: base del viewport, bien separados de la palabra grande -->
     <div class="word-data" data-for="0">
       <div class="word-stat">
         <div class="word-stat__num">287 km/h</div>
         <div class="word-stat__label">velocidad m&aacute;x. simulada</div>
+        <div class="word-stat__bar" style="--fill:89%"></div>
+        <svg class="word-tele" viewBox="0 0 200 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0,20 12,18 22,8 30,4 38,10 50,16 60,6 70,2 82,8 90,14 100,6 112,3 122,10 132,16 142,8 155,4 165,12 175,6 188,2 200,8" fill="none" stroke="#ED6D22" stroke-width="1.5" stroke-linejoin="round"/></svg>
       </div>
       <div class="word-stat">
-        <div class="word-stat__num">3G</div>
-        <div class="word-stat__label">fuerza lateral</div>
+        <div class="word-stat__num">3.2G</div>
+        <div class="word-stat__label">fuerza g lateral m&aacute;x.</div>
+        <div class="word-stat__bar" style="--fill:64%"></div>
       </div>
       <div class="word-stat">
         <div class="word-stat__num">240Hz</div>
         <div class="word-stat__label">refresh de telemetr&iacute;a</div>
+        <div class="word-stat__bar" style="--fill:100%"></div>
+      </div>
+      <div class="word-stat">
+        <div class="word-stat__num">0.001s</div>
+        <div class="word-stat__label">resoluci&oacute;n de datos</div>
+        <div class="word-stat__bar" style="--fill:100%"></div>
       </div>
     </div>
 
@@ -354,14 +363,23 @@
       <div class="word-stat">
         <div class="word-stat__num">12ms</div>
         <div class="word-stat__label">latencia de respuesta</div>
+        <div class="word-stat__bar" style="--fill:98%"></div>
+        <svg class="word-tele" viewBox="0 0 200 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0,12 15,10 28,4 40,8 52,14 62,6 74,2 85,8 95,16 108,10 118,4 130,8 140,14 152,6 162,10 175,4 185,8 200,12" fill="none" stroke="#ED6D22" stroke-width="1.5" stroke-linejoin="round"/></svg>
       </div>
       <div class="word-stat">
-        <div class="word-stat__num">120&deg;</div>
+        <div class="word-stat__num">120°</div>
         <div class="word-stat__label">campo visual activo</div>
+        <div class="word-stat__bar" style="--fill:75%"></div>
       </div>
       <div class="word-stat">
         <div class="word-stat__num">94%</div>
         <div class="word-stat__label">pilotos que repiten</div>
+        <div class="word-stat__bar" style="--fill:94%"></div>
+      </div>
+      <div class="word-stat">
+        <div class="word-stat__num">18</div>
+        <div class="word-stat__label">canales de telemetr&iacute;a</div>
+        <div class="word-stat__bar" style="--fill:72%"></div>
       </div>
     </div>
 
@@ -369,14 +387,23 @@
       <div class="word-stat">
         <div class="word-stat__num">+500</div>
         <div class="word-stat__label">pilotos formados</div>
+        <div class="word-stat__bar" style="--fill:100%"></div>
+        <svg class="word-tele" viewBox="0 0 200 24" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><polyline points="0,16 10,12 20,8 32,10 44,6 55,4 66,8 78,12 88,6 100,4 112,8 122,14 132,8 144,4 155,6 165,10 175,6 185,4 200,8" fill="none" stroke="#ED6D22" stroke-width="1.5" stroke-linejoin="round"/></svg>
       </div>
       <div class="word-stat">
         <div class="word-stat__num">&minus;4s</div>
         <div class="word-stat__label">por vuelta en 3 meses</div>
+        <div class="word-stat__bar" style="--fill:80%"></div>
       </div>
       <div class="word-stat">
         <div class="word-stat__num">3&times;</div>
         <div class="word-stat__label">m&aacute;s r&aacute;pido que autodidacta</div>
+        <div class="word-stat__bar" style="--fill:66%"></div>
+      </div>
+      <div class="word-stat">
+        <div class="word-stat__num">#1</div>
+        <div class="word-stat__label">academia ARG</div>
+        <div class="word-stat__bar" style="--fill:100%"></div>
       </div>
     </div>
 
