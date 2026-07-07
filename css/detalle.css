@@ -412,7 +412,11 @@
   }
 
   /* Gradiente extra sobre la imagen para separar la tarjeta */
-  .detalle-hero::before {
+  /* Gradiente extra sobre la imagen para separar la tarjeta */
+.detalle-hero::before {
+  content: '';               /* ¡ESTO ES OBLIGATORIO para que el elemento exista! */
+  position: absolute;        /* Permite que flote sobre la imagen de fondo */
+  inset: 0;                  /* Hace que ocupe el 100% de alto y ancho del contenedor */
   background: linear-gradient(
     100deg,
     rgba(8,8,8,.05) 0%,
