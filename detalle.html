@@ -2,234 +2,264 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detalle del Curso - Apex Driving School</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Detalle del curso &mdash; APEX Racing Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700;1,900&family=Barlow:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="images/logo.png">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/detalle.css">
 </head>
 <body>
 
-  <header class="header">
-    <div class="header__container">
-      <a href="index.html" class="header__logo">
-        <img src="img/logo-apex.png" alt="Apex Driving School Logo" class="header__logo-img">
-      </a>
-      <nav class="nav" id="nav-menu">
-        <ul class="nav__list">
-          <li class="nav__item"><a href="index.html#home" class="nav__link">Inicio</a></li>
-          <li class="nav__item"><a href="index.html#cursos" class="nav__link">Cursos</a></li>
-          <li class="nav__item"><a href="index.html#simuladores" class="nav__link">Simuladores</a></li>
-          <li class="nav__item"><a href="index.html#pilotos" class="nav__link">Pilotos</a></li>
-          <li class="nav__item"><a href="index.html#contact" class="nav__link nav__link--btn">Contacto</a></li>
-        </ul>
-      </nav>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-    </div>
-  </header>
+<div class="ambient-light light-left"></div>
+<div class="ambient-light light-right"></div>
+<div class="ambient-light light-center"></div>
+<div class="light-beam"></div>
+<canvas id="particleCanvas"></canvas>
 
-  <section class="detalle-hero" id="detalle-hero">
-    <div class="detalle-hero__content">
-      <div class="course-category" id="hero-categoria"></div>
-      <h1 class="course-title" id="hero-titulo"></h1>
-      <p class="course-subtitle" id="hero-subtitulo"></p>
-      <div class="course-meta">
-        <span class="meta-item"><i class="fa-regular fa-clock"></i> <span id="hero-duracion"></span></span>
-        <span class="meta-item"><i class="fa-solid fa-gauge-high"></i> <span id="hero-modalidad"></span></span>
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo"><img src="images/logo.png" alt="APEX" fetchpriority="high"></div>
+  <div class="nav-links-desktop">
+    <a href="index.html" class="nav-cta-btn">HOME</a>
+  </div>
+  <button class="nav-menu-btn" onclick="toggleMenu()">MEN&Uacute;</button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="menu-close" onclick="toggleMenu()">&#x2715;</button>
+  <a href="index.html" onclick="toggleMenu()">Home</a>
+  <a href="#contact" onclick="toggleMenu()">Contacto</a>
+</div>
+
+<!-- =====================================================
+     HERO: imagen izquierda + tarjeta derecha
+     ===================================================== -->
+<section class="detalle-hero" id="detalle-hero">
+  <div class="detalle-hero__img" id="hero-bg"></div>
+  <div class="detalle-hero__card">
+    <div class="detalle-hero__breadcrumb">
+      <a href="index.html">Inicio</a> // <span id="curso-titulo-breadcrumb">Detalle del curso</span>
+    </div>
+    <p class="detalle-hero__nivel" id="hero-nivel">NIVEL</p>
+    <h1 class="detalle-hero__titulo" id="hero-titulo">CARGANDO...</h1>
+    <div class="detalle-hero__precio">
+      <span class="detalle-hero__monto" id="hero-precio">$0</span>
+      <span class="detalle-hero__duracion" id="hero-duracion">/ 0 semanas</span>
+    </div>
+    <ul class="detalle-hero__features" id="hero-features"></ul>
+    <a href="#contact" class="course-cta course-cta--featured">INSCRIBIRSE</a>
+  </div>
+</section>
+
+<!-- =====================================================
+     BODY: contenido principal + sidebar sticky
+     ===================================================== -->
+<div class="detalle-body">
+
+  <!-- COLUMNA PRINCIPAL -->
+  <div class="detalle-main">
+
+    <!-- PROGRAMA -->
+    <section class="timeline-section" id="programa">
+      <div class="section-label">// 001 &mdash; PROGRAMA</div>
+      <h2 class="section-title">
+        <span class="light">Semana a</span>
+        <span class="bold">semana</span>
+      </h2>
+      <div class="divider"></div>
+      <div class="timeline" id="timeline-contenido">
+        <!-- JS -->
       </div>
+    </section>
+
+    <!-- M&Eacute;TODOS DE PAGO -->
+    <section class="metodos-pago" id="metodos-pago">
+      <div class="section-label">// 002 &mdash; PAGOS</div>
+      <h2 class="section-title">
+        <span class="light">M&eacute;todos de</span>
+        <span class="bold">pago</span>
+      </h2>
+      <div class="divider"></div>
+      <div class="metodos-pago__grid" id="metodos-pago-grid">
+        <!-- JS -->
+      </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="testimonials" id="pilotos">
+      <div class="section-label">// 003 &mdash; PILOTOS</div>
+      <h2 class="section-title">
+        <span class="light">Lo que dicen</span>
+        <span class="bold">nuestros pilotos</span>
+      </h2>
+      <div class="divider"></div>
+      <div class="testi-marquee-wrap">
+        <div class="testi-marquee" id="pilotos-track">
+          <!-- JS -->
+        </div>
+      </div>
+    </section>
+    <!-- OTROS NIVELES -->
+    <section class="otros-niveles" id="otros-niveles">
+      <div class="section-label">// 004 &mdash; M&Aacute;S CURSOS</div>
+      <h2 class="section-title">
+        <span class="light">Conoc&eacute; los</span>
+        <span class="bold">otros niveles</span>
+      </h2>
+      <div class="divider"></div>
+      <div class="otros-niveles__grid" id="otros-niveles-grid">
+        <!-- JS -->
+      </div>
+    </section>
+
+  </div><!-- /detalle-main -->
+
+  <!-- ═══════════════════════════════════════════
+       FIX 3: SIDEBAR STICKY
+       Visible durante secciones 1 (programa) y 2 (pagos).
+       Contiene: nivel, nombre, features, precio, CTA.
+       JS lo oculta cuando el scroll pasa de esas secciones.
+  ═══════════════════════════════════════════ -->
+  <aside class="detalle-sidebar" id="detalle-sidebar">
+    <div class="sidebar-card" id="sidebar-card">
+      <!-- Badge nivel — JS rellena el contenido -->
+      <span class="sidebar-badge" id="sidebar-nivel">NIVEL</span>
+      <h2 class="sidebar-titulo" id="sidebar-titulo">CARGANDO...</h2>
+      <!-- Features con ✓/✗ -->
+      <ul class="sidebar-features" id="sidebar-features"></ul>
+      <!-- Precio -->
+      <div class="sidebar-precio">
+        <span class="sidebar-monto" id="sidebar-precio">$0</span>
+        <span class="sidebar-duracion" id="sidebar-duracion">/ 0 semanas</span>
+      </div>
+      <!-- CTA -->
+      <a href="#contact" class="course-cta course-cta--featured">INSCRIBIRSE</a>
     </div>
-  </section>
+  </aside>
 
-  <div class="detalle-body">
-    
-    <div class="detalle-main">
-      
-      <nav class="detalle-nav">
-        <a href="#programa" class="active">Programa</a>
-        <a href="#metodos-pago">Métodos de Pago</a>
-        <a href="#pilotos">Pilotos Apex</a>
-      </nav>
+</div><!-- /detalle-body -->
 
-      <section class="timeline-section" id="programa">
-        <div class="section-label">// 001 — PROGRAMA</div>
-        <h2 class="section-title">
-          <span class="light">Semana a</span>
-          <span class="bold">semana</span>
-        </h2>
-        <div class="divider"></div>
-        
-        <div class="timeline" id="timeline-container">
-          </div>
-      </section>
-
-      <section class="metodos-pago" id="metodos-pago">
-        <div class="section-label">// 002 — FINANCIACIÓN</div>
-        <h2 class="section-title">
-          <span class="light">Métodos de</span>
-          <span class="bold">pago</span>
-        </h2>
-        <div class="divider"></div>
-        
-        <p class="metodos-pago__intro">Queremos que te enfoques en la pista. Por eso te ofrecemos opciones flexibles para que elijas la que mejor se adapte a vos:</p>
-        
-        <div class="payment-grid">
-          <div class="payment-card">
-            <div class="payment-card__icon">
-              <i class="fa-solid fa-money-bill-transfer"></i>
-            </div>
-            <h3 class="payment-card__title">Transferencia o Efectivo</h3>
-            <p class="payment-card__desc">Aprovechá un <strong>10% de descuento</strong> directo abonando el total del curso mediante transferencia bancaria o efectivo en nuestro simulador.</p>
-          </div>
-
-          <div class="payment-card">
-            <div class="payment-card__icon">
-              <i class="fa-solid fa-credit-card"></i>
-            </div>
-            <h3 class="payment-card__title">Tarjetas de Crédito</h3>
-            <p class="payment-card__desc">Pagá en <strong>3 o 6 cuotas fijas</strong> con cualquier tarjeta bancaria (Visa, MasterCard, American Express). Consultá las tasas vigentes.</p>
-          </div>
-
-          <div class="payment-card">
-            <div class="payment-card__icon">
-              <i class="fa-solid fa-user-check"></i>
-            </div>
-            <h3 class="payment-card__title">Cuotas sin Tarjeta</h3>
-            <p class="payment-card__desc">Financiá tu curso en hasta 3 pagos mensuales fijos abonando mes a mes. Ideal si preferís organizarte sin comprometer tu límite de crédito.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="testimonials" id="pilotos">
-        <div class="section-label">// 003 — COMUNIDAD</div>
-        <h2 class="section-title">
-          <span class="light">Nuestros</span>
-          <span class="bold">Pilotos</span>
-        </h2>
-        <div class="divider"></div>
-        
-        <div class="testimonials__grid">
-          <div class="testimonial-card">
-            <div class="testimonial-card__header">
-              <img src="img/testimonio-1.jpg" alt="Piloto" class="testimonial-avatar">
-              <div>
-                <h4 class="testimonial-name">Franco Colapinto</h4>
-                <p class="testimonial-course">Egresado Nivel Avanzado</p>
-              </div>
-            </div>
-            <p class="testimonial-text">"El nivel de realismo y la telemetría de los simuladores de Apex me ayudaron muchísimo a pulir mis trazados antes de subirme al auto real. La exigencia de los instructores te lleva al límite."</p>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="testimonial-card__header">
-              <img src="img/testimonio-2.jpg" alt="Piloto" class="testimonial-avatar">
-              <div>
-                <h4 class="testimonial-name">Mateo Salvatto</h4>
-                <p class="testimonial-course">Cursando Nivel Intermedio</p>
-              </div>
-            </div>
-            <p class="testimonial-text">"Arranqué de cero sin saber nada de setups ni frenadas. En pocas semanas ya logré bajar mis tiempos en más de dos segundos en Spa. Excelente comunidad y soporte."</p>
-          </div>
-        </div>
-      </section>
-
-    </div><aside class="detalle-sidebar" id="detalle-sidebar">
-      </aside>
-
-  </div><section class="otros-niveles" id="otros-niveles">
-    <div class="section-label">// 004 — MÁS CURSOS</div>
-    <h2 class="section-title">
-      <span class="light">Conocé los</span>
-      <span class="bold">otros niveles</span>
+<!-- NEWSLETTER / CONTACTO -->
+<section class="newsletter" id="contact">
+  <div class="newsletter-bg" style="background-image:url('images/Contacto.jpeg')"></div>
+  <div class="newsletter-overlay"></div>
+  <div class="newsletter-content">
+    <div class="newsletter-eyebrow">// 005 &mdash; CONTACTO</div>
+    <h2 class="newsletter-title">
+      NO TE PIERDAS<br>
+      <span class="accent">NADA.</span>
     </h2>
-    <div class="divider"></div>
-    
-    <div class="otros-niveles__grid" id="otros-niveles-grid">
+    <form class="newsletter-form" onsubmit="return false;">
+      <div class="newsletter-row">
+        <input class="newsletter-input" type="email" placeholder="tu@email.com" autocomplete="email">
+        <button class="newsletter-submit" type="submit">QUIERO ESTAR AL D&Iacute;A &nbsp;&#8594;</button>
       </div>
-  </section>
+    </form>
+  </div>
+</section>
 
-  <footer class="footer" id="contact">
-    <div class="footer__container">
-      <div class="footer__content">
-        <div class="footer__brand">
-          <img src="img/logo-apex.png" alt="Apex Logo" class="footer__logo">
-          <p class="footer__text">Llevamos tu pasión por el automovilismo al siguiente nivel. Entrenamiento profesional y simulación de alta competición.</p>
-          <div class="footer__socials">
-            <a href="#" class="footer__social-link"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" class="footer__social-link"><i class="fa-brands fa-youtube"></i></a>
-            <a href="#" class="footer__social-link"><i class="fa-brands fa-twitch"></i></a>
-            <a href="#" class="footer__social-link"><i class="fa-brands fa-discord"></i></a>
-          </div>
-        </div>
-        <div class="footer__links-group">
-          <h4 class="footer__links-title">Navegación</h4>
-          <ul class="footer__links-list">
-            <li><a href="index.html#home" class="footer__link">Inicio</a></li>
-            <li><a href="index.html#cursos" class="footer__link">Cursos</a></li>
-            <li><a href="index.html#simuladores" class="footer__link">Simuladores</a></li>
-            <li><a href="index.html#pilotos" class="footer__link">Pilotos Apex</a></li>
-          </ul>
-        </div>
-        <div class="footer__links-group">
-          <h4 class="footer__links-title">Contacto</h4>
-          <ul class="footer__links-list footer__links-list--contact">
-            <li><i class="fa-solid fa-location-dot"></i> Av. del Libertador 4500, Palermo, CABA</li>
-            <li><i class="fa-solid fa-phone"></i> +54 11 4000-0000</li>
-            <li><i class="fa-solid fa-envelope"></i> info@apexdriving.com.ar</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__bottom">
-        <p class="footer__copy">&copy; 2026 Apex Driving School. Todos los derechos reservados.</p>
-        <p class="footer__dev">Diseño y Desarrollo por <a href="#" target="_blank">Tu Nombre / Estudio</a></p>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo-wrap"><img loading="lazy" src="images/logo.png" alt="APEX"></div>
+      <p class="footer-tagline">La primera academia de simulaci&oacute;n F1 de Argentina. Formamos pilotos de &eacute;lite.</p>
+      <div class="footer-socials">
+        <a href="https://instagram.com/apexracingarg" class="footer-social-btn" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.333 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.333 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.333-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.062-1.366.333-2.633 1.308-3.608C4.516 2.567 5.783 2.296 7.15 2.234 8.416 2.175 8.796 2.163 12 2.163zm0 1.802c-3.15 0-3.503.011-4.755.069-1.08.049-1.67.228-2.063.378a3.44 3.44 0 0 0-1.276.83 3.44 3.44 0 0 0-.83 1.276c-.15.393-.329.983-.378 2.063C2.646 9.497 2.635 9.85 2.635 12s.011 2.503.069 3.755c.049 1.08.228 1.67.378 2.063.193.493.432.856.83 1.276.42.42.783.637 1.276.83.393.15.983.329 2.063.378C8.497 20.354 8.85 20.365 12 20.365s3.503-.011 4.755-.069c1.08-.049 1.67-.228 2.063-.378a3.44 3.44 0 0 0 1.276-.83 3.44 3.44 0 0 0 .83-1.276c.15-.393.329-.983.378-2.063.058-1.252.069-1.605.069-3.755s-.011-2.503-.069-3.755c-.049-1.08-.228-1.67-.378-2.063a3.44 3.44 0 0 0-.83-1.276 3.44 3.44 0 0 0-1.276-.83c-.393-.15-.983-.329-2.063-.378C15.503 3.977 15.15 3.965 12 3.965zm0 3.063a4.972 4.972 0 1 1 0 9.944 4.972 4.972 0 0 1 0-9.944zm0 1.802a3.17 3.17 0 1 0 0 6.34 3.17 3.17 0 0 0 0-6.34zm5.338-3.205a1.162 1.162 0 1 1 0 2.324 1.162 1.162 0 0 1 0-2.324z"/></svg>
+        </a>
+        <a href="https://wa.me/5491100000000" class="footer-social-btn" target="_blank" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </a>
+        <a href="mailto:hola@apexracing.com.ar" class="footer-social-btn" aria-label="Email">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
       </div>
     </div>
-  </footer>
+    <div>
+      <div class="footer-col-label">// CURSOS</div>
+      <ul class="footer-nav">
+        <li><a href="detalle.html?curso=luz-verde">Nivel 1 &mdash; Luz Verde</a></li>
+        <li><a href="detalle.html?curso=puesta-a-punto">Nivel 2 &mdash; Puesta a Punto</a></li>
+        <li><a href="detalle.html?curso=bandera-a-cuadros">Nivel 3 &mdash; Bandera a Cuadros</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-label">// ACADEMIA</div>
+      <ul class="footer-nav">
+        <li><a href="index.html#about">Qui&eacute;nes somos</a></li>
+        <li><a href="index.html#what">Metodolog&iacute;a</a></li>
+        <li><a href="index.html#faq">Preguntas frecuentes</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-label">// CONTACTO</div>
+      <ul class="footer-nav">
+        <li><a href="https://wa.me/5491100000000">+54 9 11 0000-0000</a></li>
+        <li><a href="mailto:hola@apexracing.com.ar">hola@apexracing.com.ar</a></li>
+        <li><a href="https://instagram.com/apexracingarg">@apexracingarg</a></li>
+        <li>Buenos Aires, Argentina</li>
+      </ul>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <div class="footer-copy">&#169; 2026 APEX RACING ACADEMY &mdash; ARGENTINA. TODOS LOS DERECHOS RESERVADOS.</div>
+    <div class="footer-legal">DISE&Ntilde;ADO PARA LOS QUE VAN EN SERIO.</div>
+  </div>
+</footer>
 
-  <a href="https://wa.me/5491100000000" class="wa-float" target="_blank" aria-label="WhatsApp">
-    <i class="fa-brands fa-whatsapp wa-float__icon"></i>
-  </a>
+<!-- Bot&oacute;n flotante WhatsApp -->
+<a href="https://wa.me/5491100000000" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
 
-  <script src="js/cursos-data.js"></script>
-  <script src="js/detalle.js"></script>
-  <script src="js/main.js" defer></script>
-  
-  <script>
-    // Script local para el comportamiento Sticky/Fade de la tarjeta de info (Solo Desktop)
-    const sidebar = document.getElementById('detalle-sidebar');
-    
-    function updateSidebar() {
-      if (window.innerWidth < 1024) {
-        sidebar.style.display = 'none';
-        return;
-      }
-      sidebar.style.display = '';
+<script src="js/cursos-data.js"></script>
+<script src="js/detalle.js"></script>
+<script src="js/main.js" defer></script>
 
-      const metodosPago = document.getElementById('metodos-pago');
-      const testimonials = document.getElementById('pilotos');
-      if (!metodosPago || !testimonials) { sidebar.style.opacity = '1'; return; }
 
-      const scrollY = window.scrollY;
-      
-      // La tarjeta acompaña fijamente hasta terminar la sección de Testimonios (Pilotos)
-      const hideFrom = testimonials.offsetTop + testimonials.offsetHeight - 100;
+<script>
+// El sidebar es poblado directamente por detalle.js → pintarCurso()
 
-      const visible = scrollY < hideFrom;
-      sidebar.style.opacity = visible ? '1' : '0';
-      sidebar.style.pointerEvents = visible ? 'auto' : 'none';
+// ── SIDEBAR: visible en todo momento en desktop ──
+// Se muestra siempre que el viewport sea desktop (≥1024px).
+// El sticky CSS se encarga de que acompañe el scroll.
+// Se oculta suavemente cuando se llega a las secciones después de pagos.
+(function() {
+  const sidebar = document.getElementById('detalle-sidebar');
+  if (!sidebar) return;
+
+  // Ocultar en mobile desde JS también (por si el CSS no alcanza)
+  function updateSidebar() {
+    if (window.innerWidth < 1024) {
+      sidebar.style.display = 'none';
+      return;
     }
+    sidebar.style.display = '';
 
-    window.addEventListener('scroll', updateSidebar);
-    window.addEventListener('resize', updateSidebar);
-    // Ejecutar un pequeño delay para asegurar que JS inyectó el contenido y calculó bien las alturas
-    setTimeout(updateSidebar, 200);
-  </script>
+    const metodosPago = document.getElementById('metodos-pago');
+    const testimonials = document.getElementById('pilotos'); // Esta es la sección de testimonios
+    if (!metodosPago || !testimonials) { sidebar.style.opacity = '1'; return; }
+
+    const scrollY = window.scrollY;
+    
+    // CAMBIO ACÁ: Ahora calcula el final de la sección de testimonios (pilotos)
+    const hideFrom = testimonials.offsetTop + testimonials.offsetHeight - 100;
+
+    const visible = scrollY < hideFrom;
+    sidebar.style.opacity      = visible ? '1' : '0';
+    sidebar.style.pointerEvents = visible ? 'auto' : 'none';
+  }
+
+  window.addEventListener('scroll', updateSidebar, { passive: true });
+  window.addEventListener('resize', updateSidebar);
+  // Correr después de que detalle.js pueble el contenido
+  setTimeout(updateSidebar, 100);
+})();
+</script>
 </body>
 </html>
