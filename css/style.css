@@ -396,7 +396,7 @@ section { padding: 72px 40px; position: relative; }
 }
 .about-stats {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 1px; background: var(--line); margin-top: 36px;
+  gap: 1px; background: var(--line); margin-top: 0;
 }
 .stat-box { background: var(--dark); padding: 14px 16px; text-align: center; }
 .stat-num {
@@ -456,7 +456,16 @@ section { padding: 72px 40px; position: relative; }
 }
 
 /* ── TESTIMONIALS ── */
-.testimonials { background: var(--black); border-top: 1px solid var(--line); padding: 72px 0; }
+
+/* ── STATS SECTION — entre 002 y auto scroll ── */
+.about-stats-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+}
+.about-stats-section .stat-box { background: var(--dark); padding: 28px 16px; text-align: center; }
+.testimonials { background: var(--black); border-top: 1px solid var(--line); padding: 72px 24px 0; }
 .testi-slider {
   display: flex; gap: 14px; overflow-x: auto;
   scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
@@ -1081,7 +1090,7 @@ footer {
 }
 
 .course-card-header {
-  padding: 18px 20px 0;
+  padding: 12px 16px 0;
 }
 .course-badge {
   font-family: var(--mono); font-size: 9px; color: var(--grey);
@@ -1107,7 +1116,7 @@ footer {
 
 .course-price {
   display: flex; align-items: baseline; gap: 6px;
-  padding-bottom: 10px;
+  padding-bottom: 6px;
   border-bottom: 1px solid var(--line);
 }
 .course-price-label {
@@ -1124,14 +1133,14 @@ footer {
 
 .course-features {
   list-style: none;
-  padding: 12px 20px;
-  display: flex; flex-direction: column; gap: 5px;
+  padding: 8px 16px;
+  display: flex; flex-direction: column; gap: 3px;
 }
 .course-features li {
-  font-size: 13px; font-weight: 300;
+  font-size: 12px; font-weight: 300;
   color: rgba(245,245,245,.75);
-  display: flex; align-items: flex-start; gap: 8px;
-  line-height: 1.25;
+  display: flex; align-items: flex-start; gap: 6px;
+  line-height: 1.2;
 }
 .feat-check {
   color: var(--orange); font-size: 13px; flex-shrink: 0; margin-top: 1px;
@@ -1327,21 +1336,21 @@ footer {
   }
 
   /* ── ABOUT ── */
-  .about { padding: 40px 120px 28px; }
-  .about-text { max-width: 680px; font-size: 15px; line-height: 1.5; margin: 0 auto; text-align: center; }
+  .about { padding: 28px 120px 20px; }
+  .about-text { max-width: 680px; font-size: 14px; line-height: 1.45; margin: 0 auto; text-align: center; }
   .about-layout-desktop { max-width: 100%; text-align: center; }
   .about .section-label { text-align: left; }
   .about .section-title { justify-content: center !important; }
   .about-desktop-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 40px;
     align-items: start;
-    margin: 16px 0 20px;
+    margin: 10px 0 14px;
   }
-  .about-text { max-width: 600px; font-size: 16px; line-height: 1.7; }
+  .about-text { max-width: 600px; font-size: 14px; line-height: 1.45; }
   .about .divider { display: none; }
-  .about .section-title { margin-bottom: 8px; }
+  .about .section-title { margin-bottom: 6px; }
   .about-slider { aspect-ratio: 4/5; margin: 0; }
   .about-carousel { display: none !important; }
   .about-imgs-row { display: none !important; }
@@ -1388,27 +1397,34 @@ footer {
   /* ── SPONSORS ── */
   .sponsors { padding: 32px 0; }
 
+  /* ── STATS SECTION desktop ── */
+  .about-stats-section {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .about-stats-section .stat-box { padding: 36px 24px; }
+
   /* ── TESTIMONIALS ── */
-  .testimonials { padding: 96px 60px; }
+  .testimonials { padding: 96px 120px; }
 
   /* ── COURSES ── */
-  .courses { padding: 32px 120px 40px; }
-  .courses-intro { font-size: 15px; }
+  .courses { padding: 20px 120px 28px; }
+  .courses-intro { font-size: 13px; margin-bottom: 12px; }
   .courses-grid {
     flex-direction: row !important;
-    gap: 24px;
+    gap: 16px;
   }
   .course-card { flex: 1; }
   .course-card--featured { transform: translateY(0); }
-  .course-name { font-size: clamp(22px, 1.8vw, 34px); }
+  .course-name { font-size: clamp(20px, 1.6vw, 28px); }
   .course-price-val { font-size: clamp(22px, 2vw, 32px); }
 
   /* Desktop: botón curso se ajusta al contenido, centrado */
   .course-cta {
     display: table;
     width: auto;
-    margin: 0 auto 28px;
-    padding: 12px 36px;
+    margin: 0 auto 16px;
+    padding: 9px 28px;
+    font-size: 15px;
   }
 
   /* ── COURSE 004 ── */
