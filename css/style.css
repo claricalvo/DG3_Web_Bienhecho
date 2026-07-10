@@ -742,7 +742,6 @@ footer {
   gap: 40px 24px;
   margin-bottom: 48px;
 }
-.footer-brand {}
 .footer-logo-wrap img { height: 34px; display: block; margin-bottom: 16px; }
 .footer-tagline {
   font-family: var(--body);
