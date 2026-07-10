@@ -265,32 +265,37 @@
 <script>
 // El sidebar es poblado directamente por detalle.js → pintarCurso()
 
-// ── SIDEBAR: visible en todo momento en desktop ──
-// Se muestra siempre que el viewport sea desktop (≥1024px).
-// El sticky CSS se encarga de que acompañe el scroll.
-// Se oculta suavemente cuando se llega a las secciones después de pagos.
+// ── SIDEBAR ──
+// Desktop (≥1024px): tarjeta "position: sticky" dentro de una columna
+// que tiene el mismo alto que programa+pagos+testimonios. Por eso NO
+// se toca opacity/display acá — el propio sticky hace que la tarjeta
+// acompañe el scroll y, al terminar esa columna, se despegue y
+// "scrollee con la página" de forma nativa, igual que la referencia.
+//
+// Mobile (<1024px): la tarjeta pasa a ser una barra flotante fija
+// (position: fixed, ver CSS). Como fixed no tiene noción de "columna",
+// ahí sí necesitamos JS para ocultarla una vez pasada la sección de
+// testimonios.
 (function() {
   const sidebar = document.getElementById('detalle-sidebar');
   if (!sidebar) return;
 
-  // En mobile el sidebar se convierte en barra flotante (ver CSS),
-  // en desktop es la tarjeta sticky de la derecha. En ambos casos
-  // se maneja igual: visible mientras no se pasó la sección de
-  // testimonios, oculta después.
   function updateSidebar() {
-    sidebar.style.display = '';
+    const isDesktop = window.innerWidth >= 1024;
 
-    const metodosPago = document.getElementById('metodos-pago');
-    const testimonials = document.getElementById('pilotos'); // Esta es la sección de testimonios
-    if (!metodosPago || !testimonials) { sidebar.style.opacity = '1'; return; }
+    if (isDesktop) {
+      // Sin intervención: el sticky nativo se encarga de todo.
+      sidebar.style.opacity = '';
+      sidebar.style.pointerEvents = '';
+      return;
+    }
 
-    const scrollY = window.scrollY;
-    
-    // CAMBIO ACÁ: Ahora calcula el final de la sección de testimonios (pilotos)
+    const testimonials = document.getElementById('pilotos'); // sección de testimonios
+    if (!testimonials) { sidebar.style.opacity = '1'; sidebar.style.pointerEvents = 'auto'; return; }
+
     const hideFrom = testimonials.offsetTop + testimonials.offsetHeight - 100;
-
-    const visible = scrollY < hideFrom;
-    sidebar.style.opacity      = visible ? '1' : '0';
+    const visible = window.scrollY < hideFrom;
+    sidebar.style.opacity       = visible ? '1' : '0';
     sidebar.style.pointerEvents = visible ? 'auto' : 'none';
   }
 
