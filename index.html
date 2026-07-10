@@ -712,7 +712,7 @@
         <li><a href="https://wa.me/5491100000000">+54 9 11 0000-0000</a></li>
         <li><a href="mailto:hola@apexracing.com.ar">hola@apexracing.com.ar</a></li>
         <li><a href="https://instagram.com/apexracingarg">@apexracingarg</a></li>
-        <li><a href="#">Bibloteca UI</a></li>
+        <li><a href="biblioteca.html">Biblioteca UI</a></li>
       </ul>
     </div>
 
@@ -733,6 +733,35 @@
 </a>
 
 <script>
+// ── NAV ACTIVE: refuerzo para que #faq también se ilumine ──
+(function() {
+  // Esperar a que main.js cargue su propio updateNav, luego sobreescribir
+  window.addEventListener('load', function() {
+    const links = document.querySelectorAll('.nav-links-desktop a[href^="#"]');
+    if (!links.length) return;
+
+    const ids = Array.from(links).map(l => l.getAttribute('href').slice(1));
+    const sections = ids.map(id => document.getElementById(id)).filter(Boolean);
+
+    function updateAllNav() {
+      if (window.innerWidth < 1024) return;
+      const y = window.scrollY + 140;
+      let active = sections[0];
+      sections.forEach(s => { if (s && s.offsetTop <= y) active = s; });
+      links.forEach(l => {
+        const isActive = l.getAttribute('href') === '#' + (active && active.id);
+        // No tocar el botón CTA (nav-cta-btn)
+        if (!l.classList.contains('nav-cta-btn')) {
+          l.style.color = isActive ? 'var(--orange)' : '';
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateAllNav, { passive: true });
+    updateAllNav();
+  });
+})();
+
 // ── WORD DATA SYNC ──
 (function() {
   const section = document.getElementById('words');
