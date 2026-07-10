@@ -294,6 +294,12 @@
   color: var(--white);
   text-transform: uppercase;
   margin: 0 0 6px;
+  transition: font-size .2s ease, color .2s ease;
+}
+
+.timeline-item:hover .timeline-title {
+  font-size: 28px;
+  color: var(--orange);
 }
 
 .timeline-desc {
