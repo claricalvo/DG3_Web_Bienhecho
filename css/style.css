@@ -1419,7 +1419,7 @@ footer {
 
   /* ── COURSES ── */
   .courses { padding: 20px 120px 28px; }
-  .courses-intro { font-size: 13px; margin-bottom: 12px; }
+  .courses-intro { font-size: 16px; margin-bottom: 12px; }
   .courses-grid {
     flex-direction: row !important;
     gap: 16px;
