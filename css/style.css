@@ -687,6 +687,16 @@ section { padding: 72px 40px; position: relative; }
   border-bottom: none;
   padding: 18px 20px;
 }
+.newsletter-label{
+    display: block;
+    width: 100%;
+    margin-bottom: 14px;
+
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
 .newsletter-input::placeholder { color: rgba(245,245,245,.3); }
 .newsletter-input:focus { border-color: var(--orange); }
 .newsletter-submit {
