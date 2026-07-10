@@ -139,13 +139,54 @@
         <!-- JS -->
       </div>
     </section>
-    
+
+<!-- ¿PARA QUIÉN ES? -->
+<section class="para-quien" id="para-quien">
+  <div class="section-label">// 005 &mdash; &iquest;PARA QUI&Eacute;N ES?</div>
+  <h2 class="section-title">
+    <span class="light">Encontr&aacute; tu</span>
+    <span class="bold">lugar en la pista</span>
+  </h2>
+  <div class="divider"></div>
+  <p class="para-quien__intro">No importa de d&oacute;nde arranqu&eacute;s: en APEX cada nivel est&aacute; pensado para un tipo de piloto distinto. Eleg&iacute; el que te representa hoy &mdash; y prepar&aacute;te para superarlo.</p>
+  <div class="para-quien__grid">
+
+    <div class="para-quien__card">
+      <div class="para-quien__icono">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4v16"/><path d="M4 4h13l-2.5 3.5L17 11H4"/></svg>
+      </div>
+      <span class="para-quien__tag">// NIVEL 1 &mdash; LUZ VERDE</span>
+      <h3>Sos nuevo en el simulador</h3>
+      <p>Nunca corriste de forma seria y quer&eacute;s empezar bien, sin quemar etapas. Te ense&ntilde;amos la base t&eacute;cnica &mdash; frenada, l&iacute;nea de manejo, control del auto &mdash; para que dejes de manejar por instinto y empieces a manejar con criterio.</p>
+    </div>
+
+    <div class="para-quien__card">
+      <div class="para-quien__icono">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 12l5-3"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></svg>
+      </div>
+      <span class="para-quien__tag">// NIVEL 2 &mdash; PUESTA A PUNTO</span>
+      <h3>Ya corr&eacute;s, pero quer&eacute;s mejorar en serio</h3>
+      <p>Sab&eacute;s dar una vuelta prolija, pero sent&iacute;s que top&eacute; un techo. Ac&aacute; entr&aacute;s en telemetr&iacute;a y setup: dej&aacute;s de manejar a ojo y empez&aacute;s a tomar decisiones con datos, como un ingeniero de pista.</p>
+    </div>
+
+    <div class="para-quien__card">
+      <div class="para-quien__icono">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 3h16"/><path d="M6 3v9a6 6 0 0 0 12 0V3"/><path d="M12 15v6"/><path d="M8 21h8"/></svg>
+      </div>
+      <span class="para-quien__tag">// NIVEL 3 &mdash; BANDERA A CUADROS</span>
+      <h3>Quer&eacute;s competir en serio</h3>
+      <p>No te alcanza con andar r&aacute;pido: quer&eacute;s pelear posiciones, cerrar estrategias y ganar. Este nivel te prepara para las ligas privadas APEX, donde compet&iacute;s codo a codo con los pilotos m&aacute;s exigentes de la academia.</p>
+    </div>
+
+  </div>
+</section>
+
 <!-- NEWSLETTER / CONTACTO -->
 <section class="newsletter" id="contact">
   <div class="newsletter-bg" style="background-image:url('images/Contacto.jpeg')"></div>
   <div class="newsletter-overlay"></div>
   <div class="newsletter-content">
-    <div class="newsletter-eyebrow">// 005 &mdash; CONTACTO</div>
+    <div class="newsletter-eyebrow">// 006 &mdash; CONTACTO</div>
     <h2 class="newsletter-title">
       NO TE PIERDAS<br>
       <span class="accent">NADA.</span>
@@ -232,12 +273,11 @@
   const sidebar = document.getElementById('detalle-sidebar');
   if (!sidebar) return;
 
-  // Ocultar en mobile desde JS también (por si el CSS no alcanza)
+  // En mobile el sidebar se convierte en barra flotante (ver CSS),
+  // en desktop es la tarjeta sticky de la derecha. En ambos casos
+  // se maneja igual: visible mientras no se pasó la sección de
+  // testimonios, oculta después.
   function updateSidebar() {
-    if (window.innerWidth < 1024) {
-      sidebar.style.display = 'none';
-      return;
-    }
     sidebar.style.display = '';
 
     const metodosPago = document.getElementById('metodos-pago');

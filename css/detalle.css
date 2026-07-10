@@ -144,19 +144,21 @@
 }
 
 .sidebar-card {
-  background: var(--mid);
-  border: 1px solid var(--line);
+  background: var(--orange);
+  border: 1px solid rgba(8,8,8,.2);
   padding: 28px 24px;
 }
 
+/* Texto oscuro en toda la tarjeta para que contraste bien contra el naranja */
 .sidebar-badge {
   font-family: var(--mono);
   font-size: 10px;
   letter-spacing: .2em;
-  color: var(--orange);
+  color: var(--black);
   text-transform: uppercase;
   display: block;
   margin-bottom: 8px;
+  opacity: .7;
 }
 
 .sidebar-titulo {
@@ -165,7 +167,7 @@
   font-weight: 900;
   font-size: clamp(28px, 6vw, 38px);
   text-transform: uppercase;
-  color: var(--white);
+  color: var(--black);
   line-height: .95;
   margin-bottom: 16px;
 }
@@ -175,8 +177,8 @@
   align-items: baseline;
   gap: 8px;
   padding: 16px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  border-top: 1px solid rgba(8,8,8,.2);
+  border-bottom: 1px solid rgba(8,8,8,.2);
   margin-bottom: 20px;
 }
 
@@ -185,13 +187,13 @@
   font-style: italic;
   font-weight: 900;
   font-size: clamp(30px, 5vw, 40px);
-  color: var(--orange);
+  color: var(--black);
 }
 
 .sidebar-duracion {
   font-family: var(--mono);
   font-size: 11px;
-  color: var(--grey);
+  color: rgba(8,8,8,.65);
   letter-spacing: .1em;
 }
 
@@ -207,21 +209,30 @@
 .sidebar-features li {
   font-size: 14px;
   font-weight: 300;
-  color: rgba(245,245,245,.75);
+  color: rgba(8,8,8,.8);
   display: flex;
   align-items: flex-start;
   gap: 10px;
   line-height: 1.4;
 }
 
-.sidebar-features .feat-check { color: var(--orange); font-size: 13px; flex-shrink: 0; }
-.sidebar-features .feat-cross  { color: var(--grey);   font-size: 13px; flex-shrink: 0; }
-.sidebar-features .feat-disabled { color: rgba(245,245,245,.3) !important; }
+.sidebar-features .feat-check { color: var(--black); font-size: 13px; flex-shrink: 0; }
+.sidebar-features .feat-cross  { color: rgba(8,8,8,.4);   font-size: 13px; flex-shrink: 0; }
+.sidebar-features .feat-disabled { color: rgba(8,8,8,.35) !important; }
 
+/* Botón: se invierte a negro para que resalte sobre la tarjeta naranja */
 .sidebar-card .course-cta {
   display: block;
   text-align: center;
   text-decoration: none;
+  background: var(--black);
+  border-color: var(--black);
+  color: var(--orange);
+}
+.sidebar-card .course-cta:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--black);
 }
 
 /* =========================================================
@@ -379,6 +390,148 @@
 .otro-nivel-card .course-cta         { margin: 0 16px 16px; padding: 10px; font-size: 13px; }
 
 /* =========================================================
+   ¿PARA QUIÉN ES?
+   ========================================================= */
+
+.para-quien { background: var(--dark) !important; }
+
+.para-quien__intro {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: rgba(245,245,245,.7);
+  max-width: 560px;
+  margin: 0 0 8px;
+}
+
+.para-quien__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.para-quien__card {
+  background: var(--mid);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--orange);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.para-quien__icono {
+  width: 32px;
+  height: 32px;
+  color: var(--orange);
+  flex-shrink: 0;
+}
+.para-quien__icono svg { width: 100%; height: 100%; }
+
+.para-quien__card h3 {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--white);
+  text-transform: uppercase;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.para-quien__card p {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: rgba(245,245,245,.65);
+  margin: 0;
+}
+
+.para-quien__tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  color: var(--orange);
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   MOBILE < 1024px — barra flotante del sidebar
+   (nombre del curso, precio y botón únicamente)
+   ========================================================= */
+
+@media (max-width: 1023px) {
+  .detalle-sidebar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 500;
+    padding: 0;
+    background: transparent;
+    border-top: none;
+  }
+
+  .sidebar-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 16px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    background: var(--orange);
+    box-shadow: 0 -6px 24px rgba(0,0,0,.5);
+  }
+
+  /* En la barra flotante sólo se muestran nombre, precio y botón */
+  .sidebar-badge,
+  .sidebar-features {
+    display: none;
+  }
+
+  .sidebar-titulo {
+    font-size: 15px;
+    line-height: 1.1;
+    margin: 0;
+    padding: 0;
+    border-bottom: none;
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sidebar-precio {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+    border: none;
+    flex-shrink: 0;
+  }
+
+  .sidebar-monto { font-size: 18px; }
+  .sidebar-duracion { font-size: 9px; }
+
+  .sidebar-card .course-cta {
+    margin: 0;
+    padding: 11px 20px;
+    font-size: 13px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Espacio para que el contenido no quede tapado por la barra
+     mientras está visible (acompaña programa + pagos + testimonios) */
+  .detalle-main { padding-bottom: 84px; }
+
+  /* Subir el botón flotante de WhatsApp para que no choque con la barra */
+  .wa-float { bottom: 92px; }
+}
+
+/* =========================================================
    DESKTOP ≥ 1024px
    ========================================================= */
 
@@ -406,8 +559,10 @@
     min-height: 100%;
     background-size: cover;
     background-position: center;
-    /* Oscurecer imagen para que el texto sea legible */
-    filter: brightness(.45) saturate(.8);
+    /* Oscurecer apenas la imagen — se le bajó la opacidad del negro
+       para que se vea más nítida. El lado derecho (debajo de la
+       tarjeta) se sigue oscureciendo con el gradiente de abajo. */
+    filter: brightness(.8) saturate(.95);
     z-index: 0;
   }
 
@@ -417,10 +572,13 @@
   content: '';               /* ¡ESTO ES OBLIGATORIO para que el elemento exista! */
   position: absolute;        /* Permite que flote sobre la imagen de fondo */
   inset: 0;                  /* Hace que ocupe el 100% de alto y ancho del contenedor */
+  /* Lado izquierdo (imagen visible) mucho más transparente para que
+     se vea más la foto. Lado derecho (0,88 / 0,97 — debajo de la
+     tarjeta) queda IGUAL que antes para no perder legibilidad. */
   background: linear-gradient(
     100deg,
-    rgba(8,8,8,.05) 0%,
-    rgba(8,8,8,.15) 45%,
+    rgba(8,8,8,0) 0%,
+    rgba(8,8,8,.05) 45%,
     rgba(8,8,8,.88) 58%,
     rgba(8,8,8,.97) 100%
   );
@@ -452,7 +610,10 @@
   ════════════════════════════════════════ */
   .detalle-body {
     flex-direction: row;
-    align-items: flex-start;
+    /* stretch (default): el sidebar toma el mismo alto que .detalle-main
+       (programa + pagos + testimonios), así la tarjeta sticky tiene
+       recorrido para acompañar el scroll hasta el final de esa sección */
+    align-items: stretch;
     padding: 0;
     gap: 0;
   }
@@ -488,8 +649,8 @@
   .sidebar-card {
     position: sticky;
     top: 88px;        /* justo debajo del nav fijo */
-    background: var(--dark);
-    border: 1px solid var(--line);
+    background: var(--orange);
+    border: 1px solid rgba(8,8,8,.2);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 8px 40px rgba(0,0,0,.5);
@@ -497,12 +658,12 @@
     transition: opacity .3s ease, transform .3s ease;
   }
 
-  /* Borde naranja arriba de la tarjeta */
+  /* Borde negro arriba de la tarjeta — contraste sobre el naranja */
   .sidebar-card::before {
     content: '';
     display: block;
     height: 3px;
-    background: var(--orange);
+    background: var(--black);
   }
 
   .sidebar-badge {
@@ -522,11 +683,11 @@
     font-weight: 900;
     font-size: clamp(26px, 2.5vw, 36px);
     text-transform: uppercase;
-    color: var(--white);
+    color: var(--black);
     line-height: .92;
     margin: 0 0 0;
     padding: 0 20px 16px;
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid rgba(8,8,8,.2);
   }
 
   .sidebar-features {
@@ -544,7 +705,7 @@
   .sidebar-precio {
     padding: 12px 20px;
     margin: 0;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid rgba(8,8,8,.2);
     border-bottom: none;
     gap: 6px;
   }
@@ -589,6 +750,23 @@
   .detalle-main .otros-niveles {
     padding: 72px 120px !important;
   }
+
+  /* ¿Para quién es?: ancho completo, márgenes simétricos, 3 columnas */
+  .para-quien {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding: 96px 120px !important;
+    box-sizing: border-box;
+  }
+  .para-quien__grid {
+    flex-direction: row;
+    gap: 24px;
+  }
+  .para-quien__card { flex: 1; }
 
   /* Otros niveles: sin sidebar → márgenes completos */
   /* Cambiás el selector para que apunte a la sección ahora que está afuera */
