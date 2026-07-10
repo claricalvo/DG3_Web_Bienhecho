@@ -681,12 +681,12 @@
     padding: 72px 60px 72px 24px;  /* 60px derecho = margen de página */
     background: transparent;
     border: none;
-    align-self: flex-start;
+    align-self: stretch; /* ocupa el alto de programa+pagos+testimonios */
   }
 
   .sidebar-card {
     position: sticky;
-    top: 88px;        /* justo debajo del nav fijo */
+    top: 88px;
     background: var(--orange);
     border: 1px solid rgba(8,8,8,.2);
     border-radius: 8px;
