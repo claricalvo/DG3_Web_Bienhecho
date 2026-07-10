@@ -702,6 +702,7 @@ section { padding: 72px 40px; position: relative; }
 .newsletter-input::placeholder {
     color: #777;
     opacity: 1;
+    text-align: center;
 }
 .newsletter-input:focus { border-color: var(--orange); }
 .newsletter-submit {
