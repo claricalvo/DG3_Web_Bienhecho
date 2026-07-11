@@ -195,21 +195,45 @@
   margin-bottom: 16px;
 }
 
+/* Cuotas — a la Coderhouse/e-commerce: "hasta 6 cuotas sin interés de $X" */
+.sidebar-cuotas__label {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(8,8,8,.7);
+  margin: 0 0 2px;
+}
+
+.sidebar-cuotas__monto {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 900;
+  font-size: clamp(24px, 4vw, 30px);
+  color: var(--black);
+  line-height: 1;
+}
+
 .sidebar-precio {
   display: flex;
   align-items: baseline;
-  gap: 8px;
-  padding: 16px 0;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  padding: 14px 0;
   border-top: 1px solid rgba(8,8,8,.2);
   border-bottom: 1px solid rgba(8,8,8,.2);
-  margin-bottom: 20px;
+  margin: 14px 0 20px;
+}
+
+.sidebar-precio__label {
+  font-size: 12px;
+  color: rgba(8,8,8,.7);
+  width: 100%;
 }
 
 .sidebar-monto {
   font-family: var(--display);
   font-style: italic;
   font-weight: 900;
-  font-size: clamp(30px, 5vw, 40px);
+  font-size: clamp(22px, 4vw, 28px);
   color: var(--black);
 }
 
@@ -219,29 +243,6 @@
   color: rgba(8,8,8,.65);
   letter-spacing: .1em;
 }
-
-.sidebar-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.sidebar-features li {
-  font-size: 14px;
-  font-weight: 300;
-  color: rgba(8,8,8,.8);
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  line-height: 1.4;
-}
-
-.sidebar-features .feat-check { color: var(--black); font-size: 13px; flex-shrink: 0; }
-.sidebar-features .feat-cross  { color: rgba(8,8,8,.4);   font-size: 13px; flex-shrink: 0; }
-.sidebar-features .feat-disabled { color: rgba(8,8,8,.35) !important; }
 
 /* Botón: se invierte a negro para que resalte sobre la tarjeta naranja */
 .sidebar-card .course-cta {
@@ -256,6 +257,83 @@
   background: #fff;
   border-color: #fff;
   color: var(--black);
+}
+
+/* "¡Probá una clase gratis!" */
+.sidebar-clase-gratis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(8,8,8,.75);
+  text-decoration: none;
+}
+.sidebar-clase-gratis svg { width: 15px; height: 15px; flex-shrink: 0; }
+.sidebar-clase-gratis:hover { color: var(--black); }
+
+/* Medios de pago */
+.sidebar-pagos {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(8,8,8,.2);
+  text-align: center;
+}
+
+.sidebar-pagos__label {
+  font-size: 11px;
+  color: rgba(8,8,8,.65);
+  margin: 0 0 10px;
+}
+
+.sidebar-pagos__icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.pago-chip {
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 4px;
+  background: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .01em;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+.pago-chip--visa { color: #1a1f71; font-style: italic; }
+.pago-chip--amex { background: #2e77bc; color: #fff; }
+.pago-chip--mc { gap: 0; padding: 0 10px; }
+.pago-chip--mc i {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.pago-chip--mc i:first-child { background: #eb001b; margin-right: -4px; }
+.pago-chip--mc i:last-child  { background: #f79e1b; mix-blend-mode: multiply; }
+
+.sidebar-pagos__link {
+  font-size: 11px;
+  color: rgba(8,8,8,.75);
+  text-decoration: underline;
+}
+.sidebar-pagos__link:hover { color: var(--black); }
+
+/* Cupos limitados */
+.sidebar-cupos {
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: 11px;
+  color: rgba(8,8,8,.6);
 }
 
 /* =========================================================
@@ -563,7 +641,11 @@
 
   /* En la barra flotante sólo se muestran nombre, precio y botón */
   .sidebar-badge,
-  .sidebar-features {
+  .sidebar-cuotas,
+  .sidebar-precio__label,
+  .sidebar-clase-gratis,
+  .sidebar-pagos,
+  .sidebar-cupos {
     display: none;
   }
 
@@ -760,6 +842,7 @@
   .sidebar-card {
     position: sticky;
     top: 88px;
+    padding: 0; /* cada sección adentro maneja su propio padding horizontal */
     background: var(--orange);
     border: 1px solid rgba(8,8,8,.2);
     border-radius: 8px;
@@ -792,51 +875,58 @@
     font-family: var(--display);
     font-style: italic;
     font-weight: 900;
-    font-size: clamp(26px, 2.5vw, 36px);
+    font-size: clamp(24px, 2.2vw, 32px);
     text-transform: uppercase;
     color: var(--black);
     line-height: .92;
     margin: 0 0 0;
-    padding: 0 20px 16px;
+    padding: 0 20px 14px;
     border-bottom: 1px solid rgba(8,8,8,.2);
   }
 
-  .sidebar-features {
-    padding: 14px 20px;
-    margin: 0;
-    gap: 8px;
-  }
-
-  .sidebar-features li {
-    font-size: 13px;
-    gap: 8px;
-    line-height: 1.3;
+  .sidebar-cuotas {
+    padding: 12px 20px 0;
   }
 
   .sidebar-precio {
-    padding: 12px 20px;
-    margin: 0;
+    padding: 10px 20px;
+    margin: 10px 0 0;
     border-top: 1px solid rgba(8,8,8,.2);
     border-bottom: none;
-    gap: 6px;
+    gap: 4px 8px;
   }
 
   .sidebar-monto {
-    font-size: clamp(26px, 2.5vw, 34px);
+    font-size: clamp(20px, 2vw, 24px);
   }
 
   .sidebar-duracion {
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .sidebar-card .course-cta {
     display: block;
-    margin: 0 20px 20px;
+    margin: 16px 20px 0;
     text-align: center;
     border-radius: 100px;
     padding: 12px 20px;
-    font-size: 16px;
+    font-size: 15px;
   }
+
+  .sidebar-clase-gratis {
+    margin: 12px 20px 0;
+  }
+
+  .sidebar-pagos {
+    margin: 18px 0 0;
+    padding: 14px 20px 18px;
+  }
+
+  .sidebar-cupos {
+    padding: 0 20px 18px;
+    margin: 0;
+  }
+
 
   /* Timeline: 2 columnas */
   .timeline {

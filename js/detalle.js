@@ -64,26 +64,13 @@ document.addEventListener("DOMContentLoaded", function () {
     var sTitulo   = document.getElementById("sidebar-titulo");
     var sPrecio   = document.getElementById("sidebar-precio");
     var sDuracion = document.getElementById("sidebar-duracion");
-    var sFeatures = document.getElementById("sidebar-features");
+    var sCuota    = document.getElementById("sidebar-cuota-monto");
 
     if (sNivel)    sNivel.textContent    = c.nivel;
     if (sTitulo)   sTitulo.textContent   = c.titulo;
     if (sPrecio)   sPrecio.textContent   = "$" + c.precio.toLocaleString("es-AR");
     if (sDuracion) sDuracion.textContent = "/ " + c.duracion;
-
-    if (sFeatures) {
-      sFeatures.innerHTML = "";
-      c.caracteristicas.forEach(function (item) {
-        var li = document.createElement("li");
-        if (!item.incluido) li.classList.add("feat-disabled");
-        var checkClass = item.incluido ? "feat-check" : "feat-cross";
-        var symbol = item.incluido ? "✓" : "✗";
-        li.innerHTML =
-          '<span class="' + checkClass + '">' + symbol + '</span>' +
-          '<span class="' + (item.incluido ? "" : "feat-disabled") + '">' + item.texto + '</span>';
-        sFeatures.appendChild(li);
-      });
-    }
+    if (sCuota)    sCuota.textContent    = "$" + Math.round(c.precio / 6).toLocaleString("es-AR");
   }
 
   /* -----------------------------------------------------

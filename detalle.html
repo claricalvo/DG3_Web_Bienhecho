@@ -115,15 +115,39 @@
       <!-- Badge nivel — JS rellena el contenido -->
       <span class="sidebar-badge" id="sidebar-nivel">NIVEL</span>
       <h2 class="sidebar-titulo" id="sidebar-titulo">CARGANDO...</h2>
-      <!-- Features con ✓/✗ -->
-      <ul class="sidebar-features" id="sidebar-features"></ul>
-      <!-- Precio -->
+
+      <!-- Cuotas -->
+      <div class="sidebar-cuotas">
+        <p class="sidebar-cuotas__label">Hasta 6 cuotas sin inter&eacute;s de</p>
+        <div class="sidebar-cuotas__monto" id="sidebar-cuota-monto">$0</div>
+      </div>
+
+      <!-- Precio final -->
       <div class="sidebar-precio">
+        <span class="sidebar-precio__label">Precio final:</span>
         <span class="sidebar-monto" id="sidebar-precio">$0</span>
         <span class="sidebar-duracion" id="sidebar-duracion">/ 0 semanas</span>
       </div>
+
       <!-- CTA -->
       <a href="#contact" class="course-cta course-cta--featured">INSCRIBIRSE</a>
+
+      <a href="#contact" class="sidebar-clase-gratis">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16" r=".6" fill="currentColor" stroke="none"/></svg>
+        &iexcl;Prob&aacute; una clase gratis!
+      </a>
+
+      <div class="sidebar-pagos">
+        <p class="sidebar-pagos__label">Medios de pago disponibles</p>
+        <div class="sidebar-pagos__icons">
+          <span class="pago-chip pago-chip--visa">VISA</span>
+          <span class="pago-chip pago-chip--mc"><i></i><i></i></span>
+          <span class="pago-chip pago-chip--amex">AMEX</span>
+        </div>
+        <a href="#metodos-pago" class="sidebar-pagos__link">Ver todos los medios de pago</a>
+      </div>
+
+      <p class="sidebar-cupos">&#127937; Cupos limitados por comisi&oacute;n</p>
     </div>
   </aside>
 
