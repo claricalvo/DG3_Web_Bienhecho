@@ -10,31 +10,54 @@
    ========================================================= */
 
 .detalle-hero {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  align-items: flex-end;
+  min-height: 100svh;
   background: var(--black);
-  padding-top: 60px; /* espacio para el nav fijo */
+  padding-top: 0;
+  overflow: hidden;
 }
 
-/* Imagen: ocupa toda la altura, mitad del ancho en desktop */
+/* Imagen: ocupa TODA la pantalla, de punta a punta, sin márgenes */
 .detalle-hero__img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  min-height: 55vw;
+  height: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  flex-shrink: 0;
+  filter: brightness(.75);
+  z-index: 0;
 }
 
-/* Tarjeta info */
+/* Degradado para que el texto de abajo se lea bien sobre la foto */
+.detalle-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8,8,8,0) 40%, rgba(8,8,8,.92) 100%);
+  z-index: 1;
+}
+
+/* Tarjeta: flota sobre la imagen, pegada abajo a la izquierda */
 .detalle-hero__card {
-  background: var(--dark);
-  border-top: 1px solid var(--line);
-  padding: 36px 24px 48px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  background: transparent;
+  border-top: none;
+  padding: 0 24px 40px;
   display: flex;
   flex-direction: column;
   gap: 0;
+}
+
+/* En mobile solo se muestran nivel, título, precio y botón */
+.detalle-hero__breadcrumb,
+.detalle-hero__features {
+  display: none;
 }
 
 .detalle-hero__breadcrumb {
@@ -432,9 +455,19 @@
   transform-style: preserve-3d;
 }
 
-.para-quien__card:hover .para-quien__flip {
+/* Desktop/dispositivos con mouse real: se da vuelta al pasar el mouse */
+@media (hover: hover) and (pointer: fine) {
+  .para-quien__card:hover .para-quien__flip {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Mobile/touch: se da vuelta al tocar (clase agregada por JS) */
+.para-quien__card.is-flipped .para-quien__flip {
   transform: rotateY(180deg);
 }
+
+.para-quien__card { cursor: pointer; }
 
 /* Caras: frente y dorso ocupan el mismo espacio, apiladas */
 .para-quien__front,
@@ -520,11 +553,12 @@
   .sidebar-card {
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 12px 16px;
-    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    gap: 10px;
+    padding: 10px 16px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
     background: var(--orange);
     box-shadow: 0 -6px 24px rgba(0,0,0,.5);
+    overflow: hidden;
   }
 
   /* En la barra flotante sólo se muestran nombre, precio y botón */
@@ -534,12 +568,12 @@
   }
 
   .sidebar-titulo {
-    font-size: 15px;
+    font-size: 13px;
     line-height: 1.1;
     margin: 0;
     padding: 0;
     border-bottom: none;
-    flex: 1;
+    flex: 1 1 auto;
     min-width: 0;
     white-space: nowrap;
     overflow: hidden;
@@ -556,15 +590,18 @@
     flex-shrink: 0;
   }
 
-  .sidebar-monto { font-size: 18px; }
-  .sidebar-duracion { font-size: 9px; }
+  .sidebar-monto { font-size: 24px; }
+  .sidebar-duracion { font-size: 9px; white-space: nowrap; }
 
   .sidebar-card .course-cta {
     margin: 0;
-    padding: 11px 20px;
-    font-size: 13px;
+    width: auto;
+    padding: 9px 14px;
+    font-size: 11px;
+    letter-spacing: .03em;
     white-space: nowrap;
     flex-shrink: 0;
+    flex-grow: 0;
   }
 
   /* Espacio para que el contenido no quede tapado por la barra
@@ -573,6 +610,27 @@
 
   /* Subir el botón flotante de WhatsApp para que no choque con la barra */
   .wa-float { bottom: 92px; }
+
+  /* ── Márgenes uniformes en toda la página (24px, estándar mobile) ── */
+  .detalle-main section,
+  .otros-niveles,
+  .para-quien {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .newsletter-content { padding-left: 24px; padding-right: 24px; }
+  footer { padding-left: 24px; padding-right: 24px; }
+
+  /* ── Testimonios: el marquee quedaba "pausado" en touch ──
+     :hover queda pegado al tocar la pantalla en muchos navegadores
+     mobile, y el scroll infinito parecía trabado o tardar en aparecer.
+     Se limita la pausa por hover a dispositivos con mouse real. */
+  .testi-marquee:hover { animation-play-state: running; }
+
+  /* Newsletter: título más grande */
+  .newsletter-title {
+    font-size: clamp(64px, 15vw, 92px);
+  }
 }
 
 /* =========================================================
@@ -594,6 +652,15 @@
     align-items: stretch;
     overflow: hidden;
   }
+
+  /* En mobile se ocultan (ver hero rediseñado arriba); en desktop
+     el layout original con imagen a la izquierda y tarjeta a la
+     derecha sí los muestra */
+  .detalle-hero__breadcrumb,
+  .detalle-hero__features {
+    display: block;
+  }
+  .detalle-hero__features { display: flex; }
 
   /* Imagen ocupa TODA la pantalla como fondo */
   .detalle-hero__img {

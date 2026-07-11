@@ -176,7 +176,7 @@
           <h3>Ya corr&eacute;s, pero quer&eacute;s mejorar</h3>
         </div>
         <div class="para-quien__back">
-          <p>Sab&eacute;s dar una vuelta prolija, pero sent&iacute;s que topaste un techo. Ac&aacute; entr&aacute;s en telemetr&iacute;a y setup: dej&aacute;s de manejar a ojo y empez&aacute;s a tomar decisiones con datos, como un ingeniero de pista.</p>
+          <p>Sab&eacute;s dar una vuelta prolija, pero sent&iacute;s que top&eacute; un techo. Ac&aacute; entr&aacute;s en telemetr&iacute;a y setup: dej&aacute;s de manejar a ojo y empez&aacute;s a tomar decisiones con datos, como un ingeniero de pista.</p>
         </div>
       </div>
     </div>
@@ -329,6 +329,18 @@
   window.addEventListener('resize', updateSidebar);
   // Correr después de que detalle.js pueble el contenido
   setTimeout(updateSidebar, 100);
+})();
+
+// ── ¿PARA QUIÉN ES?: click/tap para dar vuelta la card ──
+// En desktop (mouse real) el CSS ya la da vuelta con hover.
+// Acá sumamos el click para que también funcione con touch,
+// y sirve como alternativa en desktop también.
+(function() {
+  document.querySelectorAll('.para-quien__card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      card.classList.toggle('is-flipped');
+    });
+  });
 })();
 </script>
 </body>
