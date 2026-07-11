@@ -53,6 +53,19 @@
   </div>
 </section>
 
+<!-- QUÉ INCLUYE -->
+<section class="que-incluye" id="que-incluye">
+  <div class="section-label">// QU&Eacute; INCLU&Iacute;S</div>
+  <h2 class="section-title">
+    <span class="light">&iquest;Qu&eacute;</span>
+    <span class="bold">inclu&iacute;s?</span>
+  </h2>
+  <div class="divider"></div>
+  <ul class="que-incluye__list" id="que-incluye-list">
+    <!-- JS puebla este listado con las mismas caracteristicas del curso -->
+  </ul>
+</section>
+
 <!-- =====================================================
      BODY: contenido principal + sidebar sticky
      ===================================================== -->
@@ -140,6 +153,7 @@
       <div class="sidebar-pagos">
         <p class="sidebar-pagos__label">Medios de pago disponibles</p>
         <div class="sidebar-pagos__icons">
+          <span class="pago-chip pago-chip--mp"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2z" fill="#00BCFF"/><path d="M17.5 9.5c0 1.933-1.567 3.5-3.5 3.5H9v-7h5c1.933 0 3.5 1.567 3.5 3.5z" fill="white"/><path d="M9 13h3.5c1.105 0 2 .895 2 2s-.895 2-2 2H9v-4z" fill="white"/></svg></span>
           <span class="pago-chip pago-chip--visa">VISA</span>
           <span class="pago-chip pago-chip--mc"><i></i><i></i></span>
           <span class="pago-chip pago-chip--amex">AMEX</span>
@@ -313,6 +327,21 @@
 
 
 <script>
+// ── QUÉ INCLUYE: poblar la lista con las características del curso ──
+// detalle.js llama pintarCurso() dentro de DOMContentLoaded,
+// así que esperamos a que el DOM esté listo y luego leemos los items
+// ya renderizados en #hero-features para duplicarlos en #que-incluye-list.
+document.addEventListener('DOMContentLoaded', function() {
+  // Pequeño delay para que pintarCurso() haya terminado
+  setTimeout(function() {
+    var heroFeatures = document.getElementById('hero-features');
+    var incluye = document.getElementById('que-incluye-list');
+    if (!heroFeatures || !incluye) return;
+    // Clonar los mismos li que generó pintarCurso() en el hero
+    incluye.innerHTML = heroFeatures.innerHTML;
+  }, 80);
+});
+
 // El sidebar es poblado directamente por detalle.js → pintarCurso()
 
 // ── SIDEBAR ──
