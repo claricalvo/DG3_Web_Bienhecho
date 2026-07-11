@@ -86,6 +86,13 @@
   gap: 0;
 }
 
+/* Botón alineado al texto en el hero */
+.detalle-hero__card .course-cta {
+  display: block;
+  width: fit-content;
+  margin: 0 0 16px;
+}
+
 /* En mobile solo se muestran nivel, título, precio y botón */
 .detalle-hero__breadcrumb,
 .detalle-hero__features {
