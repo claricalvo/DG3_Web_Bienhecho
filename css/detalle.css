@@ -265,7 +265,7 @@
   font-family: var(--display);
   font-style: italic;
   font-weight: 900;
-  font-size: clamp(28px, 4vw, 36px);
+  font-size: clamp(28px, 4vw, 42px);
   color: var(--black);
 }
 
