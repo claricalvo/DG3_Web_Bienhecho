@@ -350,8 +350,8 @@
   box-shadow: 0 1px 3px rgba(0,0,0,.2);
 }
 .pago-chip--visa { color: #1a1f71; font-style: italic; }
-.pago-chip--mp { background: transparent; padding: 0 4px; }
-.pago-chip--mp svg { width: 22px; height: 22px; display: block; }
+.pago-chip--mp { background: #fff; padding: 0 6px; }
+.pago-chip--mp img { width: 18px; height: 18px; display: block; object-fit: contain; }
 .pago-chip--amex { background: #2e77bc; color: #fff; }
 .pago-chip--mc { gap: 0; padding: 0 10px; }
 .pago-chip--mc i {
@@ -670,7 +670,7 @@
     overflow: hidden;
   }
 
-  /* Imagen: ocupa todo el hero como fondo */
+  /* Imagen: ocupa todo el hero como fondo — nítida */
   .detalle-hero__img {
     position: absolute;
     inset: 0;
@@ -678,32 +678,34 @@
     height: 100%;
     background-size: cover;
     background-position: center;
-    filter: brightness(.55) saturate(.8);
+    filter: brightness(.88);
     z-index: 0;
   }
 
-  /* Degradé negro desde abajo */
+  /* Degradé solo en la franja inferior donde está el texto */
   .detalle-hero::before {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(
       to top,
-      rgba(8,8,8,.97) 0%,
-      rgba(8,8,8,.75) 45%,
-      rgba(8,8,8,.15) 80%,
-      transparent 100%
+      rgba(8,8,8,.96) 0%,
+      rgba(8,8,8,.82) 30%,
+      rgba(8,8,8,.3)  55%,
+      transparent 72%
     );
     z-index: 1;
   }
 
-  /* Tarjeta: sobre el degradé, alineada al fondo */
+  /* Tarjeta: sobre el degradé, pegada abajo a la izquierda */
   .detalle-hero__card {
     position: relative;
     z-index: 2;
     background: transparent;
     border: none;
-    padding: 0 24px 100px; /* 100px para dejar espacio a la barra sticky */
+    padding: 0 24px 110px;
+    align-items: flex-start;
+    text-align: left;
   }
 
   /* Ocultar lo que no va en mobile */
@@ -990,7 +992,7 @@
   }
 
   .sidebar-monto {
-    font-size: clamp(20px, 2vw, 24px);
+    font-size: clamp(28px, 2.8vw, 38px);
   }
 
   .sidebar-duracion {
