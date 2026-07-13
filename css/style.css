@@ -1437,14 +1437,15 @@ footer {
   .course-name { font-size: clamp(20px, 1.6vw, 28px); }
   .course-price-val { font-size: clamp(22px, 2vw, 32px); }
 
-  /* Desktop: botón curso se ajusta al contenido, centrado */
-  .course-cta {
-    display: table;
-    width: auto;
-    margin: 0 auto 16px;
-    padding: 9px 28px;
+  /* Desktop: botón ocupa todo el ancho */
+.course-cta {
+    display: block;
+    width: calc(100% - 40px);
+    margin: 0 20px 16px;
+    padding: 14px 0;
     font-size: 15px;
-  }
+    box-sizing: border-box;
+}
 
   /* ── COURSE 004 ── */
   .course { padding: 96px 120px; }
