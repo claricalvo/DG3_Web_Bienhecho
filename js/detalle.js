@@ -34,9 +34,22 @@ document.addEventListener("DOMContentLoaded", function () {
      1. Pintar el curso principal (reusa .course-card)
      ----------------------------------------------------- */
   function pintarCurso(c) {
-    // Hero bg
-    var heroBg = document.getElementById("hero-bg");
-    if (heroBg) heroBg.style.backgroundImage = "url('" + c.imagenHero + "')";
+    // Hero independiente Desktop / Mobile
+var heroBg = document.getElementById("hero-bg");
+
+function actualizarHero() {
+  if (!heroBg) return;
+
+  const imagen =
+    window.innerWidth >= 1024
+      ? c.heroDesktop
+      : c.heroMobile;
+
+  heroBg.style.backgroundImage = "url('" + imagen + "')";
+}
+
+actualizarHero();
+window.addEventListener("resize", actualizarHero);
 
     function setId(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
     setId("hero-nivel", c.nivel);
