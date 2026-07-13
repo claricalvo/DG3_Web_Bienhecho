@@ -353,8 +353,8 @@ document.addEventListener('DOMContentLoaded', function() {
 //
 // Mobile (<1024px): la tarjeta pasa a ser una barra flotante fija
 // (position: fixed, ver CSS). Como fixed no tiene noción de "columna",
-// ahí sí necesitamos JS para ocultarla una vez pasada la sección de
-// testimonios.
+// ahí sí necesitamos JS: aparece recién después del hero y se
+// oculta una vez pasada la sección de testimonios.
 (function() {
   const sidebar = document.getElementById('detalle-sidebar');
   if (!sidebar) return;
@@ -369,11 +369,15 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
+    const hero = document.getElementById('detalle-hero');
     const testimonials = document.getElementById('pilotos'); // sección de testimonios
     if (!testimonials) { sidebar.style.opacity = '1'; sidebar.style.pointerEvents = 'auto'; return; }
 
+    // Recién aparece después de pasar el hero, y se oculta al llegar
+    // al final de la sección de testimonios.
+    const heroBottom = hero ? hero.offsetTop + hero.offsetHeight - 80 : 0;
     const hideFrom = testimonials.offsetTop + testimonials.offsetHeight - 100;
-    const visible = window.scrollY < hideFrom;
+    const visible = window.scrollY >= heroBottom && window.scrollY < hideFrom;
     sidebar.style.opacity       = visible ? '1' : '0';
     sidebar.style.pointerEvents = visible ? 'auto' : 'none';
   }

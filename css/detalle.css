@@ -731,6 +731,9 @@
     padding: 0;
     background: transparent;
     border-top: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s ease;
   }
 
   .sidebar-card {
@@ -755,8 +758,8 @@
   }
 
   .sidebar-titulo {
-    font-size: 13px;
-    line-height: 1.1;
+    font-size: 17px;
+    line-height: 1.15;
     margin: 0;
     padding: 0;
     border-bottom: none;
@@ -783,8 +786,8 @@
   .sidebar-card .course-cta {
     margin: 0;
     width: auto;
-    padding: 9px 14px;
-    font-size: 11px;
+    padding: 12px 20px;
+    font-size: 14px;
     letter-spacing: .03em;
     white-space: nowrap;
     flex-shrink: 0;
