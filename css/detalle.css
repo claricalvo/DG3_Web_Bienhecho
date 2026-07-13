@@ -37,6 +37,11 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+/* El botón de WhatsApp arranca oculto y sólo se muestra después del
+   hero (JS al final del body calcula cuándo). Así nunca se pisa con
+   el botón "Inscribirse", que en mobile ocupa todo el ancho. */
+.wa-float { opacity: 0; transition: opacity .25s ease; }
+
 /* =========================================================
    HERO: imagen izquierda, tarjeta derecha
    ========================================================= */
@@ -47,7 +52,7 @@
   align-items: flex-end;
   min-height: 100svh;
   background: var(--black);
-  padding-top: 0;
+  padding: 0;
   overflow: hidden;
 }
 
@@ -666,7 +671,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding-top: 0;
+    padding: 0;
     overflow: hidden;
   }
 
@@ -703,9 +708,14 @@
     z-index: 2;
     background: transparent;
     border: none;
-    padding: 0 24px 110px;
+    padding: 0 24px calc(28px + env(safe-area-inset-bottom));
     align-items: flex-start;
     text-align: left;
+  }
+
+  /* Botón: ocupa todo el ancho de la pantalla en mobile */
+  .detalle-hero__card .course-cta {
+    width: 100%;
   }
 
   /* Ocultar lo que no va en mobile */
@@ -825,7 +835,7 @@
     position: relative;
     flex-direction: row;
     min-height: 100vh;
-    padding-top: 0;
+    padding: 0;
     align-items: stretch;
     overflow: hidden;
   }
